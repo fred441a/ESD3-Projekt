@@ -48,12 +48,12 @@ process(CLK)
         
             if(unsigned(Percent) > count) then
                 count <= count +1;
-                PWM <= '1';
+                PWM <= '0';
             end if;
             
             if(count > 254) then
             count <= TO_UNSIGNED(0,7);
-            PWM <= '0';
+            PWM <= '1';
             end if;
             
             
