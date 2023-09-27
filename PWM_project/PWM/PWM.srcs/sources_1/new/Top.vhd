@@ -40,20 +40,22 @@ end Top;
 
 architecture Behavioral of Top is
 signal count: unsigned(7 downto 0);
+signal mem: std_logic ;
 begin 
 
 process(CLK) 
     begin
         if(CLK'event and CLK = '1') then
+        count <= count +1;
+        
         
             if(unsigned(Percent) > count) then
-                count <= count +1;
                 PWM <= '0';
             end if;
             
             if(count > 254) then
-            count <= TO_UNSIGNED(0,7);
-            PWM <= '1';
+                count <= TO_UNSIGNED(0,8);
+                PWM <= '1';
             end if;
             
             
