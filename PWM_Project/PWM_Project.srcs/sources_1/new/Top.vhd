@@ -33,34 +33,32 @@ use IEEE.numeric_std.ALL;
 --use UNISIM.VComponents.all;
 
 entity Top is
-    Port ( Percent : in STD_LOGIC_VECTOR (7 to 0);
+    Port ( Percent : in STD_LOGIC_VECTOR (7 downto 0) := "01111111"; --"50%; 127"
            CLK : in STD_LOGIC;
            PWM : out STD_LOGIC);
 end Top;
 
 architecture Behavioral of Top is
-signal count: unsigned(7 downto 0);
-signal mem: std_logic ;
+signal count: unsigned(7 downto 0) := (others => '0');
 begin 
 
 process(CLK) 
     begin
         if(CLK'event and CLK = '1') then
-        count <= count +1;
-        
-        
-            if(unsigned(Percent) > count) then
+            count <= count +1;
+
+            if(count < unsigned(Percent)) then
+                PWM <= '1';
+            else
                 PWM <= '0';
             end if;
             
             if(count > 254) then
-                count <= TO_UNSIGNED(0,8);
-                PWM <= '1';
+                count <= TO_UNSIGNED(0,8);     
+                PWM <= '1';           
             end if;
-            
-            
+                        
         end if;
     end process;
-
 
 end Behavioral;
