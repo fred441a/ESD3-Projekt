@@ -33,9 +33,12 @@ use IEEE.numeric_std.ALL;
 --use UNISIM.VComponents.all;
 
 entity Top is
-    Port ( Percent : in STD_LOGIC_VECTOR (7 downto 0) := "01111111"; --"50%; 127"
+    Port ( PercentCh0 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
+           PercentCh1 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
+           PercentCh2 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
+           PercentCh3 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
            CLK : in STD_LOGIC;
-           PWM : out STD_LOGIC);
+           PWM : out std_logic_vector (3 downto 0));
 end Top;
 
 architecture Behavioral of Top is
@@ -46,16 +49,38 @@ process(CLK)
     begin
         if(CLK'event and CLK = '1') then
             count <= count +1;
-
-            if(count < unsigned(Percent)) then
-                PWM <= '1';
+            
+            --PWM channel 0
+            if(count < unsigned(PercentCh0)) then
+                PWM(0) <= '1';
             else
-                PWM <= '0';
+                PWM(0) <= '0';
+            end if;
+            
+            --PWM channel 1
+            if(count < unsigned(PercentCh1)) then
+                PWM(1) <= '1';
+            else
+                PWM(1) <= '0';
+            end if;
+            
+            --PWM channel 2
+            if(count < unsigned(PercentCh2)) then
+                PWM(2) <= '1';
+            else
+                PWM(2) <= '0';
+            end if;
+            
+            --PWM channel 3
+            if(count < unsigned(PercentCh3)) then
+                PWM(3) <= '1';
+            else
+                PWM(3) <= '0';
             end if;
             
             if(count > 254) then
                 count <= TO_UNSIGNED(0,8);     
-                PWM <= '1';           
+                PWM <= "1111";           
             end if;
                         
         end if;

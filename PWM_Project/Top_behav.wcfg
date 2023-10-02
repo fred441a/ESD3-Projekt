@@ -12,17 +12,13 @@
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
       <ZoomEndTime time="2,000.000001 us"></ZoomEndTime>
-      <Cursor1Time time="498.250000 us"></Cursor1Time>
+      <Cursor1Time time="2,000.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="132"></NameColumnWidth>
-      <ValueColumnWidth column_width="81"></ValueColumnWidth>
+      <ValueColumnWidth column_width="77"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="4" />
-   <wvobject type="array" fp_name="/Top/Percent">
-      <obj_property name="ElementShortName">Percent[7:0]</obj_property>
-      <obj_property name="ObjectShortName">Percent[7:0]</obj_property>
-   </wvobject>
+   <WVObjectSize size="3" />
    <wvobject type="logic" fp_name="/Top/CLK">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
@@ -31,8 +27,9 @@
       <obj_property name="ElementShortName">count[7:0]</obj_property>
       <obj_property name="ObjectShortName">count[7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/Top/PWM">
-      <obj_property name="ElementShortName">PWM</obj_property>
-      <obj_property name="ObjectShortName">PWM</obj_property>
+   <wvobject type="array" fp_name="/Top/PWM">
+      <obj_property name="ElementShortName">PWM[3:0]</obj_property>
+      <obj_property name="ObjectShortName">PWM[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>
