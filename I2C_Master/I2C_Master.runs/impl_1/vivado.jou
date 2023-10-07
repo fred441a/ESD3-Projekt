@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Fri Oct  6 15:29:39 2023
+# Process ID: 69388
+# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Master/I2C_Master.runs/impl_1
+# Command line: vivado -log Teset_Harness.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Teset_Harness.tcl -notrace
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Master/I2C_Master.runs/impl_1/Teset_Harness.vdi
+# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Master/I2C_Master.runs/impl_1/vivado.jou
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 3179.207 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+#-----------------------------------------------------------
+source Teset_Harness.tcl -notrace
