@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity Teset_Harness is
 Port (
     clk: in std_logic;
-    scl: inout std_logic;
+    scl: out std_logic;
     sda: inout std_logic;
     
     begin_transaction: in std_logic;
