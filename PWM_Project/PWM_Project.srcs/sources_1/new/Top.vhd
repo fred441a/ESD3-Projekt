@@ -51,38 +51,32 @@ process(CLK)
             count <= count +1;
             
             --PWM channel 0
-            if(count < unsigned(PercentCh0)) then
+            if(count +1 <= unsigned(PercentCh0)) then
                 PWM(0) <= '1';
             else
                 PWM(0) <= '0';
             end if;
             
             --PWM channel 1
-            if(count < unsigned(PercentCh1)) then
+            if(count +1 <= unsigned(PercentCh1)) then
                 PWM(1) <= '1';
             else
                 PWM(1) <= '0';
             end if;
             
             --PWM channel 2
-            if(count < unsigned(PercentCh2)) then
+            if(count +1 <= unsigned(PercentCh2)) then
                 PWM(2) <= '1';
             else
                 PWM(2) <= '0';
             end if;
             
             --PWM channel 3
-            if(count < unsigned(PercentCh3)) then
+            if(count +1 <= unsigned(PercentCh3)) then
                 PWM(3) <= '1';
             else
                 PWM(3) <= '0';
-            end if;
-            
-            if(count > 254) then
-                count <= TO_UNSIGNED(0,8);     
-                PWM <= "1111";           
-            end if;
-                        
+            end if;                        
         end if;
     end process;
 

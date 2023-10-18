@@ -1,0 +1,633 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date         : Mon Oct 16 11:49:32 2023
+| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file Teset_Harness_timing_summary_routed.rpt -pb Teset_Harness_timing_summary_routed.pb -rpx Teset_Harness_timing_summary_routed.rpx -warn_on_violation
+| Design       : Teset_Harness
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                  Violations  
+---------  ----------------  ---------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell  27          
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (27)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (44)
+5. checking no_input_delay (3)
+6. checking no_output_delay (4)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (27)
+-------------------------
+ There are 27 register/latch pins with no clock driven by root clock pin: clk (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (44)
+-------------------------------------------------
+ There are 44 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (3)
+------------------------------
+ There are 3 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (4)
+-------------------------------
+ There are 4 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                   49          inf        0.000                      0                   49           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay            49 Endpoints
+Min Delay            49 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 clk
+                            (input port)
+  Destination:            clk_out
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        9.971ns  (logic 5.067ns (50.821%)  route 4.904ns (49.179%))
+  Logic Levels:           3  (BUFG=1 IBUF=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    L17                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    L17                  IBUF (Prop_ibuf_I_O)         1.476     1.476 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.448    clk_out_OBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.544 r  clk_out_OBUF_BUFG_inst/O
+                         net (fo=28, routed)          2.932     6.476    clk_out_OBUF_BUFG
+    N18                  OBUF (Prop_obuf_I_O)         3.495     9.971 r  clk_out_OBUF_inst/O
+                         net (fo=0)                   0.000     9.971    clk_out
+    N18                                                               r  clk_out (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/ack_error_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            ack_error
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.940ns  (logic 3.964ns (44.338%)  route 4.976ns (55.662%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X63Y87         FDRE                         0.000     0.000 r  I2C_Master/ack_error_reg/C
+    SLICE_X63Y87         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  I2C_Master/ack_error_reg/Q
+                         net (fo=3, routed)           4.976     5.432    ack_error_OBUF
+    A17                  OBUF (Prop_obuf_I_O)         3.508     8.940 r  ack_error_OBUF_inst/O
+                         net (fo=0)                   0.000     8.940    ack_error
+    A17                                                               r  ack_error (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/busy_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            busy
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.563ns  (logic 3.948ns (46.105%)  route 4.615ns (53.895%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X63Y86         FDRE                         0.000     0.000 r  I2C_Master/busy_reg/C
+    SLICE_X63Y86         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  I2C_Master/busy_reg/Q
+                         net (fo=1, routed)           4.615     5.071    busy_OBUF
+    C16                  OBUF (Prop_obuf_I_O)         3.492     8.563 r  busy_OBUF_inst/O
+                         net (fo=0)                   0.000     8.563    busy
+    C16                                                               r  busy (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/data_clk_prev_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            sda
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.999ns  (logic 4.454ns (63.645%)  route 2.544ns (36.355%))
+  Logic Levels:           3  (FDRE=1 LUT4=1 OBUFT=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y85         FDRE                         0.000     0.000 r  I2C_Master/data_clk_prev_reg/C
+    SLICE_X62Y85         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  I2C_Master/data_clk_prev_reg/Q
+                         net (fo=10, routed)          0.881     1.300    I2C_Master/data_clk_prev
+    SLICE_X63Y86         LUT4 (Prop_lut4_I0_O)        0.329     1.629 r  I2C_Master/sda_IOBUF_inst_i_1/O
+                         net (fo=1, routed)           1.663     3.292    sda_IOBUF_inst/I
+    J3                   OBUFT (Prop_obuft_I_O)       3.706     6.999 r  sda_IOBUF_inst/OBUFT/O
+                         net (fo=1, unset)            0.000     6.999    sda
+    J3                                                                r  sda (INOUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 begin_transaction
+                            (input port)
+  Destination:            I2C_Master/sda_int_reg/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.869ns  (logic 1.835ns (26.714%)  route 5.034ns (73.286%))
+  Logic Levels:           4  (IBUF=1 LUT5=1 LUT6=2)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    A18                                               0.000     0.000 r  begin_transaction (IN)
+                         net (fo=0)                   0.000     0.000    begin_transaction
+    A18                  IBUF (Prop_ibuf_I_O)         1.463     1.463 r  begin_transaction_IBUF_inst/O
+                         net (fo=6, routed)           3.723     5.186    I2C_Master/begin_transaction_IBUF
+    SLICE_X63Y86         LUT5 (Prop_lut5_I2_O)        0.124     5.310 r  I2C_Master/busy_i_3/O
+                         net (fo=2, routed)           0.644     5.954    I2C_Master/busy_i_3_n_0
+    SLICE_X62Y86         LUT6 (Prop_lut6_I2_O)        0.124     6.078 r  I2C_Master/sda_int_i_3/O
+                         net (fo=1, routed)           0.667     6.745    I2C_Master/sda_int4_out
+    SLICE_X62Y86         LUT6 (Prop_lut6_I4_O)        0.124     6.869 r  I2C_Master/sda_int_i_1/O
+                         net (fo=1, routed)           0.000     6.869    I2C_Master/sda_int_i_1_n_0
+    SLICE_X62Y86         FDRE                                         r  I2C_Master/sda_int_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/scl_ena_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            scl
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.615ns  (logic 4.107ns (62.096%)  route 2.507ns (37.904%))
+  Logic Levels:           3  (FDRE=1 LUT2=1 OBUFT=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y86         FDRE                         0.000     0.000 r  I2C_Master/scl_ena_reg/C
+    SLICE_X62Y86         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  I2C_Master/scl_ena_reg/Q
+                         net (fo=3, routed)           0.837     1.293    I2C_Master/scl_ena_reg_n_0
+    SLICE_X63Y87         LUT2 (Prop_lut2_I0_O)        0.124     1.417 f  I2C_Master/scl_IOBUF_inst_i_1/O
+                         net (fo=1, routed)           1.670     3.087    scl_IOBUF_inst/T
+    M3                   OBUFT (TriStatE_obuft_T_O)
+                                                      3.527     6.615 r  scl_IOBUF_inst/OBUFT/O
+                         net (fo=1, unset)            0.000     6.615    scl
+    M3                                                                r  scl (INOUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 begin_transaction
+                            (input port)
+  Destination:            I2C_Master/busy_reg/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        6.224ns  (logic 1.711ns (27.490%)  route 4.513ns (72.510%))
+  Logic Levels:           3  (IBUF=1 LUT5=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    A18                                               0.000     0.000 r  begin_transaction (IN)
+                         net (fo=0)                   0.000     0.000    begin_transaction
+    A18                  IBUF (Prop_ibuf_I_O)         1.463     1.463 r  begin_transaction_IBUF_inst/O
+                         net (fo=6, routed)           3.723     5.186    I2C_Master/begin_transaction_IBUF
+    SLICE_X63Y86         LUT5 (Prop_lut5_I2_O)        0.124     5.310 r  I2C_Master/busy_i_3/O
+                         net (fo=2, routed)           0.411     5.721    I2C_Master/busy_i_3_n_0
+    SLICE_X63Y86         LUT6 (Prop_lut6_I0_O)        0.124     5.845 r  I2C_Master/busy_i_1/O
+                         net (fo=1, routed)           0.379     6.224    I2C_Master/busy6_out
+    SLICE_X63Y86         FDRE                                         r  I2C_Master/busy_reg/CE
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 begin_transaction
+                            (input port)
+  Destination:            I2C_Master/FSM_onehot_state_reg[8]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        5.663ns  (logic 1.613ns (28.481%)  route 4.050ns (71.519%))
+  Logic Levels:           2  (IBUF=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    A18                                               0.000     0.000 f  begin_transaction (IN)
+                         net (fo=0)                   0.000     0.000    begin_transaction
+    A18                  IBUF (Prop_ibuf_I_O)         1.463     1.463 f  begin_transaction_IBUF_inst/O
+                         net (fo=6, routed)           3.723     5.186    I2C_Master/begin_transaction_IBUF
+    SLICE_X63Y86         LUT2 (Prop_lut2_I1_O)        0.150     5.336 r  I2C_Master/FSM_onehot_state[8]_i_2/O
+                         net (fo=1, routed)           0.328     5.663    I2C_Master/FSM_onehot_state[8]_i_2_n_0
+    SLICE_X64Y86         FDRE                                         r  I2C_Master/FSM_onehot_state_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 begin_transaction
+                            (input port)
+  Destination:            I2C_Master/FSM_onehot_state_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        5.506ns  (logic 1.613ns (29.297%)  route 3.893ns (70.703%))
+  Logic Levels:           2  (IBUF=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    A18                                               0.000     0.000 r  begin_transaction (IN)
+                         net (fo=0)                   0.000     0.000    begin_transaction
+    A18                  IBUF (Prop_ibuf_I_O)         1.463     1.463 r  begin_transaction_IBUF_inst/O
+                         net (fo=6, routed)           3.893     5.356    I2C_Master/begin_transaction_IBUF
+    SLICE_X64Y86         LUT2 (Prop_lut2_I1_O)        0.150     5.506 r  I2C_Master/FSM_onehot_state[1]_i_1/O
+                         net (fo=1, routed)           0.000     5.506    I2C_Master/FSM_onehot_state[1]_i_1_n_0
+    SLICE_X64Y86         FDRE                                         r  I2C_Master/FSM_onehot_state_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 begin_transaction
+                            (input port)
+  Destination:            I2C_Master/FSM_onehot_state_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        5.480ns  (logic 1.587ns (28.961%)  route 3.893ns (71.039%))
+  Logic Levels:           2  (IBUF=1 LUT3=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    A18                                               0.000     0.000 f  begin_transaction (IN)
+                         net (fo=0)                   0.000     0.000    begin_transaction
+    A18                  IBUF (Prop_ibuf_I_O)         1.463     1.463 f  begin_transaction_IBUF_inst/O
+                         net (fo=6, routed)           3.893     5.356    I2C_Master/begin_transaction_IBUF
+    SLICE_X64Y86         LUT3 (Prop_lut3_I0_O)        0.124     5.480 r  I2C_Master/FSM_onehot_state[0]_i_1/O
+                         net (fo=1, routed)           0.000     5.480    I2C_Master/FSM_onehot_state[0]_i_1_n_0
+    SLICE_X64Y86         FDRE                                         r  I2C_Master/FSM_onehot_state_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 I2C_Master/data_clk_prev_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/bit_cnt_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.335ns  (logic 0.227ns (67.823%)  route 0.108ns (32.177%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y85         FDRE                         0.000     0.000 r  I2C_Master/data_clk_prev_reg/C
+    SLICE_X62Y85         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  I2C_Master/data_clk_prev_reg/Q
+                         net (fo=10, routed)          0.108     0.236    I2C_Master/data_clk_prev
+    SLICE_X62Y85         LUT6 (Prop_lut6_I3_O)        0.099     0.335 r  I2C_Master/bit_cnt[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.335    I2C_Master/bit_cnt[1]_i_1_n_0
+    SLICE_X62Y85         FDRE                                         r  I2C_Master/bit_cnt_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/FSM_onehot_state_reg[8]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/scl_ena_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.342ns  (logic 0.209ns (61.159%)  route 0.133ns (38.841%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X64Y86         FDRE                         0.000     0.000 r  I2C_Master/FSM_onehot_state_reg[8]/C
+    SLICE_X64Y86         FDRE (Prop_fdre_C_Q)         0.164     0.164 f  I2C_Master/FSM_onehot_state_reg[8]/Q
+                         net (fo=5, routed)           0.133     0.297    I2C_Master/FSM_onehot_state_reg_n_0_[8]
+    SLICE_X62Y86         LUT5 (Prop_lut5_I0_O)        0.045     0.342 r  I2C_Master/scl_ena_i_1/O
+                         net (fo=1, routed)           0.000     0.342    I2C_Master/scl_ena_i_1_n_0
+    SLICE_X62Y86         FDRE                                         r  I2C_Master/scl_ena_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/scl_ena_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/ack_error_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.348ns  (logic 0.186ns (53.465%)  route 0.162ns (46.535%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y86         FDRE                         0.000     0.000 r  I2C_Master/scl_ena_reg/C
+    SLICE_X62Y86         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/scl_ena_reg/Q
+                         net (fo=3, routed)           0.162     0.303    I2C_Master/scl_ena_reg_n_0
+    SLICE_X63Y87         LUT6 (Prop_lut6_I1_O)        0.045     0.348 r  I2C_Master/ack_error_i_1/O
+                         net (fo=1, routed)           0.000     0.348    I2C_Master/ack_error_i_1_n_0
+    SLICE_X63Y87         FDRE                                         r  I2C_Master/ack_error_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/count_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/count_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.354ns  (logic 0.186ns (52.507%)  route 0.168ns (47.493%))
+  Logic Levels:           2  (FDRE=1 LUT2=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X65Y85         FDRE                         0.000     0.000 r  I2C_Master/count_reg[0]/C
+    SLICE_X65Y85         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/count_reg[0]/Q
+                         net (fo=11, routed)          0.168     0.309    I2C_Master/count[0]
+    SLICE_X65Y85         LUT2 (Prop_lut2_I0_O)        0.045     0.354 r  I2C_Master/count[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.354    I2C_Master/count[0]_i_1_n_0
+    SLICE_X65Y85         FDRE                                         r  I2C_Master/count_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/FSM_onehot_state_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/busy_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.354ns  (logic 0.186ns (52.487%)  route 0.168ns (47.513%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y87         FDRE                         0.000     0.000 r  I2C_Master/FSM_onehot_state_reg[4]/C
+    SLICE_X62Y87         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/FSM_onehot_state_reg[4]/Q
+                         net (fo=9, routed)           0.168     0.309    I2C_Master/FSM_onehot_state_reg_n_0_[4]
+    SLICE_X63Y86         LUT6 (Prop_lut6_I3_O)        0.045     0.354 r  I2C_Master/busy_i_2/O
+                         net (fo=1, routed)           0.000     0.354    I2C_Master/busy_i_2_n_0
+    SLICE_X63Y86         FDRE                                         r  I2C_Master/busy_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/count_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/count_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.354ns  (logic 0.186ns (52.476%)  route 0.168ns (47.524%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X65Y86         FDRE                         0.000     0.000 r  I2C_Master/count_reg[1]/C
+    SLICE_X65Y86         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/count_reg[1]/Q
+                         net (fo=10, routed)          0.168     0.309    I2C_Master/count[1]
+    SLICE_X65Y86         LUT6 (Prop_lut6_I0_O)        0.045     0.354 r  I2C_Master/count[4]_i_1/O
+                         net (fo=1, routed)           0.000     0.354    I2C_Master/data0[4]
+    SLICE_X65Y86         FDRE                                         r  I2C_Master/count_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/count_reg[7]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/count_reg[7]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.367ns  (logic 0.186ns (50.654%)  route 0.181ns (49.346%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X65Y86         FDRE                         0.000     0.000 r  I2C_Master/count_reg[7]/C
+    SLICE_X65Y86         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/count_reg[7]/Q
+                         net (fo=4, routed)           0.181     0.322    I2C_Master/count[7]
+    SLICE_X65Y86         LUT6 (Prop_lut6_I5_O)        0.045     0.367 r  I2C_Master/count[7]_i_1/O
+                         net (fo=4, routed)           0.000     0.367    I2C_Master/data0[7]
+    SLICE_X65Y86         FDRE                                         r  I2C_Master/count_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/FSM_onehot_state_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/FSM_onehot_state_reg[3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.368ns  (logic 0.183ns (49.756%)  route 0.185ns (50.244%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y87         FDRE                         0.000     0.000 r  I2C_Master/FSM_onehot_state_reg[2]/C
+    SLICE_X62Y87         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/FSM_onehot_state_reg[2]/Q
+                         net (fo=9, routed)           0.185     0.326    I2C_Master/FSM_onehot_state_reg_n_0_[2]
+    SLICE_X62Y87         LUT4 (Prop_lut4_I0_O)        0.042     0.368 r  I2C_Master/FSM_onehot_state[3]_i_1/O
+                         net (fo=1, routed)           0.000     0.368    I2C_Master/FSM_onehot_state[3]_i_1_n_0
+    SLICE_X62Y87         FDRE                                         r  I2C_Master/FSM_onehot_state_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/FSM_onehot_state_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/FSM_onehot_state_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.371ns  (logic 0.186ns (50.162%)  route 0.185ns (49.838%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y87         FDRE                         0.000     0.000 r  I2C_Master/FSM_onehot_state_reg[2]/C
+    SLICE_X62Y87         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/FSM_onehot_state_reg[2]/Q
+                         net (fo=9, routed)           0.185     0.326    I2C_Master/FSM_onehot_state_reg_n_0_[2]
+    SLICE_X62Y87         LUT5 (Prop_lut5_I0_O)        0.045     0.371 r  I2C_Master/FSM_onehot_state[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.371    I2C_Master/FSM_onehot_state[2]_i_1_n_0
+    SLICE_X62Y87         FDRE                                         r  I2C_Master/FSM_onehot_state_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 I2C_Master/bit_cnt_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            I2C_Master/bit_cnt_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.371ns  (logic 0.186ns (50.146%)  route 0.185ns (49.854%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X62Y85         FDRE                         0.000     0.000 r  I2C_Master/bit_cnt_reg[1]/C
+    SLICE_X62Y85         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  I2C_Master/bit_cnt_reg[1]/Q
+                         net (fo=8, routed)           0.185     0.326    I2C_Master/bit_cnt[1]
+    SLICE_X62Y85         LUT6 (Prop_lut6_I1_O)        0.045     0.371 r  I2C_Master/bit_cnt[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.371    I2C_Master/bit_cnt[2]_i_1_n_0
+    SLICE_X62Y85         FDRE                                         r  I2C_Master/bit_cnt_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
