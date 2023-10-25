@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Tue Oct 24 08:37:59 2023
+# Process ID: 3036
+# Current directory: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.runs/synth_1
+# Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
+# Log file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.runs/synth_1/Top.vds
+# Journal file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.runs/synth_1\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+source Top.tcl -notrace
