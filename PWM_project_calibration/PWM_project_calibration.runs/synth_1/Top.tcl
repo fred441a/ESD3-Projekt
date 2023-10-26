@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.runs/synth_1/Top.tcl"
+  variable script "C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.runs/synth_1/Top.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,23 +70,25 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.cache/wt [current_project]
-set_property parent.project_path C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.cache/wt [current_project]
+set_property parent.project_path C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part_repo_paths {C:/Users/Ditte/AppData/Roaming/Xilinx/Vivado/2023.1/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:cmod_a7-35t:part0:1.2 [current_project]
-set_property ip_output_repo c:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.cache/ip [current_project]
+set_property ip_output_repo c:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd
+read_vhdl -library xil_defaultlib C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/sources_1/new/Top.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -96,9 +98,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/constrs_2/new/pwmCalibrateBitstream.xdc
+set_property used_in_implementation false [get_files C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/constrs_2/new/pwmCalibrateBitstream.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/PWM_Project.srcs/utils_1/imports/synth_1/Top.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/utils_1/imports/synth_1/Top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

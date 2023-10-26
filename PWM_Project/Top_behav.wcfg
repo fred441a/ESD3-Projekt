@@ -10,26 +10,38 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="2,000.000001 us"></ZoomEndTime>
-      <Cursor1Time time="2,000.000000 us"></Cursor1Time>
+      <ZoomStartTime time="89.606814600 ms"></ZoomStartTime>
+      <ZoomEndTime time="110.786814601 ms"></ZoomEndTime>
+      <Cursor1Time time="110.001000000 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="132"></NameColumnWidth>
-      <ValueColumnWidth column_width="77"></ValueColumnWidth>
+      <NameColumnWidth column_width="107"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="3" />
-   <wvobject type="logic" fp_name="/Top/CLK">
+   <WVObjectSize size="6" />
+   <wvobject fp_name="/Top/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/Top/count">
+   <wvobject fp_name="/Top/count" type="array">
       <obj_property name="ElementShortName">count[7:0]</obj_property>
       <obj_property name="ObjectShortName">count[7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/Top/PWM">
+   <wvobject fp_name="/Top/PWM" type="array">
       <obj_property name="ElementShortName">PWM[3:0]</obj_property>
       <obj_property name="ObjectShortName">PWM[3:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/Top/inter_ready" type="logic">
+      <obj_property name="ElementShortName">inter_ready</obj_property>
+      <obj_property name="ObjectShortName">inter_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Top/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Top/state" type="array">
+      <obj_property name="ElementShortName">state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">state[1:0]</obj_property>
    </wvobject>
 </wave_config>

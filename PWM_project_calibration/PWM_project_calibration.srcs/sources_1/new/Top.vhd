@@ -33,26 +33,25 @@ use IEEE.numeric_std.ALL;
 --use UNISIM.VComponents.all;
 
 entity Top is
-    Port ( PercentCh0 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
-           PercentCh1 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
-           PercentCh2 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
-           PercentCh3 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
-           CLK : in STD_LOGIC;
-           PWM : out std_logic_vector (3 downto 0));
+    Port ( CLK :        in STD_LOGIC;
+           PWM :        out std_logic_vector (3 downto 0);
+           ready :      in std_logic;
+           inter_ready: out std_logic
+            );
 end Top;
 
 architecture Behavioral of Top is
-signal count: unsigned(7 downto 0) := (others => '0');
-signal rise: unsigned(7 downto 0) := (others => '0');
-signal state: unsigned(1 downto 0) := (others => '0');
+signal count:   unsigned(7 downto 0) := (others => '0');
+signal rise:    unsigned(7 downto 0) := (others => '0');
+signal state:   unsigned(1 downto 0) := (others => '0');
 begin 
-
 
 
 process(CLK)
 
 begin
-  
+
+if(ready = '1') then
        if(CLK'event and CLK = '1') then
            if(state = 0) then
                 count <= count +1;
@@ -141,8 +140,10 @@ begin
         if(state =2) then
             PWM <= "0000";
             count <= TO_UNSIGNED(0,8);
+            inter_ready <= '1';
             end if;
-      end if;           
+      end if;
+    end if;          
 end process;
 
 end Behavioral;
