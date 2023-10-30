@@ -1,2 +1,2 @@
 # Regler
- - hvis nogen ødelægger master branch så skylder de sportscola i DE-klubben
+ - Hvis nogen ødelægger master branch så skylder de sportscola i DE-klubben.
