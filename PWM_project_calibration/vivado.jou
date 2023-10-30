@@ -3,10 +3,10 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Thu Oct 26 11:27:59 2023
-# Process ID: 15384
+# Start of session at: Fri Oct 27 11:29:08 2023
+# Process ID: 18708
 # Current directory: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7832 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\PWM_project_calibration\PWM_project_calibration.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1536 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\PWM_project_calibration\PWM_project_calibration.xpr
 # Log file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/vivado.log
 # Journal file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration\vivado.jou
 # Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
@@ -14,72 +14,4 @@
 start_gui
 open_project C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.xpr
 update_compile_order -fileset sources_1
-open_run impl_1
-place_ports CLK L17
-set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[3]} {PWM[2]} {PWM[1]} {PWM[0]}]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list CLK]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list ready]]
-set_property IOSTANDARD LVCMOS33 [get_ports [list inter_ready]]
-set_property is_loc_fixed false [get_ports [list  CLK]]
-set_property is_loc_fixed true [get_ports [list  CLK]]
-set_property is_loc_fixed true [get_ports [list  inter_ready]]
-set_property is_loc_fixed true [get_ports [list  ready]]
-set_property is_loc_fixed true [get_ports [list  {PWM[3]} {PWM[2]} {PWM[1]} {PWM[0]}]]
-file mkdir C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/constrs_1/new
-close [ open C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/constrs_1/new/pwmCalibrateBitstream.xdc w ]
-add_files -fileset constrs_1 C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/constrs_1/new/pwmCalibrateBitstream.xdc
-set_property target_constrs_file C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.srcs/constrs_1/new/pwmCalibrateBitstream.xdc [current_fileset -constrset]
-save_constraints -force
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-open_hw_manager
-startgroup
-set_property package_pin "" [get_ports [list  CLK inter_ready ready]]
-place_ports {PWM[3]} A15
-endgroup
-place_ports CLK L17
-place_ports inter_ready B15
-place_ports ready A14
-save_constraints -force
-save_constraints -force
-save_constraints -force
-save_constraints_as constrs_2
-set_property constrset constrs_2 [get_runs synth_1]
-set_property constrset constrs_2 [get_runs impl_1]
-reset_run synth_1
-reset_run impl_1
-launch_runs impl_1 -jobs 8
-wait_on_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-connect_hw_server -allow_non_jtag
-open_hw_target
-set_property PROGRAM.FILE {C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_project_calibration/PWM_project_calibration.runs/impl_1/Top.bit} [get_hw_devices xc7a35t_0]
-current_hw_device [get_hw_devices xc7a35t_0]
-refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
-refresh_design
-reset_run synth_1
-launch_runs synth_1 -jobs 8
-wait_on_run synth_1
-launch_runs impl_1 -jobs 8
-wait_on_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-place_ports {PWM[3]} G17
-place_ports inter_ready G19
-place_ports ready N18
-save_constraints -force
-reset_run synth_1
-launch_runs synth_1 -jobs 8
-wait_on_run synth_1
-close_design
-open_run synth_1 -name synth_1
 launch_simulation
-launch_simulation
-launch_simulation
-launch_simulation
-launch_simulation
-open_wave_config C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/Top_behav.wcfg
-source Top.tcl
-close_sim

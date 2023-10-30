@@ -1,0 +1,99 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Fri Oct 27 09:30:53 2023
+# Process ID: 7024
+# Current directory: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_cal2.0
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9816 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\PWM_cal2.0\PWM_cal2.0.xpr
+# Log file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_cal2.0/vivado.log
+# Journal file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_cal2.0\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_cal2.0/PWM_cal2.0.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source top2.tcl
+close_sim
+launch_simulation
+launch_simulation
+source top2.tcl
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 110 ms
+close_sim
+launch_simulation
+source top2.tcl
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 110 ms
+close_sim
+launch_simulation
+source top2.tcl
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 110 ms
+close_sim
+launch_simulation
+source top2.tcl
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 110 ms
+close_sim
+launch_simulation
+source top2.tcl
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 20 ms
+close_sim
+launch_simulation
+source top2.tcl
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 20 ms
+close_sim
+launch_simulation
+source top2.tcl
+update_compile_order -fileset sources_1
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 20 ms
+run 50 ms
+run 1 s
+set_property source_mgmt_mode DisplayOnly [current_project]
+set_property top top2 [get_filesets sim_1]
+close_sim
+launch_simulation
+source top2.tcl
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 1 s
+close_sim
+launch_simulation
+source top2.tcl
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 1 s
+run 2 s
+close_sim
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source top2.tcl
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+restart
+add_force {/top2/CLK} -radix bin {1 0ns} {0 1950000ps} -repeat_every 3900000ps
+run 2 s
+close_sim

@@ -21,6 +21,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.numeric_std.ALL;
+USE ieee.std_logic_unsigned.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -32,116 +33,75 @@ use IEEE.numeric_std.ALL;
 --use UNISIM.VComponents.all;
 
 entity top2 is
-    Port ( ready : in STD_LOGIC;
-           CLK : in STD_LOGIC;
-           inter_ready : out STD_LOGIC;
-           PWM : out STD_LOGIC_VECTOR );
+       
+    Port (
+        CLK      : in    STD_LOGIC;
+        ready    : in    STD_LOGIC;
+        reset    : in    STD_LOGIC;
+        finish   : out   STD_LOGIC;
+        output   : out   STD_LOGIC_VECTOR (7 downto 0)
+           );
 end top2;
 
 architecture Behavioral of top2 is
-signal count:   unsigned(7 downto 0) := (others => '0');
-signal rise:    unsigned(7 downto 0) := (others => '0');
-signal state:   unsigned(1 downto 0) := (others => '0');
-signal go:      unsigned(1 downto 0) := (others => '0');
+signal count:       unsigned(10 downto 0) := (others => '0');
+signal newCount:    unsigned(7 downto 0)  := (others => '0');
+signal rise:        unsigned(7 downto 0) := (others => '0');
+signal go:          std_logic;
+signal state:       unsigned(1 downto 0) := (others => '0');
+signal scaleClk:    std_logic;
+
+CONSTANT scale  :   INTEGER := 128;
+constant newPWM :   INTEGER := 255;
+CONSTANT high   :   INTEGER := 922;
+constant low    :   INTEGER := high/2;
 begin
 
-process(CLK)
-
+process(CLK)    
 begin
-      if (ready = '1') then
-        go <= go +1; 
-       if(CLK'event and CLK = '1') then
-           if(state = 0) then
-                count <= count +1;
-                
-                --PWM channel 0
-                if(count < unsigned(rise)) then
-                    PWM(0) <= '1';
-                else
-                    PWM(0) <= '0';
-                end if;
-                
-                --PWM channel 1
-                if(count < unsigned(rise)) then
-                    PWM(1) <= '1';
-                else
-                    PWM(1) <= '0';
-                end if;
-                
-                --PWM channel 2
-                if(count < unsigned(rise)) then
-                    PWM(2) <= '1';
-                else
-                    PWM(2) <= '0';
-                end if;
-                
-                --PWM channel 3
-                if(count < unsigned(rise)) then
-                    PWM(3) <= '1';
-                else
-                    PWM(3) <= '0';
-                end if;
-                
-                if(count > 254) then
-                    count <= TO_UNSIGNED(0,8);
-                    rise <= rise+5;     
-                   -- PWM <= "1111";         
-                end if;
-                
-                if(rise > 249) then
-                count <= TO_UNSIGNED(0,8);
-                state <= state +1;
-                end if;
-            end if;
-            
-        if(state = 1) then
-            count <= count +1;  
-                --PWM channel 0
-                if(count < unsigned(rise)) then
-                    PWM(0) <= '1';
-                else
-                    PWM(0) <= '0';
-                end if;
-                
-                --PWM channel 1
-                if(count < unsigned(rise)) then
-                    PWM(1) <= '1';
-                else
-                    PWM(1) <= '0';
-                end if;
-                
-                --PWM channel 2
-                if(count < unsigned(rise)) then
-                    PWM(2) <= '1';
-                else
-                    PWM(2) <= '0';
-                end if;
-                
-                --PWM channel 3
-                if(count < unsigned(rise)) then
-                    PWM(3) <= '1';
-                else
-                    PWM(3) <= '0';
-                end if;
-                
-                if(count > 254) then
-                    rise <= rise-5;     
-                   -- PWM <= "1111";         
-                end if;
-                
-                if(rise < 6 ) then
-                    count <= TO_UNSIGNED(0,8);                
-                    state <= state +1;
-                end if;
-            end if;
-            
-        if(state =2) then
-            PWM <= "0000";
-            count <= TO_UNSIGNED(0,8);
-             go <= go - 1;  
-            end if;
-      end if; 
-     end if;      
+if(CLK'event and CLK = '1') then
+    if(ready = '1') then
+        go <= '1';
+    end if;
+
+    if(reset = '1') then
+        go <= '1';
+    end if;
+
+if (go = '1') then
+    count <= count +1;
+        
+    if(count < low) then
+        scaleClk <= '0';
+    elsif( count > low AND count < high) then
+        scaleClk <= '1';
+    elsif(count = high) then
+        count <= "00000000000";
+        newCount <= newCount +1;
+    end if;
+    
+if( newCount = newPWM AND state = 0) then
+            newCount <= (others => '0');
+            rise <= rise +1;
+            output <= std_logic_vector(unsigned(rise));
+    end if;
+    
+     if(rise = newPWM AND state = 0) then
+            state <= state +1;
+     end if;
+    
+     if (newCount = newPWM AND state = 1) then
+            newCount <= (others => '0');
+            rise <= rise -1;
+            output <= std_logic_vector(unsigned(rise));
+     end if;
+        
+     if(rise = 0 AND state = 1) then
+            state <= state +1;
+            finish <= '1';
+            go <= '0';
+    end if;
+  end if;
+end if;        
 end process;
-
 end Behavioral;

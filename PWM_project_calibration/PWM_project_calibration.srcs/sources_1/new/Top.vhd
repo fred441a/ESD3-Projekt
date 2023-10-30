@@ -19,9 +19,9 @@
 ----------------------------------------------------------------------------------
 
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.numeric_std.ALL;
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.std_logic_unsigned.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -36,7 +36,8 @@ entity Top is
     Port ( CLK :        in STD_LOGIC;
            PWM :        out std_logic_vector (3 downto 0);
            ready :      in std_logic;
-           inter_ready: out std_logic
+           inter_ready: out std_logic;
+           switch:      in STD_LOGIC
             );
 end Top;
 
@@ -51,8 +52,13 @@ process(CLK)
 
 begin
 
+
+
 if(ready = '1') then
+
        if(CLK'event and CLK = '1') then
+       state <= TO_UNSIGNED (0,1);
+       
            if(state = 0) then
                 count <= count +1;
                 
@@ -137,7 +143,7 @@ if(ready = '1') then
                 end if;
             end if;
             
-        if(state =2) then
+        if(state = 2) then
             PWM <= "0000";
             count <= TO_UNSIGNED(0,8);
             inter_ready <= '1';
