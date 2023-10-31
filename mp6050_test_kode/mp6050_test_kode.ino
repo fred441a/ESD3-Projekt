@@ -30,30 +30,37 @@ void setup(){
 		reset();
 
 		// set sample rate divisor
-		WriteBytes(MPU6050_SMPLRT_DIV,0);
+		WriteByte(MPU6050_SMPLRT_DIV,0);
 		// set filterBandwith
-		WriteBytes(MPU6050_CONFIG,0b00000110);
+		WriteBits(MPU6050_CONFIG,0b00000110,0b00000111);
 		//set gyro range
-		WriteBytes(MPU6050_GYRO_CONFIG,0b00001000);
+		WriteByte(MPU6050_GYRO_CONFIG,0b00001000);
 		//set Acc range
-		WriteBytes(MPU6050_ACCEL_CONFIG, 0);
+		WriteByte(MPU6050_ACCEL_CONFIG, 0);
 		//idk what this does, but they do it in the lib so we do it here
-		WriteBytes(MPU6050_PWR_MGMT_1,0x01);
+		WriteByte(MPU6050_PWR_MGMT_1,0x01);
+		delay(100);
 				
 }
 
 void loop(){
-		Serial.println(ReadBytes(0x42));
+		Serial.println(ReadByte(0x3B));
+		//set gyro range
+		//WriteByte(MPU6050_GYRO_CONFIG,0b00001000);
+		//set Acc range
+		//WriteByte(MPU6050_ACCEL_CONFIG, 0);
+		delay(50);
+
 }
 
 void reset(){
-		WriteBytes(MPU6050_PWR_MGMT_1,0b10000000);
-		delay(100);
-		WriteBytes(MPU6050_SIGNAL_PATH_RESET,0x07);
+		WriteBits(MPU6050_PWR_MGMT_1,0b10000000,0b100000000);
+		delay(200);
+		WriteByte(MPU6050_SIGNAL_PATH_RESET,0x07);
 		delay(100);
 }
 
-byte ReadBytes(char registerAddr){
+byte ReadByte(char registerAddr){
 		Wire.beginTransmission(MPU6050_DEVICE_ID);
 		Wire.write(registerAddr);
 		char error = Wire.endTransmission();
@@ -71,7 +78,7 @@ byte ReadBytes(char registerAddr){
 		return data;
 }
 
-bool WriteBytes(char registerAddr, byte data){
+bool WriteByte(char registerAddr, byte data){
 		Wire.beginTransmission(MPU6050_DEVICE_ID);
 		Wire.write(registerAddr);
 		Wire.write(data);
@@ -86,3 +93,7 @@ bool WriteBytes(char registerAddr, byte data){
 		return true;
 }
 
+bool WriteBits(char registerAddr, byte data, byte mask){
+		byte preData = ReadByte(registerAddr);
+		return WriteByte(registerAddr, (preData & mask)|data);
+}
