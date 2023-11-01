@@ -70,8 +70,11 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
-create_project -in_memory -part xc7vx485tffg1157-1
+create_project -in_memory -part xc7k70tfbv676-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
@@ -98,11 +101,16 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.srcs/constrs_2/new/testOfCalibration.xdc
+set_property used_in_implementation false [get_files C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.srcs/constrs_2/new/testOfCalibration.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.srcs/utils_1/imports/synth_1/testOfCalibration.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top testOfCalibration -part xc7vx485tffg1157-1
+synth_design -top testOfCalibration -part xc7k70tfbv676-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"

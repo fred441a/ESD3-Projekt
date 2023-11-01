@@ -39,7 +39,8 @@ entity top2 is
         ready    : in    STD_LOGIC;
         reset    : in    STD_LOGIC;
         finish   : out   STD_LOGIC;
-        output   : out   STD_LOGIC_VECTOR (7 downto 0)
+        output   : out   STD_LOGIC_VECTOR (7 downto 0);
+        scaleClk : out   STD_LOGIC
            );
 end top2;
 
@@ -49,7 +50,7 @@ signal newCount:    unsigned(7 downto 0)  := (others => '0');
 signal rise:        unsigned(7 downto 0) := (others => '0');
 signal go:          std_logic;
 signal state:       unsigned(1 downto 0) := (others => '0');
-signal scaleClk:    std_logic;
+--signal scaleClk:    std_logic;
 
 CONSTANT scale  :   INTEGER := 128;
 constant newPWM :   INTEGER := 255;

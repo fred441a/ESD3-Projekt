@@ -36,7 +36,7 @@ Port (     PercentCh0 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"5
            PercentCh1 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
            PercentCh2 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
            PercentCh3 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
-           CLK : in STD_LOGIC;
+           clock      : in STD_LOGIC; -- ny intern clock
            PWM : out std_logic_vector (3 downto 0));
 end pwmModule;
 
@@ -44,9 +44,9 @@ architecture Behavioral of pwmModule is
 signal count: unsigned(7 downto 0) := (others => '0');
 begin
 
-process(CLK) 
+process(clock) 
     begin
-        if(CLK'event and CLK = '1') then
+        if(clock'event and clock = '1') then
             count <= count +1;
             
             --PWM channel 0

@@ -39,20 +39,21 @@ entity top2 is
         ready    : in    STD_LOGIC;
         reset    : in    STD_LOGIC;
         finish   : out   STD_LOGIC;
-        output   : out   STD_LOGIC_VECTOR (7 downto 0)
+        output   : out   STD_LOGIC_VECTOR (7 downto 0);
+        scaleClk : out   STD_LOGIC
+        
            );
 end top2;
 
 architecture Behavioral of top2 is
 signal count:       unsigned(10 downto 0) := (others => '0');
-signal newCount:    unsigned(7 downto 0)  := (others => '0');
+signal newCount:    unsigned(8 downto 0)  := (others => '0'); -- skal være 9 bit for at 0 til 256 
 signal rise:        unsigned(7 downto 0) := (others => '0');
 signal go:          std_logic;
 signal state:       unsigned(1 downto 0) := (others => '0');
-signal scaleClk:    std_logic;
-
+--signal scaleClk   STD_LOGIC;
 CONSTANT scale  :   INTEGER := 128;
-constant newPWM :   INTEGER := 255;
+constant newPWM :   INTEGER := 256; --ellers trailer clocken
 CONSTANT high   :   INTEGER := 922;
 constant low    :   INTEGER := high/2;
 begin

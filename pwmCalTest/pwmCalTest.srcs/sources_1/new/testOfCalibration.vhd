@@ -48,7 +48,7 @@ architecture Behavioral of testOfCalibration is
            PercentCh1 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
            PercentCh2 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
            PercentCh3 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
-           CLK : in STD_LOGIC;
+           clock : in STD_LOGIC;
            PWM : out std_logic_vector (3 downto 0)
        );
     end component;
@@ -59,10 +59,14 @@ architecture Behavioral of testOfCalibration is
         ready    : in    STD_LOGIC;
         reset    : in    STD_LOGIC;
         finish   : out   STD_LOGIC;
-        output   : out   STD_LOGIC_VECTOR (7 downto 0));
+        output   : out   STD_LOGIC_VECTOR (7 downto 0);
+        scaleClk : out   STD_LOGIC
+        );
     end component;
     
     signal s_output : std_logic_vector(7 downto 0);
+    signal newClock: STD_LOGIC; -- til at andvende i pwmModule som intern clock
+    
 begin
     pwmCalibration: top2 
       port map (
@@ -70,12 +74,13 @@ begin
         ready    => ready,
         reset    => reset,
         finish   => finish,
-        output   => s_output
+        output   => s_output,
+        scaleClk => newClock -- videregiver clocken til pwmModule
     );    
     
     pwmModule1: pwmModule 
       port map (
-        CLK => CLK,
+        clock      => newClock, -- så den køre på samme clock som top2
         PercentCh0 => s_output,
         PercentCh1 => s_output,
         PercentCh2 => s_output,

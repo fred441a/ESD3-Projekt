@@ -1,0 +1,74 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Nov  1 11:06:07 2023
+# Process ID: 11904
+# Current directory: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9968 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\pwmCalTest\pwmCalTest.xpr
+# Log file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/vivado.log
+# Journal file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+start_gui
+open_project -part xc7k70tfbv676-1 C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.xpr
+launch_simulation
+source testOfCalibration.tcl
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+open_run impl_1
+open_hw_manager
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+connect_hw_server -allow_non_jtag
+open_hw_target
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+refresh_design
+place_ports CLK L17
+place_ports finish G19
+place_ports ready A18
+place_ports {PWM[3]} G17
+set_property is_loc_fixed true [get_ports [list  reset]]
+set_property is_loc_fixed true [get_ports [list  {PWM[2]}]]
+set_property is_loc_fixed true [get_ports [list  {PWM[1]}]]
+set_property is_loc_fixed true [get_ports [list  {PWM[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list finish]]
+file mkdir C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.srcs/constrs_1/new
+close [ open C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.srcs/constrs_1/new/testOfCalibration.xdc w ]
+add_files -fileset constrs_1 C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.srcs/constrs_1/new/testOfCalibration.xdc
+set_property target_constrs_file C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.srcs/constrs_1/new/testOfCalibration.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list CLK]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list ready]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list reset]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[0]}]]
+save_constraints -force
+save_constraints_as constrs_2
+set_property constrset constrs_2 [get_runs synth_1]
+set_property constrset constrs_2 [get_runs impl_1]
+reset_run synth_1
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+close_sim
+launch_simulation
+launch_simulation
+source testOfCalibration.tcl
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+close_sim

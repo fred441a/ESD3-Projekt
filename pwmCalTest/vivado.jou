@@ -1,12 +1,12 @@
 #-----------------------------------------------------------
-# Vivado v2023.1 (64-bit)
-# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
-# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
-# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Wed Nov  1 08:35:24 2023
-# Process ID: 20492
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Nov  1 15:38:08 2023
+# Process ID: 21280
 # Current directory: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11508 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\pwmCalTest\pwmCalTest.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11672 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\pwmCalTest\pwmCalTest.xpr
 # Log file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/vivado.log
 # Journal file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest\vivado.jou
 # Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
@@ -14,7 +14,85 @@
 start_gui
 open_project C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/pwmCalTest/pwmCalTest.xpr
 launch_simulation
+launch_simulation
 source testOfCalibration.tcl
-launch_runs synth_1 -jobs 8
-wait_on_run synth_1
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 5 s
+run 6 s
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 2 s
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 2 s
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 2 s
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns} -cancel_after 0
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 2 s
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run all
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 500 ms
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 100 ms
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 100 ms
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 100 ms
+close_sim
+launch_simulation
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 100 ms
+run 1 ms
+run 1 s
 close_sim
