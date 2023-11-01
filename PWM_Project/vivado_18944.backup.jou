@@ -3,10 +3,10 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Mon Oct 30 11:44:08 2023
-# Process ID: 5200
+# Start of session at: Sun Oct 29 14:57:22 2023
+# Process ID: 18944
 # Current directory: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent19556 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\PWM_Project\PWM_Project.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16448 C:\Users\Ditte\repo\esd3\project\ESD3-Projekt\PWM_Project\PWM_Project.xpr
 # Log file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project/vivado.log
 # Journal file: C:/Users/Ditte/repo/esd3/project/ESD3-Projekt/PWM_Project\vivado.jou
 # Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB

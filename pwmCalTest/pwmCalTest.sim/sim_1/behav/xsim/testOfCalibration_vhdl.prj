@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../pwmCalTest.srcs/sources_1/new/top2.vhd" \
+"../../../../pwmCalTest.srcs/sources_1/new/pwmModule.vhd" \
+"../../../../pwmCalTest.srcs/sources_1/new/testOfCalibration.vhd" \
+
+# Do not sort compile order
+nosort
