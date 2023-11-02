@@ -86,3 +86,5 @@
 !*.xmp
 #MY ARDUINO FILES!!!
 !*.ino
+!*.svg
+
