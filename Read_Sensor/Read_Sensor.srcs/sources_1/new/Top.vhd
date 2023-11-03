@@ -36,7 +36,14 @@ entity Top is
            clk : in STD_LOGIC;
            scl : inout STD_LOGIC;
            sda : inout STD_LOGIC;
-           
+           enable: in std_logic;
+           gyroscopeI2CSlaveSetup: inout std_logic_vector( 31 to 0);
+           gyroscopeI2CSlaveAdressesX: inout std_logic_vector(31 to 0);
+           gyroscopeI2CSlaveValuesX: inout std_logic_vector (31 to 0);
+           gyroscopeI2CSlaveAdressesY: inout std_logic_vector(31 to 0);
+           gyroscopeI2CSlaveValuesY: inout std_logic_vector(31 to 0);
+           gyroscopeI2CSlaveAdressesZ: inout std_logic_vector(31 to 0);
+           gyroscopeI2CSlaveValuesZ: inout std_logic_vector(31 to 0)           
            
            );
 end Top;
