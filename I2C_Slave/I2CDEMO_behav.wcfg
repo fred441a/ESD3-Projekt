@@ -16,9 +16,9 @@
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="132"></NameColumnWidth>
-      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+      <ValueColumnWidth column_width="69"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="23" />
+   <WVObjectSize size="26" />
    <wvobject type="logic" fp_name="/I2CDEMO/MCLK">
       <obj_property name="ElementShortName">MCLK</obj_property>
       <obj_property name="ObjectShortName">MCLK</obj_property>
@@ -110,5 +110,17 @@
    <wvobject type="other" fp_name="/I2CDEMO/I_I2CITF/operation">
       <obj_property name="ElementShortName">operation</obj_property>
       <obj_property name="ObjectShortName">operation</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/I_I2CITF/scl_q">
+      <obj_property name="ElementShortName">scl_q</obj_property>
+      <obj_property name="ObjectShortName">scl_q</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/I_I2CITF/scl_qq">
+      <obj_property name="ElementShortName">scl_qq</obj_property>
+      <obj_property name="ObjectShortName">scl_qq</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/I_I2CITF/scl_qqq">
+      <obj_property name="ElementShortName">scl_qqq</obj_property>
+      <obj_property name="ObjectShortName">scl_qqq</obj_property>
    </wvobject>
 </wave_config>

@@ -26,7 +26,8 @@ entity I2CSLAVE is
 		DATA_IN		: in	std_logic_vector(7 downto 0); --Data in to this module i.e data from this slave to master
 		WR			: out	std_logic; --Is '1' when data is ready in DATA_OUT and '0' next state
 		RD			: out	std_logic; --Is '1' when data is needed in DATA_IN and '0' next state
-        READ_DONE   : out   std_logic
+        READ_DONE   : out   std_logic;
+        ADDRESS_READY: out   std_logic
 	);
 end I2CSLAVE;
 
@@ -133,24 +134,9 @@ begin
 			DATA_OUT <= (others=>'0');
 			shiftreg <= (others=>'0');
             read_data_done <= '0';
+            ADDRESS_READY <= '0';
 		elsif (MCLK'event and MCLK='1') then
-			if (stop_cond = '1') then
-				state <= S_IDLE;
-				SDA_OUT <= '1';
-				SCL_OUT <= '1';
-				operation <= OP_READ;
-				WR <= '0';
-				rd_d <= '0';
-				address_incr <= '0';
-			elsif(start_cond = '1') then
-				state <= S_START;
-				SDA_OUT <= '1';
-				SCL_OUT <= '1';
-				operation <= OP_READ;
-				WR <= '0';
-				rd_d <= '0';
-				address_incr <= '0';
-			elsif(state = S_IDLE) then
+		  if (stop_cond = '1') then
 				state <= S_IDLE;
 				SDA_OUT <= '1';
 				SCL_OUT <= '1';
@@ -192,9 +178,10 @@ begin
 					end if;
 				end if;
 			elsif(state = S_SENDACK) then
-				WR <= '0';
-				rd_d <= '0';
 				if (falling_scl = '1') then
+				    rd_d <= '0';
+				    ADDRESS_READY <= '0';
+				    WR <= '0';
 					SDA_OUT <= '0';
 					counter <= 7;
 					if (operation= OP_WRITE) then
@@ -224,6 +211,7 @@ begin
 				next_state <= S_WRITE;
 				state <= S_SENDACK;
 				address_incr <= '0';
+				ADDRESS_READY <= '1'; --Added address recieved flag
 			elsif(state = S_WRITE) then
 				DATA_OUT <= shiftreg;
 				next_state <= S_WRITE;
@@ -245,8 +233,8 @@ begin
 					end if;
 				end if;
 			elsif(state = S_READ) then
-				rd_d <= '0';
 				if (falling_scl = '1') then
+				    rd_d <= '0';
 					SDA_OUT <= '1';
 					state <= S_WAITACK;
 				end if;
@@ -260,7 +248,24 @@ begin
 					else
 						state <= S_IDLE;
 					end if;
-				end if;
+				end if;	
+			elsif(start_cond = '1') then
+				state <= S_START;
+				SDA_OUT <= '1';
+				SCL_OUT <= '1';
+				operation <= OP_READ;
+				WR <= '0';
+				rd_d <= '0';
+				address_incr <= '0';
+			elsif(state = S_IDLE) then
+				state <= S_IDLE;
+				SDA_OUT <= '1';
+				SCL_OUT <= '1';
+				operation <= OP_READ;
+				WR <= '0';
+				rd_d <= '0';
+				address_incr <= '0';
+				ADDRESS_READY <= '0';
 			end if;
 		end if;
 	end process OTO;

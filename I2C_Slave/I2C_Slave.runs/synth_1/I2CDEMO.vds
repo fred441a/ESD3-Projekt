@@ -1,0 +1,370 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Fri Nov  3 18:57:40 2023
+# Process ID: 44947
+# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1
+# Command line: vivado -log I2CDEMO.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source I2CDEMO.tcl
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/I2CDEMO.vds
+# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/vivado.jou
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2983.257 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+#-----------------------------------------------------------
+source I2CDEMO.tcl -notrace
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1273.492 ; gain = 0.023 ; free physical = 6327 ; free virtual = 10731
+Command: read_checkpoint -auto_incremental -incremental /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/utils_1/imports/synth_1/I2CSLAVE.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/utils_1/imports/synth_1/I2CSLAVE.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top I2CDEMO -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 44978
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1997.113 ; gain = 378.770 ; free physical = 5263 ; free virtual = 9667
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'I2CDEMO' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:30]
+WARNING: [Synth 8-5640] Port 'read_done' is missing in component declaration [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:37]
+	Parameter DEVICE bound to: 8'b00001000 
+INFO: [Synth 8-3491] module 'I2CSLAVE' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:13' bound to instance 'I_I2CITF' of component 'I2CSLAVE' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:86]
+INFO: [Synth 8-638] synthesizing module 'I2CSLAVE' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:34]
+	Parameter DEVICE bound to: 8'b00001000 
+INFO: [Synth 8-256] done synthesizing module 'I2CSLAVE' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:34]
+INFO: [Synth 8-256] done synthesizing module 'I2CDEMO' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:30]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2083.082 ; gain = 464.738 ; free physical = 5161 ; free virtual = 9565
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2097.926 ; gain = 479.582 ; free physical = 5148 ; free virtual = 9553
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2097.926 ; gain = 479.582 ; free physical = 5148 ; free virtual = 9553
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2097.926 ; gain = 0.000 ; free physical = 5147 ; free virtual = 9551
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc]
+Finished Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/I2CDEMO_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/I2CDEMO_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2202.660 ; gain = 0.000 ; free physical = 5074 ; free virtual = 9479
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2202.660 ; gain = 0.000 ; free physical = 5074 ; free virtual = 9479
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5085 ; free virtual = 9489
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5085 ; free virtual = 9489
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5085 ; free virtual = 9489
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'bytePos_reg' in module 'I2CDEMO'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                               00 |                               11
+                 iSTATE0 |                               01 |                               10
+                 iSTATE1 |                               10 |                               01
+                 iSTATE2 |                               11 |                               00
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'bytePos_reg' using encoding 'sequential' in module 'I2CDEMO'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5090 ; free virtual = 9495
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 46    
+	                8 Bit    Registers := 4     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 23    
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 183   
+	   4 Input   32 Bit        Muxes := 46    
+	   4 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 54    
+	   3 Input    8 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 5     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 6     
+	  12 Input    3 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   6 Input    2 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 53    
+	  11 Input    1 Bit        Muxes := 1     
+	   3 Input    1 Bit        Muxes := 3     
+	   9 Input    1 Bit        Muxes := 1     
+	  12 Input    1 Bit        Muxes := 4     
+	   4 Input    1 Bit        Muxes := 6     
+	   6 Input    1 Bit        Muxes := 2     
+	   8 Input    1 Bit        Muxes := 3     
+	  10 Input    1 Bit        Muxes := 3     
+	   7 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [31] with 1st driver pin 'ram_reg[26][31]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [31] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [31] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [30] with 1st driver pin 'ram_reg[26][30]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [30] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [30] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [29] with 1st driver pin 'ram_reg[26][29]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [29] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [29] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [28] with 1st driver pin 'ram_reg[26][28]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [28] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [28] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [27] with 1st driver pin 'ram_reg[26][27]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [27] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [27] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [26] with 1st driver pin 'ram_reg[26][26]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [26] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [26] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [25] with 1st driver pin 'ram_reg[26][25]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [25] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [25] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [24] with 1st driver pin 'ram_reg[26][24]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [24] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [24] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [23] with 1st driver pin 'ram_reg[26][23]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [23] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [23] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [22] with 1st driver pin 'ram_reg[26][22]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [22] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [22] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [21] with 1st driver pin 'ram_reg[26][21]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [21] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [21] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [20] with 1st driver pin 'ram_reg[26][20]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [20] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [20] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [19] with 1st driver pin 'ram_reg[26][19]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [19] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [19] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [18] with 1st driver pin 'ram_reg[26][18]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [18] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [18] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [17] with 1st driver pin 'ram_reg[26][17]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [17] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [17] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [16] with 1st driver pin 'ram_reg[26][16]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [16] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [16] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [15] with 1st driver pin 'ram_reg[26][15]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [15] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [15] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [14] with 1st driver pin 'ram_reg[26][14]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [14] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [14] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [13] with 1st driver pin 'ram_reg[26][13]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [13] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [13] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [12] with 1st driver pin 'ram_reg[26][12]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [12] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [12] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [11] with 1st driver pin 'ram_reg[26][11]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [11] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [11] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [10] with 1st driver pin 'ram_reg[26][10]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [10] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [10] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [9] with 1st driver pin 'ram_reg[26][9]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [9] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [9] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [8] with 1st driver pin 'ram_reg[26][8]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [8] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [8] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [7] with 1st driver pin 'ram_reg[26][7]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [7] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [7] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [6] with 1st driver pin 'ram_reg[26][6]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [6] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [6] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [5] with 1st driver pin 'ram_reg[26][5]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [5] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [5] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [4] with 1st driver pin 'ram_reg[26][4]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [4] with 2nd driver pin 'VCC' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [4] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [3] with 1st driver pin 'ram_reg[26][3]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [3] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [3] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [2] with 1st driver pin 'ram_reg[26][2]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [2] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [2] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [1] with 1st driver pin 'ram_reg[26][1]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [1] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [1] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [0] with 1st driver pin 'ram_reg[26][0]/Q' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \ram_reg[26]1_out [0] with 2nd driver pin 'GND' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \ram_reg[26]1_out [0] is connected to at least one constant driver which has been preserved, other driver is ignored [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cdemo.vhd:79]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5086 ; free virtual = 9500
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5115 ; free virtual = 9529
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5114 ; free virtual = 9528
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5109 ; free virtual = 9523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5108 ; free virtual = 9522
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5108 ; free virtual = 9522
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5108 ; free virtual = 9521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5108 ; free virtual = 9521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5108 ; free virtual = 9521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5108 ; free virtual = 9521
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+------+------+
+|      |Cell  |Count |
++------+------+------+
+|1     |BUFG  |     1|
+|2     |LUT1  |     2|
+|3     |LUT2  |    15|
+|4     |LUT3  |    56|
+|5     |LUT4  |   116|
+|6     |LUT5  |   139|
+|7     |LUT6  |   538|
+|8     |MUXF7 |    47|
+|9     |FDRE  |  1514|
+|10    |IBUF  |     2|
+|11    |IOBUF |     1|
+|12    |OBUF  |     5|
++------+------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2202.660 ; gain = 584.316 ; free physical = 5108 ; free virtual = 9521
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 96 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2202.660 ; gain = 479.582 ; free physical = 5125 ; free virtual = 9538
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2202.668 ; gain = 584.316 ; free physical = 5124 ; free virtual = 9538
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2202.668 ; gain = 0.000 ; free physical = 5423 ; free virtual = 9837
+INFO: [Netlist 29-17] Analyzing 48 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2202.668 ; gain = 0.000 ; free physical = 5417 ; free virtual = 9831
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Synth Design complete | Checksum: a94cd0d8
+INFO: [Common 17-83] Releasing license: Synthesis
+28 Infos, 2 Warnings, 96 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:41 . Memory (MB): peak = 2202.668 ; gain = 908.363 ; free physical = 5417 ; free virtual = 9830
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1844.212; main = 1512.159; forked = 382.875
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3172.191; main = 2202.660; forked = 969.531
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/I2CDEMO.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file I2CDEMO_utilization_synth.rpt -pb I2CDEMO_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Nov  3 18:58:34 2023...

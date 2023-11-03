@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Fri Nov  3 18:58:39 2023
+# Process ID: 45217
+# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/impl_1
+# Command line: vivado -log I2CDEMO.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source I2CDEMO.tcl -notrace
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/impl_1/I2CDEMO.vdi
+# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/impl_1/vivado.jou
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2892.762 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+#-----------------------------------------------------------
+source I2CDEMO.tcl -notrace
