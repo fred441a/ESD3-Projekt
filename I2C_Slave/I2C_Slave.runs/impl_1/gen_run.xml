@@ -1,91 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1699034257">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1699194186">
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS" Name="I2CDEMO_postroute_physopted.rqs"/>
-  <File Type="ROUTE-RQS" Name="I2CDEMO_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="I2C_EXTERNAL_ACCESS_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS" Name="I2C_EXTERNAL_ACCESS_routed.rqs"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="BG-BGN" Name="I2CDEMO.bgn"/>
-  <File Type="BITSTR-SYSDEF" Name="I2CDEMO.sysdef"/>
+  <File Type="BG-BGN" Name="I2C_EXTERNAL_ACCESS.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="I2C_EXTERNAL_ACCESS.sysdef"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="I2CDEMO.ltx"/>
-  <File Type="RBD_FILE" Name="I2CDEMO.rbd"/>
-  <File Type="NPI_FILE" Name="I2CDEMO.npi"/>
-  <File Type="RNPI_FILE" Name="I2CDEMO.rnpi"/>
-  <File Type="CFI_FILE" Name="I2CDEMO.cfi"/>
-  <File Type="RCFI_FILE" Name="I2CDEMO.rcfi"/>
-  <File Type="PL-PDI-FILE" Name="I2CDEMO_pld.pdi"/>
-  <File Type="BOOT-PDI-FILE" Name="I2CDEMO_soc.pdi"/>
-  <File Type="RDI-RDI" Name="I2CDEMO.vdi"/>
-  <File Type="PDI-FILE" Name="I2CDEMO.pdi"/>
-  <File Type="BITSTR-MMI" Name="I2CDEMO.mmi"/>
-  <File Type="BITSTR-BMM" Name="I2CDEMO_bd.bmm"/>
-  <File Type="BITSTR-NKY" Name="I2CDEMO.nky"/>
-  <File Type="BITSTR-RBT" Name="I2CDEMO.rbt"/>
-  <File Type="BITSTR-MSK" Name="I2CDEMO.msk"/>
-  <File Type="BG-BIN" Name="I2CDEMO.bin"/>
+  <File Type="BITSTR-LTX" Name="I2C_EXTERNAL_ACCESS.ltx"/>
+  <File Type="RBD_FILE" Name="I2C_EXTERNAL_ACCESS.rbd"/>
+  <File Type="NPI_FILE" Name="I2C_EXTERNAL_ACCESS.npi"/>
+  <File Type="RNPI_FILE" Name="I2C_EXTERNAL_ACCESS.rnpi"/>
+  <File Type="CFI_FILE" Name="I2C_EXTERNAL_ACCESS.cfi"/>
+  <File Type="RCFI_FILE" Name="I2C_EXTERNAL_ACCESS.rcfi"/>
+  <File Type="PL-PDI-FILE" Name="I2C_EXTERNAL_ACCESS_pld.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="I2C_EXTERNAL_ACCESS_soc.pdi"/>
+  <File Type="RDI-RDI" Name="I2C_EXTERNAL_ACCESS.vdi"/>
+  <File Type="PDI-FILE" Name="I2C_EXTERNAL_ACCESS.pdi"/>
+  <File Type="BITSTR-MMI" Name="I2C_EXTERNAL_ACCESS.mmi"/>
+  <File Type="BITSTR-BMM" Name="I2C_EXTERNAL_ACCESS_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="I2C_EXTERNAL_ACCESS.nky"/>
+  <File Type="BITSTR-RBT" Name="I2C_EXTERNAL_ACCESS.rbt"/>
+  <File Type="BITSTR-MSK" Name="I2C_EXTERNAL_ACCESS.msk"/>
+  <File Type="BG-BIN" Name="I2C_EXTERNAL_ACCESS.bin"/>
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
-  <File Type="BG-BIT" Name="I2CDEMO.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="I2CDEMO_bus_skew_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="I2CDEMO_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="I2CDEMO_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="I2CDEMO_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="I2CDEMO_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="I2CDEMO_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="I2CDEMO_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="I2CDEMO_postroute_physopt.dcp"/>
-  <File Type="BG-DRC" Name="I2CDEMO.drc"/>
-  <File Type="ROUTE-RQS-PB" Name="I2CDEMO_rqs_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="I2CDEMO_bus_skew_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="I2CDEMO_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW" Name="I2CDEMO_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="I2CDEMO_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-SIMILARITY" Name="I2CDEMO_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-TIMING-RPX" Name="I2CDEMO_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-TIMING-PB" Name="I2CDEMO_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="I2CDEMO_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="I2CDEMO_route_status.pb"/>
-  <File Type="ROUTE-STATUS" Name="I2CDEMO_route_status.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="I2CDEMO_power_routed.rpx"/>
-  <File Type="ROUTE-PWR-SUM" Name="I2CDEMO_power_summary_routed.pb"/>
-  <File Type="ROUTE-PWR" Name="I2CDEMO_power_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="I2CDEMO_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="I2CDEMO_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="I2CDEMO_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-RPX" Name="I2CDEMO_drc_routed.rpx"/>
-  <File Type="ROUTE-DRC-PB" Name="I2CDEMO_drc_routed.pb"/>
-  <File Type="ROUTE-DRC" Name="I2CDEMO_drc_routed.rpt"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="I2CDEMO_routed_bb.dcp"/>
-  <File Type="ROUTE-DCP" Name="I2CDEMO_routed.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="I2CDEMO_routed_error.dcp"/>
-  <File Type="PHYSOPT-TIMING" Name="I2CDEMO_timing_summary_physopted.rpt"/>
-  <File Type="PHYSOPT-DRC" Name="I2CDEMO_drc_physopted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="I2CDEMO_physopt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="I2CDEMO_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="I2CDEMO_postplace_pwropt.dcp"/>
-  <File Type="PLACE-RQA-PB" Name="I2CDEMO_rqa_placed.pb"/>
-  <File Type="PLACE-TIMING" Name="I2CDEMO_timing_summary_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="I2CDEMO_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="I2CDEMO_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-CTRL" Name="I2CDEMO_control_sets_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="I2CDEMO_utilization_placed.pb"/>
-  <File Type="PLACE-UTIL" Name="I2CDEMO_utilization_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="I2CDEMO_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-IO" Name="I2CDEMO_io_placed.rpt"/>
-  <File Type="PLACE-DCP" Name="I2CDEMO_placed.dcp"/>
-  <File Type="PWROPT-TIMING" Name="I2CDEMO_timing_summary_pwropted.rpt"/>
-  <File Type="PWROPT-DRC" Name="I2CDEMO_drc_pwropted.rpt"/>
-  <File Type="PWROPT-DCP" Name="I2CDEMO_pwropt.dcp"/>
-  <File Type="OPT-RQA-PB" Name="I2CDEMO_rqa_opted.pb"/>
-  <File Type="OPT-HWDEF" Name="I2CDEMO.hwdef"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="I2CDEMO_methodology_drc_opted.rpt"/>
-  <File Type="OPT-DRC" Name="I2CDEMO_drc_opted.rpt"/>
-  <File Type="OPT-DCP" Name="I2CDEMO_opt.dcp"/>
-  <File Type="OPT-TIMING" Name="I2CDEMO_timing_summary_opted.rpt"/>
-  <File Type="REPORTS-TCL" Name="I2CDEMO_reports.tcl"/>
-  <File Type="INIT-TIMING" Name="I2CDEMO_timing_summary_init.rpt"/>
-  <File Type="PA-TCL" Name="I2CDEMO.tcl"/>
+  <File Type="BG-BIT" Name="I2C_EXTERNAL_ACCESS.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="I2C_EXTERNAL_ACCESS_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="I2C_EXTERNAL_ACCESS_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="I2C_EXTERNAL_ACCESS_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="I2C_EXTERNAL_ACCESS_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="I2C_EXTERNAL_ACCESS_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="I2C_EXTERNAL_ACCESS_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="I2C_EXTERNAL_ACCESS_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="I2C_EXTERNAL_ACCESS_postroute_physopt.dcp"/>
+  <File Type="BG-DRC" Name="I2C_EXTERNAL_ACCESS.drc"/>
+  <File Type="ROUTE-RQS-PB" Name="I2C_EXTERNAL_ACCESS_rqs_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="I2C_EXTERNAL_ACCESS_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="I2C_EXTERNAL_ACCESS_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW" Name="I2C_EXTERNAL_ACCESS_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="I2C_EXTERNAL_ACCESS_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="I2C_EXTERNAL_ACCESS_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="I2C_EXTERNAL_ACCESS_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="I2C_EXTERNAL_ACCESS_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="I2C_EXTERNAL_ACCESS_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="I2C_EXTERNAL_ACCESS_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="I2C_EXTERNAL_ACCESS_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="I2C_EXTERNAL_ACCESS_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="I2C_EXTERNAL_ACCESS_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="I2C_EXTERNAL_ACCESS_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="I2C_EXTERNAL_ACCESS_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="I2C_EXTERNAL_ACCESS_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="I2C_EXTERNAL_ACCESS_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="I2C_EXTERNAL_ACCESS_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="I2C_EXTERNAL_ACCESS_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="I2C_EXTERNAL_ACCESS_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="I2C_EXTERNAL_ACCESS_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="I2C_EXTERNAL_ACCESS_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="I2C_EXTERNAL_ACCESS_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="I2C_EXTERNAL_ACCESS_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="I2C_EXTERNAL_ACCESS_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="I2C_EXTERNAL_ACCESS_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="I2C_EXTERNAL_ACCESS_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="I2C_EXTERNAL_ACCESS_postplace_pwropt.dcp"/>
+  <File Type="PLACE-RQA-PB" Name="I2C_EXTERNAL_ACCESS_rqa_placed.pb"/>
+  <File Type="PLACE-TIMING" Name="I2C_EXTERNAL_ACCESS_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="I2C_EXTERNAL_ACCESS_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="I2C_EXTERNAL_ACCESS_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="I2C_EXTERNAL_ACCESS_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="I2C_EXTERNAL_ACCESS_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="I2C_EXTERNAL_ACCESS_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="I2C_EXTERNAL_ACCESS_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="I2C_EXTERNAL_ACCESS_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="I2C_EXTERNAL_ACCESS_placed.dcp"/>
+  <File Type="PWROPT-TIMING" Name="I2C_EXTERNAL_ACCESS_timing_summary_pwropted.rpt"/>
+  <File Type="PWROPT-DRC" Name="I2C_EXTERNAL_ACCESS_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="I2C_EXTERNAL_ACCESS_pwropt.dcp"/>
+  <File Type="OPT-RQA-PB" Name="I2C_EXTERNAL_ACCESS_rqa_opted.pb"/>
+  <File Type="OPT-HWDEF" Name="I2C_EXTERNAL_ACCESS.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="I2C_EXTERNAL_ACCESS_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="I2C_EXTERNAL_ACCESS_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="I2C_EXTERNAL_ACCESS_opt.dcp"/>
+  <File Type="OPT-TIMING" Name="I2C_EXTERNAL_ACCESS_timing_summary_opted.rpt"/>
+  <File Type="REPORTS-TCL" Name="I2C_EXTERNAL_ACCESS_reports.tcl"/>
+  <File Type="INIT-TIMING" Name="I2C_EXTERNAL_ACCESS_timing_summary_init.rpt"/>
+  <File Type="PA-TCL" Name="I2C_EXTERNAL_ACCESS.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/sharedTypes.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/i2cslave.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -98,23 +104,9 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../memoryModuleVivado/memoryModuleVivado.srcs/sources_1/new/Top.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/sp256x8.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="I2CDEMO"/>
+      <Option Name="TopModule" Val="I2C_EXTERNAL_ACCESS"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>

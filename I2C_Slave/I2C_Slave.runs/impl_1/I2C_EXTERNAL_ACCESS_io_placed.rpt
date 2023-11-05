@@ -1,9 +1,9 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date                      : Fri Nov  3 18:59:11 2023
+| Date                      : Sun Nov  5 15:23:39 2023
 | Host                      : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
-| Command                   : report_io -file I2CDEMO_io_placed.rpt
+| Command                   : report_io -file I2C_EXTERNAL_ACCESS_io_placed.rpt
 | Design                    : I2CDEMO
 | Device                    : xc7a35t
 | Speed File                : -1

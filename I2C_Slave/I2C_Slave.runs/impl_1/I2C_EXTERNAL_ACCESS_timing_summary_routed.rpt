@@ -1,14 +1,14 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Fri Nov  3 18:59:33 2023
+| Date         : Sun Nov  5 15:24:01 2023
 | Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
-| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file I2CDEMO_timing_summary_routed.rpt -pb I2CDEMO_timing_summary_routed.pb -rpx I2CDEMO_timing_summary_routed.rpx -warn_on_violation
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file I2C_EXTERNAL_ACCESS_timing_summary_routed.rpt -pb I2C_EXTERNAL_ACCESS_timing_summary_routed.pb -rpx I2C_EXTERNAL_ACCESS_timing_summary_routed.rpx -warn_on_violation
 | Design       : I2CDEMO
 | Device       : 7a35t-cpg236
 | Speed File   : -1  PRODUCTION 1.23 2018-06-13
 | Design State : Routed
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Timing Summary Report
 

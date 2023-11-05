@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/impl_1/I2CDEMO.tcl"
+  variable script "/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/impl_1/I2C_EXTERNAL_ACCESS.tcl"
   variable category "vivado_impl"
 }
 
@@ -122,7 +122,6 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 1
   set_param runs.launchOptions { -jobs 4  }
 OPTRACE "create in-memory project" START { }
@@ -145,7 +144,7 @@ OPTRACE "read constraints: implementation" START { }
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }
-  link_design -top I2CDEMO -part xc7a35tcpg236-1 
+  link_design -top I2C_EXTERNAL_ACCESS -part xc7a35tcpg236-1 
 OPTRACE "link_design" END { }
 OPTRACE "gray box cells" START { }
 OPTRACE "gray box cells" END { }
@@ -177,10 +176,10 @@ OPTRACE "opt_design" END { }
 OPTRACE "read constraints: opt_design_post" START { }
 OPTRACE "read constraints: opt_design_post" END { }
 OPTRACE "opt_design reports" START { REPORT }
-  create_report "impl_1_opt_report_drc_0" "report_drc -file I2CDEMO_drc_opted.rpt -pb I2CDEMO_drc_opted.pb -rpx I2CDEMO_drc_opted.rpx"
+  create_report "impl_1_opt_report_drc_0" "report_drc -file I2C_EXTERNAL_ACCESS_drc_opted.rpt -pb I2C_EXTERNAL_ACCESS_drc_opted.pb -rpx I2C_EXTERNAL_ACCESS_drc_opted.rpx"
 OPTRACE "opt_design reports" END { }
 OPTRACE "Opt Design: write_checkpoint" START { CHECKPOINT }
-  write_checkpoint -force I2CDEMO_opt.dcp
+  write_checkpoint -force I2C_EXTERNAL_ACCESS_opt.dcp
 OPTRACE "Opt Design: write_checkpoint" END { }
   close_msg_db -file opt_design.pb
 } RESULT]
@@ -211,12 +210,12 @@ OPTRACE "place_design" END { }
 OPTRACE "read constraints: place_design_post" START { }
 OPTRACE "read constraints: place_design_post" END { }
 OPTRACE "place_design reports" START { REPORT }
-  create_report "impl_1_place_report_io_0" "report_io -file I2CDEMO_io_placed.rpt"
-  create_report "impl_1_place_report_utilization_0" "report_utilization -file I2CDEMO_utilization_placed.rpt -pb I2CDEMO_utilization_placed.pb"
-  create_report "impl_1_place_report_control_sets_0" "report_control_sets -verbose -file I2CDEMO_control_sets_placed.rpt"
+  create_report "impl_1_place_report_io_0" "report_io -file I2C_EXTERNAL_ACCESS_io_placed.rpt"
+  create_report "impl_1_place_report_utilization_0" "report_utilization -file I2C_EXTERNAL_ACCESS_utilization_placed.rpt -pb I2C_EXTERNAL_ACCESS_utilization_placed.pb"
+  create_report "impl_1_place_report_control_sets_0" "report_control_sets -verbose -file I2C_EXTERNAL_ACCESS_control_sets_placed.rpt"
 OPTRACE "place_design reports" END { }
 OPTRACE "Place Design: write_checkpoint" START { CHECKPOINT }
-  write_checkpoint -force I2CDEMO_placed.dcp
+  write_checkpoint -force I2C_EXTERNAL_ACCESS_placed.dcp
 OPTRACE "Place Design: write_checkpoint" END { }
   close_msg_db -file place_design.pb
 } RESULT]
@@ -244,7 +243,7 @@ OPTRACE "read constraints: phys_opt_design_post" END { }
 OPTRACE "phys_opt_design report" START { REPORT }
 OPTRACE "phys_opt_design report" END { }
 OPTRACE "Post-Place Phys Opt Design: write_checkpoint" START { CHECKPOINT }
-  write_checkpoint -force I2CDEMO_physopt.dcp
+  write_checkpoint -force I2C_EXTERNAL_ACCESS_physopt.dcp
 OPTRACE "Post-Place Phys Opt Design: write_checkpoint" END { }
   close_msg_db -file phys_opt_design.pb
 } RESULT]
@@ -270,17 +269,17 @@ OPTRACE "route_design" END { }
 OPTRACE "read constraints: route_design_post" START { }
 OPTRACE "read constraints: route_design_post" END { }
 OPTRACE "route_design reports" START { REPORT }
-  create_report "impl_1_route_report_drc_0" "report_drc -file I2CDEMO_drc_routed.rpt -pb I2CDEMO_drc_routed.pb -rpx I2CDEMO_drc_routed.rpx"
-  create_report "impl_1_route_report_methodology_0" "report_methodology -file I2CDEMO_methodology_drc_routed.rpt -pb I2CDEMO_methodology_drc_routed.pb -rpx I2CDEMO_methodology_drc_routed.rpx"
-  create_report "impl_1_route_report_power_0" "report_power -file I2CDEMO_power_routed.rpt -pb I2CDEMO_power_summary_routed.pb -rpx I2CDEMO_power_routed.rpx"
-  create_report "impl_1_route_report_route_status_0" "report_route_status -file I2CDEMO_route_status.rpt -pb I2CDEMO_route_status.pb"
-  create_report "impl_1_route_report_timing_summary_0" "report_timing_summary -max_paths 10 -report_unconstrained -file I2CDEMO_timing_summary_routed.rpt -pb I2CDEMO_timing_summary_routed.pb -rpx I2CDEMO_timing_summary_routed.rpx -warn_on_violation "
-  create_report "impl_1_route_report_incremental_reuse_0" "report_incremental_reuse -file I2CDEMO_incremental_reuse_routed.rpt"
-  create_report "impl_1_route_report_clock_utilization_0" "report_clock_utilization -file I2CDEMO_clock_utilization_routed.rpt"
-  create_report "impl_1_route_report_bus_skew_0" "report_bus_skew -warn_on_violation -file I2CDEMO_bus_skew_routed.rpt -pb I2CDEMO_bus_skew_routed.pb -rpx I2CDEMO_bus_skew_routed.rpx"
+  create_report "impl_1_route_report_drc_0" "report_drc -file I2C_EXTERNAL_ACCESS_drc_routed.rpt -pb I2C_EXTERNAL_ACCESS_drc_routed.pb -rpx I2C_EXTERNAL_ACCESS_drc_routed.rpx"
+  create_report "impl_1_route_report_methodology_0" "report_methodology -file I2C_EXTERNAL_ACCESS_methodology_drc_routed.rpt -pb I2C_EXTERNAL_ACCESS_methodology_drc_routed.pb -rpx I2C_EXTERNAL_ACCESS_methodology_drc_routed.rpx"
+  create_report "impl_1_route_report_power_0" "report_power -file I2C_EXTERNAL_ACCESS_power_routed.rpt -pb I2C_EXTERNAL_ACCESS_power_summary_routed.pb -rpx I2C_EXTERNAL_ACCESS_power_routed.rpx"
+  create_report "impl_1_route_report_route_status_0" "report_route_status -file I2C_EXTERNAL_ACCESS_route_status.rpt -pb I2C_EXTERNAL_ACCESS_route_status.pb"
+  create_report "impl_1_route_report_timing_summary_0" "report_timing_summary -max_paths 10 -report_unconstrained -file I2C_EXTERNAL_ACCESS_timing_summary_routed.rpt -pb I2C_EXTERNAL_ACCESS_timing_summary_routed.pb -rpx I2C_EXTERNAL_ACCESS_timing_summary_routed.rpx -warn_on_violation "
+  create_report "impl_1_route_report_incremental_reuse_0" "report_incremental_reuse -file I2C_EXTERNAL_ACCESS_incremental_reuse_routed.rpt"
+  create_report "impl_1_route_report_clock_utilization_0" "report_clock_utilization -file I2C_EXTERNAL_ACCESS_clock_utilization_routed.rpt"
+  create_report "impl_1_route_report_bus_skew_0" "report_bus_skew -warn_on_violation -file I2C_EXTERNAL_ACCESS_bus_skew_routed.rpt -pb I2C_EXTERNAL_ACCESS_bus_skew_routed.pb -rpx I2C_EXTERNAL_ACCESS_bus_skew_routed.rpx"
 OPTRACE "route_design reports" END { }
 OPTRACE "Route Design: write_checkpoint" START { CHECKPOINT }
-  write_checkpoint -force I2CDEMO_routed.dcp
+  write_checkpoint -force I2C_EXTERNAL_ACCESS_routed.dcp
 OPTRACE "Route Design: write_checkpoint" END { }
 OPTRACE "route_design misc" START { }
   close_msg_db -file route_design.pb
@@ -288,7 +287,7 @@ OPTRACE "route_design misc" START { }
 if {$rc} {
 OPTRACE "route_design write_checkpoint" START { CHECKPOINT }
 OPTRACE "route_design write_checkpoint" END { }
-  write_checkpoint -force I2CDEMO_routed_error.dcp
+  write_checkpoint -force I2C_EXTERNAL_ACCESS_routed_error.dcp
   step_failed route_design
   return -code error $RESULT
 } else {
@@ -298,34 +297,4 @@ OPTRACE "route_design write_checkpoint" END { }
 
 OPTRACE "route_design misc" END { }
 OPTRACE "Phase: Route Design" END { }
-OPTRACE "Phase: Write Bitstream" START { ROLLUP_AUTO }
-OPTRACE "write_bitstream setup" START { }
-start_step write_bitstream
-set ACTIVE_STEP write_bitstream
-set rc [catch {
-  create_msg_db write_bitstream.pb
-OPTRACE "read constraints: write_bitstream" START { }
-OPTRACE "read constraints: write_bitstream" END { }
-  catch { write_mem_info -force -no_partial_mmi I2CDEMO.mmi }
-OPTRACE "write_bitstream setup" END { }
-OPTRACE "write_bitstream" START { }
-  write_bitstream -force I2CDEMO.bit 
-OPTRACE "write_bitstream" END { }
-OPTRACE "write_bitstream misc" START { }
-OPTRACE "read constraints: write_bitstream_post" START { }
-OPTRACE "read constraints: write_bitstream_post" END { }
-  catch {write_debug_probes -quiet -force I2CDEMO}
-  catch {file copy -force I2CDEMO.ltx debug_nets.ltx}
-  close_msg_db -file write_bitstream.pb
-} RESULT]
-if {$rc} {
-  step_failed write_bitstream
-  return -code error $RESULT
-} else {
-  end_step write_bitstream
-  unset ACTIVE_STEP 
-}
-
-OPTRACE "write_bitstream misc" END { }
-OPTRACE "Phase: Write Bitstream" END { }
 OPTRACE "impl_1" END { }

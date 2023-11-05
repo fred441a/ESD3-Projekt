@@ -11,23 +11,21 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity I2CSLAVE is
-	generic(
-		DEVICE 		: std_logic_vector(7 downto 0) := x"38"
-	);
+	generic(DEVICE : std_logic_vector(7 downto 0));
 	port(
-		MCLK		: in	std_logic;
-		nRST		: in	std_logic; -- '0' to reset module and normal '1' 
-		SDA_IN		: in	std_logic;
-		SCL_IN		: in	std_logic;
-		SDA_OUT		: out	std_logic;
-		SCL_OUT		: out	std_logic;
-		ADDRESS		: out	std_logic_vector(7 downto 0); --Address master wants to write or read
-		DATA_OUT	: out	std_logic_vector(7 downto 0); --Data out of this module i.e data from master to this slave
-		DATA_IN		: in	std_logic_vector(7 downto 0); --Data in to this module i.e data from this slave to master
-		WR			: out	std_logic; --Is '1' when data is ready in DATA_OUT and '0' next state
-		RD			: out	std_logic; --Is '1' when data is needed in DATA_IN and '0' next state
-        READ_DONE   : out   std_logic;
-        ADDRESS_READY: out   std_logic
+		MCLK		  : in	std_logic;
+		nRST	      : in	std_logic; -- '0' to reset module and normal '1' 
+		SDA_IN		  : in	std_logic;
+		SCL_IN		  : in	std_logic;
+		SDA_OUT		  : out	std_logic;
+		SCL_OUT		  : out	std_logic;
+		ADDRESS		  : out	std_logic_vector(7 downto 0); --Address master wants to write or read
+		DATA_OUT	  : out	std_logic_vector(7 downto 0); --Data out of this module i.e data from master to this slave
+		DATA_IN		  : in	std_logic_vector(7 downto 0); --Data in to this module i.e data from this slave to master
+		WR			  : out	std_logic; --Is '1' when data is ready in DATA_OUT and '0' next state
+		RD			  : out	std_logic; --Is '1' when data is needed in DATA_IN and '0' next state
+        READ_DONE     : out std_logic;
+        ADDRESS_READY : out std_logic
 	);
 end I2CSLAVE;
 

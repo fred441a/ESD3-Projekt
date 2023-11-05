@@ -1,9 +1,9 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Fri Nov  3 18:59:33 2023
+| Date         : Sun Nov  5 15:24:01 2023
 | Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
-| Command      : report_clock_utilization -file I2CDEMO_clock_utilization_routed.rpt
+| Command      : report_clock_utilization -file I2C_EXTERNAL_ACCESS_clock_utilization_routed.rpt
 | Design       : I2CDEMO
 | Device       : 7a35t-cpg236
 | Speed File   : -1  PRODUCTION 1.23 2018-06-13

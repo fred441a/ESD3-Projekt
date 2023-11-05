@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1699034257" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/I2CSLAVE.dcp">
-  <File Type="VDS-TIMINGSUMMARY" Name="I2CDEMO_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="I2CDEMO.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="I2CDEMO_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="I2CDEMO_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="I2CDEMO_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="I2CDEMO.vds"/>
-  <File Type="REPORTS-TCL" Name="I2CDEMO_reports.tcl"/>
-  <File Type="VDS-TIMING-PB" Name="I2CDEMO_timing_summary_synth.pb"/>
+  <File Type="RDS-UTIL-PB" Name="I2C_EXTERNAL_ACCESS_utilization_synth.pb"/>
   <File Type="PA-TCL" Name="I2CDEMO.tcl"/>
+  <File Type="RDS-UTIL" Name="I2C_EXTERNAL_ACCESS_utilization_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="I2CDEMO_reports.tcl"/>
+  <File Type="RDS-RDS" Name="I2CDEMO.vds"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/i2cslave.vhd">
