@@ -47,19 +47,21 @@ architecture rtl of I2C_EXTERNAL_ACCESS is
 	signal WR			 : std_logic;
 	signal RD			 : std_logic;
 	signal ADDRESS_READY : std_logic;
-    
+   
+    type tstate is (B3_MSB, B2, B1, B0_LSB, ACCESS_CHECK, WRITE, RESET); 
     signal BUFFER_32     : std_logic_vector(31 DOWNTO 0);
     signal BUFFER_8      : std_logic_vector(7 DOWNTO 0);
-    signal bytePos       : integer range 0 to 3 := 3; -- used to indecate each byte in 32bit word
-    
+    signal state         : tstate := B3_MSB; -- used to indecate each byte in 32bit word
+   
     signal WRq			 : std_logic;
     signal WRqq			 : std_logic;
 	signal RDq			 : std_logic;
 	signal RDqq			 : std_logic;
 	signal ADDq			 : std_logic;
 	signal ADDqq		 : std_logic;
-begin
 
+begin
+    
 	I_I2CITF : I2CSLAVE
 		generic map (DEVICE => deviceAddress)
 		port map (
@@ -89,57 +91,63 @@ begin
            ADDqq <= ADDq;
            ADDq <= ADDRESS_READY; 
            	   
-           if (ADDqq = '0' and ADDq = '1') then -- rising edge
+           if (ADDqq = '0' and ADDq = '1') then -- rising edge - ADDRESS_READY
                BUFFER_8 <= ADDRESS;               
                BUFFER_32 <= (others => '0');
-               bytePos <= 3; -- reset
-           elsif (RDqq = '0' and RDq = '1') then -- rising edge
-               case bytePos is
-                when 3 =>                
+               state <= B3_MSB; -- reset
+           elsif (RDqq = '0' and RDq = '1') then -- rising edge - READ-REQUEST
+             case state is
+                when B3_MSB =>                
                     BUFFER_32 <= RAM(to_integer(unsigned(BUFFER_8)));
                     DATA_IN <= RAM(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
-                    bytePos <= bytePos - 1;
-                when 2 =>
+                    state <= B2;
+                when B2 =>
                     DATA_IN <= BUFFER_32(23 DOWNTO 16);
-                    bytePos <= bytePos - 1;
-                when 1 =>
+                    state <= B1;
+                when B1 =>
                     DATA_IN <= BUFFER_32(15 DOWNTO 8);
-                    bytePos <= bytePos - 1;
-                when 0 =>
+                    state <= B0_LSB;
+                when B0_LSB =>
                     DATA_IN <= BUFFER_32(7 DOWNTO 0); --LSB
-                    bytePos <= 3; -- reset
-                    BUFFER_8 <= (others => '0');                    
+                    state <= RESET;
+                when others =>
                end case;
-           elsif (WRqq = '0' and WRq = '1') then -- rising edge
-               case bytePos is
-                 when 3 =>
+           elsif (WRqq = '0' and WRq = '1') then -- rising edge - WREITE-REQUEST
+               case state is
+                 when B3_MSB =>
                     BUFFER_32(31 DOWNTO 24) <= DATA_OUT; --MSB
-                    bytePos <= bytePos - 1;
-                when 2 =>
+                    state <= B2;
+                when B2 =>
                     BUFFER_32(23 DOWNTO 16) <= DATA_OUT;
-                    bytePos <= bytePos - 1;
-                when 1 =>
+                    state <= B1;
+                when B1 =>
                     BUFFER_32(15 DOWNTO 8) <= DATA_OUT;
-                    bytePos <= bytePos - 1;
-                when 0 =>
+                    state <= B0_LSB;
+                when B0_LSB =>
                     BUFFER_32(7 DOWNTO 0) <= DATA_OUT; --LSB
-                    --ram(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
-                    --ram(to_integer(unsigned(BUFFER_8)))(7 downto 0) <= DATA_OUT; --LSB
-                    --bytePos <= 3; -- reset
-                    --BUFFER_8 <= (others => '0');
+                    state <= ACCESS_CHECK;
+                when others =>
                end case;
-           elsif (bytePos = 0 and WRqq = '1' and WRq = '1') then
-               bytePos <= 3; -- reset
+           elsif (state = ACCESS_CHECK) then --Write to memory on falling edge
                CASE BUFFER_8 IS
                   WHEN x"01" =>
                     -- overwrite "internal ready" flag with current value
-                    BUFFER_32(1) <= ram(to_integer(unsigned(BUFFER_8)))(1); 
-                  WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
-                    -- on external write access to readonly registers - overwrite buffer with current reg value
-                    BUFFER_32 <= RAM(to_integer(unsigned(BUFFER_8))); 
+                    BUFFER_32(1) <= RAM(to_integer(unsigned(BUFFER_8)))(1); 
+                    state <= WRITE;
+                  WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
+                    -- on external write access to readonly registers - reset
+                    state <= RESET;
+                  WHEN OTHERS =>
+                    -- access to write
+                    state <= WRITE;                    
                END CASE;
+           elsif (state = WRITE) then
                RAM(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
-               BUFFER_8 <= (others => '0');
+               state <= RESET;
+           elsif (state = RESET) then
+              BUFFER_32 <= (others => '0');
+              BUFFER_8 <= (others => '0');
+              state <= B3_MSB; --reset
            end if;
        end if;
 	end process READ_WRITE;
