@@ -1,0 +1,10 @@
+-------------------------------------
+| Tool Version : Vivado v.2023.2
+| Date         : Fri Nov  3 10:22:01 2023
+| Host         : DippeePrime
+| Design       : checkpoint_testOfCalibration
+| Device       : xc7k70t-fbv676-1--
+-------------------------------------
+
+For more information on clockInfo.txt clock routing debug file see https://support.xilinx.com/s/article/000035660?language=en_US
+

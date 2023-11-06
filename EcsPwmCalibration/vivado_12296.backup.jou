@@ -1,0 +1,125 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Nov  6 08:16:19 2023
+# Process ID: 12296
+# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent21204 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
+# Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/vivado.log
+# Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/testOfCalibration_behav.wcfg
+source testOfCalibration.tcl
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_run synth_1 -name synth_1
+place_ports CLK L17
+set_property IOSTANDARD LVCMOS33 [get_ports [list CLK]]
+place_ports finish G19
+set_property IOSTANDARD LVCMOS33 [get_ports [list finish]]
+place_ports ready A18
+place_ports reset B18
+set_property IOSTANDARD LVCMOS33 [get_ports [list ready]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list reset]]
+place_ports {PWM[3]} G17
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[3]}]]
+place_ports {PWM[2]} L3
+place_ports {PWM[1]} A16
+place_ports {PWM[0]} K3
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {PWM[0]}]]
+file mkdir C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/constrs_1/new
+close [ open C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/constrs_1/new/consPin.xdc w ]
+add_files -fileset constrs_1 C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/constrs_1/new/consPin.xdc
+set_property target_constrs_file C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/constrs_1/new/consPin.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+place_ports ready K18
+save_constraints -force
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 1 s
+place_ports ready A18
+save_constraints -force
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+close_design
+open_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+close_sim
+launch_simulation
+open_wave_config C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/testOfCalibration_behav.wcfg
+source testOfCalibration.tcl
+restart
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 1 s
+reset_run synth_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+refresh_design
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+close_sim

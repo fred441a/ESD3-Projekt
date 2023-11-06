@@ -67,9 +67,10 @@ if(CLK'event and CLK = '1') then
 
     if(reset = '1') then
         go <= '1';
+        state <= (others => '0');
     end if;
 
-if (go = '1') then
+if (go = '1' AND state = 0) then
     count <= count +1;
         
     if(count < low) then

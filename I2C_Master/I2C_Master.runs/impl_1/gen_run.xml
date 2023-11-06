@@ -1,89 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1697449676">
-  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS" Name="Teset_Harness_postroute_physopted.rqs"/>
-  <File Type="ROUTE-RQS" Name="Teset_Harness_routed.rqs"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-PWR" Name="Teset_Harness_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="Teset_Harness.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="Teset_Harness_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="Teset_Harness_reports.tcl"/>
+  <File Type="BITSTR-MSK" Name="Teset_Harness.msk"/>
+  <File Type="ROUTE-CLK" Name="Teset_Harness_clock_utilization_routed.rpt"/>
+  <File Type="RDI-RDI" Name="Teset_Harness.vdi"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Teset_Harness_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="Teset_Harness.bit"/>
+  <File Type="BG-DRC" Name="Teset_Harness.drc"/>
   <File Type="BG-BGN" Name="Teset_Harness.bgn"/>
+  <File Type="BG-BIN" Name="Teset_Harness.bin"/>
+  <File Type="BITSTR-RBT" Name="Teset_Harness.rbt"/>
+  <File Type="BITSTR-NKY" Name="Teset_Harness.nky"/>
+  <File Type="BITSTR-BMM" Name="Teset_Harness_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="Teset_Harness.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Teset_Harness_methodology_drc_routed.rpt"/>
   <File Type="BITSTR-SYSDEF" Name="Teset_Harness.sysdef"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="Teset_Harness.ltx"/>
-  <File Type="RBD_FILE" Name="Teset_Harness.rbd"/>
-  <File Type="NPI_FILE" Name="Teset_Harness.npi"/>
-  <File Type="RNPI_FILE" Name="Teset_Harness.rnpi"/>
-  <File Type="CFI_FILE" Name="Teset_Harness.cfi"/>
-  <File Type="RCFI_FILE" Name="Teset_Harness.rcfi"/>
-  <File Type="PL-PDI-FILE" Name="Teset_Harness_pld.pdi"/>
-  <File Type="BOOT-PDI-FILE" Name="Teset_Harness_soc.pdi"/>
-  <File Type="RDI-RDI" Name="Teset_Harness.vdi"/>
-  <File Type="PDI-FILE" Name="Teset_Harness.pdi"/>
-  <File Type="BITSTR-MMI" Name="Teset_Harness.mmi"/>
-  <File Type="BITSTR-BMM" Name="Teset_Harness_bd.bmm"/>
-  <File Type="BITSTR-NKY" Name="Teset_Harness.nky"/>
-  <File Type="BITSTR-RBT" Name="Teset_Harness.rbt"/>
-  <File Type="BITSTR-MSK" Name="Teset_Harness.msk"/>
-  <File Type="BG-BIN" Name="Teset_Harness.bin"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
-  <File Type="BG-BIT" Name="Teset_Harness.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Teset_Harness_bus_skew_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="Teset_Harness_bus_skew_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Teset_Harness_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Teset_Harness_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Teset_Harness_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Teset_Harness_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Teset_Harness_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Teset_Harness_postroute_physopt.dcp"/>
-  <File Type="BG-DRC" Name="Teset_Harness.drc"/>
-  <File Type="ROUTE-RQS-PB" Name="Teset_Harness_rqs_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="Teset_Harness_bus_skew_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="Teset_Harness_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW" Name="Teset_Harness_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="Teset_Harness_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-SIMILARITY" Name="Teset_Harness_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-TIMING-RPX" Name="Teset_Harness_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-TIMING-PB" Name="Teset_Harness_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="Teset_Harness_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="Teset_Harness_route_status.pb"/>
-  <File Type="ROUTE-STATUS" Name="Teset_Harness_route_status.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="Teset_Harness_power_routed.rpx"/>
-  <File Type="ROUTE-PWR-SUM" Name="Teset_Harness_power_summary_routed.pb"/>
-  <File Type="ROUTE-PWR" Name="Teset_Harness_power_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Teset_Harness_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Teset_Harness_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="Teset_Harness_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-RPX" Name="Teset_Harness_drc_routed.rpx"/>
-  <File Type="ROUTE-DRC-PB" Name="Teset_Harness_drc_routed.pb"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="OPT-DRC" Name="Teset_Harness_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="Teset_Harness.hwdef"/>
+  <File Type="PLACE-IO" Name="Teset_Harness_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Teset_Harness_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Teset_Harness_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Teset_Harness_control_sets_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Teset_Harness_incremental_reuse_pre_placed.rpt"/>
   <File Type="ROUTE-DRC" Name="Teset_Harness_drc_routed.rpt"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="Teset_Harness_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC-PB" Name="Teset_Harness_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="Teset_Harness_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="Teset_Harness_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="Teset_Harness_route_status.pb"/>
   <File Type="ROUTE-DCP" Name="Teset_Harness_routed.dcp"/>
   <File Type="ROUTE-ERROR-DCP" Name="Teset_Harness_routed_error.dcp"/>
-  <File Type="PHYSOPT-TIMING" Name="Teset_Harness_timing_summary_physopted.rpt"/>
-  <File Type="PHYSOPT-DRC" Name="Teset_Harness_drc_physopted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="Teset_Harness_physopt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="Teset_Harness_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="Teset_Harness_postplace_pwropt.dcp"/>
-  <File Type="PLACE-RQA-PB" Name="Teset_Harness_rqa_placed.pb"/>
-  <File Type="PLACE-TIMING" Name="Teset_Harness_timing_summary_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="Teset_Harness_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="Teset_Harness_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-CTRL" Name="Teset_Harness_control_sets_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="Teset_Harness_utilization_placed.pb"/>
-  <File Type="PLACE-UTIL" Name="Teset_Harness_utilization_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="Teset_Harness_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-IO" Name="Teset_Harness_io_placed.rpt"/>
-  <File Type="PLACE-DCP" Name="Teset_Harness_placed.dcp"/>
-  <File Type="PWROPT-TIMING" Name="Teset_Harness_timing_summary_pwropted.rpt"/>
-  <File Type="PWROPT-DRC" Name="Teset_Harness_drc_pwropted.rpt"/>
-  <File Type="PWROPT-DCP" Name="Teset_Harness_pwropt.dcp"/>
-  <File Type="OPT-RQA-PB" Name="Teset_Harness_rqa_opted.pb"/>
-  <File Type="OPT-HWDEF" Name="Teset_Harness.hwdef"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="Teset_Harness_methodology_drc_opted.rpt"/>
-  <File Type="OPT-DRC" Name="Teset_Harness_drc_opted.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Teset_Harness_routed_bb.dcp"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Teset_Harness_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="Teset_Harness_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Teset_Harness_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="Teset_Harness_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Teset_Harness_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Teset_Harness_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Teset_Harness_bus_skew_routed.rpx"/>
   <File Type="OPT-DCP" Name="Teset_Harness_opt.dcp"/>
-  <File Type="OPT-TIMING" Name="Teset_Harness_timing_summary_opted.rpt"/>
-  <File Type="REPORTS-TCL" Name="Teset_Harness_reports.tcl"/>
-  <File Type="INIT-TIMING" Name="Teset_Harness_timing_summary_init.rpt"/>
-  <File Type="PA-TCL" Name="Teset_Harness.tcl"/>
+  <File Type="PLACE-DCP" Name="Teset_Harness_placed.dcp"/>
+  <File Type="PWROPT-DCP" Name="Teset_Harness_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Teset_Harness_postplace_pwropt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="Teset_Harness_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Teset_Harness_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Teset_Harness_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="Teset_Harness_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="Teset_Harness_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="Teset_Harness_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="Teset_Harness_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="Teset_Harness_bus_skew_postroute_physopted.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Teset_Harness_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="Teset_Harness_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Teset_Harness_methodology_drc_routed.rpx"/>
+  <File Type="PDI-FILE" Name="Teset_Harness.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="Teset_Harness_soc.pdi"/>
+  <File Type="PL-PDI-FILE" Name="Teset_Harness_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="Teset_Harness.rcfi"/>
+  <File Type="CFI_FILE" Name="Teset_Harness.cfi"/>
+  <File Type="RNPI_FILE" Name="Teset_Harness.rnpi"/>
+  <File Type="NPI_FILE" Name="Teset_Harness.npi"/>
+  <File Type="RBD_FILE" Name="Teset_Harness.rbd"/>
+  <File Type="ROUTE-RQS" Name="Teset_Harness_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="Teset_Harness_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/I2C_Master.vhd">
@@ -141,5 +127,6 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

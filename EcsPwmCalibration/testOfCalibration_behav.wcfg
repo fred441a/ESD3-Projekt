@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="testOfCalibration_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="testOfCalibration" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="999,992 ps"></ZoomStartTime>
+      <ZoomEndTime time="1,000,002 ps"></ZoomEndTime>
+      <Cursor1Time time="1,000,000 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="200"></NameColumnWidth>
+      <ValueColumnWidth column_width="93"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="11" />
+   <wvobject fp_name="/testOfCalibration/CLK" type="logic">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/finish" type="logic">
+      <obj_property name="ElementShortName">finish</obj_property>
+      <obj_property name="ObjectShortName">finish</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/PWM" type="array">
+      <obj_property name="ElementShortName">PWM[3:0]</obj_property>
+      <obj_property name="ObjectShortName">PWM[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/s_output" type="array">
+      <obj_property name="ElementShortName">s_output[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s_output[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/newClock" type="logic">
+      <obj_property name="ElementShortName">newClock</obj_property>
+      <obj_property name="ObjectShortName">newClock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmModule1/newCount" type="array">
+      <obj_property name="ElementShortName">newCount[7:0]</obj_property>
+      <obj_property name="ObjectShortName">newCount[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmCalibration/newCount" type="array">
+      <obj_property name="ElementShortName">newCount[8:0]</obj_property>
+      <obj_property name="ObjectShortName">newCount[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmCalibration/state" type="logic">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmModule1/PercentCh0" type="array">
+      <obj_property name="ElementShortName">PercentCh0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PercentCh0[7:0]</obj_property>
+   </wvobject>
+</wave_config>
