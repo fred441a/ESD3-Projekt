@@ -75,12 +75,11 @@ begin
         reset    => reset,
         finish   => finish,
         output   => s_output
-        
     );    
     
     pwmModule1: pwmModule 
       port map (
-        clock      => CLK, -- så den køre på samme clock som top2
+        clock      => CLK,
         PercentCh0 => s_output,
         PercentCh1 => s_output,
         PercentCh2 => s_output,

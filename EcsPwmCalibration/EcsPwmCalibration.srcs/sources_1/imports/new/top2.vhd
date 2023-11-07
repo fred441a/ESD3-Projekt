@@ -48,66 +48,62 @@ architecture Behavioral of top2 is
 signal count:       unsigned(10 downto 0) := (others => '0');
 signal newCount:    unsigned(8 downto 0)  := (others => '0'); -- skal være 9 bit for at 0 til 256 
 signal rise:        unsigned(7 downto 0) := (others => '0');
-signal go:          std_logic;
-signal state:       std_logic;
-signal halt:        std_logic;
+signal go:          std_logic := '0';
+signal state:       std_logic := '0';
+signal halt:        std_logic := '0';
 --signal scaleClk   STD_LOGIC;
 constant newPWM :   INTEGER := 256;
-constant desVal :   INTEGER := 255;
+constant desVal :   INTEGER := 254;
 CONSTANT high   :   INTEGER := 942;
 begin
 process(CLK) 
-   
+
 begin
-go <= '1';
+
 if(CLK'event and CLK = '1') then
 
     if(ready = '1') then
         go <= '1';
     end if;
-
-    if(reset = '1') then
-        go <= '1';
-        halt <= '0';
-    end if;
-   
-    --if (halt = '1') then
-        --rise <= "00000000";
-        --output <= std_logic_vector(unsigned(rise));
-   --end if;
-        
-    if (go = '1') then    
+           
+    if (go = '1' AND halt = '0') then    
     count <= count +1; 
  
-    if(count = high) then
+        if(count = high) then
         count <= "00000000000";
         newCount <= newCount +1;
-    end if;
+        end if;
     
-    if( newCount = newPWM) then
+        if( newCount = newPWM) then
             newCount <= (others => '0');
             rise <= rise +1;
             output <= std_logic_vector(unsigned(rise));
-    end if;
+        end if;
     
-     if(rise = desVal) then
+        if(rise = desVal) then
             state <= '1';
-     end if;
+        end if;
     
-    if (newCount = newPWM AND state = '1') then
-            newCount <= (others => '0');
+        if (newCount = newPWM AND state = '1') then
+            rise <= (others => '0');
             rise <= rise -1;
             output <= std_logic_vector(unsigned(rise));
-    end if;
+        end if;
         
-    if(rise = 0 AND state = '1') then
-            --state <= state;
-            finish <= '1';
-            go <= '0';    
-            --halt <= '1';     
+        if(rise = 0 AND state = '1') then
+            count <= "00000000000";
+            rise <= (others => '0');
+            go <= '0';
+            finish <= '1';    
+            halt <= '1'; 
+            state <= '0';    
+        end if;
+        
+    elsif (halt = '1')then
+        rise <= (others => '0');
+        output <= std_logic_vector(unsigned(rise));
     end if;
-
- end if;
+    
 end if;      
 end process;
 end Behavioral;

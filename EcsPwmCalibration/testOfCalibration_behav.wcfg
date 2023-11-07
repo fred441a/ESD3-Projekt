@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="999,992 ps"></ZoomStartTime>
-      <ZoomEndTime time="1,000,002 ps"></ZoomEndTime>
-      <Cursor1Time time="1,000,000 ps"></Cursor1Time>
+      <ZoomStartTime time="2,601.428742901 ms"></ZoomStartTime>
+      <ZoomEndTime time="3,582.428742902 ms"></ZoomEndTime>
+      <Cursor1Time time="3,418.428742901 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="200"></NameColumnWidth>
-      <ValueColumnWidth column_width="93"></ValueColumnWidth>
+      <NameColumnWidth column_width="185"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
+   <WVObjectSize size="15" />
    <wvobject fp_name="/testOfCalibration/CLK" type="logic">
       <obj_property name="ElementShortName">CLK</obj_property>
       <obj_property name="ObjectShortName">CLK</obj_property>
@@ -62,5 +62,22 @@
    <wvobject fp_name="/testOfCalibration/pwmModule1/PercentCh0" type="array">
       <obj_property name="ElementShortName">PercentCh0[7:0]</obj_property>
       <obj_property name="ObjectShortName">PercentCh0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmCalibration/rise" type="array">
+      <obj_property name="ElementShortName">rise[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rise[7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmModule1/PercentCh0" type="array">
+      <obj_property name="ElementShortName">PercentCh0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PercentCh0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmCalibration/go" type="logic">
+      <obj_property name="ElementShortName">go</obj_property>
+      <obj_property name="ObjectShortName">go</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testOfCalibration/pwmCalibration/halt" type="logic">
+      <obj_property name="ElementShortName">halt</obj_property>
+      <obj_property name="ObjectShortName">halt</obj_property>
    </wvobject>
 </wave_config>
