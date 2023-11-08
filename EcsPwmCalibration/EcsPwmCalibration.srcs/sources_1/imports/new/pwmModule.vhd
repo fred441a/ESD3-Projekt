@@ -36,54 +36,51 @@ Port (     PercentCh0 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"5
            PercentCh1 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
            PercentCh2 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
            PercentCh3 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
-           clock      : in STD_LOGIC; -- ny intern clock
+           clock      : in STD_LOGIC; -- 12M hz internal clock
            PWM : out std_logic_vector (3 downto 0));
 end pwmModule;
 
 architecture Behavioral of pwmModule is
 signal count: unsigned(10 downto 0) := (others => '0');
-constant newPWM :   INTEGER := 255; --ellers trailer clocken
-CONSTANT high   :   INTEGER := 942;
---constant low    :   INTEGER := high/2;
-signal newCount:    unsigned(7 downto 0)  := (others => '0'); -- skal være 9 bit for at 0 til 256 
+CONSTANT high   :   INTEGER := 942; -- To descale clock to 50 Hz
+signal sclCount:    unsigned(7 downto 0)  := (others => '0'); --0 to 255
 begin
 
 process(clock)
  
     begin
     
-    if(clock'event and clock = '1') then
-    --Clock divider
+    if(clock'event and clock = '1') then --Clock divider so clock is 50 Hz instead of 50 Hz
     count <= count +1;
         if(count = high) then
             count <= "00000000000";
-            newCount <= newCount +1;
+            sclCount <= sclCount +1;
             
         end if;
         
             --PWM channel 0
-            if(newCount +1 <= unsigned(PercentCh0)) then
-                PWM(0) <= '1';
+            if(sclCount +1 <= unsigned(PercentCh0)) then --Creates a pwm, with 256 increaments 
+                PWM(0) <= '1'; -- If scale count is smaller, turn on.
             else
-                PWM(0) <= '0';
-            end if;
+                PWM(0) <= '0'; -- If sclCount+1 is/equal bigger, turn of
+            end if;            -- This creates a PWM signal depending on a intergere
             
             --PWM channel 1
-            if(newCount +1 <= unsigned(PercentCh1)) then
+            if(sclCount +1 <= unsigned(PercentCh1)) then
                 PWM(1) <= '1';
             else
                 PWM(1) <= '0';
             end if;
             
             --PWM channel 2
-            if(newCount +1 <= unsigned(PercentCh2)) then
+            if(sclCount +1 <= unsigned(PercentCh2)) then
                 PWM(2) <= '1';
             else
                 PWM(2) <= '0';
             end if;
             
             --PWM channel 3
-            if(newCount +1 <= unsigned(PercentCh3)) then
+            if(sclCount +1 <= unsigned(PercentCh3)) then
                 PWM(3) <= '1';
             else
                 PWM(3) <= '0';

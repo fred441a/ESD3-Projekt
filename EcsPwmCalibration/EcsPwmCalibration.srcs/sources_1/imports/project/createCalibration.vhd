@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 10/26/2023 10:04:18 AM
 -- Design Name: 
--- Module Name: top2 - Behavioral
+-- Module Name: createCalibration - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -32,7 +32,7 @@ USE ieee.std_logic_unsigned.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity top2 is
+entity createCalibration is
        
     Port (
         CLK      : in    STD_LOGIC; -- 12M hz internal clock
@@ -41,9 +41,9 @@ entity top2 is
         output   : out   STD_LOGIC_VECTOR (7 downto 0) -- Out put to become pwm
        
            );
-end top2;
+end createCalibration;
 
-architecture Behavioral of top2 is
+architecture Behavioral of createCalibration is
 signal count:       unsigned(10 downto 0) := (others => '0'); -- To descale clock
 signal pwmCreate:   unsigned(8 downto 0)  := (others => '0'); -- skal være 9 bit for at 0 til 256 
 signal rise:        unsigned(7 downto 0) := (others => '0'); -- To make it go up and then down
