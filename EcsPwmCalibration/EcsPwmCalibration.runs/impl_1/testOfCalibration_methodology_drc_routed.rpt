@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Nov  7 11:23:11 2023
+| Date         : Wed Nov  8 13:29:19 2023
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_methodology -file testOfCalibration_methodology_drc_routed.rpt -pb testOfCalibration_methodology_drc_routed.pb -rpx testOfCalibration_methodology_drc_routed.rpx
 | Design       : testOfCalibration
@@ -99,87 +99,87 @@ Related violations: <none>
 
 TIMING-17#14 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[0]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#15 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[1]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#16 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[2]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#17 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[3]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#18 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[4]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#19 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[5]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#20 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[6]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#21 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[7]/C is not reached by a timing clock
+The clock pin pwmCalibration/output_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#22 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/newCount_reg[8]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#23 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[0]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#24 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[1]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#25 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[2]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#26 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[3]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#27 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[4]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#28 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[5]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#29 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[6]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#30 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmCalibration/output_reg[7]/C is not reached by a timing clock
+The clock pin pwmCalibration/pwmCreate_reg[8]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#31 Critical Warning
@@ -304,42 +304,42 @@ Related violations: <none>
 
 TIMING-17#55 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[0]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#56 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[1]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[1]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#57 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[2]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[2]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#58 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[3]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[3]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#59 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[4]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[4]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#60 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[5]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[5]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#61 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[6]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[6]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#62 Critical Warning
 Non-clocked sequential cell  
-The clock pin pwmModule1/newCount_reg[7]/C is not reached by a timing clock
+The clock pin pwmModule1/sclCount_reg[7]/C is not reached by a timing clock
 Related violations: <none>
 
 

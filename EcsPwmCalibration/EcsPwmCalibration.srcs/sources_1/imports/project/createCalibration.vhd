@@ -91,15 +91,9 @@ if(CLK'event and CLK = '1') then
         if(rise = 0 AND state = '1') then -- It has ended, it endeds
             count <= "00000000000";
             rise <= (others => '0');
-            go <= '0';
             finish <= '1'; -- external flag, flag   
-            halt <= '1'; --Makes sure the procces ends.
-            state <= '0';    
+            halt <= '1'; --Makes sure the procces ends.  
         end if;
-        
-    elsif (halt = '1')then -- Makes sure the output from here is zero.
-        rise <= (others => '0');
-        output <= std_logic_vector(unsigned(rise));
     end if;
     
 end if;      
