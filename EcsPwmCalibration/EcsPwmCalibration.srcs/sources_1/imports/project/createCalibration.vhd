@@ -59,41 +59,51 @@ process(CLK)
 begin
 
 if(CLK'event and CLK = '1') then
+-- Waiting ()
 
+--Ready starts
     if(ready = '1') then --Ready given by the user
         go <= '1';
     end if;
+-- Ready ends    
            
     if (go = '1' AND halt = '0') then -- Enters this part when ready is given by user
+    
+ --Descaling clock begins    
     count <= count +1; 
- 
+
         if(count = high) then
         count <= (others => '0');
         clkDivider <= clkDivider +1; -- Creates a new clock cycle count
         end if;
-    
+ -- Descaling clock ends
+
+-- Rising begins    
         if( clkDivider = newPWM) then
             clkDivider <= (others => '0');
             rise <= rise +1; -- increases by one
             output <= std_logic_vector(unsigned(rise)); -- sends it to pwmModule
         end if;
     
-        if(rise = desVal) then -- Changes state so it will decrease
+        if(rise = desVal) then -- Changes state so it will decrease can happen
             state <= '1';
         end if;
-    
+-- Rising ends
+
+-- Falling begins    
         if (clkDivider = newPWM AND state = '1') then
             rise <= (others => '0');
             rise <= rise -1; -- decreases one by one
             output <= std_logic_vector(unsigned(rise));
         end if;
-        
-        if(rise = 0 AND state = '1') then -- It has ended, it endeds
-            count <= (others => '0');
-            rise <= (others => '0');
-            finish <= '1'; -- external flag, flag   
+-- Falling ends
+
+--Finished begins        
+        if(rise = 0 AND state = '1') then -- It has finished calibration now
+            finish <= '1'; -- external flag, to say it is finished calibrating
             halt <= '1'; --Makes sure the procces ends.  
         end if;
+-- Finished ends
     end if;
     
 end if;      

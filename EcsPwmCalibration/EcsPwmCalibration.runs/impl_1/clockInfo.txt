@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Thu Nov  9 09:30:48 2023
+| Date         : Thu Nov  9 13:38:52 2023
 | Host         : DippeePrime
 | Design       : design_1
 | Device       : xc7a35t-cpg236-1--
