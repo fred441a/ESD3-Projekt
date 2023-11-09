@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Nov  8 13:29:01 2023
+| Date         : Thu Nov  9 09:30:49 2023
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file testOfCalibration_control_sets_placed.rpt
 | Design       : testOfCalibration
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |     7 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    18 |
+| Unused register locations in slices containing registers |    20 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -42,9 +42,9 @@ Table of Contents
 | Total control sets |     7 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     0 |
-| >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     4 |
-| >= 10 to < 12      |     2 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     4 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
 | >= 16              |     0 |
@@ -58,28 +58,28 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               7 |            5 |
+| No           | No                    | No                     |               8 |            7 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              11 |            4 |
-| Yes          | No                    | No                     |              25 |            8 |
+| Yes          | No                    | No                     |              19 |            4 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              19 |            8 |
+| Yes          | Yes                   | No                     |              30 |            9 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+-------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  Clock Signal  |            Enable Signal            |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+-------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  CLK_IBUF_BUFG |                                     |                                  |                5 |              7 |         1.40 |
-|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0    |                                  |                2 |              8 |         4.00 |
-|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0    | pwmCalibration/count[10]_i_1_n_0 |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | pwmModule1/sclCount                 |                                  |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | pwmCalibration/pwmCreate[8]_i_1_n_0 |                                  |                3 |              9 |         3.00 |
-|  CLK_IBUF_BUFG |                                     | pwmModule1/p_0_in                |                4 |             11 |         2.75 |
-|  CLK_IBUF_BUFG | pwmCalibration/count06_out          | pwmCalibration/count[10]_i_1_n_0 |                5 |             11 |         2.20 |
-+----------------+-------------------------------------+----------------------------------+------------------+----------------+--------------+
++----------------+--------------------------------------+--------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |             Enable Signal            |           Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------+--------------------------------------+------------------+----------------+--------------+
+|  CLK_IBUF_BUFG |                                      |                                      |                7 |              8 |         1.14 |
+|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0     |                                      |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0     | pwmCalibration/count[10]_i_1_n_0     |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG |                                      | pwmModule1/p_0_in                    |                4 |             11 |         2.75 |
+|  CLK_IBUF_BUFG | pwmCalibration/pwmCreate[11]_i_2_n_0 | pwmCalibration/pwmCreate[11]_i_1_n_0 |                3 |             11 |         3.67 |
+|  CLK_IBUF_BUFG | pwmCalibration/count06_out           | pwmCalibration/count[10]_i_1_n_0     |                3 |             11 |         3.67 |
+|  CLK_IBUF_BUFG | pwmModule1/p_0_in                    |                                      |                2 |             11 |         5.50 |
++----------------+--------------------------------------+--------------------------------------+------------------+----------------+--------------+
 
 

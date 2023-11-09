@@ -35,7 +35,6 @@ entity testOfCalibration is
     Port (
         CLK : in std_logic;
         ready: in std_logic;
-        reset: in std_logic;
         finish: out std_logic;
         PWM: out std_logic_vector (3 downto 0)
         

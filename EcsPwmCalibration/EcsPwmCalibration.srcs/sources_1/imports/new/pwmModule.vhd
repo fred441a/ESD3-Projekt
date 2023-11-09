@@ -41,9 +41,10 @@ Port (     PercentCh0 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"5
 end pwmModule;
 
 architecture Behavioral of pwmModule is
-signal count: unsigned(10 downto 0) := (others => '0');
-CONSTANT high   :   INTEGER := 942; -- To descale clock to 50 Hz
-signal sclCount:    unsigned(7 downto 0)  := (others => '0'); --0 to 255
+signal count: unsigned(6 downto 0) := (others => '0');
+CONSTANT high       :   INTEGER := 112; -- To descale clock to 50 Hz
+signal sclCount     :   unsigned(10 downto 0)  := (others => '0'); --0 to 255
+constant sclHighVal :   INTEGER := 2047;    
 begin
 
 process(clock)
@@ -53,7 +54,7 @@ process(clock)
     if(clock'event and clock = '1') then --Clock divider so clock is 50 Hz instead of 50 Hz
     count <= count +1;
         if(count = high) then
-            count <= "00000000000";
+            count <= (others => '0');
             sclCount <= sclCount +1;
             
         end if;
@@ -84,7 +85,8 @@ process(clock)
                 PWM(3) <= '1';
             else
                 PWM(3) <= '0';
-            end if;                        
+            end if;
+                                    
         end if;
     end process;
 
