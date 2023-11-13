@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="I2CDEMO_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="I2CDEMO" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
+      <ZoomEndTime time="5.100000001 ms"></ZoomEndTime>
+      <Cursor1Time time="0.000000000 ms"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="132"></NameColumnWidth>
+      <ValueColumnWidth column_width="69"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="26" />
+   <wvobject type="logic" fp_name="/I2CDEMO/MCLK">
+      <obj_property name="ElementShortName">MCLK</obj_property>
+      <obj_property name="ObjectShortName">MCLK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/nRST">
+      <obj_property name="ElementShortName">nRST</obj_property>
+      <obj_property name="ObjectShortName">nRST</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/SCL">
+      <obj_property name="ElementShortName">SCL</obj_property>
+      <obj_property name="ObjectShortName">SCL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/SDA">
+      <obj_property name="ElementShortName">SDA</obj_property>
+      <obj_property name="ObjectShortName">SDA</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/ram">
+      <obj_property name="ElementShortName">ram[0:255][31:0]</obj_property>
+      <obj_property name="ObjectShortName">ram[0:255][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/SDA_IN">
+      <obj_property name="ElementShortName">SDA_IN</obj_property>
+      <obj_property name="ObjectShortName">SDA_IN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/SCL_IN">
+      <obj_property name="ElementShortName">SCL_IN</obj_property>
+      <obj_property name="ObjectShortName">SCL_IN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/SDA_OUT">
+      <obj_property name="ElementShortName">SDA_OUT</obj_property>
+      <obj_property name="ObjectShortName">SDA_OUT</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/SCL_OUT">
+      <obj_property name="ElementShortName">SCL_OUT</obj_property>
+      <obj_property name="ObjectShortName">SCL_OUT</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/ADDRESS">
+      <obj_property name="ElementShortName">ADDRESS[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ADDRESS[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/DATA_OUT">
+      <obj_property name="ElementShortName">DATA_OUT[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DATA_OUT[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/DATA_IN">
+      <obj_property name="ElementShortName">DATA_IN[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DATA_IN[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/WR">
+      <obj_property name="ElementShortName">WR</obj_property>
+      <obj_property name="ObjectShortName">WR</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/RD">
+      <obj_property name="ElementShortName">RD</obj_property>
+      <obj_property name="ObjectShortName">RD</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/BUFFER_32">
+      <obj_property name="ElementShortName">BUFFER_32[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BUFFER_32[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/BUFFER_8">
+      <obj_property name="ElementShortName">BUFFER_8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">BUFFER_8[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/I2CDEMO/bytePos">
+      <obj_property name="ElementShortName">bytePos</obj_property>
+      <obj_property name="ObjectShortName">bytePos</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/I2CDEMO/wordSize">
+      <obj_property name="ElementShortName">wordSize</obj_property>
+      <obj_property name="ObjectShortName">wordSize</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/I2CDEMO/wordCount">
+      <obj_property name="ElementShortName">wordCount</obj_property>
+      <obj_property name="ObjectShortName">wordCount</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/deviceAddress">
+      <obj_property name="ElementShortName">deviceAddress[7:0]</obj_property>
+      <obj_property name="ObjectShortName">deviceAddress[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/I2CDEMO/I_I2CITF/shiftreg">
+      <obj_property name="ElementShortName">shiftreg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">shiftreg[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/I2CDEMO/I_I2CITF/state">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/I2CDEMO/I_I2CITF/operation">
+      <obj_property name="ElementShortName">operation</obj_property>
+      <obj_property name="ObjectShortName">operation</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/I_I2CITF/scl_q">
+      <obj_property name="ElementShortName">scl_q</obj_property>
+      <obj_property name="ObjectShortName">scl_q</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/I_I2CITF/scl_qq">
+      <obj_property name="ElementShortName">scl_qq</obj_property>
+      <obj_property name="ObjectShortName">scl_qq</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/I2CDEMO/I_I2CITF/scl_qqq">
+      <obj_property name="ElementShortName">scl_qqq</obj_property>
+      <obj_property name="ObjectShortName">scl_qqq</obj_property>
+   </wvobject>
+</wave_config>

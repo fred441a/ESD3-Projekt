@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Mon Nov  6 11:21:48 2023
+# Process ID: 48871
+# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1
+# Command line: vivado -log TEST_HARNESS.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TEST_HARNESS.tcl
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/TEST_HARNESS.vds
+# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/vivado.jou
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2955.876 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+#-----------------------------------------------------------
+source TEST_HARNESS.tcl -notrace
