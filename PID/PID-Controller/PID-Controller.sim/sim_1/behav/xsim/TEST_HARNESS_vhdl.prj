@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../PID-Controller.srcs/sources_1/new/PID-Controller.vhd" \
+"../../../../PID-Controller.srcs/sources_1/new/test-harness.vhd" \
+
+# Do not sort compile order
+nosort

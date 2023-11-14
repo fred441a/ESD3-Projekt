@@ -1,0 +1,147 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Thu May  4 08:48:03 2023
+# Process ID: 30548
+# Current directory: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/Addition
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent25268 C:\Users\gusta\Documents\Universitetet\P4\Projekt\Floating Point Unit\Addition\Addition.xpr
+# Log file: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/Addition/vivado.log
+# Journal file: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/Addition\vivado.jou
+# Running On: LAPTOP-U9E9QN8R, OS: Windows, CPU Frequency: 3294 MHz, CPU Physical cores: 16, Host memory: 16542 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/Addition/Addition.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+source inversion.tcl
+add_force {/inversion/x} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/inversion/y} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+run 10 ns
+relaunch_sim
+add_force {/inversion/x} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/inversion/y} -radix bin {00100000000000000000000 0ns}
+run 10 ns
+close_sim
+launch_simulation
+source inversion.tcl
+add_force {/inversion/x} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/inversion/y} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+close_sim
+launch_simulation
+launch_simulation
+launch_simulation
+source inversion.tcl
+add_force {/inversion/x} -radix bin {00111111000100000000000000000000 0ns}
+add_force {/inversion/y} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+close_sim
+launch_simulation
+set_property top Addition2 [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
+source Addition2.tcl
+add_force {/Addition2/add_or_sub} -radix bin {1 0ns}
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {10111111000100000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {00111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {11000001000111000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {11000001000111000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {00111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+run 10 ns
+add_force {/Addition2/value_two} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+run 10 ns
+add_force {/Addition2/add_or_sub} -radix bin {1 0ns}
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/add_or_sub} -radix bin {1 0ns}
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/add_or_sub} -radix bin {1 0ns}
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/add_or_sub} -radix bin {1 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {00111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {00111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {00111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {00111111000100000000000000000000 0ns}
+add_force {/Addition2/add_or_sub} -radix bin {1 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {11000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {10111111000100000000000000000000 0ns}
+run 10 ns
+relaunch_sim
+add_force {/Addition2/value_one} -radix bin {11000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {10111111000100000000000000000000 0ns}
+add_force {/Addition2/add_or_sub} -radix bin {1 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {10111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {11000001000111000000000000000000 0ns}
+run 10 ns
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {10111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {10111111000100000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {11000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {11000001000111000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {11000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {10111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {10111111000100000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {00111111000100000000000000000000 0ns}
+run 10 ns
+add_force {/Addition2/value_one} -radix bin {11000001000111000000000000000000 0ns}
+add_force {/Addition2/value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+run 10 ns
+close_sim
