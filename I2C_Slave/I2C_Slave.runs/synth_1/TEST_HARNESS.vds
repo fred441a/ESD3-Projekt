@@ -3,16 +3,16 @@
 # SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
 # IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
 # SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
-# Start of session at: Mon Nov  6 11:21:48 2023
-# Process ID: 48871
+# Start of session at: Fri Nov 10 08:46:16 2023
+# Process ID: 6291
 # Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1
 # Command line: vivado -log TEST_HARNESS.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TEST_HARNESS.tcl
 # Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/TEST_HARNESS.vds
 # Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/vivado.jou
-# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2955.876 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2988.342 MHz, CPU Physical cores: 4, Host memory: 16695 MB
 #-----------------------------------------------------------
 source TEST_HARNESS.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1336.512 ; gain = 0.023 ; free physical = 4344 ; free virtual = 9467
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1273.441 ; gain = 0.023 ; free physical = 8101 ; free virtual = 12333
 Command: read_checkpoint -auto_incremental -incremental /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/utils_1/imports/synth_1/I2CSLAVE.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/utils_1/imports/synth_1/I2CSLAVE.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,9 +25,9 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 48901
+INFO: [Synth 8-7075] Helper process launched with PID 6394
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1996.445 ; gain = 377.801 ; free physical = 3367 ; free virtual = 8490
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1997.094 ; gain = 378.801 ; free physical = 6870 ; free virtual = 11114
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'TEST_HARNESS' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/sources_1/new/TEST_HARNESS.vhd:13]
 	Parameter deviceAddress bound to: 8'b00001000 
@@ -36,90 +36,60 @@ INFO: [Synth 8-638] synthesizing module 'I2C_EXTERNAL_ACCESS' [/home/mikkel/repo
 	Parameter deviceAddress bound to: 8'b00001000 
 WARNING: [Synth 8-5640] Port 'read_done' is missing in component declaration [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:20]
 	Parameter DEVICE bound to: 8'b00001000 
-INFO: [Synth 8-3491] module 'I2CSLAVE' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:13' bound to instance 'I_I2CITF' of component 'I2CSLAVE' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:65]
+INFO: [Synth 8-3491] module 'I2CSLAVE' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:13' bound to instance 'I_I2CITF' of component 'I2CSLAVE' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:61]
 INFO: [Synth 8-638] synthesizing module 'I2CSLAVE' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:32]
 	Parameter DEVICE bound to: 8'b00001000 
 INFO: [Synth 8-256] done synthesizing module 'I2CSLAVE' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:32]
 INFO: [Synth 8-256] done synthesizing module 'I2C_EXTERNAL_ACCESS' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:17]
 INFO: [Synth 8-256] done synthesizing module 'TEST_HARNESS' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/sources_1/new/TEST_HARNESS.vhd:13]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2078.414 ; gain = 459.770 ; free physical = 3278 ; free virtual = 8402
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2079.062 ; gain = 460.770 ; free physical = 6919 ; free virtual = 11179
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2093.258 ; gain = 474.613 ; free physical = 3265 ; free virtual = 8389
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2093.906 ; gain = 475.613 ; free physical = 6911 ; free virtual = 11171
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2093.258 ; gain = 474.613 ; free physical = 3265 ; free virtual = 8389
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2093.906 ; gain = 475.613 ; free physical = 6911 ; free virtual = 11171
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2093.258 ; gain = 0.000 ; free physical = 3264 ; free virtual = 8388
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2093.906 ; gain = 0.000 ; free physical = 6911 ; free virtual = 11171
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc]
-WARNING: [Vivado 12-584] No ports matched 'O_RD'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:11]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:11]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_WR'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:12]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:12]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_RD'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:13]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:13]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_WR'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:14]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:14]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_STATE[2]'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:16]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:16]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_STATE[1]'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:17]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:17]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_STATE[0]'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:18]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:18]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_STATE[2]'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:19]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:19]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_STATE[1]'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:20]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:20]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'O_STATE[0]'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:21]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc:21]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TEST_HARNESS_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/TEST_HARNESS_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2203.992 ; gain = 0.000 ; free physical = 3235 ; free virtual = 8359
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2201.641 ; gain = 0.000 ; free physical = 6870 ; free virtual = 11144
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2203.992 ; gain = 0.000 ; free physical = 3235 ; free virtual = 8359
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2201.641 ; gain = 0.000 ; free physical = 6869 ; free virtual = 11143
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3226 ; free virtual = 8350
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6856 ; free virtual = 11133
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3226 ; free virtual = 8350
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6856 ; free virtual = 11133
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3226 ; free virtual = 8350
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6856 ; free virtual = 11133
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3222 ; free virtual = 8347
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6854 ; free virtual = 11131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -174,25 +144,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3184 ; free virtual = 8315
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6831 ; free virtual = 11110
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3180 ; free virtual = 8311
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3180 ; free virtual = 8311
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3198 ; free virtual = 8329
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -210,37 +180,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3194 ; free virtual = 8326
+Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3194 ; free virtual = 8326
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3194 ; free virtual = 8326
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3194 ; free virtual = 8326
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3194 ; free virtual = 8326
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3194 ; free virtual = 8325
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -269,31 +239,30 @@ Report Cell Usage:
 |11    |IOBUF |     1|
 +------+------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2203.992 ; gain = 585.348 ; free physical = 3194 ; free virtual = 8325
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2201.641 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2203.992 ; gain = 474.613 ; free physical = 3191 ; free virtual = 8322
-Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2204.000 ; gain = 585.348 ; free physical = 3191 ; free virtual = 8322
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 2201.641 ; gain = 475.613 ; free physical = 6822 ; free virtual = 11108
+Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2201.648 ; gain = 583.348 ; free physical = 6822 ; free virtual = 11108
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2204.000 ; gain = 0.000 ; free physical = 3479 ; free virtual = 8611
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2201.648 ; gain = 0.000 ; free physical = 7113 ; free virtual = 11402
 INFO: [Netlist 29-17] Analyzing 143 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'TEST_HARNESS' is not ideal for floorplanning, since the cellview 'I2C_EXTERNAL_ACCESS' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2204.000 ; gain = 0.000 ; free physical = 3492 ; free virtual = 8624
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2201.648 ; gain = 0.000 ; free physical = 7113 ; free virtual = 11402
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: c551305a
+Synth Design complete | Checksum: da60b0ab
 INFO: [Common 17-83] Releasing license: Synthesis
-29 Infos, 13 Warnings, 10 Critical Warnings and 0 Errors encountered.
+29 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:38 . Memory (MB): peak = 2204.000 ; gain = 867.488 ; free physical = 3491 ; free virtual = 8623
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1815.353; main = 1485.610; forked = 379.291
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3173.523; main = 2203.992; forked = 969.531
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:36 . Memory (MB): peak = 2201.648 ; gain = 907.395 ; free physical = 7113 ; free virtual = 11402
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1823.619; main = 1493.549; forked = 379.865
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3174.316; main = 2201.641; forked = 972.676
 INFO: [Common 17-1381] The checkpoint '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.runs/synth_1/TEST_HARNESS.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file TEST_HARNESS_utilization_synth.rpt -pb TEST_HARNESS_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Nov  6 11:22:38 2023...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 10 08:47:03 2023...

@@ -19,7 +19,7 @@ component I2C_EXTERNAL_ACCESS
 		nRST		: in	std_logic;
 		SCL			: inout	std_logic;
 		SDA			: inout	std_logic;
-		RAM         : inout ram_type
+		MEMORY      : inout ram_type
 	);
 end component;
 
@@ -34,7 +34,7 @@ begin
             nRST  => '1',
             SCL  => SCL,
             SDA	 => SDA,
-            RAM  => ram
+            MEMORY  => ram
         );
 
 end Behavioral;
