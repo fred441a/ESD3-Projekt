@@ -52,6 +52,13 @@ void setup(){
 
 void loop(){
 
+  Serial.println(ReadByte(0x3B));
+    //set gyro range
+    //WriteByte(MPU6050_GYRO_CONFIG,0b00001000);
+    //set Acc range
+    //WriteByte(MPU6050_ACCEL_CONFIG, 0);
+    delay(50);
+
 
 }
 

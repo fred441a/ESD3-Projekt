@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Nov 13 13:47:48 2023
+# Process ID: 15827
+# Current directory: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Master/project_1/project_1.runs/impl_1
+# Command line: vivado -log Teset_Harness.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Teset_Harness.tcl -notrace
+# Log file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Master/project_1/project_1.runs/impl_1/Teset_Harness.vdi
+# Journal file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Master/project_1/project_1.runs/impl_1/vivado.jou
+# Running On: Lenova, OS: Linux, CPU Frequency: 4039.173 MHz, CPU Physical cores: 12, Host memory: 15517 MB
+#-----------------------------------------------------------
+source Teset_Harness.tcl -notrace

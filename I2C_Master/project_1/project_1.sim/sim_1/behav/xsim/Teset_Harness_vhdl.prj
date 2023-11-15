@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_1.srcs/sources_1/new/I2C_Master.vhd" \
+"../../../../project_1.srcs/sources_1/new/Teset_Harness.vhd" \
+
+# Do not sort compile order
+nosort
