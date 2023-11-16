@@ -42,9 +42,8 @@ end pwmModule;
 
 architecture Behavioral of pwmModule is
 signal count: unsigned(6 downto 0) := (others => '0');
-CONSTANT high       :   INTEGER := 112; -- To descale clock to 50 Hz
-signal sclCount     :   unsigned(10 downto 0)  := (others => '0'); -- 2^11 = 2048
-constant sclHighVal :   INTEGER := 2047; -- 2^11 = 2048.   
+CONSTANT high       :   INTEGER := 117; -- To descale clock to 50 Hz
+signal sclCount     :   unsigned(10 downto 0)  := (others => '0'); -- 2^11 = 2048  
 begin
 
 process(clock)

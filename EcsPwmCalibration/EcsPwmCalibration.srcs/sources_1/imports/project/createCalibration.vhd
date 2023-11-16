@@ -39,7 +39,6 @@ entity createCalibration is
         ready    : in    STD_LOGIC; -- Flag form user
         finish   : out   STD_LOGIC; -- Flag to say it is done
         output   : out   STD_LOGIC_VECTOR (7 downto 0) -- Out put to become pwm
-       
            );
 end createCalibration;
 
@@ -52,7 +51,7 @@ signal state:       std_logic := '0'; -- Has the purpos of inc and dec, calibrat
 signal halt:        std_logic := '0'; -- Stops the code from running. Is set low at the end of calibration cycle.
 constant newPWM :   INTEGER := 2048; -- otherwise it will be 1 clock Cycles slower the PWM modul and then trail
 constant desVal :   INTEGER := 255; -- Desired val pwm wil go uo to. 255 = 100% of duty cycle
-CONSTANT high   :   INTEGER := 112; -- To descale clock so it ends with roughly 50 Hz
+CONSTANT high   :   INTEGER := 117; -- To descale clock so it ends with roughly 50 Hz
 begin
 process(CLK) 
 

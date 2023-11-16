@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Nov  9 13:38:53 2023
+| Date         : Tue Nov 14 09:31:58 2023
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file testOfCalibration_control_sets_placed.rpt
 | Design       : testOfCalibration
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               7 |            5 |
+| No           | No                    | No                     |               7 |            6 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |               7 |            2 |
-| Yes          | No                    | No                     |              34 |            9 |
+| No           | Yes                   | No                     |               7 |            3 |
+| Yes          | No                    | No                     |              27 |            5 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              12 |            4 |
+| Yes          | Yes                   | No                     |              19 |            7 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,12 +73,12 @@ Table of Contents
 +----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
 |  Clock Signal  |             Enable Signal             |            Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
-|  CLK_IBUF_BUFG |                                       |                                       |                5 |              7 |         1.40 |
-|  CLK_IBUF_BUFG |                                       | pwmModule1/p_0_in                     |                2 |              7 |         3.50 |
-|  CLK_IBUF_BUFG | pwmCalibration/count0                 |                                       |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG |                                       |                                       |                6 |              7 |         1.17 |
+|  CLK_IBUF_BUFG |                                       | pwmModule1/p_0_in                     |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | pwmCalibration/count0                 | pwmCalibration/count[6]_i_1__0_n_0    |                3 |              7 |         2.33 |
 |  CLK_IBUF_BUFG | pwmModule1/p_0_in                     |                                       |                2 |             11 |         5.50 |
 |  CLK_IBUF_BUFG | pwmCalibration/clkDivider[11]_i_2_n_0 | pwmCalibration/clkDivider[11]_i_1_n_0 |                4 |             12 |         3.00 |
-|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0      |                                       |                4 |             16 |         4.00 |
+|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0      |                                       |                3 |             16 |         5.33 |
 +----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
 
 
