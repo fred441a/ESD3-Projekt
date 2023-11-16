@@ -1,0 +1,61 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Nov 16 15:09:31 2023
+# Process ID: 20576
+# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/impl_1
+# Command line: vivado.exe -log flightController.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source flightController.tcl -notrace
+# Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/impl_1/flightController.vdi
+# Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/impl_1\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+source flightController.tcl -notrace
+Command: link_design -top flightController -part xc7a35tcpg236-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 883.660 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 151 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'flightController' is not ideal for floorplanning, since the cellview 'I2C_EXTERNAL_ACCESS' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc]
+Finished Parsing XDC File [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1005.355 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+7 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:05 ; elapsed = 00:00:12 . Memory (MB): peak = 1005.355 ; gain = 521.727
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[0] has multiple drivers: i2cExternal/outMEMORY_reg[15][0]/Q, i2cExternal/outMEMORY_reg[15][16]/Q, i2cExternal/outMEMORY_reg[15][24]/Q, i2cExternal/outMEMORY_reg[15][8]/Q, and pwmCal/output_reg[0]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[1] has multiple drivers: i2cExternal/outMEMORY_reg[15][1]/Q, i2cExternal/outMEMORY_reg[15][17]/Q, i2cExternal/outMEMORY_reg[15][25]/Q, i2cExternal/outMEMORY_reg[15][9]/Q, and pwmCal/output_reg[1]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[2] has multiple drivers: i2cExternal/outMEMORY_reg[15][18]/Q, i2cExternal/outMEMORY_reg[15][10]/Q, i2cExternal/outMEMORY_reg[15][26]/Q, i2cExternal/outMEMORY_reg[15][2]/Q, and pwmCal/output_reg[2]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[3] has multiple drivers: i2cExternal/outMEMORY_reg[15][11]/Q, i2cExternal/outMEMORY_reg[15][19]/Q, i2cExternal/outMEMORY_reg[15][27]/Q, i2cExternal/outMEMORY_reg[15][3]/Q, and pwmCal/output_reg[3]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[4] has multiple drivers: i2cExternal/outMEMORY_reg[15][12]/Q, i2cExternal/outMEMORY_reg[15][20]/Q, i2cExternal/outMEMORY_reg[15][28]/Q, i2cExternal/outMEMORY_reg[15][4]/Q, and pwmCal/output_reg[4]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[5] has multiple drivers: i2cExternal/outMEMORY_reg[15][13]/Q, i2cExternal/outMEMORY_reg[15][29]/Q, i2cExternal/outMEMORY_reg[15][21]/Q, i2cExternal/outMEMORY_reg[15][5]/Q, and pwmCal/output_reg[5]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[6] has multiple drivers: i2cExternal/outMEMORY_reg[15][14]/Q, i2cExternal/outMEMORY_reg[15][22]/Q, i2cExternal/outMEMORY_reg[15][30]/Q, i2cExternal/outMEMORY_reg[15][6]/Q, and pwmCal/output_reg[6]/Q.
+ERROR: [DRC MDRV-1] Multiple Driver Nets: Net pwmCal/UNCONN_OUT[7] has multiple drivers: i2cExternal/outMEMORY_reg[15][15]/Q, i2cExternal/outMEMORY_reg[15][23]/Q, i2cExternal/outMEMORY_reg[15][7]/Q, i2cExternal/outMEMORY_reg[15][31]/Q, and pwmCal/output_reg[7]/Q.
+INFO: [Project 1-461] DRC finished with 8 Errors, 1 Warnings
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+ERROR: [Vivado_Tcl 4-78] Error(s) found during DRC. Opt_design not run.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1033.281 ; gain = 27.926
+INFO: [Common 17-83] Releasing license: Implementation
+12 Infos, 1 Warnings, 0 Critical Warnings and 9 Errors encountered.
+opt_design failed
+ERROR: [Common 17-39] 'opt_design' failed due to earlier errors.
+
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 16 15:09:51 2023...

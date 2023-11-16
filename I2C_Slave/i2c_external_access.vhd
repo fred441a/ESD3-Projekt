@@ -10,7 +10,8 @@ GENERIC (deviceAddress : std_logic_vector(7 downto 0) := x"08");
 		nRST		: in	std_logic;
 		SCL			: inout	std_logic;
 		SDA			: inout	std_logic;
-		MEMORY      : inout ram_type
+		inMEMORY    : in ram_type;
+		outMEMORY   : out ram_type
 	);
 end I2C_EXTERNAL_ACCESS;
 
@@ -94,8 +95,8 @@ begin
            elsif (RDqq = '0' and RDq = '1') then -- rising edge - READ-REQUEST
              case state is
                 when B3_MSB =>                
-                    BUFFER_32 <= MEMORY(to_integer(unsigned(BUFFER_8)));
-                    DATA_IN <= MEMORY(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
+                    BUFFER_32 <= inMEMORY(to_integer(unsigned(BUFFER_8)));
+                    DATA_IN <= inMEMORY(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
                     state <= B2;
                 when B2 =>
                     DATA_IN <= BUFFER_32(23 DOWNTO 16);
@@ -128,7 +129,7 @@ begin
                CASE BUFFER_8 IS
                   WHEN x"01" =>
                     -- overwrite "internal ready" flag with current value
-                    BUFFER_32(1) <= MEMORY(to_integer(unsigned(BUFFER_8)))(1); 
+                    BUFFER_32(1) <= inMEMORY(to_integer(unsigned(BUFFER_8)))(1); 
                     state <= WRITE;
                   WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
                     -- on external write access to readonly registers - reset
@@ -138,7 +139,7 @@ begin
                     state <= WRITE;                    
                END CASE;
            elsif (state = WRITE) then
-               MEMORY(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
+               outMEMORY(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
                state <= RESET;
            elsif (state = RESET) then
               BUFFER_32 <= (others => '0');
