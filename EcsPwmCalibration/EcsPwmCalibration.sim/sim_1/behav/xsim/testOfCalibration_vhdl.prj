@@ -1,7 +1,7 @@
 # compile vhdl design source files
 vhdl xil_defaultlib  \
+"../../../../EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd" \
 "../../../../EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd" \
-"../../../../EcsPwmCalibration.srcs/sources_1/imports/new/top2.vhd" \
 "../../../../EcsPwmCalibration.srcs/sources_1/imports/new/testOfCalibration.vhd" \
 
 # Do not sort compile order

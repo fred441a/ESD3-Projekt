@@ -7,6 +7,8 @@ set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ}
 set_property PACKAGE_PIN A18 [get_ports ready]
 set_property src_info {type:XDC file:1 line:6 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN B18 [get_ports reset]
+set_property src_info {type:XDC file:1 line:8 export:INPUT save:INPUT read:READ} [current_design]
+set_property IOSTANDARD LVCMOS33 [get_ports reset]
 set_property src_info {type:XDC file:1 line:9 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN G17 [get_ports {PWM[3]}]
 set_property src_info {type:XDC file:1 line:11 export:INPUT save:INPUT read:READ} [current_design]

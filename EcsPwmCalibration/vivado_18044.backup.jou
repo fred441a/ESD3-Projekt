@@ -3,10 +3,10 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sun Nov  5 09:53:13 2023
-# Process ID: 18384
+# Start of session at: Mon Nov 13 09:35:44 2023
+# Process ID: 18044
 # Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3668 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent25416 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
 # Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/vivado.log
 # Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration\vivado.jou
 # Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
@@ -17,12 +17,16 @@ update_compile_order -fileset sources_1
 launch_simulation
 open_wave_config C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/testOfCalibration_behav.wcfg
 source testOfCalibration.tcl
+add_force {/testOfCalibration/ready} -radix bin {1 0ns}
+add_force {/testOfCalibration/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 10 s
+run 1 s
+reset_run synth_1
 launch_runs synth_1 -jobs 8
 wait_on_run synth_1
-open_run synth_1 -name synth_1
 launch_runs impl_1 -jobs 8
 wait_on_run impl_1
-close_design
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
 open_run impl_1
-open_run synth_1 -name synth_1
 close_sim
