@@ -50,13 +50,13 @@ architecture Behavioral of RealTest is
         -- Interpret 32-bit float representation
         sign := float_input(31) = '1';
         exponent := to_integer(unsigned(float_input(30 downto 23))) - 127;
-        fraction := 1.0 + Real(to_integer(unsigned(float_input(22 downto 0)))) / 2.0**23;
+        fraction := Real(to_integer(unsigned(float_input(22 downto 0)))); --1.0 + Real(to_integer(unsigned(float_input(22 downto 0)))) / 2.0**23;
         
         -- Output VHDL real based on interpretation
         if sign then
-            return -fraction * 2.0**exponent;
+            return -fraction * 1.0**exponent; --2.0**exponent;
         else
-            return fraction * 2.0**exponent;
+            return fraction * 1.0**exponent; --2.0**exponent;
         end if;
     end ConvertFloatToReal;
     

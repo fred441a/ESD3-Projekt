@@ -60,7 +60,7 @@ begin
                     Result <= (Kp * error) + (Ki * (error + preverror)) + (kd * error);
                 when RESET =>
                     state <= CALC_ERROR;
-                    prevError <= error;
+                    prevError <= prevError + error;
             end case;    
         end if;
     end process;
