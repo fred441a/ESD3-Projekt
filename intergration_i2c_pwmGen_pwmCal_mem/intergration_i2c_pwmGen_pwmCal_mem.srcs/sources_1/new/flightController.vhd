@@ -46,8 +46,8 @@ entity flightController is
 end flightController;
 
 architecture Behavioral of flightController is
-signal memory: ram_type := (others =>(OTHERS => '0'));
-
+   shared variable memory: ram_type := (others =>(OTHERS => '0'));
+   
     component pwmModule is
         Port (     
            PercentCh0 : in STD_LOGIC_VECTOR (7 downto 0); -- := "01111111"; --"50%; 127"
@@ -63,7 +63,7 @@ signal memory: ram_type := (others =>(OTHERS => '0'));
         Port (
         CLK      : in    STD_LOGIC;
         ready    : in    STD_LOGIC;
-        --finish   : out   STD_LOGIC;
+        finish   : out   STD_LOGIC;
         output   : out   STD_LOGIC_VECTOR (7 downto 0)
         );
     end component;
@@ -73,48 +73,79 @@ signal memory: ram_type := (others =>(OTHERS => '0'));
 		MCLK		: in	std_logic;
 		nRST		: in	std_logic;
 		SCL			: inout	std_logic;
-		SDA			: inout	std_logic
-		--inMEMORY    : in ram_type;
-		--outMEMORY   : out ram_type
+		SDA			: inout	std_logic;
+		inMEMORY    : in ram_type;
+		-- outMEMORY   : out ram_type
+        OUT_ADDRESS : out std_logic_vector(7 downto 0);
+		OUT_DATA    : out std_logic_vector(31 downto 0);
+		OUT_WR      : out std_logic
 	);
-    end component;
--- Write internal signals here:
-signal memWrite : std_logic_vector(7 downto 0);
-   
+    end component;   
+    
+     -- Write internal signals here:
+    signal calibrationPwmOut : std_logic_vector(7 downto 0);
+    signal s_ready, s_finish : std_logic;
+    signal pwmCh0, pwmCh1, pwmCh2, pwmCh3 : std_logic_vector(7 downto 0);
+    
+    signal OUT_ADDRESS : std_logic_vector(7 downto 0);
+	signal OUT_DATA    : std_logic_vector(31 downto 0);
+	signal OUT_WR      : std_logic := '0';
 begin
+    s_ready <= memory(16#01#)(0);
+    pwmCh0 <= memory(16#15#)(7 downto 0);
+    pwmCh1 <= memory(16#15#)(15 downto 8);
+    pwmCh2 <= memory(16#15#)(23 downto 16);
+    pwmCh3 <= memory(16#15#)(31 downto 24);
+    
+    MEMORY_WRITE: process (CLK) begin
+        if (falling_edge(CLK)) then 
+            -- write to memory on falling-edge as values are set to write on rising-edge  
+            memory(16#01#)(1) := s_finish;
+            if (s_finish = '0') then 
+                -- only set calibration pwm values when calibrating
+                -- i.e when not finished calibration
+                memory(16#15#)(7 downto 0)   := calibrationPwmOut;
+                memory(16#15#)(15 downto 8)  := calibrationPwmOut;
+                memory(16#15#)(23 downto 16) := calibrationPwmOut;
+                memory(16#15#)(31 downto 24) := calibrationPwmOut;
+            end if;
+            
+            if (OUT_WR = '1') then -- write recieved data from mcu
+                memory(to_integer(unsigned(OUT_ADDRESS))) := OUT_DATA;
+            end if;
+        end if;
+    end process;
 
-pwmCal: createCalibration
-port map (
- CLK => CLK,
- ready => memory(1)(0),
- --finish => memory(1)(1),
- output => memWrite
-);
+    pwmCal: createCalibration
+    port map (
+        CLK => CLK,
+        ready => s_ready,
+        finish => s_finish,
+        output => calibrationPwmOut
+    );
 
-pwmGen: PwmModule
-port map (
-PercentCh0 => memory(15)(7 downto 0),
-PercentCh1 => memory(15)(15 downto 8),
-PercentCh2 => memory(15)(23 downto 16),
-PercentCh3 => memory(15)(31 downto 24),
-clock => CLK,
-PWM => PWM
-);
+    pwmGen: PwmModule
+    port map (
+        PercentCh0 => pwmCh0,
+        PercentCh1 => pwmCh1,
+        PercentCh2 => pwmCh2,
+        PercentCh3 => pwmCh3,
+        clock => CLK,
+        PWM => PWM
+    );
 
-i2cExternal: I2C_EXTERNAL_ACCESS
-port map(
+    i2cExternal: I2C_EXTERNAL_ACCESS
+    port map(
+        MCLK => CLK,
+        nRST => '1',
+        SCL => scl_slave,
+        SDA => sda_slave,
+        inMEMORY => memory,
+        --outMEMORY => memory
+        OUT_ADDRESS => OUT_ADDRESS,
+        OUT_DATA => OUT_DATA,
+        OUT_WR => OUT_WR
+    );
 
-MCLK => CLK,
-nRST => '1',
-SCL => scl_slave,
-SDA => sda_slave
---inMEMORY => memory,
---outMEMORY => memory
 
-);
-
-memory(15)(7 downto 0) <= memWrite;
-memory(15)(15 downto 8) <= memWrite;
-memory(15)(23 downto 16) <= memWrite;
-memory(15)(31 downto 24) <= memWrite;
 end Behavioral;

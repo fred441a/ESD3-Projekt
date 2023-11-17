@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.tcl"
+  variable script "T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.tcl"
   variable category "vivado_synth"
 }
 
@@ -77,23 +77,21 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.cache/wt [current_project]
-set_property parent.project_path C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.xpr [current_project]
+set_property webtalk.parent_dir T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.cache/wt [current_project]
+set_property parent.project_path T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property board_part_repo_paths {C:/Users/Ditte/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
-set_property board_part digilentinc.com:cmod_a7-35t:part0:1.2 [current_project]
-set_property ip_output_repo c:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.cache/ip [current_project]
+set_property ip_output_repo t:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd
-  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/sources_1/new/sharedTypes.vhd
-  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd
-  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/I2C_Slave/i2cslave.vhd
-  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd
-  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/sources_1/new/flightController.vhd
+  T:/Repoes/AAU/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd
+  T:/Repoes/AAU/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/sources_1/new/sharedTypes.vhd
+  T:/Repoes/AAU/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd
+  T:/Repoes/AAU/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd
+  T:/Repoes/AAU/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd
+  T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/sources_1/new/flightController.vhd
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -104,12 +102,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc
-set_property used_in_implementation false [get_files C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc]
+read_xdc T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc
+set_property used_in_implementation false [get_files T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp
+read_checkpoint -auto_incremental -incremental T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

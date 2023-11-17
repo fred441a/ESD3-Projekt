@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc rfile:../../../intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc rfile:../../../intergration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/artix35.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN L17 [get_ports CLK]
 set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]

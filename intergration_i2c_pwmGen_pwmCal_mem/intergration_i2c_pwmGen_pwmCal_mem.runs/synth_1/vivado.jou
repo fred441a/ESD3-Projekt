@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Nov 16 15:08:41 2023
-# Process ID: 5956
-# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1
+# Start of session at: Fri Nov 17 12:42:32 2023
+# Process ID: 12356
+# Current directory: T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1
 # Command line: vivado.exe -log flightController.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source flightController.tcl
-# Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.vds
-# Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1\vivado.jou
-# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+# Log file: T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.vds
+# Journal file: T:/Repoes/AAU/ESD3/ESD3-Projekt/intergration_i2c_pwmGen_pwmCal_mem/intergration_i2c_pwmGen_pwmCal_mem.runs/synth_1\vivado.jou
+# Running On: MIKKEL-DESKTOP, OS: Windows, CPU Frequency: 3600 MHz, CPU Physical cores: 8, Host memory: 34026 MB
 #-----------------------------------------------------------
 source flightController.tcl -notrace
