@@ -1,0 +1,23 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Fri Nov  3 09:12:29 2023
+# Process ID: 23244
+# Current directory: C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3 REPO/ESD3-Projekt/I2C_Master
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10820 C:\Users\Christian Lykke\Documents\Skole\Aalborg Universitet\ESD3\ESD3 REPO\ESD3-Projekt\I2C_Master\I2C_Master.xpr
+# Log file: C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3 REPO/ESD3-Projekt/I2C_Master/vivado.log
+# Journal file: C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3 REPO/ESD3-Projekt/I2C_Master\vivado.jou
+# Running On: LAPTOP-RKFHNDQJ, OS: Windows, CPU Frequency: 2808 MHz, CPU Physical cores: 4, Host memory: 34246 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3 REPO/ESD3-Projekt/I2C_Master/I2C_Master.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+open_wave_config {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3 REPO/ESD3-Projekt/I2C_Master/Teset_Harness_behav.wcfg}
+source Teset_Harness.tcl
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+wait_on_run synth_1
+close_sim
