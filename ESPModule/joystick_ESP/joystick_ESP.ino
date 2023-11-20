@@ -11,6 +11,7 @@
 
 int valueX = 0;  // to store the X-axis value
 int valueY = 0;  // to store the Y-axis value
+uint32_t desiredHeight = 500;
 
 
 void setup() {
@@ -31,17 +32,19 @@ void loop() {
   Serial.print(", y = ");
   Serial.println(valueY);
   //delay(200);
-  if (valueY < 1500 && valueY > 500) {
-    digitalWrite(15, HIGH);
-    digitalWrite(4, LOW);
-    digitalWrite(2, LOW);
-  } else if (valueY < 500) {
-    digitalWrite(15, LOW);
-    digitalWrite(2, HIGH);
-    digitalWrite(4, LOW);
-  } else {
-    digitalWrite(4, HIGH);
-    digitalWrite(15, LOW);
-    digitalWrite(2, LOW);
+  if (valueX >= 3500) {  // If the joystick is completely at the top, the drone should rise quickly
+    desiredHeight += 15;         // Increments desiredHeight by 15mm
+    Serial.println("SÅ SKER DER SATME NOGET OPAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+  } else if (valueX >= 3000 && valueX < 3500) {
+    desiredHeight += 10;  // Increments desiredHeight by 10mm
+  } else if (valueX > 2500 && valueX < 3000) {
+    desiredHeight += 5;  // Increments desiredHeight by 5mm
+  } else if (valueX < 1500 && valueX > 1000) {
+    desiredHeight -= 5;  // Decrements desiredHeight by 5mm
+  } else if (valueX <= 1000 && valueX > 500) {
+    desiredHeight -= 10;  // Decrements desiredHeight by 10mm
+  } else if (valueX <= 500) {
+    desiredHeight -= 15;  // Decrements desiredHeight by 15mm
   }
+  Serial.println(desiredHeight);
 }

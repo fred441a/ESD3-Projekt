@@ -21,6 +21,9 @@
 #define joystickInputZPin 34    // Input for the z axis
 #define joystickInputYawPin 35  // Input for the yaw
 
+#define configCHECK_FOR_STACK_OVERFLOW 1
+
+
 TaskHandle_t hdlSafeTakeOff, hdlSafeLand, hdlHeightRead, hdlHeightDesired, hdlYawRead, hdlYawDesired, hdlPitchRead, hdlPitchDesired, hdlRollRead, hdlRollDesired, hdlStop;  // Must be made in order for the handles to works in xTaskCreate
 
 SemaphoreHandle_t avgSem, Mutex;  // Creation of semaphore handles
@@ -105,19 +108,40 @@ void setup() {
   mpu_gyro = mpu.getGyroSensor();            // Calibration of gyro and figuring out which sensor is connected
   mpu_gyro->printSensorDetails();            // Internal update in sensor library*/
 
-  Serial.println("Task creation");                                                  // Status update to figure out which function is running
-  xTaskCreate(safeTakeOff, "Safely takes off", 10000, NULL, 3, &hdlSafeTakeOff);    // Safely lifts the drone to 500mm
-  xTaskCreate(safeLand, "Safely lands", 10000, NULL, 3, &hdlSafeLand);              // Safely lands the drone
-  xTaskCreate(heightRead, "Reads current height", 5000, NULL, 1, &hdlHeightRead);   // Read current height from range sensor
-  xTaskCreate(heightDesired, "Desired height", 10000, NULL, 1, &hdlHeightDesired);  // Sets a new desired height
-  xTaskCreate(yawRead, "Reads current yaw", 10000, NULL, 1, &hdlYawRead);           // Read current yaw from range sensor
-  xTaskCreate(yawDesired, "Desired yaw", 10000, NULL, 1, &hdlYawDesired);           // Sets a new desired yaw
-  xTaskCreate(pitchRead, "Reads current pitch", 10000, NULL, 1, &hdlPitchRead);     // Read current pitch from range sensor
-  xTaskCreate(pitchDesired, "Desired pitch", 10000, NULL, 1, &hdlPitchDesired);     // Sets a new desired pitch
-  xTaskCreate(rollRead, "Reads current roll", 10000, NULL, 1, &hdlRollRead);        // Read current roll from range sensor
-  xTaskCreate(rollDesired, "Desired roll", 10000, NULL, 1, &hdlRollDesired);        // Sets a new desired roll
-  xTaskCreate(stop, "Stops everything", 10000, NULL, 4, &hdlStop);                  // Emergency stop
-  vTaskStartScheduler();                                                            // Start the FreeRTOS scheduler
+  Serial.println("Task creation");                                                // Status update to figure out which function is running
+  xTaskCreate(safeTakeOff, "Safely takes off", 15000, NULL, 3, &hdlSafeTakeOff);  // Safely lifts the drone to 500mm
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(safeLand, "Safely lands", 15000, NULL, 3, &hdlSafeLand);  // Safely lands the drone
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(heightRead, "Reads current height", 18000, NULL, 1, &hdlHeightRead);  // Read current height from range sensor
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(heightDesired, "Desired height", 18000, NULL, 2, &hdlHeightDesired);  // Sets a new desired height
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(yawRead, "Reads current yaw", 15000, NULL, 2, &hdlYawRead);  // Read current yaw from range sensor
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(yawDesired, "Desired yaw", 15000, NULL, 2, &hdlYawDesired);  // Sets a new desired yaw
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(pitchRead, "Reads current pitch", 15000, NULL, 2, &hdlPitchRead);  // Read current pitch from range sensor
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(pitchDesired, "Desired pitch", 15000, NULL, 2, &hdlPitchDesired);  // Sets a new desired pitch
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(rollRead, "Reads current roll", 15000, NULL, 2, &hdlRollRead);  // Read current roll from range sensor
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(rollDesired, "Desired roll", 15000, NULL, 2, &hdlRollDesired);  // Sets a new desired roll
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
+  xTaskCreate(stop, "Stops everything", 15000, NULL, 4, &hdlStop);  // Emergency stop
+  Serial.println("FREE SPACE");
+  Serial.println(xPortGetFreeHeapSize());
   Serial.println("Init done");
 }
 
@@ -203,40 +227,41 @@ static void safeLand(void *pvParameters) {
   }
 }
 
-static void heightRead(void *pvParameterss) {
+static void heightRead(void *pvParameters) {
   while (1) {
     Serial.println("heightRead");  // Status update to figure out which function is running
     Serial.println("Reading a measurement... ");
     lox.rangingTest(&measure, false);  // Pass in 'true' to get debug data printout!
 
     if (measure.RangeStatus != 4) {  // Phase failures have incorrect data
-      Serial.println("Distance (mm): ");
+      Serial.print("Distance (mm): ");
       Serial.println(measure.RangeMilliMeter);
       currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
     } else {
       Serial.println(" out of range ");
     }
-  writeToAddress(0x08, 0x18, currentHeight);  // Updates the desired memory module address with current actual height
-  vTaskDelay(1000 / portTICK_PERIOD_MS);       // Delay for 100 milliseconds
+    writeToAddress(0x08, 0x18, currentHeight);  // Updates the desired memory module address with current actual height
+    vTaskDelay(100 / portTICK_PERIOD_MS);       // Delay for 100 milliseconds
   }
 }
 
 static void heightDesired(void *pvParameters) {
   while (1) {
-    Serial.println("heightDesired");  // Status update to figure out which function is running
-    if (joystickInputZ >= 3500) {     // If the joystick is completely at the top, the drone should rise quickly
-      desiredHeight += 15;            // Increments desiredHeight by 15mm
+    Serial.println("heightDesired");                     // Status update to figure out which function is running
+    int joystickInputZ = analogRead(joystickInputZPin);  // Reading from the joystick saved as input value
+    if (joystickInputZ >= 3500) {                        // If the joystick is completely at the top, the drone should rise quickly
+      desiredHeight += 15;                               // Increments desiredHeight by 15mm
       Serial.println("SÅ SKER DER SATME NOGET OPAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
-    } else if (joystickInputZ >= 3000 && joystickInputZ < 3500) {
-      desiredHeight += 10;  // Increments desiredHeight by 10mm
-    } else if (joystickInputZ > 2500 && joystickInputZ < 3000) {
-      desiredHeight += 5;  // Increments desiredHeight by 5mm
-    } else if (joystickInputZ < 1500 && joystickInputZ > 1000) {
-      desiredHeight -= 5;  // Decrements desiredHeight by 5mm
-    } else if (joystickInputZ <= 1000 && joystickInputZ > 500) {
-      desiredHeight -= 10;  // Decrements desiredHeight by 10mm
-    } else if (joystickInputZ <= 500) {
-      desiredHeight -= 15;  // Decrements desiredHeight by 15mm
+    } else if (joystickInputZ >= 3000 && joystickInputZ < 3500) {  // If the joystick is somewhat at the top, the drone should rise
+      desiredHeight += 10;                                         // Increments desiredHeight by 10mm
+    } else if (joystickInputZ > 2500 && joystickInputZ < 3000) {   // If the joystick is a little at the top, the drone should rise slowly
+      desiredHeight += 5;                                          // Increments desiredHeight by 5mm
+    } else if (joystickInputZ < 1500 && joystickInputZ > 1000) {   // If the joystick is a little at the bottom, the drone should descend slowly
+      desiredHeight -= 5;                                          // Decrements desiredHeight by 5mm
+    } else if (joystickInputZ <= 1000 && joystickInputZ > 500) {   // If the joystick is somewhat at the bottom, the drone should descend
+      desiredHeight -= 10;                                         // Decrements desiredHeight by 10mm
+    } else if (joystickInputZ <= 500) {                            // If the joystick is completely at the bottom, the drone should descend quickly
+      desiredHeight -= 15;                                         // Decrements desiredHeight by 15mm
     }
     if (currentHeight >= (desiredHeight - heightTolerance) && currentHeight <= (desiredHeight + heightTolerance)) {  // Checks if the desired height has been achieved within the given tolerances
       digitalWrite(heightReachedPin, HIGH);                                                                          // Turns on led if height reached
@@ -259,19 +284,20 @@ static void yawRead(void *pvParameters) {
 
 static void yawDesired(void *pvParameters) {
   while (1) {
-    Serial.println("yawDesired");  // Status update to figure out which function is running
-    if (joystickInputYaw >= 3500) {
-      desiredYaw += 15;
-    } else if (joystickInputYaw >= 3000 && joystickInputYaw < 3500) {
-      desiredYaw += 10;
-    } else if (joystickInputYaw > 2500 && joystickInputYaw < 3000) {
-      desiredYaw += 5;
-    } else if (joystickInputYaw < 1500 && joystickInputYaw > 1000) {
-      desiredYaw -= 5;
-    } else if (joystickInputYaw <= 1000 && joystickInputYaw > 500) {
-      desiredYaw -= 10;
-    } else if (joystickInputYaw <= 500) {
-      desiredYaw -= 15;
+    Serial.println("yawDesired");                                      // Status update to figure out which function is running
+    int joystickInputYaw = analogRead(joystickInputYawPin);            // Reading from the joystick saved as input value
+    if (joystickInputYaw >= 3500) {                                    // If the joystick is completely at the right, the drone should turn clockwise quickly
+      desiredYaw += 15;                                                // Increments desiredYaw by 15mm
+    } else if (joystickInputYaw >= 3000 && joystickInputYaw < 3500) {  // If the joystick is somewhat at the right, the drone should turn clockwise
+      desiredYaw += 10;                                                // Increments desiredYaw by 10mm
+    } else if (joystickInputYaw > 2500 && joystickInputYaw < 3000) {   // If the joystick is a little at the right, the drone should turn clockwise slowly
+      desiredYaw += 5;                                                 // Increments desiredYaw by 5mm
+    } else if (joystickInputYaw < 1500 && joystickInputYaw > 1000) {   // If the joystick is a little at the left, the drone should turn counterclockwise slowly
+      desiredYaw -= 5;                                                 // Decrements desiredYaw by 5mm
+    } else if (joystickInputYaw <= 1000 && joystickInputYaw > 500) {   // If the joystick is somewhat at the left, the drone should turn counterclockwise
+      desiredYaw -= 10;                                                // Decrements desiredYaw by 10mm
+    } else if (joystickInputYaw <= 500) {                              // If the joystick is completely at the left, the drone should turn counterclockwise quickly
+      desiredYaw -= 15;                                                // Decrements desiredYaw by 15mm
     }
     writeToAddress(0x08, 0x10, desiredYaw);  // Updates the desired memory module address with current desired yaw value
     vTaskDelay(100 / portTICK_PERIOD_MS);    // Delay for 100 milliseconds
@@ -303,19 +329,20 @@ static void pitchRead(void *pvParameters) {
 
 static void pitchDesired(void *pvParameters) {
   while (1) {
-    Serial.println("pitchDesired");  // Status update to figure out which function is running
-    if (joystickInputX >= 3500) {
-      desiredPitch += 15;
-    } else if (joystickInputX >= 3000 && joystickInputX < 3500) {
-      desiredPitch += 10;
-    } else if (joystickInputX > 2500 && joystickInputX < 3000) {
-      desiredPitch += 5;
-    } else if (joystickInputX < 1500 && joystickInputX > 1000) {
-      desiredPitch -= 5;
-    } else if (joystickInputX <= 1000 && joystickInputX > 500) {
-      desiredPitch -= 10;
-    } else if (joystickInputX <= 500) {
-      desiredPitch -= 15;
+    Serial.println("pitchDesired");                                // Status update to figure out which function is running
+    int joystickInputX = analogRead(joystickInputXPin);            // Reading from the joystick saved as input value
+    if (joystickInputX >= 3500) {                                  // If the joystick is completely at the top, the drone should go forward fast
+      desiredPitch += 15;                                          // Increments desiredPitch by 15mm
+    } else if (joystickInputX >= 3000 && joystickInputX < 3500) {  // If the joystick is somewhat at the top, the drone should go forward
+      desiredPitch += 10;                                          // Increments desiredPitch by 10mm
+    } else if (joystickInputX > 2500 && joystickInputX < 3000) {   // If the joystick is a little at the top, the drone should go forward slowly
+      desiredPitch += 5;                                           // Increments desiredPitch by 5mm
+    } else if (joystickInputX < 1500 && joystickInputX > 1000) {   // If the joystick is a little at the bottom, the drone should go backwards slowly
+      desiredPitch -= 5;                                           // Decrements desiredPitch by 5mm
+    } else if (joystickInputX <= 1000 && joystickInputX > 500) {   // If the joystick is somewhat at the bottom, the drone should go backwards
+      desiredPitch -= 10;                                          // Decrements desiredPitch by 10mm
+    } else if (joystickInputX <= 500) {                            // If the joystick is completely at the bottom, the drone should go backwards fast
+      desiredPitch -= 15;                                          // Decrements desiredPitch by 15mm
     }
     writeToAddress(0x08, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
     vTaskDelay(100 / portTICK_PERIOD_MS);      // Delay for 100 milliseconds
@@ -347,19 +374,20 @@ static void rollRead(void *pvParameters) {
 
 static void rollDesired(void *pvParameters) {
   while (1) {
-    Serial.println("rollDesired");  // Status update to figure out which function is running
-    if (joystickInputY >= 3500) {
-      desiredRoll += 15;
-    } else if (joystickInputY >= 3000 && joystickInputY < 3500) {
-      desiredRoll += 10;
-    } else if (joystickInputY > 2500 && joystickInputY < 3000) {
-      desiredRoll += 5;
-    } else if (joystickInputY < 1500 && joystickInputY > 1000) {
-      desiredRoll -= 5;
-    } else if (joystickInputY <= 1000 && joystickInputY > 500) {
-      desiredRoll -= 10;
-    } else if (joystickInputY <= 500) {
-      desiredRoll -= 15;
+    Serial.println("rollDesired");                                 // Status update to figure out which function is running
+    int joystickInputY = analogRead(joystickInputYPin);            // Reading from the joystick saved as input value
+    if (joystickInputY >= 3500) {                                  // If the joystick is completely at the right, the drone should move right quickly
+      desiredRoll += 15;                                           // Increments desiredRoll by 15mm
+    } else if (joystickInputY >= 3000 && joystickInputY < 3500) {  // If the joystick is somewhat at the right, the drone should move right
+      desiredRoll += 10;                                           // Increments desiredRoll by 10mm
+    } else if (joystickInputY > 2500 && joystickInputY < 3000) {   // If the joystick is a little at the right, the drone should move right slowly
+      desiredRoll += 5;                                            // Increments desiredRoll by 5mm
+    } else if (joystickInputY < 1500 && joystickInputY > 1000) {   // If the joystick is a little at the left, the drone should move left slowly
+      desiredRoll -= 5;                                            // Decrements desiredRoll by 5mm
+    } else if (joystickInputY <= 1000 && joystickInputY > 500) {   // If the joystick is somewhat at the left, the drone should move left
+      desiredRoll -= 10;                                           // Decrements desiredRoll by 10mm
+    } else if (joystickInputY <= 500) {                            // If the joystick is completely at the left, the drone should move left quickly
+      desiredRoll -= 15;                                           // Decrements desiredRoll by 15mm
     }
     writeToAddress(0x08, 0x0B, desiredRoll);  // Updates the desired memory module address with current desired roll value
     vTaskDelay(100 / portTICK_PERIOD_MS);     // Delay for 100 milliseconds
@@ -368,7 +396,7 @@ static void rollDesired(void *pvParameters) {
 
 static void stop(void *pvParameters) {  // Emergency stop function
   while (1) {
-    Serial.println("stop");                        // Status update to figure out which function is running
+    Serial.println("Stop for satan!");             // Status update to figure out which function is running
     if (digitalRead(emergencyButtonPin) == LOW) {  // Checks if the emergency button is pushed
       digitalWrite(emergencyLightPin, HIGH);       // Lights up the emergency lights
       vTaskSuspend(hdlHeightDesired);              // Suspends heightDesired function
