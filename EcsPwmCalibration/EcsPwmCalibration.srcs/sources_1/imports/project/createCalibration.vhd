@@ -49,9 +49,9 @@ signal rise:        unsigned(7 downto 0) := (others => '0'); -- To make it go up
 signal go:          std_logic := '0'; -- Internal flag so the code can start
 signal state:       std_logic := '0'; -- Has the purpos of inc and dec, calibration
 signal halt:        std_logic := '0'; -- Stops the code from running. Is set low at the end of calibration cycle.
-constant newPWM :   INTEGER := 2048; -- otherwise it will be 1 clock Cycles slower the PWM modul and then trail
+constant newPWM :   INTEGER := 2327; -- otherwise it will be 1 clock Cycles slower the PWM modul and then trail
 constant desVal :   INTEGER := 255; -- Desired val pwm wil go uo to. 255 = 100% of duty cycle
-CONSTANT high   :   INTEGER := 117; -- To descale clock so it ends with roughly 50 Hz
+CONSTANT high   :   INTEGER := 103; -- To descale clock so it ends with roughly 50 Hz
 begin
 process(CLK) 
 
@@ -72,10 +72,10 @@ if(CLK'event and CLK = '1') then
     count <= count +1; 
 
         if(count = high) then
-        count <= (others => '0');
-        clkDivider <= clkDivider +1; -- Creates a new clock cycle count
+            count <= (others => '0');
+            clkDivider <= clkDivider +1; -- Creates a new clock cycle count
         end if;
- -- Descaling clock ends
+-- Descaling clock ends
 
 -- Rising begins    
         if( clkDivider = newPWM) then
