@@ -132,8 +132,7 @@ begin
                CASE BUFFER_8 IS
                   WHEN x"01" =>
                     -- overwrite "internal ready" flag with current value
-                    -- to_integer(unsigned(BUFFER_8))
-                    BUFFER_32(1) <= MEMORY_READ(16#01#)(1); 
+                    BUFFER_32(1) <= MEMORY_READ(setupReg)(1); 
                     state <= WRITE;
                   WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
                     -- on external write access to readonly registers - reset

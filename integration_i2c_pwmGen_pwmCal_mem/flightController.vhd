@@ -94,14 +94,14 @@ begin
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 
             -- write to memory on falling-edge as values are set to write on rising-edge  
-            memory(16#01#)(1) <= calibrationPwmFinish;
+            memory(setupReg)(1) <= calibrationPwmFinish;
             if (calibrationPwmFinish = '0') then 
                 -- only set calibration pwm values when calibrating
                 -- i.e when not finished calibration
-                memory(16#15#)(7 downto 0)   <= calibrationPwmOut;
-                memory(16#15#)(15 downto 8)  <= calibrationPwmOut;
-                memory(16#15#)(23 downto 16) <= calibrationPwmOut;
-                memory(16#15#)(31 downto 24) <= calibrationPwmOut;
+                memory(PWMOut)(7 downto 0)   <= calibrationPwmOut;
+                memory(PWMOut)(15 downto 8)  <= calibrationPwmOut;
+                memory(PWMOut)(23 downto 16) <= calibrationPwmOut;
+                memory(PWMOut)(31 downto 24) <= calibrationPwmOut;
             end if;
             
             if (EXTERNAL_WRITE_REQ = '1') then -- write recieved data from mcu
@@ -113,17 +113,17 @@ begin
     pwmCal: createCalibration
     port map (
         CLK => CLK,
-        ready => memory(16#01#)(0), -- "EXTERNAL READY"
+        ready => memory(setupReg)(0), -- "EXTERNAL READY"
         finish => calibrationPwmFinish,
         output => calibrationPwmOut
     );
 
     pwmGen: PwmModule
     port map (
-        PercentCh0 => memory(16#15#)(7 downto 0),
-        PercentCh1 => memory(16#15#)(15 downto 8),
-        PercentCh2 => memory(16#15#)(23 downto 16),
-        PercentCh3 => memory(16#15#)(31 downto 24),
+        PercentCh0 => memory(PWMOut)(7 downto 0),
+        PercentCh1 => memory(PWMOut)(15 downto 8),
+        PercentCh2 => memory(PWMOut)(23 downto 16),
+        PercentCh3 => memory(PWMOut)(31 downto 24),
         clock => CLK,
         PWM => PWM
     );
