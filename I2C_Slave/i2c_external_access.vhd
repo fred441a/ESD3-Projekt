@@ -10,11 +10,11 @@ GENERIC (deviceAddress : std_logic_vector(7 downto 0) := x"08");
 		nRST		: in	std_logic;
 		SCL			: inout	std_logic;
 		SDA			: inout	std_logic;
-		inMEMORY    : in ram_type;
-		-- outMEMORY   : out ram_type
-		OUT_ADDRESS : out std_logic_vector(7 downto 0);
-		OUT_DATA    : out std_logic_vector(31 downto 0);
-		OUT_WR      : out std_logic
+		MEMORY_READ : in ram_type;
+
+		WRITE_ADDRESS : out std_logic_vector(7 downto 0);
+		WRITE_DATA    : out std_logic_vector(31 downto 0);
+		WRITE_REQ      : out std_logic
 	);
 end I2C_EXTERNAL_ACCESS;
 
@@ -98,8 +98,8 @@ begin
            elsif (RDqq = '0' and RDq = '1') then -- rising edge - READ-REQUEST
              case state is
                 when B3_MSB =>                
-                    BUFFER_32 <= inMEMORY(to_integer(unsigned(BUFFER_8)));
-                    DATA_IN <= inMEMORY(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
+                    BUFFER_32 <= MEMORY_READ(to_integer(unsigned(BUFFER_8)));
+                    DATA_IN <= MEMORY_READ(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
                     state <= B2;
                 when B2 =>
                     DATA_IN <= BUFFER_32(23 DOWNTO 16);
@@ -133,7 +133,7 @@ begin
                   WHEN x"01" =>
                     -- overwrite "internal ready" flag with current value
                     -- to_integer(unsigned(BUFFER_8))
-                    BUFFER_32(1) <= inMEMORY(16#01#)(1); 
+                    BUFFER_32(1) <= MEMORY_READ(16#01#)(1); 
                     state <= WRITE;
                   WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
                     -- on external write access to readonly registers - reset
@@ -143,17 +143,16 @@ begin
                     state <= WRITE;                    
                END CASE;
            elsif (state = WRITE) then
-               --outMEMORY(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
-               OUT_ADDRESS <= BUFFER_8;
-               OUT_DATA <= BUFFER_32;
-               OUT_WR <= '1';
+               WRITE_ADDRESS <= BUFFER_8;
+               WRITE_DATA <= BUFFER_32;
+               WRITE_REQ <= '1';
                state <= RESET;
            elsif (state = RESET) then
               BUFFER_32 <= (others => '0');
               BUFFER_8 <= (others => '0');              
-              OUT_ADDRESS <= (others => '0');
-              OUT_DATA <= (others => '0');
-              OUT_WR <= '0';
+              WRITE_ADDRESS <= (others => '0');
+              WRITE_DATA <= (others => '0');
+              WRITE_REQ <= '0';
               state <= B3_MSB; --reset
            end if;
        end if;
