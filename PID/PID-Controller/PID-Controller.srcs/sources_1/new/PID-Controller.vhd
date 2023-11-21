@@ -38,7 +38,7 @@ entity PID_Controller is
         ki        : in real;
         kd        : in real;
         SetPoint  : in real;
-        Reference : in real;
+        Measured : in real;
         Result    : out real
     );
 end PID_Controller;
@@ -46,21 +46,23 @@ end PID_Controller;
 architecture Behavioral of PID_Controller is
     TYPE tstate IS (CALC_ERROR, PID, RESET);
     signal state : tstate := CALC_ERROR;
-    signal error, prevError : real := 0.0;
+    signal error, prevError, prevMeasured : real := 0.0;
 
 begin
     process (MCLK) begin
         if (rising_edge(MCLK)) then
             case (state) is
                 when CALC_ERROR =>
-                    error <= setPoint - Reference;
+                    error <= setPoint - Measured;
                     state <= PID;
                 when PID =>
                     state <= RESET;
-                    Result <= (Kp * error) + (Ki * (error + preverror)) + (kd * error);
+                    Result <= (Kp * error) + (Ki * (error + preverror)) + (kd * (error - preverror)); --PID
+                    --Result <= (Kp * error) + (Ki * (error + preverror)) + (kd * (Measured - prevMeasured)); -- PIV
                 when RESET =>
                     state <= CALC_ERROR;
                     prevError <= prevError + error;
+                    prevMeasured <= Measured;
             end case;    
         end if;
     end process;

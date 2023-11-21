@@ -71,7 +71,7 @@ architecture Behavioral of PID is
         ki        : in real;
         kd        : in real;
         SetPoint  : in real;
-        Reference : in real;
+        Measured  : in real;
         Result    : out real
     );
     end component;
@@ -84,7 +84,7 @@ begin
         ki        => ConvertFloatToReal(MEMORY(16#04#)), -- Altitude Ki
         kd        => ConvertFloatToReal(MEMORY(16#05#)), -- Altitude Kd
         SetPoint  => ConvertFloatToReal(MEMORY(16#02#)), -- Wanted altitude
-        Reference => Real(to_integer(unsigned(MEMORY(16#18#)))), -- Measured altitude,
+        Measured  => Real(to_integer(unsigned(MEMORY(16#18#)))), -- Measured altitude,
         Result    => RES_ALTITUDE
     );
     
@@ -95,7 +95,7 @@ begin
         ki        => ConvertFloatToReal(MEMORY(16#08#)), -- Pitch Ki
         kd        => ConvertFloatToReal(MEMORY(16#09#)), -- Pitch Kd
         SetPoint  => ConvertFloatToReal(MEMORY(16#06#)), -- Wanted Pitch
-        Reference => Real(to_integer(unsigned(MEMORY(16#22#)))), -- Measured Pitch around x-axis,
+        Measured  => Real(to_integer(unsigned(MEMORY(16#22#)))), -- Measured Pitch around x-axis,
         Result    => RES_PITCH
     );
     
@@ -106,7 +106,7 @@ begin
         ki        => ConvertFloatToReal(MEMORY(16#0D#)), -- ROLL Ki
         kd        => ConvertFloatToReal(MEMORY(16#0E#)), -- ROLL Kd
         SetPoint  => ConvertFloatToReal(MEMORY(16#0B#)), -- Wanted ROLL
-        Reference => Real(to_integer(unsigned(MEMORY(16#24#)))), -- Measured ROLL around y-axis,
+        Measured  => Real(to_integer(unsigned(MEMORY(16#24#)))), -- Measured ROLL around y-axis,
         Result    => RES_ROLL
     );
     
@@ -117,7 +117,7 @@ begin
         ki        => ConvertFloatToReal(MEMORY(16#12#)), -- YAW Ki
         kd        => ConvertFloatToReal(MEMORY(16#13#)), -- YAW Kd
         SetPoint  => ConvertFloatToReal(MEMORY(16#10#)), -- Wanted YAW
-        Reference => Real(to_integer(unsigned(MEMORY(16#26#)))), -- Measured YAW around z-axis,
+        Measured  => Real(to_integer(unsigned(MEMORY(16#26#)))), -- Measured YAW around z-axis,
         Result    => RES_YAW
     );
 
