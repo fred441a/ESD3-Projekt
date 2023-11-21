@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.shared_types.all;
+use work.shared_types.all; -- shared type definitions from memory module
 
 entity I2C_EXTERNAL_ACCESS is
 GENERIC (deviceAddress : std_logic_vector(7 downto 0) := x"08");
@@ -10,11 +10,11 @@ GENERIC (deviceAddress : std_logic_vector(7 downto 0) := x"08");
 		nRST		: in	std_logic;
 		SCL			: inout	std_logic;
 		SDA			: inout	std_logic;
-		MEMORY_READ : in ram_type;
+		MEMORY_READ : in ram_type; -- input of memory module for read
 
-		WRITE_ADDRESS : out std_logic_vector(7 downto 0);
-		WRITE_DATA    : out std_logic_vector(31 downto 0);
-		WRITE_REQ      : out std_logic
+		WRITE_ADDRESS : out std_logic_vector(7 downto 0);  -- address wanted to write to in memory module
+		WRITE_DATA    : out std_logic_vector(31 downto 0); -- data to write to memory module
+		WRITE_REQ      : out std_logic                     -- pulse indicating a write-request to memory module
 	);
 end I2C_EXTERNAL_ACCESS;
 

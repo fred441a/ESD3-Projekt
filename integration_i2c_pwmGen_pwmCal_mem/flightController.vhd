@@ -83,7 +83,7 @@ architecture Behavioral of flightController is
     end component;   
     
      -- Write internal signals here:
-    signal calibrationPwmOut : std_logic_vector(7 downto 0);
+    signal calibrationPwmOut    : std_logic_vector(7 downto 0);
     signal calibrationPwmFinish : std_logic;
     
     signal EXTERNAL_WRITE_ADDRESS : std_logic_vector(7 downto 0);
