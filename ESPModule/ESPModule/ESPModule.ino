@@ -87,17 +87,17 @@ void setup() {
     }
   }
 
-  Serial.println("Adafruit MPU6050 test!");                      // Tests if a connection to the sensor has been established
-                                                                 /* if (!mpu.begin()) {                               // Checks all boolean states for buildin begin function from sensor library
+  Serial.println("Adafruit MPU6050 test!");         // Tests if a connection to the sensor has been established
+  if (!mpu.begin()) {                               // Checks all boolean states for buildin begin function from sensor library
     Serial.println("Failed to find MPU6050 chip");  // If no connection is present, this flag will be set high
     while (1) {
       delay(10);
     }
-  }*/
+  }
   lox.configSensor(Adafruit_VL53L0X::VL53L0X_SENSE_LONG_RANGE);  // Changes sensor config from default (1.2metres) to long range (2.2 metres). Other options could be: VL53L0X_SENSE_DEFAULT, VL53L0X_SENSE_LONG_RANGE, VL53L0X_SENSE_HIGH_SPEED, VL53L0X_SENSE_HIGH_ACCURACY
 
-  Serial.println("MPU init soon");  // Status update to figure out which function is running
-  /*mpu_temp = mpu.getTemperatureSensor();     // Do not delete, MPU won't calibrate without for some reason, even though temp is not used
+  Serial.println("MPU init soon");           // Status update to figure out which function is running
+  mpu_temp = mpu.getTemperatureSensor();     // Do not delete, MPU won't calibrate without for some reason, even though temp is not used
   mpu_temp->printSensorDetails();            // Do not delete, MPU won't calibrate without for some reason, even though temp is not used
   mpu_accel = mpu.getAccelerometerSensor();  // Calibration of accelerometer and figuring out which sensor is connected
   mpu_accel->printSensorDetails();           // Internal update in sensor library
@@ -311,8 +311,8 @@ static void yawDesired(void *pvParameters) {
 
 static void pitchRead(void *pvParameters) {
   while (1) {
-    Serial.println("pitchRead");  // Status update to figure out which function is running
-    /*mpu_accel->getEvent(&accel);        // Makes a new reading from the accelerometer
+    Serial.println("pitchRead");        // Status update to figure out which function is running
+    mpu_accel->getEvent(&accel);        // Makes a new reading from the accelerometer
     mpu_gyro->getEvent(&gyro);          // Makes a new reading from the gyro
     gyroReadX = gyro.gyro.x;            // Updates current gyro reading on x-axis
     gyroReadY = gyro.gyro.y;            // Updates current gyro reading on y-axis
@@ -327,8 +327,8 @@ static void pitchRead(void *pvParameters) {
     writeToAddress(0x08, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
     writeToAddress(0x08, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
     writeToAddress(0x08, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
-    writeToAddress(0x08, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis*/
-    vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    writeToAddress(0x08, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
+    vTaskDelay(100 / portTICK_PERIOD_MS);    // Delay for 100 milliseconds
   }
 }
 
@@ -337,17 +337,17 @@ static void pitchDesired(void *pvParameters) {
     Serial.println("pitchDesired");                                // Status update to figure out which function is running
     joystickInputX = analogRead(joystickInputXPin);                // Reading from the joystick saved as input value
     if (joystickInputX >= 3500) {                                  // If the joystick is completely at the top, the drone should go forward fast
-      desiredPitch += 15;                                          // Increments desiredPitch by 15mm
+      desiredPitch += 0.15;                                        // Increments desiredPitch by 15mm
     } else if (joystickInputX >= 3000 && joystickInputX < 3500) {  // If the joystick is somewhat at the top, the drone should go forward
-      desiredPitch += 10;                                          // Increments desiredPitch by 10mm
+      desiredPitch += 0.10;                                        // Increments desiredPitch by 10mm
     } else if (joystickInputX > 2500 && joystickInputX < 3000) {   // If the joystick is a little at the top, the drone should go forward slowly
-      desiredPitch += 5;                                           // Increments desiredPitch by 5mm
+      desiredPitch += 0.5;                                         // Increments desiredPitch by 5mm
     } else if (joystickInputX < 1500 && joystickInputX > 1000) {   // If the joystick is a little at the bottom, the drone should go backwards slowly
-      desiredPitch -= 5;                                           // Decrements desiredPitch by 5mm
+      desiredPitch -= 0.5;                                         // Decrements desiredPitch by 5mm
     } else if (joystickInputX <= 1000 && joystickInputX > 500) {   // If the joystick is somewhat at the bottom, the drone should go backwards
-      desiredPitch -= 10;                                          // Decrements desiredPitch by 10mm
+      desiredPitch -= 0.10;                                        // Decrements desiredPitch by 10mm
     } else if (joystickInputX <= 500) {                            // If the joystick is completely at the bottom, the drone should go backwards fast
-      desiredPitch -= 15;                                          // Decrements desiredPitch by 15mm
+      desiredPitch -= 0.15;                                        // Decrements desiredPitch by 15mm
     }
     Serial.println(desiredPitch);
     writeToAddress(0x08, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
@@ -357,8 +357,8 @@ static void pitchDesired(void *pvParameters) {
 
 static void rollRead(void *pvParameters) {
   while (1) {
-    Serial.println("rollRead");  // Status update to figure out which function is running
-    /*mpu_accel->getEvent(&accel);        // Makes a new reading from the accelerometer
+    Serial.println("rollRead");         // Status update to figure out which function is running
+    mpu_accel->getEvent(&accel);        // Makes a new reading from the accelerometer
     mpu_gyro->getEvent(&gyro);          // Makes a new reading from the gyro
     gyroReadX = gyro.gyro.x;            // Updates current gyro reading on x-axis
     gyroReadY = gyro.gyro.y;            // Updates current gyro reading on y-axis
@@ -373,8 +373,8 @@ static void rollRead(void *pvParameters) {
     writeToAddress(0x08, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
     writeToAddress(0x08, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
     writeToAddress(0x08, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
-    writeToAddress(0x08, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis*/
-    vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    writeToAddress(0x08, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
+    vTaskDelay(100 / portTICK_PERIOD_MS);    // Delay for 100 milliseconds
   }
 }
 
@@ -383,17 +383,17 @@ static void rollDesired(void *pvParameters) {
     Serial.println("rollDesired");                                 // Status update to figure out which function is running
     joystickInputY = analogRead(joystickInputYPin);                // Reading from the joystick saved as input value
     if (joystickInputY >= 3500) {                                  // If the joystick is completely at the right, the drone should move right quickly
-      desiredRoll += 15;                                           // Increments desiredRoll by 15mm
+      desiredRoll += 0.15;                                         // Increments desiredRoll by 15mm
     } else if (joystickInputY >= 3000 && joystickInputY < 3500) {  // If the joystick is somewhat at the right, the drone should move right
-      desiredRoll += 10;                                           // Increments desiredRoll by 10mm
+      desiredRoll += 0.10;                                         // Increments desiredRoll by 10mm
     } else if (joystickInputY > 2500 && joystickInputY < 3000) {   // If the joystick is a little at the right, the drone should move right slowly
-      desiredRoll += 5;                                            // Increments desiredRoll by 5mm
+      desiredRoll += 0.5;                                          // Increments desiredRoll by 5mm
     } else if (joystickInputY < 1500 && joystickInputY > 1000) {   // If the joystick is a little at the left, the drone should move left slowly
-      desiredRoll -= 5;                                            // Decrements desiredRoll by 5mm
+      desiredRoll -= 0.5;                                          // Decrements desiredRoll by 5mm
     } else if (joystickInputY <= 1000 && joystickInputY > 500) {   // If the joystick is somewhat at the left, the drone should move left
-      desiredRoll -= 10;                                           // Decrements desiredRoll by 10mm
+      desiredRoll -= 0.10;                                         // Decrements desiredRoll by 10mm
     } else if (joystickInputY <= 500) {                            // If the joystick is completely at the left, the drone should move left quickly
-      desiredRoll -= 15;                                           // Decrements desiredRoll by 15mm
+      desiredRoll -= 0.15;                                         // Decrements desiredRoll by 15mm
     }
     Serial.println(desiredRoll);
     writeToAddress(0x08, 0x0B, desiredRoll);  // Updates the desired memory module address with current desired roll value
