@@ -43,7 +43,7 @@ architecture Behavioral of TEST_HARNESS is
         ki        : in real;
         kd        : in real;
         SetPoint  : in real;
-        Reference : in real;
+        Measured  : in real;
         Result    : out real
     );
     end component;
@@ -59,7 +59,7 @@ begin
         ki        => 3.0,
         kd        => 1.5,
         SetPoint  => 100.0,
-        Reference => 20.0,
+        Measured  => 20.0,
         Result    => res
     );
 
