@@ -21,7 +21,7 @@
 #define joystickInputZPin 34    // Input for the z axis
 #define joystickInputYawPin 35  // Input for the yaw
 
-#define configCHECK_FOR_STACK_OVERFLOW 1
+#define configCHECK_FOR_STACK_OVERFLOW 1  // Checks whether or not stack overflow occurs
 
 
 TaskHandle_t hdlSafeTakeOff, hdlSafeLand, hdlHeightRead, hdlHeightDesired, hdlYawRead, hdlYawDesired, hdlPitchRead, hdlPitchDesired, hdlRollRead, hdlRollDesired, hdlStop;  // Must be made in order for the handles to works in xTaskCreate
@@ -51,17 +51,13 @@ float accelReadX = 0;                  // X-axis reading from accelerometer
 float accelReadY = 0;                  // Y-axis reading from accelerometer
 float accelReadZ = 0;                  // Z-axis reading from accelerometer
 
-
 uint32_t joystickInputX = 0;    // Input value given by the joystick operated by user
 uint32_t joystickInputY = 0;    // Input value given by the joystick operated by user
 uint32_t joystickInputZ = 0;    // Input value given by the joystick operated by user
 uint32_t joystickInputYaw = 0;  // Input value given by the joystick operated by user
 
-sensors_event_t accel;  //
-sensors_event_t gyro;
-
-
-
+sensors_event_t accel;  // Enables reaction to when a change has happened at the accelerometer
+sensors_event_t gyro;   // Enables reaction to when a change has happened at the gyroscope
 
 void setup() {
   Serial.begin(115200);   // Initialisation of serial monitor
@@ -108,38 +104,38 @@ void setup() {
   mpu_gyro = mpu.getGyroSensor();            // Calibration of gyro and figuring out which sensor is connected
   mpu_gyro->printSensorDetails();            // Internal update in sensor library*/
 
-  Serial.println("Task creation");                                                // Status update to figure out which function is running
-  xTaskCreate(safeTakeOff, "Safely takes off", 15000, NULL, 3, &hdlSafeTakeOff);  // Safely lifts the drone to 500mm
+  Serial.println("Task creation");                                               // Status update to figure out which function is running
+  xTaskCreate(safeTakeOff, "Safely takes off", 5000, NULL, 3, &hdlSafeTakeOff);  // Safely lifts the drone to 500mm
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(safeLand, "Safely lands", 15000, NULL, 3, &hdlSafeLand);  // Safely lands the drone
+  xTaskCreate(safeLand, "Safely lands", 5000, NULL, 3, &hdlSafeLand);  // Safely lands the drone
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(heightRead, "Reads current height", 18000, NULL, 1, &hdlHeightRead);  // Read current height from range sensor
+  xTaskCreate(heightRead, "Reads current height", 8000, NULL, 1, &hdlHeightRead);  // Read current height from range sensor
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(heightDesired, "Desired height", 18000, NULL, 2, &hdlHeightDesired);  // Sets a new desired height
+  xTaskCreate(heightDesired, "Desired height", 8000, NULL, 2, &hdlHeightDesired);  // Sets a new desired height
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(yawRead, "Reads current yaw", 15000, NULL, 2, &hdlYawRead);  // Read current yaw from range sensor
+  xTaskCreate(yawRead, "Reads current yaw", 5000, NULL, 2, &hdlYawRead);  // Read current yaw from range sensor
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(yawDesired, "Desired yaw", 15000, NULL, 2, &hdlYawDesired);  // Sets a new desired yaw
+  xTaskCreate(yawDesired, "Desired yaw", 5000, NULL, 2, &hdlYawDesired);  // Sets a new desired yaw
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(pitchRead, "Reads current pitch", 15000, NULL, 2, &hdlPitchRead);  // Read current pitch from range sensor
+  xTaskCreate(pitchRead, "Reads current pitch", 5000, NULL, 2, &hdlPitchRead);  // Read current pitch from range sensor
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(pitchDesired, "Desired pitch", 15000, NULL, 2, &hdlPitchDesired);  // Sets a new desired pitch
+  xTaskCreate(pitchDesired, "Desired pitch", 5000, NULL, 2, &hdlPitchDesired);  // Sets a new desired pitch
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(rollRead, "Reads current roll", 15000, NULL, 2, &hdlRollRead);  // Read current roll from range sensor
+  xTaskCreate(rollRead, "Reads current roll", 5000, NULL, 2, &hdlRollRead);  // Read current roll from range sensor
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(rollDesired, "Desired roll", 15000, NULL, 2, &hdlRollDesired);  // Sets a new desired roll
+  xTaskCreate(rollDesired, "Desired roll", 5000, NULL, 2, &hdlRollDesired);  // Sets a new desired roll
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
-  xTaskCreate(stop, "Stops everything", 15000, NULL, 4, &hdlStop);  // Emergency stop
+  xTaskCreate(stop, "Stops everything", 5000, NULL, 4, &hdlStop);  // Emergency stop
   Serial.println("FREE SPACE");
   Serial.println(xPortGetFreeHeapSize());
   Serial.println("Init done");
@@ -193,37 +189,39 @@ void readyFPGA() {
 
 static void safeTakeOff(void *pvParameters) {
   while (1) {
-    //while (takeOffPin == LOW) {                     // While a switch is enabled this function can be called
-    Serial.println("Takeoff");                    // Status update to figure out which function is running
-    writeToAddress(0x08, 0x01, 1);                // Sets the safe takeoff flag high in memory module
-    currentHeight = measure.RangeMilliMeter;      // Updates the currentHeight variable with the newest measured value
-    desiredHeight = currentHeight;                // Updates desired height to current height, so current height is taken into account
-    for (int i = 0; i <= startHeight; i++) {      // Loops until startheight of 500 mm has been achieved
-      desiredHeight += 1;                         // Increments desiredheight with 1mm every iteration for a smooth ascend
-      writeToAddress(0x08, 0x02, desiredHeight);  // Updates the memory module with newest desired height
-      delay(200);                                 // Delay so that the MCU does not get ahead of the actual drone height
-    }
+    Serial.println("Takeoff");             // Status update to figure out which function is running
+                                           /*while (takeOffPin == LOW) {                     // While a switch is enabled this function can be called
+      writeToAddress(0x08, 0x01, 1);                // Sets the safe takeoff flag high in memory module
+      currentHeight = measure.RangeMilliMeter;      // Updates the currentHeight variable with the newest measured value
+      desiredHeight = currentHeight;                // Updates desired height to current height, so current height is taken into account
+      for (int i = 0; i <= startHeight; i++) {      // Loops until startheight of 500 mm has been achieved
+        desiredHeight += 1;                         // Increments desiredheight with 1mm every iteration for a smooth ascend
+        writeToAddress(0x08, 0x02, desiredHeight);  // Updates the memory module with newest desired height
+        delay(200);                                 // Delay so that the MCU does not get ahead of the actual drone height
+        Serial.println("LET HER RIP!");
+      }
+      writeToAddress(0x08, 0x01, 1);         // Sets the safe takeoff flag low in memory module
+    }*/
     vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
-    writeToAddress(0x08, 0x01, 1);         // Sets the safe takeoff flag low in memory module
-    //}
   }
 }
 
 static void safeLand(void *pvParameters) {
   while (1) {
-    // while (landPin == LOW) {                        // While a switch is enabled this function can be called
-    Serial.println("Land");                       // Status update to figure out which function is running
-    writeToAddress(0x08, 0x01, 1);                // Sets the safe land flag high in memory module
-    currentHeight = measure.RangeMilliMeter;      // Updates the currentHeight variable with the newest measured value
-    desiredHeight = currentHeight;                // Sets desiredheight to current height, so there is no need to suddenly increase altitude before a landing can occur, in the case desired height is much higher than current height.
-    for (int i = currentHeight; i >= 0; i--) {    // Loops over until the drone has descended down to 0 mm height
-      desiredHeight -= 1;                         // Decrements desired height with 1 mm, so that the drone slowly descends
-      writeToAddress(0x08, 0x02, desiredHeight);  // Updates the desired memory module address with a new "desired" height, so that the drone should land safely
-      delay(100);                                 // Delay so that the MCU does not get ahead of the actual drone height
-    }
+    Serial.println("Land");                // Status update to figure out which function is running
+                                           /*while (landPin == LOW) {                        // While a switch is enabled this function can be called
+      writeToAddress(0x08, 0x01, 1);                // Sets the safe land flag high in memory module
+      currentHeight = measure.RangeMilliMeter;      // Updates the currentHeight variable with the newest measured value
+      desiredHeight = currentHeight;                // Sets desiredheight to current height, so there is no need to suddenly increase altitude before a landing can occur, in the case desired height is much higher than current height.
+      for (int i = currentHeight; i >= 0; i--) {    // Loops over until the drone has descended down to 0 mm height
+        desiredHeight -= 1;                         // Decrements desired height with 1 mm, so that the drone slowly descends
+        writeToAddress(0x08, 0x02, desiredHeight);  // Updates the desired memory module address with a new "desired" height, so that the drone should land safely
+        delay(100);                                 // Delay so that the MCU does not get ahead of the actual drone height
+        Serial.println("LANDING THIS SHIT!");
+      }
+      writeToAddress(0x08, 0x01, 0);         // Sets the safe land flag low in memory module
+    }*/
     vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
-    writeToAddress(0x08, 0x01, 0);         // Sets the safe land flag low in memory module
-    //}
   }
 }
 
@@ -247,10 +245,10 @@ static void heightRead(void *pvParameters) {
 
 static void heightDesired(void *pvParameters) {
   while (1) {
-    Serial.println("heightDesired");                     // Status update to figure out which function is running
-    int joystickInputZ = analogRead(joystickInputZPin);  // Reading from the joystick saved as input value
-    if (joystickInputZ >= 3500) {                        // If the joystick is completely at the top, the drone should rise quickly
-      desiredHeight += 15;                               // Increments desiredHeight by 15mm
+    Serial.println("heightDesired");                 // Status update to figure out which function is running
+    joystickInputZ = analogRead(joystickInputZPin);  // Reading from the joystick saved as input value
+    if (joystickInputZ >= 3500) {                    // If the joystick is completely at the top, the drone should rise quickly
+      desiredHeight += 15;                           // Increments desiredHeight by 15mm
       Serial.println("SÅ SKER DER SATME NOGET OPAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
     } else if (joystickInputZ >= 3000 && joystickInputZ < 3500) {  // If the joystick is somewhat at the top, the drone should rise
       desiredHeight += 10;                                         // Increments desiredHeight by 10mm
@@ -267,6 +265,13 @@ static void heightDesired(void *pvParameters) {
       digitalWrite(heightReachedPin, HIGH);                                                                          // Turns on led if height reached
     } else {
       digitalWrite(heightReachedPin, LOW);  // Turns off LED if desired height has not been met.
+    }
+    if (desiredHeight < 0 || desiredHeight > 22000) {  // If desired height is lower than 0, the drone will crash. However, since the desiredHeight variable is unsigned, a failsafe of desiredHeight>22000 has been added, to catch the situations where the value rolls over and becomes approx 4294967295
+      desiredHeight = 0;                               // Minimum height of drone
+      Serial.println("CRASHING LIKE KOBE");
+    } else if (desiredHeight > 2200) {  // If the desired height is higher than 2200, another sensor has to be used
+      desiredHeight = 2200;             // Maximum stable height of altitude sensor
+      Serial.println("HIGHER THAN SNOOP DOGG");
     }
     writeToAddress(0x08, 0x02, desiredHeight);  // Updates the desired memory module address with current desired height
     Serial.println(desiredHeight);
@@ -285,7 +290,7 @@ static void yawRead(void *pvParameters) {
 static void yawDesired(void *pvParameters) {
   while (1) {
     Serial.println("yawDesired");                                      // Status update to figure out which function is running
-    int joystickInputYaw = analogRead(joystickInputYawPin);            // Reading from the joystick saved as input value
+    joystickInputYaw = analogRead(joystickInputYawPin);                // Reading from the joystick saved as input value
     if (joystickInputYaw >= 3500) {                                    // If the joystick is completely at the right, the drone should turn clockwise quickly
       desiredYaw += 15;                                                // Increments desiredYaw by 15mm
     } else if (joystickInputYaw >= 3000 && joystickInputYaw < 3500) {  // If the joystick is somewhat at the right, the drone should turn clockwise
@@ -330,7 +335,7 @@ static void pitchRead(void *pvParameters) {
 static void pitchDesired(void *pvParameters) {
   while (1) {
     Serial.println("pitchDesired");                                // Status update to figure out which function is running
-    int joystickInputX = analogRead(joystickInputXPin);            // Reading from the joystick saved as input value
+    joystickInputX = analogRead(joystickInputXPin);                // Reading from the joystick saved as input value
     if (joystickInputX >= 3500) {                                  // If the joystick is completely at the top, the drone should go forward fast
       desiredPitch += 15;                                          // Increments desiredPitch by 15mm
     } else if (joystickInputX >= 3000 && joystickInputX < 3500) {  // If the joystick is somewhat at the top, the drone should go forward
@@ -344,6 +349,7 @@ static void pitchDesired(void *pvParameters) {
     } else if (joystickInputX <= 500) {                            // If the joystick is completely at the bottom, the drone should go backwards fast
       desiredPitch -= 15;                                          // Decrements desiredPitch by 15mm
     }
+    Serial.println(desiredPitch);
     writeToAddress(0x08, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
     vTaskDelay(100 / portTICK_PERIOD_MS);      // Delay for 100 milliseconds
   }
@@ -375,7 +381,7 @@ static void rollRead(void *pvParameters) {
 static void rollDesired(void *pvParameters) {
   while (1) {
     Serial.println("rollDesired");                                 // Status update to figure out which function is running
-    int joystickInputY = analogRead(joystickInputYPin);            // Reading from the joystick saved as input value
+    joystickInputY = analogRead(joystickInputYPin);                // Reading from the joystick saved as input value
     if (joystickInputY >= 3500) {                                  // If the joystick is completely at the right, the drone should move right quickly
       desiredRoll += 15;                                           // Increments desiredRoll by 15mm
     } else if (joystickInputY >= 3000 && joystickInputY < 3500) {  // If the joystick is somewhat at the right, the drone should move right
@@ -389,6 +395,7 @@ static void rollDesired(void *pvParameters) {
     } else if (joystickInputY <= 500) {                            // If the joystick is completely at the left, the drone should move left quickly
       desiredRoll -= 15;                                           // Decrements desiredRoll by 15mm
     }
+    Serial.println(desiredRoll);
     writeToAddress(0x08, 0x0B, desiredRoll);  // Updates the desired memory module address with current desired roll value
     vTaskDelay(100 / portTICK_PERIOD_MS);     // Delay for 100 milliseconds
   }
@@ -396,26 +403,27 @@ static void rollDesired(void *pvParameters) {
 
 static void stop(void *pvParameters) {  // Emergency stop function
   while (1) {
-    Serial.println("Stop for satan!");             // Status update to figure out which function is running
-    if (digitalRead(emergencyButtonPin) == LOW) {  // Checks if the emergency button is pushed
-      digitalWrite(emergencyLightPin, HIGH);       // Lights up the emergency lights
-      vTaskSuspend(hdlHeightDesired);              // Suspends heightDesired function
-      vTaskSuspend(hdlYawRead);                    // Suspends yawRead function
-      vTaskSuspend(hdlYawDesired);                 // Suspends yawDesired function
-      vTaskSuspend(hdlPitchRead);                  // Suspends pitchRead function
-      vTaskSuspend(hdlPitchDesired);               // Suspends pitchDesired function
-      vTaskSuspend(hdlRollRead);                   // Suspends rollRead function
-      vTaskSuspend(hdlRollDesired);                // Suspends rollDesired function
-    } else {                                       // Checks if the emergency button is released
-      digitalWrite(emergencyLightPin, LOW);        // Turns off the emergency lights
-      vTaskResume(hdlHeightRead);                  // Resumes heightRead function
-      vTaskResume(hdlHeightDesired);               // Resumes heightDesired function
-      vTaskResume(hdlYawRead);                     // Resumes yawRead function
-      vTaskResume(hdlYawDesired);                  // Resumes yawDesired function
-      vTaskResume(hdlPitchRead);                   // Resumes pitchRead function
-      vTaskResume(hdlPitchDesired);                // Resumes pitchDesired function
-      vTaskResume(hdlRollRead);                    // Resumes rollRead function
-      vTaskResume(hdlRollDesired);                 // Resumes rollDesired function
+    Serial.println("Stop for satan!");              // Status update to figure out which function is running
+    if (digitalRead(emergencyButtonPin) == HIGH) {  // Checks if the emergency button is pushed
+      digitalWrite(emergencyLightPin, HIGH);        // Lights up the emergency lights
+      vTaskSuspend(hdlHeightRead);                  // Suspends heightRead function
+      vTaskSuspend(hdlHeightDesired);               // Suspends heightDesired function
+      vTaskSuspend(hdlYawRead);                     // Suspends yawRead function
+      vTaskSuspend(hdlYawDesired);                  // Suspends yawDesired function
+      vTaskSuspend(hdlPitchRead);                   // Suspends pitchRead function
+      vTaskSuspend(hdlPitchDesired);                // Suspends pitchDesired function
+      vTaskSuspend(hdlRollRead);                    // Suspends rollRead function
+      vTaskSuspend(hdlRollDesired);                 // Suspends rollDesired function
+    } else {                                        // Checks if the emergency button is released
+      digitalWrite(emergencyLightPin, LOW);         // Turns off the emergency lights
+      vTaskResume(hdlHeightRead);                   // Resumes heightRead function
+      vTaskResume(hdlHeightDesired);                // Resumes heightDesired function
+      vTaskResume(hdlYawRead);                      // Resumes yawRead function
+      vTaskResume(hdlYawDesired);                   // Resumes yawDesired function
+      vTaskResume(hdlPitchRead);                    // Resumes pitchRead function
+      vTaskResume(hdlPitchDesired);                 // Resumes pitchDesired function
+      vTaskResume(hdlRollRead);                     // Resumes rollRead function
+      vTaskResume(hdlRollDesired);                  // Resumes rollDesired function
     }
     vTaskDelay(500 / portTICK_PERIOD_MS);  // Delays this task from running for the next 500 ms
   }
