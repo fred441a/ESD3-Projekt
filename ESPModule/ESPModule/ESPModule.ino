@@ -6,20 +6,22 @@
 #include "Adafruit_VL53L0X.h"   // Library for the range sensor
 #include <Adafruit_MPU6050.h>   // Library for gyroscope and accelormeter
 
-#define INCLUDE_vTaskSuspend 1  // Definition of suspend function being active
-#define externalEnablePin 0     // The pin to activate the FPGA
-#define takeOffPin 0            // Pin to start take off
-#define landPin 0               // Pin to land again
-#define startHeight 500         // Height to achieve upon power on in mm
-#define heightReachedPin 0      // Pin to turn on led indicating desired height is reached within tolerance
-#define somethingIsWrongPin 13  // Pin to light up red LED
-#define allGoodPin 12           // Pin to light op green LED
-#define emergencyButtonPin 27   // Emergency button connection pin
-#define emergencyLightPin 26    // LED that signifies an emergency has happened
-#define joystickInputXPin 36    // Input for the x axis
-#define joystickInputYPin 39    // Input for the y axis
-#define joystickInputZPin 34    // Input for the z axis
-#define joystickInputYawPin 35  // Input for the yaw
+#define INCLUDE_vTaskSuspend 1     // Definition of suspend function being active
+#define externalEnablePin 0        // The pin to activate the FPGA
+#define takeOffPin 0               // Pin to start take off
+#define landPin 0                  // Pin to land again
+#define startHeight 500            // Height to achieve upon power on in mm
+#define heightReachedPin 0         // Pin to turn on led indicating desired height is reached within tolerance
+#define somethingIsWrongPin 13     // Pin to light up red LED
+#define allGoodPin 12              // Pin to light op green LED
+#define emergencyButtonPin 27      // Emergency button connection pin
+#define emergencyLightPin 26       // LED that signifies an emergency has happened
+#define joystickInputXPin 36       // Input for the x axis
+#define joystickInputYPin 39       // Input for the y axis
+#define joystickInputZPin 34       // Input for the z axis
+#define joystickInputYawPin 35     // Input for the yaw
+#define heightTolerance 10         // Tolerance for how much a difference is allowed between currentHeight and desiredHeight
+#define pitchAndRollTolerance 0.1  // Tolerance for how much a difference is allowed between current roll/pitch and desired roll/pitch
 
 #define configCHECK_FOR_STACK_OVERFLOW 1  // Checks whether or not stack overflow occurs
 
@@ -37,7 +39,6 @@ Adafruit_Sensor *mpu_temp, *mpu_accel, *mpu_gyro;  // Necessary for adafruit lib
 // Global variables:
 uint32_t desiredHeight = startHeight;  // Desired height in mm
 uint32_t currentHeight;                // Variable to store current height measured by the vl52l0x
-uint32_t heightTolerance = 10;         // Tolerance for how much a difference is allowed betwen currentHeight and desiredHeight
 float currentYaw = 0;                  // Current yaw measurement. Float to handle values given by MPU6050
 float desiredYaw = 0;                  // Desired yaw angle. Float to handle values given by MPU6050
 float currentPitch = 0;                // Current pitch measurement. Float to handle values given by MPU6050
@@ -320,8 +321,6 @@ static void pitchRead(void *pvParameters) {
     accelReadX = accel.acceleration.x;  // Updates current accelerometer reading on x-axis
     accelReadY = accel.acceleration.y;  // Updates current accelerometer reading on y-axis
     accelReadZ = accel.acceleration.z;  // Updates current accelerometer reading on z-axis
-    //currentPitch = accel.acceleration.pitch; // Should update current pitch angle, but has not been tested yet
-    //currentPitch = gyro.gyro.pitch;          // Should update current pitch angle, but has not been tested yet
     writeToAddress(0x08, 0x22, gyroReadX);   // Updates the desired memory module address with current gyro reading on x-axis
     writeToAddress(0x08, 0x24, gyroReadY);   // Updates the desired memory module address with current gyro reading on y-axis
     writeToAddress(0x08, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
@@ -349,6 +348,18 @@ static void pitchDesired(void *pvParameters) {
     } else if (joystickInputX <= 500) {                            // If the joystick is completely at the bottom, the drone should go backwards fast
       desiredPitch -= 0.15;                                        // Decrements desiredPitch by 15mm
     }
+    /*if (accelReadX >= (desiredPitch - pitchAndRollTolerance) && accelReadX <= (desiredPitch + pitchAndRollTolerance)) {  // Checks if the desired height has been achieved within the given tolerances
+      digitalWrite(heightReachedPin, HIGH);                                                                              // Turns on led if height reached
+    } else {
+      digitalWrite(heightReachedPin, LOW);  // Turns off LED if desired height has not been met.
+    }*/
+    if (desiredPitch < -5) {  
+      desiredPitch = -5;     
+      Serial.println("CRASHING LIKE KOBE");
+    } else if (desiredPitch > 5) {  
+      desiredPitch = 5;            
+      Serial.println("HIGHER THAN SNOOP DOGG");
+    }
     Serial.println(desiredPitch);
     writeToAddress(0x08, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
     vTaskDelay(100 / portTICK_PERIOD_MS);      // Delay for 100 milliseconds
@@ -366,8 +377,6 @@ static void rollRead(void *pvParameters) {
     accelReadX = accel.acceleration.x;  // Updates current accelerometer reading on x-axis
     accelReadY = accel.acceleration.y;  // Updates current accelerometer reading on y-axis
     accelReadZ = accel.acceleration.z;  // Updates current accelerometer reading on z-axis
-    //currentRoll = accel.acceleration.roll; // Should update current roll angle, but has not been tested yet
-    //currentRoll = gyro.gyro.roll;          // Should update current roll angle, but has not been tested yet
     writeToAddress(0x08, 0x22, gyroReadX);   // Updates the desired memory module address with current gyro reading on x-axis
     writeToAddress(0x08, 0x24, gyroReadY);   // Updates the desired memory module address with current gyro reading on y-axis
     writeToAddress(0x08, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
