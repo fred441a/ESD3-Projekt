@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Mon Nov  6 11:23:57 2023
+| Date         : Fri Nov 10 08:47:57 2023
 | Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file TEST_HARNESS_timing_summary_routed.rpt -pb TEST_HARNESS_timing_summary_routed.pb -rpx TEST_HARNESS_timing_summary_routed.rpx -warn_on_violation
 | Design       : TEST_HARNESS
@@ -513,7 +513,7 @@ Slack:                    inf
 Slack:                    inf
   Source:                 II/BUFFER_32_reg[26]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            II/RAM_reg[44][26]/D
+  Destination:            II/MEMORY_reg[44][26]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.264ns  (logic 0.141ns (53.320%)  route 0.123ns (46.680%))
@@ -524,7 +524,7 @@ Slack:                    inf
     SLICE_X55Y49         FDRE                         0.000     0.000 r  II/BUFFER_32_reg[26]/C
     SLICE_X55Y49         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  II/BUFFER_32_reg[26]/Q
                          net (fo=46, routed)          0.123     0.264    II/BUFFER_32_reg_n_0_[26]
-    SLICE_X57Y48         FDRE                                         r  II/RAM_reg[44][26]/D
+    SLICE_X57Y48         FDRE                                         r  II/MEMORY_reg[44][26]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -581,7 +581,7 @@ Slack:                    inf
 Slack:                    inf
   Source:                 II/BUFFER_32_reg[23]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            II/RAM_reg[35][23]/D
+  Destination:            II/MEMORY_reg[35][23]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.295ns  (logic 0.164ns (55.635%)  route 0.131ns (44.365%))
@@ -592,13 +592,13 @@ Slack:                    inf
     SLICE_X52Y52         FDRE                         0.000     0.000 r  II/BUFFER_32_reg[23]/C
     SLICE_X52Y52         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  II/BUFFER_32_reg[23]/Q
                          net (fo=47, routed)          0.131     0.295    II/BUFFER_32_reg_n_0_[23]
-    SLICE_X52Y51         FDRE                                         r  II/RAM_reg[35][23]/D
+    SLICE_X52Y51         FDRE                                         r  II/MEMORY_reg[35][23]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 II/BUFFER_32_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            II/RAM_reg[21][1]/D
+  Destination:            II/MEMORY_reg[21][1]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.296ns  (logic 0.141ns (47.708%)  route 0.155ns (52.292%))
@@ -609,13 +609,13 @@ Slack:                    inf
     SLICE_X59Y54         FDRE                         0.000     0.000 r  II/BUFFER_32_reg[1]/C
     SLICE_X59Y54         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  II/BUFFER_32_reg[1]/Q
                          net (fo=48, routed)          0.155     0.296    II/BUFFER_32_reg_n_0_[1]
-    SLICE_X58Y53         FDRE                                         r  II/RAM_reg[21][1]/D
+    SLICE_X58Y53         FDRE                                         r  II/MEMORY_reg[21][1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 II/BUFFER_32_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            II/RAM_reg[18][0]/D
+  Destination:            II/MEMORY_reg[18][0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.296ns  (logic 0.164ns (55.441%)  route 0.132ns (44.559%))
@@ -626,7 +626,7 @@ Slack:                    inf
     SLICE_X60Y54         FDRE                         0.000     0.000 r  II/BUFFER_32_reg[0]/C
     SLICE_X60Y54         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  II/BUFFER_32_reg[0]/Q
                          net (fo=47, routed)          0.132     0.296    II/BUFFER_32_reg_n_0_[0]
-    SLICE_X60Y55         FDRE                                         r  II/RAM_reg[18][0]/D
+    SLICE_X60Y55         FDRE                                         r  II/MEMORY_reg[18][0]/D
   -------------------------------------------------------------------    -------------------
 
 

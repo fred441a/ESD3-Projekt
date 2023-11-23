@@ -35,7 +35,6 @@ entity testOfCalibration is
     Port (
         CLK : in std_logic;
         ready: in std_logic;
-        reset: in std_logic;
         finish: out std_logic;
         PWM: out std_logic_vector (3 downto 0)
         
@@ -54,11 +53,10 @@ architecture Behavioral of testOfCalibration is
        );
     end component;
     
-    component top2 is 
+    component createCalibration is 
         Port (
         CLK      : in    STD_LOGIC;
         ready    : in    STD_LOGIC;
-        reset    : in    STD_LOGIC;
         finish   : out   STD_LOGIC;
         output   : out   STD_LOGIC_VECTOR (7 downto 0)
         );
@@ -68,23 +66,22 @@ architecture Behavioral of testOfCalibration is
     signal newClock: STD_LOGIC; -- til at andvende i pwmModule som intern clock
     
 begin
-    pwmCalibration: top2 
+    pwmCalibration: createCalibration 
       port map (
-        CLK      => CLK,
-        ready    => ready,
-        reset    => reset,
-        finish   => finish,
-        output   => s_output
+        CLK      => CLK, -- run on internal 12M hz clock
+        ready    => ready, -- User says it's ready
+        finish   => finish, -- Module says it is finished
+        output   => s_output -- So output becomes the pwm calibration
     );    
     
     pwmModule1: pwmModule 
       port map (
-        clock      => CLK,
+        clock      => CLK, -- run on internal 12M hz clock
         PercentCh0 => s_output,
         PercentCh1 => s_output,
         PercentCh2 => s_output,
         PercentCh3 => s_output,
-        PWM => PWM
+        PWM => PWM -- Channel to the motors
     );    
 end architecture;
 

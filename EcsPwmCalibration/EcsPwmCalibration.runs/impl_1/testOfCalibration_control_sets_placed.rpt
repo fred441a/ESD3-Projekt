@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Nov  7 11:22:57 2023
+| Date         : Tue Nov 14 09:31:58 2023
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file testOfCalibration_control_sets_placed.rpt
 | Design       : testOfCalibration
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     8 |
-|    Minimum number of control sets                        |     8 |
+| Total control sets                                       |     6 |
+|    Minimum number of control sets                        |     6 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    26 |
+| Unused register locations in slices containing registers |    12 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     8 |
-| >= 0 to < 4        |     1 |
+| Total control sets |     6 |
+| >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     0 |
-| >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     4 |
-| >= 10 to < 12      |     2 |
-| >= 12 to < 14      |     0 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     1 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     0 |
+| >= 16              |     1 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,29 +58,27 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               6 |            5 |
+| No           | No                    | No                     |               7 |            6 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              11 |            3 |
-| Yes          | No                    | No                     |              25 |            6 |
+| No           | Yes                   | No                     |               7 |            3 |
+| Yes          | No                    | No                     |              27 |            5 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              20 |            8 |
+| Yes          | Yes                   | No                     |              19 |            7 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+------------------------------------+--------------------------------+------------------+----------------+--------------+
-|  Clock Signal  |            Enable Signal           |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+------------------------------------+--------------------------------+------------------+----------------+--------------+
-|  CLK_IBUF_BUFG | ready_IBUF                         | pwmCalibration/go              |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG |                                    |                                |                5 |              6 |         1.20 |
-|  CLK_IBUF_BUFG | pwmModule1/p_0_in                  |                                |                2 |              8 |         4.00 |
-|  CLK_IBUF_BUFG | pwmCalibration/rise[7]_i_2_n_0     | pwmCalibration/rise[7]_i_1_n_0 |                2 |              8 |         4.00 |
-|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0   |                                |                2 |              8 |         4.00 |
-|  CLK_IBUF_BUFG | pwmCalibration/newCount[8]_i_1_n_0 |                                |                2 |              9 |         4.50 |
-|  CLK_IBUF_BUFG |                                    | pwmModule1/p_0_in              |                3 |             11 |         3.67 |
-|  CLK_IBUF_BUFG | pwmCalibration/go16_out            | pwmCalibration/go              |                5 |             11 |         2.20 |
-+----------------+------------------------------------+--------------------------------+------------------+----------------+--------------+
++----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |             Enable Signal             |            Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  CLK_IBUF_BUFG |                                       |                                       |                6 |              7 |         1.17 |
+|  CLK_IBUF_BUFG |                                       | pwmModule1/p_0_in                     |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | pwmCalibration/count0                 | pwmCalibration/count[6]_i_1__0_n_0    |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | pwmModule1/p_0_in                     |                                       |                2 |             11 |         5.50 |
+|  CLK_IBUF_BUFG | pwmCalibration/clkDivider[11]_i_2_n_0 | pwmCalibration/clkDivider[11]_i_1_n_0 |                4 |             12 |         3.00 |
+|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0      |                                       |                3 |             16 |         5.33 |
++----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
 
 
