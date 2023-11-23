@@ -59,6 +59,10 @@ architecture Behavioral of Byte_compiler is
 
 TYPE MachineState is (Ready,Read1Byte,Read2Byte,Read3Byte,Read4Byte,WriteToMem);
 SIGNAL STATE: MachineState := Ready;
+
+TYPE PulseMachine is (Pulsing, DonePulsing);
+SIGNAL Pulse : PulseMachine := Pulsing;
+
 SIGNAL RBBusy: STD_LOGIC;
 SIGNAL begin_transaction: STD_LOGIC;
 SIGNAL I2C_REG: std_logic_vector (7 downto 0);
@@ -92,22 +96,31 @@ Read_Byte : entity work.Read_Byte
                 WHEN Read1Byte =>
                     IF(ENABLE(0) = '1') THEN
                         I2C_REG <= ADDR1;
+                        CASE Pulse IS
+                            WHEN Pulsing =>
                         begin_transaction <= '1';
-
+                        Pulse <= DonePulsing;
+                            WHEN DonePulsing =>
                         if(RBBusy = '1') THEN
                             begin_transaction <= '0';
                         END IF;
                         if(RBBusy = '0' and begin_transaction = '0') THEN
                             WriteMemBus(31 downto 24) <= DATA;
+                            Pulse <= Pulsing;
                             STATE <= Read2Byte;
                         END IF;
+                        END CASE;
                     ELSE
                        STATE <=Ready; 
                     END IF;
                 WHEN Read2Byte =>
                     IF(ENABLE(1) = '1') THEN
                         I2C_REG <= ADDR2;
+                        CASE Pulse IS
+                            WHEN Pulsing =>
                         begin_transaction <= '1';
+                        Pulse <= DonePulsing;
+                    WHEN DonePulsing =>
 
                         if(RBBusy = '1') THEN
                             begin_transaction <= '0';
@@ -115,14 +128,21 @@ Read_Byte : entity work.Read_Byte
                         if(RBBusy = '0' and begin_transaction = '0') THEN
                             WriteMemBus(23 downto 16) <= DATA;
                             STATE <= Read3Byte;
+                            Pulse <= Pulsing;
                         END IF;
+                    WHEN OTHERS => Pulse<=DonePulsing;
+                END CASE;
                      ELSE
                        STATE <=Ready; 
                     END IF;
                 WHEN Read3Byte =>
                     IF(ENABLE(2) = '1') THEN
                         I2C_REG <= ADDR3;
+                        CASE Pulse IS
+                            WHEN Pulsing =>
                         begin_transaction <= '1';
+                        Pulse <= DonePulsing;
+                    WHEN DonePulsing =>
 
                         if(RBBusy = '1') THEN
                             begin_transaction <= '0';
@@ -130,14 +150,21 @@ Read_Byte : entity work.Read_Byte
                         if(RBBusy = '0' and begin_transaction = '0') THEN
                             WriteMemBus(15 downto 8) <= DATA;
                             STATE <= Read4Byte;
+                            Pulse <= Pulsing;
                         END IF;
+                    WHEN OTHERS => Pulse<=DonePulsing;
+                END CASE;
                      ELSE
                        STATE <=Ready; 
                     END IF;
                 WHEN Read4Byte =>
                     IF(ENABLE(3) = '1') THEN
                         I2C_REG <= ADDR4;
+                        CASE Pulse IS
+                            WHEN Pulsing =>
                         begin_transaction <= '1';
+                        Pulse <= DonePulsing;
+                    WHEN DonePulsing =>
 
                         if(RBBusy = '1') THEN
                             begin_transaction <= '0';
@@ -145,7 +172,10 @@ Read_Byte : entity work.Read_Byte
                         if(RBBusy = '0' and begin_transaction = '0') THEN
                             WriteMemBus(7 downto 0) <= DATA;
                             STATE <= WriteToMem;
+                            Pulse <= Pulsing;
                         END IF;
+                    WHEN OTHERS => Pulse<=DonePulsing;
+                END CASE;
                      ELSE
                        STATE <=Ready; 
                     END IF;
