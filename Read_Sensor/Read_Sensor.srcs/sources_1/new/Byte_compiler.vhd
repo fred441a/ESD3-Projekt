@@ -21,7 +21,6 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use work.shared_types.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -40,37 +39,34 @@ entity Byte_compiler is
             sda: INOUT STD_LOGIC;
 
             ENALL: in STD_LOGIC;
-            EN1 : in STD_LOGIC;
-            EN2 : in STD_LOGIC;
-            EN3 : in STD_LOGIC;
-            EN4 : in STD_LOGIC;
+            ENABLE: in STD_LOGIC_VECTOR(3 downto 0);
             I2CADDR : in STD_LOGIC_VECTOR (6 downto 0);
             ADDR1 : in STD_LOGIC_VECTOR (7 downto 0);
-            ADDR2 : in STD_LOGIC_VECTOR (7 downto 0));
-            ADDR3 : in STD_LOGIC_VECTOR (7 downto 0));
-            ADDR4 : in STD_LOGIC_VECTOR (7 downto 0));
+            ADDR2 : in STD_LOGIC_VECTOR (7 downto 0);
+            ADDR3 : in STD_LOGIC_VECTOR (7 downto 0);
+            ADDR4 : in STD_LOGIC_VECTOR (7 downto 0);
 
-            WriteMemBus: OUT STD_LOGIC_VECTOR( 31 downto 0 );
-            ADDRMemBus: OUT STD_LOGIC_VECTOR( 7 downto 0 );
-            MemWrite: OUT STD_LOGIC;
-            MemRead: IN ram_type;
+            WriteMemBus: INOUT STD_LOGIC_VECTOR( 31 downto 0 );
+            ADDRMemBus: INOUT STD_LOGIC_VECTOR( 7 downto 0 );
+            MemWrite: INOUT STD_LOGIC;
             
 
             BusyOut: OUT STD_LOGIC
 );
 end Byte_compiler;
 
+architecture Behavioral of Byte_compiler is
+
 TYPE MachineState is (Ready,Read1Byte,Read2Byte,Read3Byte,Read4Byte,WriteToMem);
 SIGNAL STATE: MachineState := Ready;
 SIGNAL RBBusy: STD_LOGIC;
 SIGNAL begin_transaction: STD_LOGIC;
-SIGNAL I2C_REG: STD_LOGIC;
+SIGNAL I2C_REG: std_logic_vector (7 downto 0);
 SIGNAL DATA: STD_LOGIC_VECTOR(7 downto 0);
+    
+begin
 
-
-architecture Behavioral of Byte_compiler is
-
-    Read_Byte : entity work.Read_Byte
+Read_Byte : entity work.Read_Byte
         port map (
                     scl => scl,
                     sda => sda,
@@ -83,32 +79,84 @@ architecture Behavioral of Byte_compiler is
                     DATA => DATA
                  );
 
-    
-begin
-
     PROCESS (clk)
     BEGIN
         if(rising_edge(clk)) THEN
             CASE  STATE IS
                 WHEN Ready =>
+                    WriteMemBus <= (31 downto 0 => '0');
                     BusyOut <= '0';
                     if(ENALL = '1') THEN
                         STATE <= Read1Byte;
                     END IF;
                 WHEN Read1Byte =>
-                    IF(EN1 = '1') THEN
+                    IF(ENABLE(0) = '1') THEN
                         I2C_REG <= ADDR1;
                         begin_transaction <= '1';
 
                         if(RBBusy = '1') THEN
                             begin_transaction <= '0';
-
                         END IF;
-
-
-
+                        if(RBBusy = '0' and begin_transaction = '0') THEN
+                            WriteMemBus(31 downto 24) <= DATA;
+                            STATE <= Read2Byte;
+                        END IF;
+                    ELSE
+                       STATE <=Ready; 
                     END IF;
-                WHEN OTHERS => null;
+                WHEN Read2Byte =>
+                    IF(ENABLE(1) = '1') THEN
+                        I2C_REG <= ADDR2;
+                        begin_transaction <= '1';
+
+                        if(RBBusy = '1') THEN
+                            begin_transaction <= '0';
+                        END IF;
+                        if(RBBusy = '0' and begin_transaction = '0') THEN
+                            WriteMemBus(23 downto 16) <= DATA;
+                            STATE <= Read3Byte;
+                        END IF;
+                     ELSE
+                       STATE <=Ready; 
+                    END IF;
+                WHEN Read3Byte =>
+                    IF(ENABLE(2) = '1') THEN
+                        I2C_REG <= ADDR3;
+                        begin_transaction <= '1';
+
+                        if(RBBusy = '1') THEN
+                            begin_transaction <= '0';
+                        END IF;
+                        if(RBBusy = '0' and begin_transaction = '0') THEN
+                            WriteMemBus(15 downto 8) <= DATA;
+                            STATE <= Read4Byte;
+                        END IF;
+                     ELSE
+                       STATE <=Ready; 
+                    END IF;
+                WHEN Read4Byte =>
+                    IF(ENABLE(3) = '1') THEN
+                        I2C_REG <= ADDR4;
+                        begin_transaction <= '1';
+
+                        if(RBBusy = '1') THEN
+                            begin_transaction <= '0';
+                        END IF;
+                        if(RBBusy = '0' and begin_transaction = '0') THEN
+                            WriteMemBus(7 downto 0) <= DATA;
+                            STATE <= WriteToMem;
+                        END IF;
+                     ELSE
+                       STATE <=Ready; 
+                    END IF;
+                WHEN WriteToMem =>
+                    IF(MemWrite = '0') THEN
+                        MemWrite <= '1';
+                    ELSIF (MemWrite = '1') THEN
+                        MemWrite <= '0';
+                        STATE <= Ready;
+                    END IF;
+                WHEN OTHERS => STATE <= Ready;
             END CASE;
 
 

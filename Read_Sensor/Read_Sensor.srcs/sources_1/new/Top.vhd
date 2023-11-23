@@ -46,18 +46,23 @@ end Top;
 architecture Behavioral of Top is
 
         Signal DATA: std_logic_vector(7 downto 0);
+        SIGNAL BCBusy: std_logic ;
 
 begin
 
-    Read_Byte: entity work.Read_Byte
+    Byte_compiler: entity work.Byte_compiler
         port map(
             clk => clk,
             sda => sda,
             scl => scl,
-            enable => '1',
-            I2C_ADDR => std_logic_vector(TO_UNSIGNED(16#68#,7)),
-            I2C_REG => X"3B",
-            DATA => DATA
+            ENALL => en,
+            BusyOut => BCBusy,
+            I2CADDR => std_logic_vector(TO_UNSIGNED(16#68#,7)),
+            ENABLE => ('0','0','1','1'),
+            ADDR1 => X"3B",
+            ADDR2 => X"3C",
+            ADDR3 => X"00",
+            ADDR4 => X"00"
             
         );
 
