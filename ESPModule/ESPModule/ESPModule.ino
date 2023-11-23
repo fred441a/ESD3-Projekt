@@ -25,7 +25,6 @@
 #define FPGAAddress 0x08                  // I2C address of the FPGA
 #define configCHECK_FOR_STACK_OVERFLOW 1  // Checks whether or not stack overflow occurs
 
-
 TaskHandle_t hdlSafeTakeOff, hdlSafeLand, hdlHeightRead, hdlHeightDesired, hdlYawRead, hdlYawDesired, hdlPitchRead, hdlPitchDesired, hdlRollRead, hdlRollDesired, hdlStop;  // Must be made in order for the handles to works in xTaskCreate
 
 SemaphoreHandle_t avgSem, Mutex;  // Creation of semaphore handles
@@ -166,7 +165,7 @@ void readFromAddress(uint8_t slaveAddress, uint8_t regAddress) {
     char c = Wire.read();                // Receive a byte as character
     Serial.print(c, HEX);                // Print the character
   }
-  Serial.println(); // Newline for readability
+  Serial.println();  // Newline for readability
 }
 
 static void safeTakeOff(void *pvParameters) {
