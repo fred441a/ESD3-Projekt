@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.float_pkg.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -39,27 +40,27 @@ architecture Behavioral of TEST_HARNESS is
     component PID_Controller
     Port (
         MCLK      : std_logic;
-        kp        : in real;
-        ki        : in real;
-        kd        : in real;
-        SetPoint  : in real;
-        Measured  : in real;
-        Result    : out real
+        kp        : in float32;
+        ki        : in float32;
+        kd        : in float32;
+        SetPoint  : in float32;
+        Measured  : in float32;
+        Result    : out float32
     );
     end component;
     
     signal mclk : std_logic;
-    signal res : real;
+    signal res : float32;
 begin
 
     PID: PID_Controller
     Port map (
         MCLK      => mclk,
-        kp        => 2.0,
-        ki        => 3.0,
-        kd        => 1.5,
-        SetPoint  => 100.0,
-        Measured  => 20.0,
+        kp        => to_float(2.0),
+        ki        => to_float(3.0),
+        kd        => to_float(1.5),
+        SetPoint  => to_float(100.0),
+        Measured  => to_float(20.0),
         Result    => res
     );
 

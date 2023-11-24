@@ -21,19 +21,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-use IEEE.NUMERIC_STD.ALL;
-use IEEE.MATH_REAL.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.numeric_std.all;
 use IEEE.float_pkg.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity PID_PWM_test is
     Port ( 
@@ -57,16 +46,28 @@ component PID_Controller
     );
     end component;
 
-signal setPoint  : float32;
-signal PIDOut    : float32 := to_float(0);
-signal Height    : float32 := to_float(0);
+signal setPoint  : Integer;
+signal PIDOut, prevPIDOut, Height : float32 := to_float(0.0);
     
 begin
-    setPoint <= to_float(4000.0) when InPWM = '1' else to_float(0.0);
-    OutPWM <= std_logic_vector(to_unsigned(to_integer(PIDOut), OutPWM'length));
     
-    process (PIDOut) begin
-        Height <= Height + PIDOut;
+    --OutPWM <= std_logic_vector(to_unsigned(to_integer(PIDOut), OutPWM'length));
+     
+    process (MCLK) begin
+        if (rising_edge(MCLK)) then
+            if (InPWM = '1') then
+                setPoint <= 4000; 
+            else 
+                setPoint <= 0;
+            end if;
+        end if;
+        if (falling_edge(MCLK)) then
+            OutPWM <= std_logic_vector(to_unsigned(setPoint, OutPWM'length)); --to_integer(setPoint)
+        end if;
+        if (falling_edge(MCLK) and not (prevPIDOut = PIDOut)) then
+            prevPIDOut <= PIDOut;
+            Height <= Height + PIDOut;
+        end if;
     end process;
     
     PID_ALTITUDE: PID_Controller
@@ -75,7 +76,7 @@ begin
         kp        => to_float(1.0),  -- Altitude Kp
         ki        => to_float(0.05), -- Altitude Ki
         kd        => to_float(3.0),  -- Altitude Kd
-        SetPoint  => setPoint, -- Wanted altitude
+        SetPoint  => to_float(0.0), -- Wanted altitude
         Measured  => Height,   -- Measured altitude,
         Result    => PIDOut
     );
