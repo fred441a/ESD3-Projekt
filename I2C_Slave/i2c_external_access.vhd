@@ -10,7 +10,7 @@ GENERIC (deviceAddress : std_logic_vector(7 downto 0) := x"08");
 		nRST		: in	std_logic;
 		SCL			: inout	std_logic;
 		SDA			: inout	std_logic;
-		RAM         : inout ram_type
+		MEMORY      : inout ram_type
 	);
 end I2C_EXTERNAL_ACCESS;
 
@@ -53,13 +53,9 @@ architecture rtl of I2C_EXTERNAL_ACCESS is
     signal BUFFER_8      : std_logic_vector(7 DOWNTO 0);
     signal state         : tstate := B3_MSB; -- used to indecate each byte in 32bit word
    
-    signal WRq			 : std_logic;
-    signal WRqq			 : std_logic;
-	signal RDq			 : std_logic;
-	signal RDqq			 : std_logic;
-	signal ADDq			 : std_logic;
-	signal ADDqq		 : std_logic;
-
+    signal WRq, WRqq     : std_logic;
+	signal RDq, RDqq	 : std_logic;
+	signal ADDq, ADDqq   : std_logic;
 begin
     
 	I_I2CITF : I2CSLAVE
@@ -98,8 +94,8 @@ begin
            elsif (RDqq = '0' and RDq = '1') then -- rising edge - READ-REQUEST
              case state is
                 when B3_MSB =>                
-                    BUFFER_32 <= RAM(to_integer(unsigned(BUFFER_8)));
-                    DATA_IN <= RAM(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
+                    BUFFER_32 <= MEMORY(to_integer(unsigned(BUFFER_8)));
+                    DATA_IN <= MEMORY(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
                     state <= B2;
                 when B2 =>
                     DATA_IN <= BUFFER_32(23 DOWNTO 16);
@@ -132,7 +128,7 @@ begin
                CASE BUFFER_8 IS
                   WHEN x"01" =>
                     -- overwrite "internal ready" flag with current value
-                    BUFFER_32(1) <= RAM(to_integer(unsigned(BUFFER_8)))(1); 
+                    BUFFER_32(1) <= MEMORY(to_integer(unsigned(BUFFER_8)))(1); 
                     state <= WRITE;
                   WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
                     -- on external write access to readonly registers - reset
@@ -142,7 +138,7 @@ begin
                     state <= WRITE;                    
                END CASE;
            elsif (state = WRITE) then
-               RAM(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
+               MEMORY(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
                state <= RESET;
            elsif (state = RESET) then
               BUFFER_32 <= (others => '0');

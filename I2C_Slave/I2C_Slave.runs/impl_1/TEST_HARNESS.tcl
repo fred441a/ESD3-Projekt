@@ -123,7 +123,6 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 1
   set_param runs.launchOptions { -jobs 4  }
   open_checkpoint TEST_HARNESS_routed.dcp
