@@ -46,7 +46,7 @@ component PID_Controller
     );
     end component;
 
-signal setPoint  : Integer;
+signal setPoint  : float32;
 signal PIDOut, prevPIDOut, Height : float32 := to_float(0.0);
     
 begin
@@ -56,13 +56,13 @@ begin
     process (MCLK) begin
         if (rising_edge(MCLK)) then
             if (InPWM = '1') then
-                setPoint <= 4000; 
+                setPoint <= to_float(4000.0); 
             else 
-                setPoint <= 0;
+                setPoint <= to_float(0.0);
             end if;
         end if;
         if (falling_edge(MCLK)) then
-            OutPWM <= std_logic_vector(to_unsigned(setPoint, OutPWM'length)); --to_integer(setPoint)
+            OutPWM <= std_logic_vector(to_unsigned(TO_INTEGER(setPoint), OutPWM'length)); --to_integer(setPoint)
         end if;
         if (falling_edge(MCLK) and not (prevPIDOut = PIDOut)) then
             prevPIDOut <= PIDOut;
@@ -76,7 +76,7 @@ begin
         kp        => to_float(1.0),  -- Altitude Kp
         ki        => to_float(0.05), -- Altitude Ki
         kd        => to_float(3.0),  -- Altitude Kd
-        SetPoint  => to_float(0.0), -- Wanted altitude
+        SetPoint  => setPoint, -- Wanted altitude
         Measured  => Height,   -- Measured altitude,
         Result    => PIDOut
     );
