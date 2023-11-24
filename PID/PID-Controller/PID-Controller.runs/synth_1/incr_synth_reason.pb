@@ -1,1 +1,1 @@
-ÂdDesign change found in an area of the design that prevents previous synthesis information being used
+Â9The reference checkpoint is from an old version of Vivado
