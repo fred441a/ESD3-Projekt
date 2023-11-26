@@ -3,12 +3,12 @@
 # SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
 # IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
 # SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
-# Start of session at: Fri Nov 10 12:55:00 2023
-# Process ID: 31288
+# Start of session at: Sat Nov 25 18:52:06 2023
+# Process ID: 9722
 # Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/real_test/real_test.runs/synth_1
 # Command line: vivado -log RealTest.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RealTest.tcl
 # Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/real_test/real_test.runs/synth_1/RealTest.vds
 # Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/real_test/real_test.runs/synth_1/vivado.jou
-# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2895.786 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2961.716 MHz, CPU Physical cores: 4, Host memory: 16695 MB
 #-----------------------------------------------------------
 source RealTest.tcl -notrace
