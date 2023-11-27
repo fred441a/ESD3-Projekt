@@ -88,12 +88,14 @@ Read_Byte : entity work.Read_Byte
         if(rising_edge(clk)) THEN
             CASE  STATE IS
                 WHEN Ready =>
+                    MemWrite <= '0';
                     WriteMemBus <= (31 downto 0 => '0');
                     BusyOut <= '0';
                     if(ENALL = '1') THEN
                         STATE <= Read1Byte;
                     END IF;
                 WHEN Read1Byte =>
+                    BusyOut <= '1';
                     IF(ENABLE(0) = '1') THEN
                         I2C_REG <= ADDR1;
                         CASE Pulse IS
@@ -111,9 +113,10 @@ Read_Byte : entity work.Read_Byte
                         END IF;
                         END CASE;
                     ELSE
-                       STATE <=Ready; 
+                       STATE <=WriteToMem; 
                     END IF;
                 WHEN Read2Byte =>
+                    BusyOut <= '1';
                     IF(ENABLE(1) = '1') THEN
                         I2C_REG <= ADDR2;
                         CASE Pulse IS
@@ -133,9 +136,10 @@ Read_Byte : entity work.Read_Byte
                     WHEN OTHERS => Pulse<=DonePulsing;
                 END CASE;
                      ELSE
-                       STATE <=Ready; 
+                       STATE <=WriteToMem; 
                     END IF;
                 WHEN Read3Byte =>
+                    BusyOut <= '1';
                     IF(ENABLE(2) = '1') THEN
                         I2C_REG <= ADDR3;
                         CASE Pulse IS
@@ -155,9 +159,10 @@ Read_Byte : entity work.Read_Byte
                     WHEN OTHERS => Pulse<=DonePulsing;
                 END CASE;
                      ELSE
-                       STATE <=Ready; 
+                       STATE <=WriteToMem; 
                     END IF;
                 WHEN Read4Byte =>
+                    BusyOut <= '1';
                     IF(ENABLE(3) = '1') THEN
                         I2C_REG <= ADDR4;
                         CASE Pulse IS
@@ -177,19 +182,20 @@ Read_Byte : entity work.Read_Byte
                     WHEN OTHERS => Pulse<=DonePulsing;
                 END CASE;
                      ELSE
-                       STATE <=Ready; 
+                       STATE <=WriteToMem; 
                     END IF;
                 WHEN WriteToMem =>
-                    IF(MemWrite = '0') THEN
-                        MemWrite <= '1';
-                    ELSIF (MemWrite = '1') THEN
-                        MemWrite <= '0';
-                        STATE <= Ready;
-                    END IF;
+                    CASE Pulse IS
+                        WHEN Pulsing =>
+                            MemWrite <= '1';
+                            Pulse <= DonePulsing;
+                        WHEN DonePulsing =>
+                            MemWrite <= '0';
+                            STATE <= Ready;
+                            Pulse <= Pulsing;
+                    END CASE;
                 WHEN OTHERS => STATE <= Ready;
             END CASE;
-
-
         END IF;
 
     END PROCESS;
