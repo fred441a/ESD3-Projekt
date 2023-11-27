@@ -198,13 +198,13 @@ Read_Byte : entity work.Read_Byte
 
                     if(ENABLE = ('0','0','1','1')) THEN
                         WriteMemBus(31) <= WriteMemBus(15);
-                        WriteMemBus(7) <= '0';
+                        WriteMemBus(15) <= '0';
  
                     END IF;
 
                     if(ENABLE = ('0','1','1','1')) THEN
                         WriteMemBus(31) <= WriteMemBus(23);
-                        WriteMemBus(7) <= '0';
+                        WriteMemBus(23) <= '0';
  
                     END IF;
 
