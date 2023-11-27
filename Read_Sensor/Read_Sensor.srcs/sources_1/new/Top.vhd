@@ -112,21 +112,50 @@ begin
                 CASE ConfigState IS
                     WHEN Config =>
                         EN <= '0';
-                        ReadMem(AltSetup)(0) <= '1';
+                        ReadMem(AltSetup)(0) <= '0';
                         ReadMem(AltSetup)(7 downto 1) <= std_logic_vector(to_unsigned(16#68#,7)); 
                         ReadMem(AltSetup)(11 downto 8) <= ('0','0','1','1');
                         ReadMem(AltAdresses)(7 downto 0) <= std_logic_vector(to_unsigned(16#3B#,8));
                         ReadMem(Altadresses)(15 downto 8) <= std_logic_vector(to_unsigned(16#3C#,8));
 
-                        ReadMem(MagSetup)(0) <= '1';
+                        ReadMem(MagSetup)(0) <= '0';
                         ReadMem(MagSetup)(7 downto 1) <= std_logic_vector(to_unsigned(16#68#,7)); 
                         ReadMem(MagSetup)(11 downto 8) <= ('0','0','1','1');
                         ReadMem(MagAdressesX)(7 downto 0) <= std_logic_vector(to_unsigned(16#3D#,8));
                         ReadMem(MagadressesX)(15 downto 8) <= std_logic_vector(to_unsigned(16#3E#,8));
                         
-                        ReadMem(GyroSetup)(0) <= '0';
-                        ReadMem(AccSetup)(0) <= '0';
+                        ReadMem(MagAdressesY)(7 downto 0) <= std_logic_vector(to_unsigned(16#3D#,8));
+                        ReadMem(MagadressesY)(15 downto 8) <= std_logic_vector(to_unsigned(16#3E#,8));
+ 
+                        ReadMem(MagAdressesZ)(7 downto 0) <= std_logic_vector(to_unsigned(16#3D#,8));
+                        ReadMem(MagadressesZ)(15 downto 8) <= std_logic_vector(to_unsigned(16#3E#,8));
 
+                        ReadMem(GyroSetup)(0) <= '1';
+                        ReadMem(GyroSetup)(7 downto 1) <= std_logic_vector(to_unsigned(16#68#,7)); 
+                        ReadMem(GyroSetup)(11 downto 8) <= ('0','0','1','1');
+                        ReadMem(GyroAdressesX)(7 downto 0) <= std_logic_vector(to_unsigned(16#44#,8));
+                        ReadMem(GyroadressesX)(15 downto 8) <= std_logic_vector(to_unsigned(16#43#,8));
+                        
+                        ReadMem(GyroAdressesY)(7 downto 0) <= std_logic_vector(to_unsigned(16#46#,8));
+                        ReadMem(GyroadressesY)(15 downto 8) <= std_logic_vector(to_unsigned(16#45#,8));
+ 
+                        ReadMem(GyroAdressesZ)(7 downto 0) <= std_logic_vector(to_unsigned(16#48#,8));
+                        ReadMem(GyroadressesZ)(15 downto 8) <= std_logic_vector(to_unsigned(16#47#,8));
+ 
+
+
+                        ReadMem(AccSetup)(0) <= '1';
+                        ReadMem(AccSetup)(7 downto 1) <= std_logic_vector(to_unsigned(16#68#,7)); 
+                        ReadMem(AccSetup)(11 downto 8) <= ('0','0','1','1');
+                        ReadMem(AccAdressesX)(7 downto 0) <= std_logic_vector(to_unsigned(16#3C#,8));
+                        ReadMem(AccadressesX)(15 downto 8) <= std_logic_vector(to_unsigned(16#3B#,8));
+                        
+                        ReadMem(AccAdressesY)(7 downto 0) <= std_logic_vector(to_unsigned(16#3E#,8));
+                        ReadMem(AccadressesY)(15 downto 8) <= std_logic_vector(to_unsigned(16#3D#,8));
+ 
+                        ReadMem(AccAdressesZ)(7 downto 0) <= std_logic_vector(to_unsigned(16#40#,8));
+                        ReadMem(AccadressesZ)(15 downto 8) <= std_logic_vector(to_unsigned(16#3F#,8));
+ 
                         ConfigState <= DoneConfig;
                     WHEN DoneConfig =>
                         EN <= '1';                 
