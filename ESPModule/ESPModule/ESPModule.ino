@@ -25,7 +25,7 @@
 #define FPGAAddress 0x08                  // I2C address of the FPGA
 #define configCHECK_FOR_STACK_OVERFLOW 1  // Checks whether or not stack overflow occurs
 
-TaskHandle_t hdlSafeTakeOff, hdlSafeLand, hdlHeightRead, hdlHeightDesired, hdlYawRead, hdlYawDesired, hdlPitchRead, hdlPitchDesired, hdlRollRead, hdlRollDesired, hdlStop;  // Must be made in order for the handles to works in xTaskCreate
+TaskHandle_t hdlSafeTakeOff, hdlSafeLand, hdlHeightRead, hdlHeightDesired, hdlYawRead, hdlYawDesired, hdlPitchRead, hdlPitchDesired, hdlRollRead, hdlRollDesired, hdlStop;  // Must be made in order for the handles to work in xTaskCreate
 
 SemaphoreHandle_t avgSem, Mutex;  // Creation of semaphore handles
 
@@ -107,18 +107,35 @@ void setup() {
   //Serial.println("Task creation");                                               // Status update to figure out which function is running
   xTaskCreate(safeTakeOff, "Safely takes off", 5000, NULL, 3, &hdlSafeTakeOff);    // Safely lifts the drone to 500mm
   xTaskCreate(safeLand, "Safely lands", 5000, NULL, 3, &hdlSafeLand);              // Safely lands the drone
-  xTaskCreate(heightRead, "Reads current height", 8000, NULL, 1, &hdlHeightRead);  // Read current height from range sensor
+  xTaskCreate(heightRead, "Reads current height", 8000, NULL, 2, &hdlHeightRead);  // Read current height from range sensor
   xTaskCreate(heightDesired, "Desired height", 8000, NULL, 2, &hdlHeightDesired);  // Sets a new desired height
-  xTaskCreate(yawRead, "Reads current yaw", 5000, NULL, 2, &hdlYawRead);           // Read current yaw from range sensor
-  xTaskCreate(yawDesired, "Desired yaw", 5000, NULL, 2, &hdlYawDesired);           // Sets a new desired yaw
-  xTaskCreate(pitchRead, "Reads current pitch", 5000, NULL, 2, &hdlPitchRead);     // Read current pitch from range sensor
-  xTaskCreate(pitchDesired, "Desired pitch", 5000, NULL, 2, &hdlPitchDesired);     // Sets a new desired pitch
-  xTaskCreate(rollRead, "Reads current roll", 5000, NULL, 2, &hdlRollRead);        // Read current roll from range sensor
-  xTaskCreate(rollDesired, "Desired roll", 5000, NULL, 2, &hdlRollDesired);        // Sets a new desired roll
-  xTaskCreate(stop, "Stops everything", 5000, NULL, 4, &hdlStop);                  // Emergency stop
+  xTaskCreate(yawRead, "Reads current yaw", 5000, NULL, 1, &hdlYawRead);           // Read current yaw from range sensor
+  xTaskCreate(yawDesired, "Desired yaw", 5000, NULL, 1, &hdlYawDesired);           // Sets a new desired yaw
+  xTaskCreate(pitchRead, "Reads current pitch", 5000, NULL, 1, &hdlPitchRead);     // Read current pitch from range sensor
+  xTaskCreate(pitchDesired, "Desired pitch", 5000, NULL, 1, &hdlPitchDesired);     // Sets a new desired pitch
+  xTaskCreate(rollRead, "Reads current roll", 5000, NULL, 1, &hdlRollRead);        // Read current roll from range sensor
+  xTaskCreate(rollDesired, "Desired roll", 5000, NULL, 1, &hdlRollDesired);        // Sets a new desired roll
+  //xTaskCreate(stop, "Stops everything", 5000, NULL, 4, &hdlStop);                  // Emergency stop
+  attachInterrupt(emergencyButtonPin, stop, HIGH);  // Emergency stop
   //Serial.println("Init done");
-  readyFPGA();
-  delay(15000);
+  vTaskSuspend(hdlHeightRead);     // Suspends heightRead function to allow the FPGA to setup
+  vTaskSuspend(hdlHeightDesired);  // Suspends heightDesired function to allow the FPGA to setup
+  vTaskSuspend(hdlYawRead);        // Suspends yawRead function to allow the FPGA to setup
+  vTaskSuspend(hdlYawDesired);     // Suspends yawDesired function to allow the FPGA to setup
+  vTaskSuspend(hdlPitchRead);      // Suspends pitchRead function to allow the FPGA to setup
+  vTaskSuspend(hdlPitchDesired);   // Suspends pitchDesired function to allow the FPGA to setup
+  vTaskSuspend(hdlRollRead);       // Suspends rollRead function to allow the FPGA to setup
+  vTaskSuspend(hdlRollDesired);    // Suspends rollDesired function to allow the FPGA to setup
+  readyFPGA();                     // Sending ready signal for FPGA
+  delay(15000);                    // Delay while the FPGA is setting up
+  vTaskResume(hdlHeightRead);      // Resumes heightRead function
+  vTaskResume(hdlHeightDesired);   // Resumes heightDesired function
+  vTaskResume(hdlYawRead);         // Resumes yawRead function
+  vTaskResume(hdlYawDesired);      // Resumes yawDesired function
+  vTaskResume(hdlPitchRead);       // Resumes pitchRead function
+  vTaskResume(hdlPitchDesired);    // Resumes pitchDesired function
+  vTaskResume(hdlRollRead);        // Resumes rollRead function
+  vTaskResume(hdlRollDesired);     // Resumes rollDesired function
 }
 
 void loop() {
@@ -171,18 +188,36 @@ void readFromAddress(uint8_t slaveAddress, uint8_t regAddress) {
 static void safeTakeOff(void *pvParameters) {
   while (1) {
     //Serial.println("Takeoff");             // Status update to figure out which function is running
-    /*while (takeOffPin == LOW) {                     // While a switch is enabled this function can be called
+    while (takeOffPin == HIGH) {                           // While a switch is enabled this function can be called
+      vTaskSuspend(hdlHeightRead);                         // Suspends heightRead function
+      vTaskSuspend(hdlHeightDesired);                      // Suspends heightDesired function
+      vTaskSuspend(hdlYawRead);                            // Suspends yawRead function
+      vTaskSuspend(hdlYawDesired);                         // Suspends yawDesired function
+      vTaskSuspend(hdlPitchRead);                          // Suspends pitchRead function
+      vTaskSuspend(hdlPitchDesired);                       // Suspends pitchDesired function
+      vTaskSuspend(hdlRollRead);                           // Suspends rollRead function
+      vTaskSuspend(hdlRollDesired);                        // Suspends rollDesired function
       writeToAddress(FPGAAddress, 0x01, 1);                // Sets the safe takeoff flag high in memory module
-      currentHeight = measure.RangeMilliMeter;      // Updates the currentHeight variable with the newest measured value
-      desiredHeight = currentHeight;                // Updates desired height to current height, so current height is taken into account
-      for (int i = 0; i <= startHeight; i++) {      // Loops until startheight of 500 mm has been achieved
-        desiredHeight += 1;                         // Increments desiredheight with 1mm every iteration for a smooth ascend
+      currentHeight = measure.RangeMilliMeter;             // Updates the currentHeight variable with the newest measured value
+      desiredHeight = currentHeight;                       // Updates desired height to current height, so current height is taken into account
+      desiredRoll = 0;                                     // Sets roll to 0 so the drone should be level
+      desiredPitch = 0;                                    // Sets pitch to 0 so the drone should be level
+      for (int i = 0; i <= startHeight; i++) {             // Loops until startheight of 500 mm has been achieved
+        desiredHeight += 1;                                // Increments desiredheight with 1mm every iteration for a smooth ascend
         writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the memory module with newest desired height
-        delay(200);                                 // Delay so that the MCU does not get ahead of the actual drone height
+        delay(200);                                        // Delay so that the MCU does not get ahead of the actual drone height
         //Serial.println("LET HER RIP!");
       }
-      writeToAddress(FPGAAddress, 0x01, 1);         // Sets the safe takeoff flag low in memory module
-    }*/
+      writeToAddress(FPGAAddress, 0x01, 1);  // Sets the safe takeoff flag low in memory module
+    }
+    vTaskResume(hdlHeightRead);            // Resumes heightRead function
+    vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
+    vTaskResume(hdlYawRead);               // Resumes yawRead function
+    vTaskResume(hdlYawDesired);            // Resumes yawDesired function
+    vTaskResume(hdlPitchRead);             // Resumes pitchRead function
+    vTaskResume(hdlPitchDesired);          // Resumes pitchDesired function
+    vTaskResume(hdlRollRead);              // Resumes rollRead function
+    vTaskResume(hdlRollDesired);           // Resumes rollDesired function
     vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
   }
 }
@@ -190,18 +225,36 @@ static void safeTakeOff(void *pvParameters) {
 static void safeLand(void *pvParameters) {
   while (1) {
     //Serial.println("Land");                // Status update to figure out which function is running
-    /*while (landPin == LOW) {                        // While a switch is enabled this function can be called
+    while (landPin == HIGH) {                              // While a switch is enabled this function can be called
+      vTaskSuspend(hdlHeightRead);                         // Suspends heightRead function
+      vTaskSuspend(hdlHeightDesired);                      // Suspends heightDesired function
+      vTaskSuspend(hdlYawRead);                            // Suspends yawRead function
+      vTaskSuspend(hdlYawDesired);                         // Suspends yawDesired function
+      vTaskSuspend(hdlPitchRead);                          // Suspends pitchRead function
+      vTaskSuspend(hdlPitchDesired);                       // Suspends pitchDesired function
+      vTaskSuspend(hdlRollRead);                           // Suspends rollRead function
+      vTaskSuspend(hdlRollDesired);                        // Suspends rollDesired function
       writeToAddress(FPGAAddress, 0x01, 1);                // Sets the safe land flag high in memory module
-      currentHeight = measure.RangeMilliMeter;      // Updates the currentHeight variable with the newest measured value
-      desiredHeight = currentHeight;                // Sets desiredheight to current height, so there is no need to suddenly increase altitude before a landing can occur, in the case desired height is much higher than current height.
-      for (int i = currentHeight; i >= 0; i--) {    // Loops over until the drone has descended down to 0 mm height
-        desiredHeight -= 1;                         // Decrements desired height with 1 mm, so that the drone slowly descends
+      currentHeight = measure.RangeMilliMeter;             // Updates the currentHeight variable with the newest measured value
+      desiredHeight = currentHeight;                       // Sets desiredheight to current height, so there is no need to suddenly increase altitude before a landing can occur, in the case desired height is much higher than current height.
+      desiredRoll = 0;                                     // Sets roll to 0 so the drone should be level
+      desiredPitch = 0;                                    // Sets pitch to 0 so the drone should be level
+      for (int i = currentHeight; i >= 0; i--) {           // Loops over until the drone has descended down to 0 mm height
+        desiredHeight -= 1;                                // Decrements desired height with 1 mm, so that the drone slowly descends
         writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with a new "desired" height, so that the drone should land safely
-        delay(100);                                 // Delay so that the MCU does not get ahead of the actual drone height
+        delay(100);                                        // Delay so that the MCU does not get ahead of the actual drone height
         //Serial.println("LANDING THIS SHIT!");
       }
-      writeToAddress(FPGAAddress, 0x01, 0);         // Sets the safe land flag low in memory module
-    }*/
+      writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
+    }
+    vTaskResume(hdlHeightRead);            // Resumes heightRead function
+    vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
+    vTaskResume(hdlYawRead);               // Resumes yawRead function
+    vTaskResume(hdlYawDesired);            // Resumes yawDesired function
+    vTaskResume(hdlPitchRead);             // Resumes pitchRead function
+    vTaskResume(hdlPitchDesired);          // Resumes pitchDesired function
+    vTaskResume(hdlRollRead);              // Resumes rollRead function
+    vTaskResume(hdlRollDesired);           // Resumes rollDesired function
     vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
   }
 }
@@ -382,30 +435,27 @@ static void rollDesired(void *pvParameters) {
   }
 }
 
-static void stop(void *pvParameters) {  // Emergency stop function
-  while (1) {
-    //Serial.println("Stop for satan!");              // Status update to figure out which function is running
-    if (digitalRead(emergencyButtonPin) == HIGH) {  // Checks if the emergency button is pushed
-      digitalWrite(emergencyLightPin, HIGH);        // Lights up the emergency lights
-      vTaskSuspend(hdlHeightRead);                  // Suspends heightRead function
-      vTaskSuspend(hdlHeightDesired);               // Suspends heightDesired function
-      vTaskSuspend(hdlYawRead);                     // Suspends yawRead function
-      vTaskSuspend(hdlYawDesired);                  // Suspends yawDesired function
-      vTaskSuspend(hdlPitchRead);                   // Suspends pitchRead function
-      vTaskSuspend(hdlPitchDesired);                // Suspends pitchDesired function
-      vTaskSuspend(hdlRollRead);                    // Suspends rollRead function
-      vTaskSuspend(hdlRollDesired);                 // Suspends rollDesired function
-    } else {                                        // Checks if the emergency button is released
-      digitalWrite(emergencyLightPin, LOW);         // Turns off the emergency lights
-      vTaskResume(hdlHeightRead);                   // Resumes heightRead function
-      vTaskResume(hdlHeightDesired);                // Resumes heightDesired function
-      vTaskResume(hdlYawRead);                      // Resumes yawRead function
-      vTaskResume(hdlYawDesired);                   // Resumes yawDesired function
-      vTaskResume(hdlPitchRead);                    // Resumes pitchRead function
-      vTaskResume(hdlPitchDesired);                 // Resumes pitchDesired function
-      vTaskResume(hdlRollRead);                     // Resumes rollRead function
-      vTaskResume(hdlRollDesired);                  // Resumes rollDesired function
-    }
-    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delays this task from running for the next 50 ms
+void stop() {  // Emergency stop function
+  //Serial.println("Stop for satan!");              // Status update to figure out which function is running
+  if (digitalRead(emergencyButtonPin) == HIGH) {  // Checks if the emergency button is pushed
+    digitalWrite(emergencyLightPin, HIGH);        // Lights up the emergency lights
+    vTaskSuspend(hdlHeightRead);                  // Suspends heightRead function
+    vTaskSuspend(hdlHeightDesired);               // Suspends heightDesired function
+    vTaskSuspend(hdlYawRead);                     // Suspends yawRead function
+    vTaskSuspend(hdlYawDesired);                  // Suspends yawDesired function
+    vTaskSuspend(hdlPitchRead);                   // Suspends pitchRead function
+    vTaskSuspend(hdlPitchDesired);                // Suspends pitchDesired function
+    vTaskSuspend(hdlRollRead);                    // Suspends rollRead function
+    vTaskSuspend(hdlRollDesired);                 // Suspends rollDesired function
+  } else {                                        // Checks if the emergency button is released
+    digitalWrite(emergencyLightPin, LOW);         // Turns off the emergency lights
+    vTaskResume(hdlHeightRead);                   // Resumes heightRead function
+    vTaskResume(hdlHeightDesired);                // Resumes heightDesired function
+    vTaskResume(hdlYawRead);                      // Resumes yawRead function
+    vTaskResume(hdlYawDesired);                   // Resumes yawDesired function
+    vTaskResume(hdlPitchRead);                    // Resumes pitchRead function
+    vTaskResume(hdlPitchDesired);                 // Resumes pitchDesired function
+    vTaskResume(hdlRollRead);                     // Resumes rollRead function
+    vTaskResume(hdlRollDesired);                  // Resumes rollDesired function
   }
 }
