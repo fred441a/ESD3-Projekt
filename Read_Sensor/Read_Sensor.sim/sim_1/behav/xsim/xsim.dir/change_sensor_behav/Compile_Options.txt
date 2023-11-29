@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "change_sensor_behav" "xil_defaultlib.change_sensor" -log "elaborate.log" 

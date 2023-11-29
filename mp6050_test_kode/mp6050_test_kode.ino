@@ -40,16 +40,25 @@ void setup(){
 		//idk what this does, but they do it in the lib so we do it here
 		WriteByte(MPU6050_PWR_MGMT_1,0x01);
 		delay(100);
+
+     Serial.println(ReadByte(0x3B));
+    //set gyro range
+    //WriteByte(MPU6050_GYRO_CONFIG,0b00001000);
+    //set Acc range
+    //WriteByte(MPU6050_ACCEL_CONFIG, 0);
+    delay(50);
 				
 }
 
 void loop(){
-		Serial.println(ReadByte(0x3B));
-		//set gyro range
-		//WriteByte(MPU6050_GYRO_CONFIG,0b00001000);
-		//set Acc range
-		//WriteByte(MPU6050_ACCEL_CONFIG, 0);
-		delay(50);
+
+  Serial.println(ReadByte(0x3B));
+    //set gyro range
+    //WriteByte(MPU6050_GYRO_CONFIG,0b00001000);
+    //set Acc range
+    //WriteByte(MPU6050_ACCEL_CONFIG, 0);
+    delay(50);
+
 
 }
 
