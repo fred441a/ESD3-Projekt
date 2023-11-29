@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.runs/synth_1/topBrain.tcl"
+  variable script "C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.runs/synth_1/topBrain.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,25 +70,27 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.cache/wt [current_project]
-set_property parent.project_path C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.cache/wt [current_project]
+set_property parent.project_path C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part_repo_paths {C:/Users/Ditte/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:cmod_a7-35t:part0:1.2 [current_project]
-set_property ip_output_repo c:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.cache/ip [current_project]
+set_property ip_output_repo c:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.srcs/sources_1/new/matrix.vhd
-read_vhdl -vhdl2008 -library xil_defaultlib C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.srcs/sources_1/new/topBrain.vhd
+read_vhdl -library xil_defaultlib {
+  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd
+  C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd
+}
+read_vhdl -vhdl2008 -library xil_defaultlib C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -98,12 +100,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.srcs/constrs_1/new/constrain1.xdc
-set_property used_in_implementation false [get_files C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.srcs/constrs_1/new/constrain1.xdc]
+read_xdc C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/constrs_1/new/constrain1.xdc
+set_property used_in_implementation false [get_files C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/constrs_1/new/constrain1.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/project_1/project_1.srcs/utils_1/imports/synth_1/topBrain.dcp
+read_checkpoint -auto_incremental -incremental C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/utils_1/imports/synth_1/topBrain.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
