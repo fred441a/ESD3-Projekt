@@ -8,12 +8,12 @@
 
 #define INCLUDE_vTaskSuspend 1            // Definition of suspend function being active
 #define externalEnablePin 0               // The pin to activate the FPGA
-#define takeOffPin 0                      // Pin to start take off
-#define landPin 0                         // Pin to land again
+#define takeOffPin 32                     // Pin to start take off
+#define landPin 33                        // Pin to land again
 #define startHeight 500                   // Height to achieve upon power on in mm
-#define heightReachedPin 0                // Pin to turn on led indicating desired height is reached within tolerance
-#define somethingIsWrongPin 13            // Pin to light up red LED
-#define allGoodPin 12                     // Pin to light op green LED
+#define heightReachedPin 13               // Pin to turn on led indicating desired height is reached within tolerance
+#define somethingIsWrongPin 12            // Pin to light up red LED
+#define allGoodPin 14                     // Pin to light op green LED
 #define emergencyButtonPin 27             // Emergency button connection pin
 #define emergencyLightPin 26              // LED that signifies an emergency has happened
 #define joystickInputXPin 36              // Input for the x axis
@@ -68,8 +68,10 @@ void setup() {
   pinMode(heightReachedPin, OUTPUT);     // Enables the pin to be used as a power-source
   pinMode(somethingIsWrongPin, OUTPUT);  // Enables the pin to be used as a power-source
   pinMode(allGoodPin, OUTPUT);           // Enables the pin to be used as a power-source
-  pinMode(emergencyButtonPin, OUTPUT);   // Enables the pin to be used as a power-source
+  pinMode(emergencyButtonPin, INPUT);    // Enables the pin to be used as a input
   pinMode(emergencyLightPin, OUTPUT);    // Enables the pin to be used as a power-source
+  pinMode(takeOffPin, INPUT_PULLUP);
+  pinMode(landPin, INPUT_PULLUP);
 
   while (!Serial) {  // Wait until serial port opens for native USB devices
     delay(10);
@@ -82,14 +84,16 @@ void setup() {
   Serial.println("Adafruit VL53L0X test");        // Tests if a connection to the sensor has been established
   if (!lox.begin()) {                             // Checks all boolean states for buildin begin function from sensor library
     Serial.println(F("Failed to boot VL53L0X"));  // If no connection is present, this flag will be set high
+    digitalWrite(somethingIsWrongPin, HIGH);
     while (1) {
       delay(10);
     }
   }
 
-  //Serial.println("Adafruit MPU6050 test!");         // Tests if a connection to the sensor has been established
-  if (!mpu.begin()) {  // Checks all boolean states for buildin begin function from sensor library
-    //Serial.println("Failed to find MPU6050 chip");  // If no connection is present, this flag will be set high
+  Serial.println("Adafruit MPU6050 test!");         // Tests if a connection to the sensor has been established
+  if (!mpu.begin()) {                               // Checks all boolean states for buildin begin function from sensor library
+    Serial.println("Failed to find MPU6050 chip");  // If no connection is present, this flag will be set high
+    digitalWrite(somethingIsWrongPin, HIGH);
     while (1) {
       delay(10);
     }
@@ -102,9 +106,14 @@ void setup() {
   mpu_accel = mpu.getAccelerometerSensor();  // Calibration of accelerometer and figuring out which sensor is connected
   mpu_accel->printSensorDetails();           // Internal update in sensor library
   mpu_gyro = mpu.getGyroSensor();            // Calibration of gyro and figuring out which sensor is connected
-  mpu_gyro->printSensorDetails();            // Internal update in sensor library*/
+  mpu_gyro->printSensorDetails();            // Internal update in sensor library
 
-  //Serial.println("Task creation");                                               // Status update to figure out which function is running
+  Serial.println("Calibration done");
+  readyFPGA();   // Sending ready signal for FPGA
+  //delay(15000);  // Delay while the FPGA is setting up
+
+  Serial.println("Task creation");                                                 // Status update to figure out which function is running
+  xTaskCreate(MyIdleTask, "IdleTask", 1000, NULL, 0, NULL);                          // Idle task to check if there is any time left to execute tasks in
   xTaskCreate(safeTakeOff, "Safely takes off", 5000, NULL, 3, &hdlSafeTakeOff);    // Safely lifts the drone to 500mm
   xTaskCreate(safeLand, "Safely lands", 5000, NULL, 3, &hdlSafeLand);              // Safely lands the drone
   xTaskCreate(heightRead, "Reads current height", 8000, NULL, 2, &hdlHeightRead);  // Read current height from range sensor
@@ -115,32 +124,13 @@ void setup() {
   xTaskCreate(pitchDesired, "Desired pitch", 5000, NULL, 1, &hdlPitchDesired);     // Sets a new desired pitch
   xTaskCreate(rollRead, "Reads current roll", 5000, NULL, 1, &hdlRollRead);        // Read current roll from range sensor
   xTaskCreate(rollDesired, "Desired roll", 5000, NULL, 1, &hdlRollDesired);        // Sets a new desired roll
-  //xTaskCreate(stop, "Stops everything", 5000, NULL, 4, &hdlStop);                  // Emergency stop
-  attachInterrupt(emergencyButtonPin, stop, HIGH);  // Emergency stop
-  //Serial.println("Init done");
-  vTaskSuspend(hdlHeightRead);     // Suspends heightRead function to allow the FPGA to setup
-  vTaskSuspend(hdlHeightDesired);  // Suspends heightDesired function to allow the FPGA to setup
-  vTaskSuspend(hdlYawRead);        // Suspends yawRead function to allow the FPGA to setup
-  vTaskSuspend(hdlYawDesired);     // Suspends yawDesired function to allow the FPGA to setup
-  vTaskSuspend(hdlPitchRead);      // Suspends pitchRead function to allow the FPGA to setup
-  vTaskSuspend(hdlPitchDesired);   // Suspends pitchDesired function to allow the FPGA to setup
-  vTaskSuspend(hdlRollRead);       // Suspends rollRead function to allow the FPGA to setup
-  vTaskSuspend(hdlRollDesired);    // Suspends rollDesired function to allow the FPGA to setup
-  readyFPGA();                     // Sending ready signal for FPGA
-  delay(15000);                    // Delay while the FPGA is setting up
-  vTaskResume(hdlHeightRead);      // Resumes heightRead function
-  vTaskResume(hdlHeightDesired);   // Resumes heightDesired function
-  vTaskResume(hdlYawRead);         // Resumes yawRead function
-  vTaskResume(hdlYawDesired);      // Resumes yawDesired function
-  vTaskResume(hdlPitchRead);       // Resumes pitchRead function
-  vTaskResume(hdlPitchDesired);    // Resumes pitchDesired function
-  vTaskResume(hdlRollRead);        // Resumes rollRead function
-  vTaskResume(hdlRollDesired);     // Resumes rollDesired function
+  attachInterrupt(emergencyButtonPin, stop, RISING);                               // Emergency stop
+  Serial.println("Init done");
 }
 
 void loop() {
   //Serial.println("Der skal ske noget her for at ESP'en er tilfreds");  // #skodMCU
-  getData();
+  //getData();
   delay(1000);
 }
 
@@ -175,20 +165,20 @@ void readFromAddress(uint8_t slaveAddress, uint8_t regAddress) {
   Wire.write(regAddress);                // Register to read from
   Wire.endTransmission();                // Ends sending data to assigned address
   Wire.requestFrom(slaveAddress, 4);     // Request 4 bytes from slave device
-  Serial.print("Reg: 0x");               // Current register address being read
-  Serial.print(regAddress, HEX);         // The actual address in hex
-  Serial.print(" value: 0x");            // The value read from the register address
-  while (Wire.available()) {             // Slave may send less than requested
-    char c = Wire.read();                // Receive a byte as character
-    Serial.print(c, HEX);                // Print the character
+  //Serial.print("Reg: 0x");               // Current register address being read
+  //Serial.print(regAddress, HEX);         // The actual address in hex
+  //Serial.print(" value: 0x");            // The value read from the register address
+  while (Wire.available()) {  // Slave may send less than requested
+    char c = Wire.read();     // Receive a byte as character
+    //Serial.print(c, HEX);                // Print the character
   }
-  Serial.println();  // Newline for readability
+  //Serial.println();  // Newline for readability
 }
 
 static void safeTakeOff(void *pvParameters) {
   while (1) {
-    //Serial.println("Takeoff");             // Status update to figure out which function is running
-    while (takeOffPin == HIGH) {                           // While a switch is enabled this function can be called
+    if (digitalRead(takeOffPin) == LOW) {                  // While a switch is enabled this function can be called
+                                                           Serial.println("Takeoff");                           // Status update to figure out which function is running
       vTaskSuspend(hdlHeightRead);                         // Suspends heightRead function
       vTaskSuspend(hdlHeightDesired);                      // Suspends heightDesired function
       vTaskSuspend(hdlYawRead);                            // Suspends yawRead function
@@ -198,6 +188,10 @@ static void safeTakeOff(void *pvParameters) {
       vTaskSuspend(hdlRollRead);                           // Suspends rollRead function
       vTaskSuspend(hdlRollDesired);                        // Suspends rollDesired function
       writeToAddress(FPGAAddress, 0x01, 1);                // Sets the safe takeoff flag high in memory module
+      desiredPitch = 0;                                    // Sets the desired pitch to 0 to ensure as level a takeoff as possible
+      writeToAddress(FPGAAddress, 0x06, desiredPitch);     // Updates the desired memory module address with current desired pitch value
+      desiredRoll = 0;                                     // Sets the desired roll to 0 to ensure as level a takeoff as possible
+      writeToAddress(FPGAAddress, 0x0B, desiredRoll);      // Updates the desired memory module address with current desired roll value
       currentHeight = measure.RangeMilliMeter;             // Updates the currentHeight variable with the newest measured value
       desiredHeight = currentHeight;                       // Updates desired height to current height, so current height is taken into account
       desiredRoll = 0;                                     // Sets roll to 0 so the drone should be level
@@ -206,26 +200,26 @@ static void safeTakeOff(void *pvParameters) {
         desiredHeight += 1;                                // Increments desiredheight with 1mm every iteration for a smooth ascend
         writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the memory module with newest desired height
         delay(200);                                        // Delay so that the MCU does not get ahead of the actual drone height
-        //Serial.println("LET HER RIP!");
+                                                           //Serial.println(desiredHeight);
       }
-      writeToAddress(FPGAAddress, 0x01, 1);  // Sets the safe takeoff flag low in memory module
+      vTaskResume(hdlHeightRead);            // Resumes heightRead function
+      vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
+      vTaskResume(hdlYawRead);               // Resumes yawRead function
+      vTaskResume(hdlYawDesired);            // Resumes yawDesired function
+      vTaskResume(hdlPitchRead);             // Resumes pitchRead function
+      vTaskResume(hdlPitchDesired);          // Resumes pitchDesired function
+      vTaskResume(hdlRollRead);              // Resumes rollRead function
+      vTaskResume(hdlRollDesired);           // Resumes rollDesired function
+      writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskResume(hdlHeightRead);            // Resumes heightRead function
-    vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
-    vTaskResume(hdlYawRead);               // Resumes yawRead function
-    vTaskResume(hdlYawDesired);            // Resumes yawDesired function
-    vTaskResume(hdlPitchRead);             // Resumes pitchRead function
-    vTaskResume(hdlPitchDesired);          // Resumes pitchDesired function
-    vTaskResume(hdlRollRead);              // Resumes rollRead function
-    vTaskResume(hdlRollDesired);           // Resumes rollDesired function
-    vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
   }
 }
 
 static void safeLand(void *pvParameters) {
   while (1) {
-    //Serial.println("Land");                // Status update to figure out which function is running
-    while (landPin == HIGH) {                              // While a switch is enabled this function can be called
+    if (digitalRead(landPin) == LOW) {                     // While a switch is enabled this function can be called
+                                                           Serial.println("Land");                              // Status update to figure out which function is running
       vTaskSuspend(hdlHeightRead);                         // Suspends heightRead function
       vTaskSuspend(hdlHeightDesired);                      // Suspends heightDesired function
       vTaskSuspend(hdlYawRead);                            // Suspends yawRead function
@@ -235,27 +229,31 @@ static void safeLand(void *pvParameters) {
       vTaskSuspend(hdlRollRead);                           // Suspends rollRead function
       vTaskSuspend(hdlRollDesired);                        // Suspends rollDesired function
       writeToAddress(FPGAAddress, 0x01, 1);                // Sets the safe land flag high in memory module
+      desiredPitch = 0;                                    // Sets the desired pitch to 0 to ensure as level a takeoff as possible
+      writeToAddress(FPGAAddress, 0x06, desiredPitch);     // Updates the desired memory module address with current desired pitch value
+      desiredRoll = 0;                                     // Sets the desired roll to 0 to ensure as level a takeoff as possible
+      writeToAddress(FPGAAddress, 0x0B, desiredRoll);      // Updates the desired memory module address with current desired roll value
       currentHeight = measure.RangeMilliMeter;             // Updates the currentHeight variable with the newest measured value
       desiredHeight = currentHeight;                       // Sets desiredheight to current height, so there is no need to suddenly increase altitude before a landing can occur, in the case desired height is much higher than current height.
       desiredRoll = 0;                                     // Sets roll to 0 so the drone should be level
       desiredPitch = 0;                                    // Sets pitch to 0 so the drone should be level
-      for (int i = currentHeight; i >= 0; i--) {           // Loops over until the drone has descended down to 0 mm height
+      for (int i = currentHeight; i > 0; i--) {            // Loops over until the drone has descended down to 0 mm height
         desiredHeight -= 1;                                // Decrements desired height with 1 mm, so that the drone slowly descends
         writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with a new "desired" height, so that the drone should land safely
         delay(100);                                        // Delay so that the MCU does not get ahead of the actual drone height
-        //Serial.println("LANDING THIS SHIT!");
+                                                           //Serial.println(desiredHeight);
       }
+      vTaskResume(hdlHeightRead);            // Resumes heightRead function
+      vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
+      vTaskResume(hdlYawRead);               // Resumes yawRead function
+      vTaskResume(hdlYawDesired);            // Resumes yawDesired function
+      vTaskResume(hdlPitchRead);             // Resumes pitchRead function
+      vTaskResume(hdlPitchDesired);          // Resumes pitchDesired function
+      vTaskResume(hdlRollRead);              // Resumes rollRead function
+      vTaskResume(hdlRollDesired);           // Resumes rollDesired function
       writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskResume(hdlHeightRead);            // Resumes heightRead function
-    vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
-    vTaskResume(hdlYawRead);               // Resumes yawRead function
-    vTaskResume(hdlYawDesired);            // Resumes yawDesired function
-    vTaskResume(hdlPitchRead);             // Resumes pitchRead function
-    vTaskResume(hdlPitchDesired);          // Resumes pitchDesired function
-    vTaskResume(hdlRollRead);              // Resumes rollRead function
-    vTaskResume(hdlRollDesired);           // Resumes rollDesired function
-    vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
   }
 }
 
@@ -273,7 +271,7 @@ static void heightRead(void *pvParameters) {
       //Serial.println(" out of range ");
     }
     writeToAddress(FPGAAddress, 0x18, currentHeight);  // Updates the desired memory module address with current actual height
-    vTaskDelay(100 / portTICK_PERIOD_MS);              // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);              // Delay for 100 milliseconds
   }
 }
 
@@ -302,14 +300,14 @@ static void heightDesired(void *pvParameters) {
     }
     if (desiredHeight < 0 || desiredHeight > 22000) {  // If desired height is lower than 0, the drone will crash. However, since the desiredHeight variable is unsigned, a failsafe of desiredHeight>22000 has been added, to catch the situations where the value rolls over and becomes approx 4294967295
       desiredHeight = 0;                               // Minimum height of drone
-      //Serial.println("CRASHING LIKE KOBE");
-    } else if (desiredHeight > 2200) {  // If the desired height is higher than 2200, another sensor has to be used
-      desiredHeight = 2200;             // Maximum stable height of altitude sensor
-      //Serial.println("HIGHER THAN CHEECH AND CHONG");
+                                                       //Serial.println("Min height reached");
+    } else if (desiredHeight > 2200) {                 // If the desired height is higher than 2200, another sensor has to be used
+      desiredHeight = 2200;                            // Maximum stable height of altitude sensor
+                                                       //Serial.println("Max height reached");
     }
     writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with current desired height
-    //Serial.println(desiredHeight);
-    vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+                                                       //Serial.println(desiredHeight);
+    vTaskDelay(10 / portTICK_PERIOD_MS);              // Delay for 100 milliseconds
   }
 }
 
@@ -317,7 +315,7 @@ static void yawRead(void *pvParameters) {
   while (1) {
     //Serial.println("yawRead");  // Status update to figure out which function is running
     // Yaw reading code goes here
-    vTaskDelay(100 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
   }
 }
 
@@ -339,13 +337,13 @@ static void yawDesired(void *pvParameters) {
       desiredYaw -= 15;                                                // Decrements desiredYaw by 15mm
     }
     writeToAddress(FPGAAddress, 0x10, desiredYaw);  // Updates the desired memory module address with current desired yaw value
-    vTaskDelay(100 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
   }
 }
 
 static void pitchRead(void *pvParameters) {
   while (1) {
-    //Serial.println("pitchRead");             // Status update to figure out which function is running
+    //Serial.println("pitchRead");                    // Status update to figure out which function is running
     mpu_accel->getEvent(&accel);                    // Makes a new reading from the accelerometer
     mpu_gyro->getEvent(&gyro);                      // Makes a new reading from the gyro
     gyroReadX = gyro.gyro.x;                        // Updates current gyro reading on x-axis
@@ -360,7 +358,25 @@ static void pitchRead(void *pvParameters) {
     writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
     writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
     writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
-    vTaskDelay(100 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
+                                                    // Display the results (acceleration is measured in m/s^2)
+    /*Serial.print("\t\tAccel X: ");
+    Serial.print(accel.acceleration.x);
+    Serial.print(" \tY: ");
+    Serial.print(accel.acceleration.y);
+    Serial.print(" \tZ: ");
+    Serial.print(accel.acceleration.z);
+    Serial.println(" m/s^2 ");
+
+    // Display the results (rotation is measured in rad/s)
+    Serial.print("\t\tGyro X: ");
+    Serial.print(gyro.gyro.x);
+    Serial.print(" \tY: ");
+    Serial.print(gyro.gyro.y);
+    Serial.print(" \tZ: ");
+    Serial.print(gyro.gyro.z);
+    Serial.println(" radians/s ");
+    Serial.println();*/
   }
 }
 
@@ -385,13 +401,13 @@ static void pitchDesired(void *pvParameters) {
     }
     //Serial.println(desiredPitch);
     writeToAddress(FPGAAddress, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
-    vTaskDelay(100 / portTICK_PERIOD_MS);             // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);             // Delay for 100 milliseconds
   }
 }
 
 static void rollRead(void *pvParameters) {
   while (1) {
-    //Serial.println("rollRead");              // Status update to figure out which function is running
+    //Serial.println("rollRead");                     // Status update to figure out which function is running
     mpu_accel->getEvent(&accel);                    // Makes a new reading from the accelerometer
     mpu_gyro->getEvent(&gyro);                      // Makes a new reading from the gyro
     gyroReadX = gyro.gyro.x;                        // Updates current gyro reading on x-axis
@@ -406,7 +422,7 @@ static void rollRead(void *pvParameters) {
     writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
     writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
     writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
-    vTaskDelay(100 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
   }
 }
 
@@ -431,31 +447,26 @@ static void rollDesired(void *pvParameters) {
     }
     //Serial.println(desiredRoll);
     writeToAddress(FPGAAddress, 0x0B, desiredRoll);  // Updates the desired memory module address with current desired roll value
-    vTaskDelay(100 / portTICK_PERIOD_MS);            // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);            // Delay for 100 milliseconds
   }
 }
 
-void stop() {  // Emergency stop function
-  //Serial.println("Stop for satan!");              // Status update to figure out which function is running
-  if (digitalRead(emergencyButtonPin) == HIGH) {  // Checks if the emergency button is pushed
-    digitalWrite(emergencyLightPin, HIGH);        // Lights up the emergency lights
-    vTaskSuspend(hdlHeightRead);                  // Suspends heightRead function
-    vTaskSuspend(hdlHeightDesired);               // Suspends heightDesired function
-    vTaskSuspend(hdlYawRead);                     // Suspends yawRead function
-    vTaskSuspend(hdlYawDesired);                  // Suspends yawDesired function
-    vTaskSuspend(hdlPitchRead);                   // Suspends pitchRead function
-    vTaskSuspend(hdlPitchDesired);                // Suspends pitchDesired function
-    vTaskSuspend(hdlRollRead);                    // Suspends rollRead function
-    vTaskSuspend(hdlRollDesired);                 // Suspends rollDesired function
-  } else {                                        // Checks if the emergency button is released
-    digitalWrite(emergencyLightPin, LOW);         // Turns off the emergency lights
-    vTaskResume(hdlHeightRead);                   // Resumes heightRead function
-    vTaskResume(hdlHeightDesired);                // Resumes heightDesired function
-    vTaskResume(hdlYawRead);                      // Resumes yawRead function
-    vTaskResume(hdlYawDesired);                   // Resumes yawDesired function
-    vTaskResume(hdlPitchRead);                    // Resumes pitchRead function
-    vTaskResume(hdlPitchDesired);                 // Resumes pitchDesired function
-    vTaskResume(hdlRollRead);                     // Resumes rollRead function
-    vTaskResume(hdlRollDesired);                  // Resumes rollDesired function
+void stop() {                             // Emergency stop function
+                                          //Serial.println("Stop for satan!");      // Status update to figure out which function is running
+  digitalWrite(emergencyLightPin, HIGH);  // Lights up the emergency lights
+  vTaskSuspend(hdlHeightRead);            // Suspends heightRead function
+  vTaskSuspend(hdlHeightDesired);         // Suspends heightDesired function
+  vTaskSuspend(hdlYawRead);               // Suspends yawRead function
+  vTaskSuspend(hdlYawDesired);            // Suspends yawDesired function
+  vTaskSuspend(hdlPitchRead);             // Suspends pitchRead function
+  vTaskSuspend(hdlPitchDesired);          // Suspends pitchDesired function
+  vTaskSuspend(hdlRollRead);              // Suspends rollRead function
+  vTaskSuspend(hdlRollDesired);           // Suspends rollDesired function
+}
+
+static void MyIdleTask(void *pvParameters) {
+  while (1) {
+    Serial.println(F("Idle state"));
+    vTaskDelay(10 / portTICK_PERIOD_MS);
   }
 }
