@@ -23,12 +23,18 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 0
-+------+----------+-------------+------------+
-| Rule | Severity | Description | Violations |
-+------+----------+-------------+------------+
-+------+----------+-------------+------------+
+             Violations found: 1
++-----------+------------------+-----------------------------+------------+
+| Rule      | Severity         | Description                 | Violations |
++-----------+------------------+-----------------------------+------------+
+| TIMING-17 | Critical Warning | Non-clocked sequential cell | 1          |
++-----------+------------------+-----------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
+TIMING-17#1 Critical Warning
+Non-clocked sequential cell  
+The clock pin OutPWM_reg[11]/C is not reached by a timing clock
+Related violations: <none>
+
 

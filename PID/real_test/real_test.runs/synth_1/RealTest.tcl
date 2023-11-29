@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -98,6 +97,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/real_test/real_test.srcs/utils_1/imports/synth_1/RealTest.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

@@ -22,6 +22,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.numeric_std.all;
+use IEEE.float_pkg.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -36,7 +37,7 @@ entity RealTest is
  Port (
     ena : in std_logic;
     a   : in std_logic_vector(31 downto 0);
-    result : out real
+    result : out std_logic_vector(31 downto 0)
  );
 end RealTest;
 
@@ -59,12 +60,28 @@ architecture Behavioral of RealTest is
             return fraction * 1.0**exponent; --2.0**exponent;
         end if;
     end ConvertFloatToReal;
-    
+  
+  function float32ToInteger(float_input : std_logic_vector(31 downto 0)) return std_logic_vector is
+    variable exponent, shift, fraction : INTEGER;
+    variable sign : BOOLEAN;
+  begin
+    sign := float_input(31) = '1'; -- get sign
+    exponent := to_integer(unsigned(float_input(30 downto 23))) - 127; --take exponent and subtract bias
+    shift := -(exponent - 23); -- subtract fraction size (23) and inverrt sign, indicates the amount to right shift inorder to get fraction
+    fraction := to_integer(unsigned(float_input(22 downto shift))); -- get fracton needede to reprecent the value as integer
+
+    if sign then
+        return std_logic_vector(to_unsigned(-((2**exponent) + fraction), 32));
+    else
+        return std_logic_vector(to_unsigned((2**exponent) + fraction, 32));
+    end if;
+  end float32ToInteger;
+
 begin
   
   process (ena) begin
     if (ena = '1') then
-        result <= ConvertFloatToReal(a);
+        result <= float32ToInteger(to_Std_Logic_Vector(to_float(0.0)));
     end if;
 end process;
 
