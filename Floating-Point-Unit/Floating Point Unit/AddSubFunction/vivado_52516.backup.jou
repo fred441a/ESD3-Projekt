@@ -1,0 +1,60 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon May 15 13:27:55 2023
+# Process ID: 52516
+# Current directory: E:/Universitet/P4/Projekt/Floating Point Unit/AddSubFunction
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26036 E:\Universitet\P4\Projekt\Floating Point Unit\AddSubFunction\AddSubFunction.xpr
+# Log file: E:/Universitet/P4/Projekt/Floating Point Unit/AddSubFunction/vivado.log
+# Journal file: E:/Universitet/P4/Projekt/Floating Point Unit/AddSubFunction\vivado.jou
+# Running On: DESKTOP-1R60T2C, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 16, Host memory: 34261 MB
+#-----------------------------------------------------------
+start_gui
+open_project {E:/Universitet/P4/Projekt/Floating Point Unit/AddSubFunction/AddSubFunction.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+source AddSubFunction.tcl
+add_force {/AddSubFunction/subadd} -radix hex {1 0ns}
+add_force {/AddSubFunction/value_one} -radix bin {01000001101000000000000000000000 0ns}
+add_force {/AddSubFunction/Value_two} -radix bin {01000001101000101101100000100000 0ns}
+run 10 ns
+close_sim
+set_property top AddSubFunctionTester [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
+source AddSubFunctionTester.tcl
+add_force {/AddSubFunctionTester/value_one} -radix hex {41a00000 0ns}
+add_force {/AddSubFunctionTester/Value_two} -radix hex {41a2d820 0ns}
+add_force {/AddSubFunctionTester/subadd} -radix hex {1 0ns}
+run 10 ns
+close_sim
+set_property top AddSubFunction [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+launch_simulation
+source AddSubFunction.tcl
+add_force {/AddSubFunction/subadd} -radix hex {1 0ns}
+add_force {/AddSubFunction/value_one} -radix bin {01000001000100000000000000000000 0ns}
+add_force {/AddSubFunction/Value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+close_sim
+launch_simulation
+source AddSubFunction.tcl
+add_force {/AddSubFunction/subadd} -radix hex {1 0ns}
+add_force {/AddSubFunction/value_one} -radix bin {01000001000100000000000000000000 0ns}
+add_force {/AddSubFunction/Value_two} -radix bin {01000001000111000000000000000000 0ns}
+run 10 ns
+relaunch_sim
+add_force {/AddSubFunction/value_one} -radix bin {01000001000100000000000000000000 0ns}
+add_force {/AddSubFunction/Value_two} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/AddSubFunction/subadd} -radix hex {1 0ns}
+run 10 ns
+relaunch_sim
+add_force {/AddSubFunction/value_one} -radix bin {01000001000100000000000000000000 0ns}
+add_force {/AddSubFunction/Value_two} -radix bin {01000001000111000000000000000000 0ns}
+add_force {/AddSubFunction/subadd} -radix hex {1 0ns}
+run 10 ns
+add_force {/AddSubFunction/value_one} -radix hex {41a00000 0ns}
+add_force {/AddSubFunction/Value_two} -radix hex {41a2d820 0ns}
+run 10 ns
+close_sim
