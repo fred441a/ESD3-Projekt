@@ -44,10 +44,10 @@ entity matrix is
         pidYaw:     in  float32;
         pidLat:     in  float32;
     
-        ch0 :       out std_logic_vector ( 31 downto 0) := (others => '0');
-        ch1 :       out std_logic_vector ( 31 downto 0) := (others => '0');
-        ch2 :       out std_logic_vector ( 31 downto 0) := (others => '0');
-        ch3 :       out std_logic_vector ( 31 downto 0) := (others => '0')
+        ch0 :       out float32;
+        ch1 :       out float32;
+        ch2 :       out float32;
+        ch3 :       out float32
         
         );
 end matrix;
@@ -60,10 +60,6 @@ signal latVal:                  float32:= to_float(17857.0);
 -- Matlab script stops
 signal liftConst:                   float32:= to_float((3.3)*0.2250); -- Tallet inde 
 --
-signal floCh0:                      float32;
-signal floCh1:                      float32;
-signal floCh2:                      float32;
-signal floCh3:                      float32;
 
 signal r0:  float32;
 signal r1:  float32;
@@ -71,29 +67,6 @@ signal r2:  float32;
 signal r3:  float32;
 
 signal stateSwitch:            std_logic_vector(2 downto 0):= (others => '0');
-
--- Bruges til at omskrive float32 to stdLogic32
-function float32ToInteger(float_input : std_logic_vector(31 downto 0)) return std_logic_vector is
-    variable exponent, shift, fractionInt : INTEGER;
-    variable sign : BOOLEAN;
-    variable fraction : unsigned(22 downto 0);
-  begin
-    sign := float_input(31) = '1'; -- get sign
-    exponent := to_integer(unsigned(float_input(30 downto 23))) - 127; --take exponent and subtract bias
-    shift := -(exponent - 23); -- subtract fraction size (23) and inverrt sign, indicates the amount to right shift inorder to get 
-    
-    if shift < 23 then 
-        fraction := shift_right(unsigned(float_input(22 downto 0)), shift); -- right shift fraction to get missing integer part
-        fractionInt := to_integer(fraction); -- conver shiftet fracton to integer
-    end if;
-        
-    if sign then
-        return std_logic_vector(to_signed(-((2**exponent) + fractionInt), 32));
-    else
-        return std_logic_vector(to_signed((2**exponent) + fractionInt, 32));
-    end if;
-  end float32ToInteger;
-  -- Og nu er den færdig med det.
 begin
 
 process(MCLK)
@@ -109,21 +82,17 @@ stateSwitch <= stateSwitch+1;
         r3 <= pidLat*latVal;
         
     elsif (stateSwitch =  2) then -- ch0
-        --floCh0 <= (r0+r1+r2+r3)+liftConst;
-        --ch0 <= float32ToInteger(to_Std_Logic_Vector(floch0));
+        Ch0 <= (r0+r1+r2+r3)+liftConst;
         
     elsif (stateSwitch = 3) then --ch1   
-        --floCh1 <= (r0-r1-r2+r3)+liftConst;
-        --ch1 <= float32ToInteger(to_Std_Logic_Vector(floch1));
+        Ch1 <= (r0-r1-r2+r3)+liftConst;
         
    elsif (stateSwitch = 4) then -- ch2
-        --floCh2 <= (-r0-r1+r2+r3)+liftConst;
-        --ch2 <= float32ToInteger(to_Std_Logic_Vector(floch2));
+        Ch2 <= (-r0-r1+r2+r3)+liftConst;
         
    elsif (stateSwitch = 5) then --ch3
-       floCh3 <= (-r0+r1-r2+r3)+liftConst;
-       ch3 <= float32ToInteger(to_Std_Logic_Vector(floch3));
-       stateSwitch <= "000"; -- reset så vi kan køre igen.
+        Ch3 <= (-r0+r1-r2+r3)+liftConst;
+        stateSwitch <= "000"; -- reset så vi kan køre igen.
        
    end if;
     
