@@ -151,21 +151,20 @@ if(MCLK'event and MCLK = '1') then
             state <= PLUSc0;
         when PLUSc0 =>
             case c0state is
-            
                 when PLUSc00 =>
                     data0 <= r0;
                     data1 <= r1;
-                    op <= "11";
+                    op <= "01"; -- plus
                     c0state <= READc00;
                 when READc00 =>     
                     temp <= inData;
-                    tempRes <= tempRes + temp;
+                    tempRes <= temp;
                     c0state <= PLUSc01;
                     
                 when PLUSc01 =>
                     data0 <= tempRes;
                     data1 <= r2;
-                    op <= "01";
+                    op <= "01"; --plus
                     c0state <= READc01;
                when READc01 =>     
                     temp <= inData;
@@ -175,7 +174,7 @@ if(MCLK'event and MCLK = '1') then
                 when PLUSc02 =>
                     data0 <= tempRes;
                     data1 <= r3;
-                    op <= "01";
+                    op <= "01"; --Plus
                     c0state <= READc02;
                 when READc02 =>    
                     temp <= inData;
@@ -183,7 +182,105 @@ if(MCLK'event and MCLK = '1') then
                 when others =>
                 end case;
        state <= PLUSc1;
-                
+       
+       when PLUSc1 =>
+            case c1state is
+                when PLUSc10 =>
+                    data0 <= r0;
+                    data1 <= r1;
+                    op <= "10"; --Minus
+                    c1state <= READc10;
+                when READc10 =>     
+                    temp <= inData;
+                    tempRes <=temp;
+                    c1state <= PLUSc11;
+                    
+                when PLUSc11 =>
+                    data0 <= tempRes;
+                    data1 <= r2;
+                    op <= "10"; --minus
+                    c1state <= READc11;
+               when READc11 =>     
+                    temp <= inData;
+                    tempRes <= tempRes + temp;
+                    c1state <= PLUSc12;
+                    
+                when PLUSc12 =>
+                    data0 <= tempRes;
+                    data1 <= r3;
+                    op <= "01"; --plus
+                    c1state <= READc12;
+                when READc12 =>    
+                    temp <= inData;
+                    ch1 <= tempRes + temp;
+                when others =>
+                end case;
+        state <= PLUSc2;
+       when PLUSc2 =>
+            case c2state is
+                when PLUSc20 =>
+                    data0 <= r3;
+                    data1 <= r2;
+                    op <= "01"; --Plus
+                    c2state <= READc20;
+                when READc20 =>     
+                    temp <= inData;
+                    tempRes <= temp;
+                    c2state <= PLUSc21;
+                    
+                when PLUSc21 =>
+                    data0 <= tempRes;
+                    data1 <= r1;
+                    op <= "10"; --Plus
+                    c2state <= READc21;
+               when READc21 =>     
+                    temp <= inData;
+                    tempRes <= tempRes + temp;
+                    c2state <= PLUSc22;
+                    
+                when PLUSc22 =>
+                    data0 <= tempRes;
+                    data1 <= r0;
+                    op <= "10"; --minus
+                    c2state <= READc22;
+                when READc22 =>    
+                    temp <= inData;
+                    ch2 <= tempRes + temp;
+                when others =>
+                end case;
+       state <= PLUSc2;
+       when PLUSc3 =>
+            case c3state is
+                when PLUSc30 =>
+                    data0 <= r3;
+                    data1 <= r2;
+                    op <= "10"; --minus
+                    c3state <= READc30;
+                when READc30 =>     
+                    temp <= inData;
+                    tempRes <= temp;
+                    c3state <= PLUSc31;
+                    
+                when PLUSc31 =>
+                    data0 <= tempRes;
+                    data1 <= r1;
+                    op <= "01"; --plus
+                    c3state <= READc31;
+               when READc31 =>     
+                    temp <= inData;
+                    tempRes <= tempRes + temp;
+                    c3state <= PLUSc32;
+                    
+                when PLUSc32 =>
+                    data0 <= tempRes;
+                    data1 <= r0;
+                    op <= "10"; --minus
+                    c3state <= READc32;
+                when READc32 =>    
+                    temp <= inData;
+                    ch3 <= tempRes + temp;
+                when others =>
+                end case;    
        when others =>
        end case;
        
