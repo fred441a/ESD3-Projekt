@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Nov 30 09:59:59 2023
-# Process ID: 252
+# Start of session at: Thu Nov 30 16:04:22 2023
+# Process ID: 26424
 # Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.runs/synth_1
 # Command line: vivado.exe -log topBrain.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source topBrain.tcl
 # Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.runs/synth_1/topBrain.vds
@@ -24,35 +24,139 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 23084
+INFO: [Synth 8-7075] Helper process launched with PID 15524
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1322.008 ; gain = 440.254
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:04 . Memory (MB): peak = 1323.031 ; gain = 441.277
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'topBrain' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:45]
-INFO: [Synth 8-3491] module 'matrix' declared at 'C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:38' bound to instance 'matrixReloaded' of component 'matrix' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:87]
-INFO: [Synth 8-638] synthesizing module 'matrix' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:55]
-WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:78]
-WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:78]
-INFO: [Synth 8-256] done synthesizing module 'matrix' (0#1) [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:55]
-INFO: [Synth 8-3491] module 'pwmMap' declared at 'C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:37' bound to instance 'pwmMapSlave' of component 'pwmMap' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:101]
+INFO: [Synth 8-638] synthesizing module 'topBrain' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:51]
+INFO: [Synth 8-3491] module 'matrix' declared at 'C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:38' bound to instance 'matrixReloaded' of component 'matrix' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:90]
+INFO: [Synth 8-638] synthesizing module 'matrix' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:53]
+INFO: [Synth 8-3491] module 'fpu' declared at 'C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:35' bound to instance 'fpuCalculations' of component 'fpu' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:93]
+INFO: [Synth 8-638] synthesizing module 'fpu' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:45]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:53]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'fpu' (0#1) [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:45]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:152]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:152]
+INFO: [Synth 8-256] done synthesizing module 'matrix' (0#1) [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:53]
+INFO: [Synth 8-3491] module 'pwmMap' declared at 'C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:37' bound to instance 'pwmMapSlave' of component 'pwmMap' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:104]
 INFO: [Synth 8-638] synthesizing module 'pwmMap' [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:54]
 WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:94]
 WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:94]
 INFO: [Synth 8-256] done synthesizing module 'pwmMap' (0#1) [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:54]
-INFO: [Synth 8-256] done synthesizing module 'topBrain' (0#1) [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'topBrain' (0#1) [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:51]
+WARNING: [Synth 8-3848] Net ch1 in module/entity matrix does not have driver. [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:47]
+WARNING: [Synth 8-3848] Net ch2 in module/entity matrix does not have driver. [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:48]
+WARNING: [Synth 8-3848] Net ch3 in module/entity matrix does not have driver. [C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:49]
+WARNING: [Synth 8-7129] Port ch1[8] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[7] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[6] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[5] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[4] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[3] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[2] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[1] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[0] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-1] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-2] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-3] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-4] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-5] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-6] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-7] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-8] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-9] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-10] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-11] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-12] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-13] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-14] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-15] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-16] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-17] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-18] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-19] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-20] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-21] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-22] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch1[-23] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[8] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[7] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[6] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[5] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[4] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[3] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[2] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[1] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[0] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-1] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-2] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-3] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-4] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-5] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-6] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-7] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-8] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-9] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-10] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-11] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-12] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-13] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-14] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-15] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-16] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-17] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-18] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-19] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-20] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-21] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-22] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch2[-23] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[8] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[7] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[6] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[5] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[4] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[3] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[2] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[1] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[0] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-1] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-2] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-3] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-4] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-5] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-6] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-7] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-8] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-9] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-10] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-11] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-12] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-13] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-14] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-15] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-16] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-17] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-18] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-19] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-20] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-21] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-22] in module matrix is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ch3[-23] in module matrix is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:39 ; elapsed = 00:01:08 . Memory (MB): peak = 1793.148 ; gain = 911.395
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1521.359 ; gain = 639.605
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:40 ; elapsed = 00:01:09 . Memory (MB): peak = 1793.148 ; gain = 911.395
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1521.359 ; gain = 639.605
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:40 ; elapsed = 00:01:09 . Memory (MB): peak = 1793.148 ; gain = 911.395
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1521.359 ; gain = 639.605
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.708 . Memory (MB): peak = 1793.148 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.078 . Memory (MB): peak = 1521.359 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -207,77 +311,111 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/topBrain_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1821.301 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1536.020 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.065 . Memory (MB): peak = 1821.301 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1536.020 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:53 ; elapsed = 00:01:34 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 1536.020 ; gain = 654.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:53 ; elapsed = 00:01:34 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 1536.020 ; gain = 654.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:53 ; elapsed = 00:01:34 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:07 ; elapsed = 00:00:13 . Memory (MB): peak = 1536.020 ; gain = 654.266
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'matrix'
+INFO: [Synth 8-802] inferred FSM for state register 'c1state_reg' in module 'matrix'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 plusc00 |                              000 |                              000
+                 readc00 |                              001 |                              100
+                 plusc01 |                              010 |                              001
+                 readc01 |                              011 |                              101
+                 plusc02 |                              100 |                              010
+                 readc02 |                              101 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'c1state_reg' using encoding 'sequential' in module 'matrix'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  multr0 |                             0000 |                             0000
+                  readr0 |                             0001 |                             0101
+                  multr1 |                             0010 |                             0001
+                  readr1 |                             0011 |                             0110
+                  multr2 |                             0100 |                             0010
+                  readr2 |                             0101 |                             0111
+                  multr3 |                             0110 |                             0011
+                  readr3 |                             0111 |                             1000
+                  plusc1 |                             1000 |                             0100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'matrix'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:27 ; elapsed = 00:02:34 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1536.020 ; gain = 654.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 28    
-	   2 Input   31 Bit       Adders := 24    
-	   3 Input   28 Bit       Adders := 16    
-	   2 Input   23 Bit       Adders := 24    
-	   2 Input   11 Bit       Adders := 8     
-	   2 Input   10 Bit       Adders := 64    
-	   3 Input   10 Bit       Adders := 8     
-	   4 Input   10 Bit       Adders := 8     
-	   2 Input    9 Bit       Adders := 24    
-	   3 Input    9 Bit       Adders := 12    
-	   2 Input    8 Bit       Adders := 32    
-	   2 Input    6 Bit       Adders := 32    
-	   2 Input    3 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 12    
+	   2 Input   31 Bit       Adders := 8     
+	   3 Input   28 Bit       Adders := 3     
+	   2 Input   23 Bit       Adders := 8     
+	   2 Input   11 Bit       Adders := 5     
+	   5 Input   10 Bit       Adders := 1     
+	   4 Input   10 Bit       Adders := 5     
+	   2 Input   10 Bit       Adders := 12    
+	   3 Input   10 Bit       Adders := 4     
+	   3 Input    9 Bit       Adders := 3     
+	   2 Input    9 Bit       Adders := 7     
+	   2 Input    8 Bit       Adders := 16    
+	   2 Input    6 Bit       Adders := 14    
 	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 12    
+	               32 Bit    Registers := 14    
 	                8 Bit    Registers := 4     
-	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
 +---Muxes : 
-	   5 Input   32 Bit        Muxes := 12    
-	   2 Input   32 Bit        Muxes := 152   
-	   3 Input   32 Bit        Muxes := 4     
-	   2 Input   31 Bit        Muxes := 24    
-	  29 Input   29 Bit        Muxes := 24    
-	   2 Input   28 Bit        Muxes := 184   
-	   2 Input   26 Bit        Muxes := 24    
-	  25 Input   25 Bit        Muxes := 8     
-	   2 Input   24 Bit        Muxes := 32    
-	   2 Input   23 Bit        Muxes := 48    
-	   2 Input   10 Bit        Muxes := 32    
-	   2 Input    9 Bit        Muxes := 64    
-	   2 Input    8 Bit        Muxes := 128   
-	   4 Input    8 Bit        Muxes := 27    
-	   2 Input    4 Bit        Muxes := 31    
-	   3 Input    4 Bit        Muxes := 89    
-	   4 Input    3 Bit        Muxes := 58    
-	   2 Input    1 Bit        Muxes := 1512  
-	   4 Input    1 Bit        Muxes := 27    
-	  15 Input    1 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 63    
+	   5 Input   32 Bit        Muxes := 3     
+	   9 Input   32 Bit        Muxes := 2     
+	   6 Input   32 Bit        Muxes := 2     
+	   2 Input   31 Bit        Muxes := 8     
+	  29 Input   29 Bit        Muxes := 8     
+	   2 Input   28 Bit        Muxes := 33    
+	   2 Input   26 Bit        Muxes := 8     
+	  25 Input   25 Bit        Muxes := 6     
+	   2 Input   24 Bit        Muxes := 13    
+	   2 Input   23 Bit        Muxes := 16    
+	   2 Input   10 Bit        Muxes := 6     
+	   2 Input    9 Bit        Muxes := 12    
+	   4 Input    8 Bit        Muxes := 9     
+	   2 Input    8 Bit        Muxes := 48    
+	   3 Input    4 Bit        Muxes := 35    
+	   2 Input    4 Bit        Muxes := 13    
+	   9 Input    4 Bit        Muxes := 1     
+	   4 Input    3 Bit        Muxes := 22    
+	   6 Input    3 Bit        Muxes := 1     
+	   9 Input    2 Bit        Muxes := 1     
+	   6 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 318   
+	   4 Input    1 Bit        Muxes := 9     
+	   9 Input    1 Bit        Muxes := 10    
+	   6 Input    1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -293,58 +431,29 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-DSP Report: Generating DSP fract0, operation Mode is: (A:0xb28000)*B.
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP fract0, operation Mode is: A*B.
 DSP Report: operator fract0 is absorbed into DSP fract0.
 DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0xb28000)*B.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: Generating DSP fract0, operation Mode is: (A:0xb20000)*B.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0xb20000)*B.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: Generating DSP fract0, operation Mode is: (A:0x900000)*B.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0x900000)*B.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: Generating DSP fract0, operation Mode is: (A:0x900000)*B.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: operator fract0 is absorbed into DSP fract0.
-DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0x900000)*B.
+DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator fract0 is absorbed into DSP fract0.
 DSP Report: operator fract0 is absorbed into DSP fract0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:06:51 ; elapsed = 00:12:22 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:01:03 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
- Sort Area is matrix__GB6 fract0_0 : 0 0 : 880 1419 : Used 1 time 0
- Sort Area is matrix__GB6 fract0_0 : 0 1 : 539 1419 : Used 1 time 0
- Sort Area is matrix__GB7 fract0_0 : 0 0 : 880 1323 : Used 1 time 0
- Sort Area is matrix__GB7 fract0_0 : 0 1 : 443 1323 : Used 1 time 0
- Sort Area is matrix__GB7 fract0_3 : 0 0 : 880 1323 : Used 1 time 0
- Sort Area is matrix__GB7 fract0_3 : 0 1 : 443 1323 : Used 1 time 0
- Sort Area is matrix__GB7 fract0_4 : 0 0 : 880 1323 : Used 1 time 0
- Sort Area is matrix__GB7 fract0_4 : 0 1 : 443 1323 : Used 1 time 0
+ Sort Area is matrix__GB0 fract0_0 : 0 0 : 3446 4760 : Used 1 time 0
+ Sort Area is matrix__GB0 fract0_0 : 0 1 : 1314 4760 : Used 1 time 0
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
-+------------+---------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name | DSP Mapping               | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+------------+---------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|matrix      | (A:0xb28000)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | (PCIN>>17)+(A:0xb28000)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | (A:0xb20000)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | (PCIN>>17)+(A:0xb20000)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | (A:0x900000)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | (PCIN>>17)+(A:0x900000)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | (A:0x900000)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | (PCIN>>17)+(A:0x900000)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-+------------+---------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|fpu         | A*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | (PCIN>>17)+A*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
@@ -354,20 +463,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:07:03 ; elapsed = 00:12:43 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:01:09 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:07:06 ; elapsed = 00:12:48 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Timing Optimization : Time (s): cpu = 00:00:39 ; elapsed = 00:01:09 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:07:17 ; elapsed = 00:13:06 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Technology Mapping : Time (s): cpu = 00:00:39 ; elapsed = 00:01:10 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -385,37 +493,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:07:21 ; elapsed = 00:13:20 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:07:21 ; elapsed = 00:13:20 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:07:22 ; elapsed = 00:13:22 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:07:22 ; elapsed = 00:13:22 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:07:23 ; elapsed = 00:13:24 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:07:23 ; elapsed = 00:13:24 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -425,14 +533,8 @@ DSP Final Report (the ' indicates corresponding REG is set)
 +------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |Module Name | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|matrix      | A*B          | 24     | 0      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | A*B          | 24     | 0      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | PCIN>>17+A*B | 0      | 0      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | A*B          | 24     | 0      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | PCIN>>17+A*B | 0      | 0      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | A*B          | 24     | 0      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|matrix      | PCIN>>17+A*B | 0      | 0      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 +------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 
@@ -447,45 +549,43 @@ Report Cell Usage:
 |      |Cell    |Count |
 +------+--------+------+
 |1     |BUFG    |     1|
-|2     |CARRY4  |  3361|
-|3     |DSP48E1 |     8|
-|4     |LUT1    |  1343|
-|5     |LUT2    |  3671|
-|6     |LUT3    |  6055|
-|7     |LUT4    |  6621|
-|8     |LUT5    |  8141|
-|9     |LUT6    | 12027|
-|10    |MUXF7   |    52|
-|11    |MUXF8   |     1|
-|12    |FDRE    |   363|
-|13    |FDSE    |    52|
-|14    |IBUF    |     1|
-|15    |OBUF    |    32|
+|2     |CARRY4  |   700|
+|3     |DSP48E1 |     2|
+|4     |LUT1    |   283|
+|5     |LUT2    |  1472|
+|6     |LUT3    |   997|
+|7     |LUT4    |  1541|
+|8     |LUT5    |  1562|
+|9     |LUT6    |  2629|
+|10    |MUXF7   |    37|
+|11    |FDRE    |   348|
+|12    |FDSE    |    23|
+|13    |IBUF    |   129|
+|14    |OBUF    |    32|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:07:23 ; elapsed = 00:13:24 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:06:38 ; elapsed = 00:13:16 . Memory (MB): peak = 1821.301 ; gain = 911.395
-Synthesis Optimization Complete : Time (s): cpu = 00:07:23 ; elapsed = 00:13:26 . Memory (MB): peak = 1821.301 ; gain = 939.547
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:37 ; elapsed = 00:01:12 . Memory (MB): peak = 1733.551 ; gain = 837.137
+Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:01:14 . Memory (MB): peak = 1733.551 ; gain = 851.797
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.699 . Memory (MB): peak = 1821.301 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 3422 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 1743.195 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 739 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-WARNING: [Netlist 29-101] Netlist 'topBrain' is not ideal for floorplanning, since the cellview 'matrix' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1821.301 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1746.918 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: d3cbcd12
+Synth Design complete | Checksum: fcc4507d
 INFO: [Common 17-83] Releasing license: Synthesis
-29 Infos, 54 Warnings, 48 Critical Warnings and 0 Errors encountered.
+36 Infos, 154 Warnings, 48 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:07:31 ; elapsed = 00:13:46 . Memory (MB): peak = 1821.301 ; gain = 1331.188
+synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:01:18 . Memory (MB): peak = 1746.918 ; gain = 1255.926
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.210 . Memory (MB): peak = 1821.301 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1746.918 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.runs/synth_1/topBrain.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file topBrain_utilization_synth.rpt -pb topBrain_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Nov 30 10:13:57 2023...
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 30 16:05:48 2023...

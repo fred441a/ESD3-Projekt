@@ -35,8 +35,8 @@ use ieee.numeric_std.all;
 entity fpu is
     Port ( input0 : in float32;
            input1 : in float32;
-           MCLK : in STD_LOGIC;
-           state : in STD_LOGIC_VECTOR (1 downto 0) := (others => '0');
+           CLK : in STD_LOGIC;
+           opVal : in STD_LOGIC_VECTOR (1 downto 0) := (others => '0');
            
            output: out float32
            ); 
@@ -45,17 +45,17 @@ end fpu;
 architecture Behavioral of fpu is
 
 begin
-process(MCLK)
+process(CLK)
 begin
 
-    if(MCLK'event and MCLK = '1') then    
-        if (state = 1) then -- add
+    if(falling_edge (CLK)) then    
+        if (opVal = 1) then -- add
             output <= (input0+input1);
             
-        elsif (state = 2) then -- subtract
+        elsif (opVal = 2) then -- subtract
             output <= (input0-input1);
             
-        elsif (state = 3) then -- multiply
+        elsif (opVal = 3) then -- multiply
             output <= (input0*input1);
         end if;  
               

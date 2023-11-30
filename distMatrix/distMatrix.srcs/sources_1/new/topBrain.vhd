@@ -38,7 +38,13 @@ entity topBrain is
   cha0:     out std_logic_vector (7 downto 0);
   cha1:     out std_logic_vector (7 downto 0);
   cha2:     out std_logic_vector (7 downto 0);
-  cha3:     out std_logic_vector (7 downto 0)
+  cha3:     out std_logic_vector (7 downto 0);
+  
+  pitchPid:     in float32;
+  rollPid:      in float32;
+  yawPid:       in float32;
+  latPid:       in float32
+  
   );
 end topBrain;
 
@@ -47,7 +53,6 @@ architecture Behavioral of topBrain is
 component matrix is
     port (
     MCLK: in STD_LOGIC;
-    
     pidPitch: in float32;
     pidRoll: in float32;
     pidYaw: in float32;
@@ -75,22 +80,20 @@ component pwmMap is
     );
 end component;
 
-signal zero:    float32 := to_float(0.0);
-signal one:     float32 := to_float(1.0);
-
 signal sigch0:  float32;
 signal sigch1:  float32;
 signal sigch2:  float32;
 signal sigch3:  float32;
+
 begin
 
 matrixReloaded: matrix
 port map (
     MCLK => CLK,
-    pidPitch => zero,
-    pidRoll => zero,
-    pidYaw => one,
-    pidLat => zero,
+    pidPitch => pitchPid,
+    pidRoll => rollPid,
+    pidYaw => yawPid,
+    pidLat => latPid,
     
     ch0 => sigch0,
     ch1 => sigch1,
@@ -111,4 +114,5 @@ port map (
     outch2 => cha2,
     outch3 => cha3    
 );
+    
 end Behavioral;

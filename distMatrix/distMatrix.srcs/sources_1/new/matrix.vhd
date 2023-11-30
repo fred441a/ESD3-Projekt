@@ -38,7 +38,6 @@ use ieee.numeric_std.all;
 entity matrix is
     Port ( 
         MCLK:       in std_logic;
-        
         pidPitch:   in  float32;
         pidRoll:    in  float32;
         pidYaw:     in  float32;
@@ -48,11 +47,21 @@ entity matrix is
         ch1 :       out float32;
         ch2 :       out float32;
         ch3 :       out float32
-        
         );
 end matrix;
 
 architecture Behavioral of matrix is
+
+component fpu is
+    port (
+    CLK: in            std_logic;
+    input0: in          float32;
+    input1: in          float32;
+    opVal: in           STD_LOGIC_VECTOR (1 downto 0);
+    output: out         float32
+    );
+end component;
+
 -- These values are the inv og dist matrix. Take directly from Matlab Script
 signal pitchRollVal:            float32:= to_float(576.0);
 signal yawVal:                  float32:= to_float(357.0);
@@ -65,34 +74,120 @@ signal r0:  float32;
 signal r1:  float32;
 signal r2:  float32;
 signal r3:  float32;
+signal opVal:                       std_logic_vector (1 downto 0) := (others => '0');
 
-signal stateSwitch:            std_logic_vector(2 downto 0):= (others => '0');
+signal        data0:     float32;
+signal        data1:     float32;
+signal        op:        std_logic_vector (1 downto 0);
+signal        inData:    float32;
+
+signal        temp:      float32;
+signal        tempRes:   float32 := (others => '0');
+
+type tstate is (MULTr0, MULTr1, MULTr2, MULTr3, PLUSc0, PLUSc1, PLUSc2, PLUSc3, READr0, READr1, READr2, READr3);
+signal state    :tstate := MULTr0;
+
+type tstatec0 is (PLUSc00, PLUSc01, PLUSc02, PLUSc03, READc00, READc01, READc02);
+signal c0state   :tstatec0 :=PLUSc01;
+
+type tstatec1 is (PLUSc10, PLUSc11, PLUSc12, PLUSc13, READc10, READc11, READc12);
+signal c1state   :tstatec1 :=PLUSc10;
+
+type tstatec2 is (PLUSc20, PLUSc21, PLUSc22, PLUSc23, READc20, READc21, READc22);
+signal c2state   :tstatec2 :=PLUSc20;
+
+type tstatec3 is (PLUSc30, PLUSc31, PLUSc32, PLUSc33, READc30, READc31, READc32);
+signal c3state   :tstatec3 :=PLUSc30;
 begin
+
+fpuCalculations: fpu
+port map (
+    CLK => MCLK,
+    input0 => data0,
+    input1 => data1,
+    opVal => op,
+    output => inData
+    );
 
 process(MCLK)
 
 begin
 if(MCLK'event and MCLK = '1') then
-
-    if(stateSwitch = 0) then
-        r0 <= pidPitch*pitchRollVal;
-    elsif (stateSwitch = 1) then
-        r1 <= pidRoll*pitchRollVal;
-    elsif (stateSwitch = 2) then
-        r2 <= pidYaw*yawVal;
-    elsif (stateSwitch = 3) then    
-        r3 <= pidLat*latVal;
-        
-    elsif (stateSwitch =  4) then -- ch0
-        Ch0 <= (r0+r1+r2+r3)+liftConst;  
-        Ch1 <= (r0-r1-r2+r3)+liftConst;
-        Ch2 <= (-r0-r1+r2+r3)+liftConst;
-        Ch3 <= (-r0+r1-r2+r3)+liftConst;
-        stateSwitch <= "000"; -- reset så vi kan køre igen.
-    end if;
-    
-   stateSwitch <= stateSwitch+1; 
+    case  state is 
+        when MULTr0 =>
+            data0 <= pitchRollVal;
+            data1 <= pidPitch;
+            op <= "11";
+            state <= READr0;
+        when READr0 =>
+            r0 <= inData;
+            state <= MULTr1;
+                
+        when MULTr1 =>
+            data0 <= pitchRollVal;
+            data1 <= pidRoll;
+            op <= "11";
+            state <= READr1;
+        when READr1 =>                    
+            r1 <= inData;
+            state <= MULTr2;
+            
+        when MULTr2 =>
+            data0 <= yawVal;
+            data1 <= pidYaw;
+            op <= "11";
+            state <= READr2;
+        when READr2 =>                   
+            r2 <= inData;
+            state <= MULTr3;
+            
+        when MULTr3 =>
+            data0 <= latVal;
+            data1 <= pidLat;
+            op <= "11";
+            state <= READr3;
+        when READr3 =>                 
+            r3 <= inData;
+            state <= PLUSc0;
+        when PLUSc0 =>
+            case c0state is
+            
+                when PLUSc00 =>
+                    data0 <= r0;
+                    data1 <= r1;
+                    op <= "11";
+                    c0state <= READc00;
+                when READc00 =>     
+                    temp <= inData;
+                    tempRes <= tempRes + temp;
+                    c0state <= PLUSc01;
+                    
+                when PLUSc01 =>
+                    data0 <= tempRes;
+                    data1 <= r2;
+                    op <= "01";
+                    c0state <= READc01;
+               when READc01 =>     
+                    temp <= inData;
+                    tempRes <= tempRes + temp;
+                    c0state <= PLUSc02;
+                    
+                when PLUSc02 =>
+                    data0 <= tempRes;
+                    data1 <= r3;
+                    op <= "01";
+                    c0state <= READc02;
+                when READc02 =>    
+                    temp <= inData;
+                    ch0 <= tempRes + temp;
+                when others =>
+                end case;
+       state <= PLUSc1;
+                
+       when others =>
+       end case;
+       
+            
 end if;
-
 end process;
 end Behavioral;
