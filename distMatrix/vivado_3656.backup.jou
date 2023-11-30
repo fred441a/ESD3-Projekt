@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Nov 29 19:40:58 2023
+# Process ID: 3656
+# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7900 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\distMatrix\distMatrix.xpr
+# Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/vivado.log
+# Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_utilization -name utilization_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+close_design
+open_run synth_1 -name synth_1
+report_utilization -name utilization_1

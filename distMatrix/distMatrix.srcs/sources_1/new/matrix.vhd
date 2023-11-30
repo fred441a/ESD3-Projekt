@@ -54,9 +54,9 @@ end matrix;
 
 architecture Behavioral of matrix is
 -- These values are the inv og dist matrix. Take directly from Matlab Script
-signal pitchRollVal:            float32:= to_float(57604.0);
-signal yawVal:                  float32:= to_float(35741.0);
-signal latVal:                  float32:= to_float(17857.0);
+signal pitchRollVal:            float32:= to_float(576.0);
+signal yawVal:                  float32:= to_float(357.0);
+signal latVal:                  float32:= to_float(178.0);
 -- Matlab script stops
 signal liftConst:                   float32:= to_float((3.3)*0.2250); -- Tallet inde 
 --
@@ -73,29 +73,25 @@ process(MCLK)
 
 begin
 if(MCLK'event and MCLK = '1') then
-stateSwitch <= stateSwitch+1;
 
-    if(stateSwitch = 1) then
+    if(stateSwitch = 0) then
         r0 <= pidPitch*pitchRollVal;
+    elsif (stateSwitch = 1) then
         r1 <= pidRoll*pitchRollVal;
+    elsif (stateSwitch = 2) then
         r2 <= pidYaw*yawVal;
+    elsif (stateSwitch = 3) then    
         r3 <= pidLat*latVal;
         
-    elsif (stateSwitch =  2) then -- ch0
-        Ch0 <= (r0+r1+r2+r3)+liftConst;
-        
-    elsif (stateSwitch = 3) then --ch1   
+    elsif (stateSwitch =  4) then -- ch0
+        Ch0 <= (r0+r1+r2+r3)+liftConst;  
         Ch1 <= (r0-r1-r2+r3)+liftConst;
-        
-   elsif (stateSwitch = 4) then -- ch2
         Ch2 <= (-r0-r1+r2+r3)+liftConst;
-        
-   elsif (stateSwitch = 5) then --ch3
         Ch3 <= (-r0+r1-r2+r3)+liftConst;
         stateSwitch <= "000"; -- reset så vi kan køre igen.
-       
-   end if;
+    end if;
     
+   stateSwitch <= stateSwitch+1; 
 end if;
 
 end process;
