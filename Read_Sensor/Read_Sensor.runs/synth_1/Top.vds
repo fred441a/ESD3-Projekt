@@ -1,0 +1,476 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Nov 27 11:32:05 2023
+# Process ID: 238605
+# Current directory: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.runs/synth_1
+# Command line: vivado -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
+# Log file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.runs/synth_1/Top.vds
+# Journal file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.runs/synth_1/vivado.jou
+# Running On: Lenova, OS: Linux, CPU Frequency: 1397.065 MHz, CPU Physical cores: 12, Host memory: 15517 MB
+#-----------------------------------------------------------
+source Top.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1330.969 ; gain = 0.023 ; free physical = 3637 ; free virtual = 8589
+Command: read_checkpoint -auto_incremental -incremental /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/utils_1/imports/synth_1/Top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/utils_1/imports/synth_1/Top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 238635
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1997.871 ; gain = 379.738 ; free physical = 2655 ; free virtual = 7606
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Top' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'change_sensor' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'Byte_compiler' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:58]
+INFO: [Synth 8-638] synthesizing module 'Read_Byte' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'i2c_master' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'i2c_master' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:54]
+INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:104]
+INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:128]
+INFO: [Synth 8-256] done synthesizing module 'Read_Byte' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:51]
+INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:122]
+INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:145]
+INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:168]
+INFO: [Synth 8-256] done synthesizing module 'Byte_compiler' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:58]
+INFO: [Synth 8-256] done synthesizing module 'change_sensor' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:51]
+INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:112]
+WARNING: [Synth 8-614] signal 'enable' is read in the process but is not in the sensitivity list [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:109]
+INFO: [Synth 8-256] done synthesizing module 'Top' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:51]
+WARNING: [Synth 8-3848] Net LED_1 in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:44]
+WARNING: [Synth 8-3848] Net LED_2 in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:45]
+WARNING: [Synth 8-3848] Net ReadMem[0] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[1] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[2] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[3] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[4] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[5] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[6] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[7] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[8] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[9] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[10] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[11] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[12] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[13] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[14] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[15] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[16] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[17] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[18] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[19] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[20] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[21] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[24] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[27] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[28] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[29] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[30] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[31] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[33] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[34] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[35] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[36] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[37] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[38] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[40] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[41] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[42] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[43] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[44] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-3848] Net ReadMem[45] in module/entity Top does not have driver. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Top.vhd:57]
+WARNING: [Synth 8-7129] Port ADDRMemBus[7] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDRMemBus[6] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDRMemBus[5] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDRMemBus[4] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDRMemBus[3] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDRMemBus[2] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDRMemBus[1] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ADDRMemBus[0] in module Byte_compiler is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][31] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][30] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][29] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][28] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][27] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][26] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][25] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][24] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][23] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][22] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][21] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][20] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][19] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][18] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][17] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][16] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][15] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][14] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][13] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][12] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][11] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][10] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][9] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][8] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][7] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][6] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][5] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][4] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][3] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][2] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][1] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[0][0] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][31] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][30] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][29] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][28] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][27] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][26] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][25] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][24] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][23] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][22] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][21] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][20] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][19] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][18] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][17] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][16] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][15] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][14] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][13] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][12] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][11] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][10] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][9] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][8] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][7] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][6] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][5] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][4] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][3] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][2] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][1] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[1][0] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][31] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][30] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][29] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][28] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][27] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][26] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][25] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][24] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][23] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][22] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][21] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][20] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][19] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][18] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][17] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][16] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][15] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][14] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][13] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][12] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][11] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][10] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][9] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][8] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][7] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][6] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][5] in module change_sensor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ReadMem[2][4] in module change_sensor is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2070.840 ; gain = 452.707 ; free physical = 2575 ; free virtual = 7527
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2088.652 ; gain = 470.520 ; free physical = 2566 ; free virtual = 7519
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2088.652 ; gain = 470.520 ; free physical = 2566 ; free virtual = 7519
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2088.652 ; gain = 0.000 ; free physical = 2566 ; free virtual = 7519
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/constrs_1/new/Constraints.xdc]
+WARNING: [Vivado 12-584] No ports matched 'en'. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/constrs_1/new/Constraints.xdc:2]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/constrs_1/new/Constraints.xdc:2]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'en'. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/constrs_1/new/Constraints.xdc:8]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/constrs_1/new/Constraints.xdc:8]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/constrs_1/new/Constraints.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/constrs_1/new/Constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2236.402 ; gain = 0.000 ; free physical = 2485 ; free virtual = 7437
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2236.402 ; gain = 0.000 ; free physical = 2485 ; free virtual = 7437
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2480 ; free virtual = 7433
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2480 ; free virtual = 7433
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2480 ; free virtual = 7433
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_master'
+INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'Read_Byte'
+INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'Byte_compiler'
+INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'change_sensor'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   ready |                        000000001 |                             0000
+                   start |                        000000010 |                             0001
+                 command |                        000000100 |                             0010
+                slv_ack1 |                        000001000 |                             0011
+                      wr |                        000010000 |                             0100
+                slv_ack2 |                        000100000 |                             0110
+                      rd |                        001000000 |                             0101
+                mstr_ack |                        010000000 |                             0111
+                    stop |                        100000000 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'i2c_master'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   ready |                               00 |                              000
+             writeadress |                               01 |                              001
+                readwait |                               10 |                              010
+                readdata |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'Read_Byte'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   ready |                              000 |                              000
+               read1byte |                              001 |                              001
+               read2byte |                              010 |                              010
+               read3byte |                              011 |                              011
+               read4byte |                              100 |                              100
+              writetomem |                              101 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'Byte_compiler'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   ready |                             0000 |                             0000
+                    altz |                             0001 |                             0001
+                    magx |                             0010 |                             0010
+                    magy |                             0011 |                             0011
+                    magz |                             0100 |                             0100
+                   gyrox |                             0101 |                             0101
+                   gyroy |                             0110 |                             0110
+                   gyroz |                             0111 |                             0111
+                    accx |                             1000 |                             1000
+                    accy |                             1001 |                             1001
+                    accz |                             1010 |                             1010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'change_sensor'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2477 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    9 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 10    
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   6 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 12    
+	   2 Input    9 Bit        Muxes := 10    
+	   9 Input    9 Bit        Muxes := 1     
+	   6 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 8     
+	  11 Input    8 Bit        Muxes := 5     
+	  11 Input    7 Bit        Muxes := 1     
+	  11 Input    4 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 4     
+	   6 Input    3 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 7     
+	   2 Input    1 Bit        Muxes := 30    
+	   3 Input    1 Bit        Muxes := 1     
+	   9 Input    1 Bit        Muxes := 7     
+	   6 Input    1 Bit        Muxes := 10    
+	  11 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2474 ; free virtual = 7432
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    12|
+|3     |LUT1   |     3|
+|4     |LUT2   |    73|
+|5     |LUT3   |    16|
+|6     |LUT4   |    24|
+|7     |LUT5   |    21|
+|8     |LUT6   |    29|
+|9     |FDCE   |     1|
+|10    |FDRE   |    93|
+|11    |IBUF   |     2|
+|12    |IOBUF  |     1|
+|13    |OBUFT  |     3|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2473 ; free virtual = 7431
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2236.402 ; gain = 470.520 ; free physical = 2472 ; free virtual = 7430
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2236.402 ; gain = 618.270 ; free physical = 2472 ; free virtual = 7430
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2236.402 ; gain = 0.000 ; free physical = 2719 ; free virtual = 7677
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2236.402 ; gain = 0.000 ; free physical = 2763 ; free virtual = 7721
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Synth Design complete | Checksum: 6f7089ba
+INFO: [Common 17-83] Releasing license: Synthesis
+46 Infos, 146 Warnings, 2 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:24 . Memory (MB): peak = 2236.402 ; gain = 905.434 ; free physical = 2763 ; free virtual = 7721
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1845.323; main = 1511.123; forked = 382.797
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3173.730; main = 2236.402; forked = 969.344
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.runs/synth_1/Top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 27 11:32:38 2023...
