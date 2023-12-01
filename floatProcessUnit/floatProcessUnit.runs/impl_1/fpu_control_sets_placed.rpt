@@ -1,3 +1,4 @@
+<<<<<<<< HEAD:floatProcessUnit/floatProcessUnit.runs/impl_1/fpu_control_sets_placed.rpt
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
@@ -5,8 +6,17 @@ Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanc
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file fpu_control_sets_placed.rpt
 | Design       : fpu
+========
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Mon May  8 17:52:56 2023
+| Host         : LAPTOP-U9E9QN8R running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file AddSubFunction_control_sets_placed.rpt
+| Design       : AddSubFunction
+>>>>>>>> 865721b5655ef875a5c96a164085ad081e8cc0de:Floating-Point-Unit/Floating Point Unit/AddSubFunction/AddSubFunction.runs/impl_1/AddSubFunction_control_sets_placed.rpt
 | Device       : xc7a35t
----------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 
 Control Set Information
 
