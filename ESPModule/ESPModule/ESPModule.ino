@@ -7,7 +7,7 @@
 #include <Adafruit_MPU6050.h>   // Library for gyroscope and accelormeter
 
 #define INCLUDE_vTaskSuspend 1            // Definition of suspend function being active
-#define externalEnablePin 0               // The pin to activate the FPGA
+#define externalEnablePin 25              // The pin to activate the FPGA
 #define takeOffPin 32                     // Pin to start take off
 #define landPin 33                        // Pin to land again
 #define startHeight 500                   // Height to achieve upon power on in mm
@@ -36,7 +36,7 @@ Adafruit_MPU6050 mpu;                              // Instantiates MPU module
 Adafruit_Sensor *mpu_temp, *mpu_accel, *mpu_gyro;  // Necessary for adafruit library to function
 
 // Global variables:
-uint32_t desiredHeight = startHeight;  // Desired height in mm
+uint32_t desiredHeight = 0;  // Desired height in mm
 uint32_t currentHeight;                // Variable to store current height measured by the vl52l0x
 float currentYaw = 0;                  // Current yaw measurement. Float to handle values given by MPU6050
 float desiredYaw = 0;                  // Desired yaw angle. Float to handle values given by MPU6050
@@ -109,11 +109,11 @@ void setup() {
   mpu_gyro->printSensorDetails();            // Internal update in sensor library
 
   Serial.println("Calibration done");
-  readyFPGA();   // Sending ready signal for FPGA
+  readyFPGA();  // Sending ready signal for FPGA
   //delay(15000);  // Delay while the FPGA is setting up
 
   Serial.println("Task creation");                                                 // Status update to figure out which function is running
-  xTaskCreate(MyIdleTask, "IdleTask", 1000, NULL, 0, NULL);                          // Idle task to check if there is any time left to execute tasks in
+  xTaskCreate(MyIdleTask, "IdleTask", 1000, NULL, 0, NULL);                        // Idle task to check if there is any time left to execute tasks in
   xTaskCreate(safeTakeOff, "Safely takes off", 5000, NULL, 3, &hdlSafeTakeOff);    // Safely lifts the drone to 500mm
   xTaskCreate(safeLand, "Safely lands", 5000, NULL, 3, &hdlSafeLand);              // Safely lands the drone
   xTaskCreate(heightRead, "Reads current height", 8000, NULL, 2, &hdlHeightRead);  // Read current height from range sensor
@@ -135,8 +135,9 @@ void loop() {
 }
 
 void readyFPGA() {
-  digitalWrite(externalEnablePin, HIGH);    // Turns on the ready led for visual confirmation
   writeToAddress(FPGAAddress, 0x01, 0x01);  // Updates the external ready bit to a high
+  digitalWrite(externalEnablePin, HIGH);    // Physically sets the external enable pin HIGH
+  digitalWrite(allGoodPin, HIGH);           // Turns on the ready led for visual confirmation
 }
 
 void getData() {
@@ -178,7 +179,7 @@ void readFromAddress(uint8_t slaveAddress, uint8_t regAddress) {
 static void safeTakeOff(void *pvParameters) {
   while (1) {
     if (digitalRead(takeOffPin) == LOW) {                  // While a switch is enabled this function can be called
-                                                           Serial.println("Takeoff");                           // Status update to figure out which function is running
+      Serial.println("Takeoff");                           // Status update to figure out which function is running
       vTaskSuspend(hdlHeightRead);                         // Suspends heightRead function
       vTaskSuspend(hdlHeightDesired);                      // Suspends heightDesired function
       vTaskSuspend(hdlYawRead);                            // Suspends yawRead function
@@ -200,7 +201,7 @@ static void safeTakeOff(void *pvParameters) {
         desiredHeight += 1;                                // Increments desiredheight with 1mm every iteration for a smooth ascend
         writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the memory module with newest desired height
         delay(200);                                        // Delay so that the MCU does not get ahead of the actual drone height
-                                                           //Serial.println(desiredHeight);
+        Serial.println(desiredHeight);
       }
       vTaskResume(hdlHeightRead);            // Resumes heightRead function
       vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
@@ -212,14 +213,14 @@ static void safeTakeOff(void *pvParameters) {
       vTaskResume(hdlRollDesired);           // Resumes rollDesired function
       writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
 static void safeLand(void *pvParameters) {
   while (1) {
     if (digitalRead(landPin) == LOW) {                     // While a switch is enabled this function can be called
-                                                           Serial.println("Land");                              // Status update to figure out which function is running
+      Serial.println("Land");                              // Status update to figure out which function is running
       vTaskSuspend(hdlHeightRead);                         // Suspends heightRead function
       vTaskSuspend(hdlHeightDesired);                      // Suspends heightDesired function
       vTaskSuspend(hdlYawRead);                            // Suspends yawRead function
@@ -241,7 +242,7 @@ static void safeLand(void *pvParameters) {
         desiredHeight -= 1;                                // Decrements desired height with 1 mm, so that the drone slowly descends
         writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with a new "desired" height, so that the drone should land safely
         delay(100);                                        // Delay so that the MCU does not get ahead of the actual drone height
-                                                           //Serial.println(desiredHeight);
+        Serial.println(desiredHeight);
       }
       vTaskResume(hdlHeightRead);            // Resumes heightRead function
       vTaskResume(hdlHeightDesired);         // Resumes heightDesired function
@@ -253,7 +254,7 @@ static void safeLand(void *pvParameters) {
       vTaskResume(hdlRollDesired);           // Resumes rollDesired function
       writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -271,27 +272,25 @@ static void heightRead(void *pvParameters) {
       //Serial.println(" out of range ");
     }
     writeToAddress(FPGAAddress, 0x18, currentHeight);  // Updates the desired memory module address with current actual height
-    vTaskDelay(10 / portTICK_PERIOD_MS);              // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);               // Delay for 10 milliseconds
   }
 }
 
 static void heightDesired(void *pvParameters) {
   while (1) {
-    //Serial.println("heightDesired");                 // Status update to figure out which function is running
-    joystickInputZ = analogRead(joystickInputZPin);  // Reading from the joystick saved as input value
-    if (joystickInputZ >= 3500) {                    // If the joystick is completely at the top, the drone should rise quickly
-      desiredHeight += 15;                           // Increments desiredHeight by 15mm
-      //Serial.println("SÅ SKER DER SATME NOGET OPAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+    joystickInputZ = analogRead(joystickInputZPin);                // Reading from the joystick saved as input value
+    if (joystickInputZ >= 3500) {                                  // If the joystick is completely at the top, the drone should rise quickly
+      desiredHeight += 3;                                          // Increments desiredHeight by 3mm
     } else if (joystickInputZ >= 3000 && joystickInputZ < 3500) {  // If the joystick is somewhat at the top, the drone should rise
-      desiredHeight += 10;                                         // Increments desiredHeight by 10mm
+      desiredHeight += 2;                                          // Increments desiredHeight by 2mm
     } else if (joystickInputZ > 2500 && joystickInputZ < 3000) {   // If the joystick is a little at the top, the drone should rise slowly
-      desiredHeight += 5;                                          // Increments desiredHeight by 5mm
+      desiredHeight += 1;                                          // Increments desiredHeight by 1mm
     } else if (joystickInputZ < 1500 && joystickInputZ > 1000) {   // If the joystick is a little at the bottom, the drone should descend slowly
-      desiredHeight -= 5;                                          // Decrements desiredHeight by 5mm
+      desiredHeight -= 1;                                          // Decrements desiredHeight by 1mm
     } else if (joystickInputZ <= 1000 && joystickInputZ > 500) {   // If the joystick is somewhat at the bottom, the drone should descend
-      desiredHeight -= 10;                                         // Decrements desiredHeight by 10mm
+      desiredHeight -= 2;                                          // Decrements desiredHeight by 2mm
     } else if (joystickInputZ <= 500) {                            // If the joystick is completely at the bottom, the drone should descend quickly
-      desiredHeight -= 15;                                         // Decrements desiredHeight by 15mm
+      desiredHeight -= 3;                                          // Decrements desiredHeight by 3mm
     }
     if (currentHeight >= (desiredHeight - heightTolerance) && currentHeight <= (desiredHeight + heightTolerance)) {  // Checks if the desired height has been achieved within the given tolerances
       digitalWrite(heightReachedPin, HIGH);                                                                          // Turns on led if height reached
@@ -300,14 +299,15 @@ static void heightDesired(void *pvParameters) {
     }
     if (desiredHeight < 0 || desiredHeight > 22000) {  // If desired height is lower than 0, the drone will crash. However, since the desiredHeight variable is unsigned, a failsafe of desiredHeight>22000 has been added, to catch the situations where the value rolls over and becomes approx 4294967295
       desiredHeight = 0;                               // Minimum height of drone
-                                                       //Serial.println("Min height reached");
-    } else if (desiredHeight > 2200) {                 // If the desired height is higher than 2200, another sensor has to be used
-      desiredHeight = 2200;                            // Maximum stable height of altitude sensor
-                                                       //Serial.println("Max height reached");
+      Serial.println("Min height reached");
+    } else if (desiredHeight > 2200) {  // If the desired height is higher than 2200, another sensor has to be used
+      desiredHeight = 2200;             // Maximum stable height of altitude sensor
+      Serial.println("Max height reached");
     }
     writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with current desired height
-                                                       //Serial.println(desiredHeight);
-    vTaskDelay(10 / portTICK_PERIOD_MS);              // Delay for 100 milliseconds
+    //Serial.println("heightDesired");                 // Status update to figure out which function is running
+    //Serial.println(desiredHeight);
+    vTaskDelay(20 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -315,7 +315,7 @@ static void yawRead(void *pvParameters) {
   while (1) {
     //Serial.println("yawRead");  // Status update to figure out which function is running
     // Yaw reading code goes here
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -337,7 +337,7 @@ static void yawDesired(void *pvParameters) {
       desiredYaw -= 15;                                                // Decrements desiredYaw by 15mm
     }
     writeToAddress(FPGAAddress, 0x10, desiredYaw);  // Updates the desired memory module address with current desired yaw value
-    vTaskDelay(10 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
   }
 }
 
@@ -358,31 +358,12 @@ static void pitchRead(void *pvParameters) {
     writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
     writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
     writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
-    vTaskDelay(10 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
-                                                    // Display the results (acceleration is measured in m/s^2)
-    /*Serial.print("\t\tAccel X: ");
-    Serial.print(accel.acceleration.x);
-    Serial.print(" \tY: ");
-    Serial.print(accel.acceleration.y);
-    Serial.print(" \tZ: ");
-    Serial.print(accel.acceleration.z);
-    Serial.println(" m/s^2 ");
-
-    // Display the results (rotation is measured in rad/s)
-    Serial.print("\t\tGyro X: ");
-    Serial.print(gyro.gyro.x);
-    Serial.print(" \tY: ");
-    Serial.print(gyro.gyro.y);
-    Serial.print(" \tZ: ");
-    Serial.print(gyro.gyro.z);
-    Serial.println(" radians/s ");
-    Serial.println();*/
+    vTaskDelay(10 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
   }
 }
 
 static void pitchDesired(void *pvParameters) {
   while (1) {
-    //Serial.println("pitchDesired");                                // Status update to figure out which function is running
     joystickInputX = analogRead(joystickInputXPin);                // Reading from the joystick saved as input value
     if (joystickInputX >= 3500) {                                  // If the joystick is completely at the top, the drone should go forward fast
       desiredPitch = 3;                                            // Set the desiredPitch value to +3 (forward)
@@ -399,9 +380,10 @@ static void pitchDesired(void *pvParameters) {
     } else {                                                       // If there is no joystick input, the drone should hover
       desiredPitch = 0;                                            // Resets the desiredRoll to 0, to ensure that the drone hovers flat again
     }
+    //Serial.println("pitchDesired");                                // Status update to figure out which function is running
     //Serial.println(desiredPitch);
     writeToAddress(FPGAAddress, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
-    vTaskDelay(10 / portTICK_PERIOD_MS);             // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);              // Delay for 10 milliseconds
   }
 }
 
@@ -422,13 +404,12 @@ static void rollRead(void *pvParameters) {
     writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
     writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
     writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
-    vTaskDelay(10 / portTICK_PERIOD_MS);           // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
   }
 }
 
 static void rollDesired(void *pvParameters) {
   while (1) {
-    //Serial.println("rollDesired");                                 // Status update to figure out which function is running
     joystickInputY = analogRead(joystickInputYPin);                // Reading from the joystick saved as input value
     if (joystickInputY >= 3500) {                                  // If the joystick is completely at the right, the drone should move right quickly
       desiredRoll = 3;                                             // Set the desiredRoll value to +3 (right)
@@ -445,9 +426,10 @@ static void rollDesired(void *pvParameters) {
     } else {                                                       // If there is no joystick input, the drone should hover
       desiredRoll = 0;                                             // Resets the desiredRoll to 0, to ensure that the drone hovers flat again
     }
-    //Serial.println(desiredRoll);
+    Serial.println("rollDesired");                                 // Status update to figure out which function is running
+    Serial.println(desiredRoll);
     writeToAddress(FPGAAddress, 0x0B, desiredRoll);  // Updates the desired memory module address with current desired roll value
-    vTaskDelay(10 / portTICK_PERIOD_MS);            // Delay for 100 milliseconds
+    vTaskDelay(10 / portTICK_PERIOD_MS);             // Delay for 10 milliseconds
   }
 }
 
@@ -466,7 +448,7 @@ void stop() {                             // Emergency stop function
 
 static void MyIdleTask(void *pvParameters) {
   while (1) {
-    Serial.println(F("Idle state"));
+    //Serial.println(F("Idle state"));
     vTaskDelay(10 / portTICK_PERIOD_MS);
   }
 }
