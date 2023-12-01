@@ -40,14 +40,17 @@ entity PID_Controller is
         kd        : in float32;
         SetPoint  : in float32;
         Measured  : in float32;
-        Result    : out float32
+        Result    : out float32;
+        ResultReady : out std_logic
     );
 end PID_Controller;
 
 architecture Behavioral of PID_Controller is
     TYPE tstate IS (CALC_ERROR, PID, RESET);
     signal state : tstate := CALC_ERROR;
-    signal error, prevError, prevMeasured : float32 := to_float(0);
+    signal error, errorAccum, prevError : float32 := to_float(0);
+    --signal prevMeasured : float32 := to_float(0);
+    signal ri, rp, rd : float32;
 
 begin
     process (MCLK) begin
@@ -55,15 +58,22 @@ begin
             case (state) is
                 when CALC_ERROR =>
                     error <= setPoint - Measured;
+                    errorAccum <= errorAccum + error;
                     state <= PID;
+                    ResultReady <= '0';
                 when PID =>
                     state <= RESET;
-                    Result <= (Kp * error) + (Ki * (error + preverror)) + (kd * (error - preverror)); --PID
+                    rp <= (Kp * error);  --PID
+                    ri <= (Ki * errorAccum);
+                    --rd <= to_float(0.0);
+                    rd <= (kd * (error - preverror));
                     --Result <= (Kp * error) + (Ki * (error + preverror)) + (kd * (Measured - prevMeasured)); -- PIV
                 when RESET =>
-                    state <= CALC_ERROR;
-                    prevError <= prevError + error;
-                    prevMeasured <= Measured;
+                    state <= CALC_ERROR;                    
+                    prevError <= error;
+                    --prevMeasured <= Measured;
+                    Result <= rp + ri + rd;
+                    ResultReady <= '1';
             end case;    
         end if;
     end process;

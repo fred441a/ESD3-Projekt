@@ -7,4 +7,4 @@
 # Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 #
 
-vivado -log PID_PWM_test.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source PID_PWM_test.tcl
+vivado -log PID.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source PID.tcl

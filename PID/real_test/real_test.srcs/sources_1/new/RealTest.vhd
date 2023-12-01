@@ -62,27 +62,30 @@ architecture Behavioral of RealTest is
     end ConvertFloatToReal;
   
   function float32ToInteger(float_input : std_logic_vector(31 downto 0)) return std_logic_vector is
-    variable exponent, shift, fraction : INTEGER;
+    variable exponent, shift, fractionInt : INTEGER := 0;
     variable sign : BOOLEAN;
+    variable fraction : unsigned(22 downto 0);
   begin
     sign := float_input(31) = '1'; -- get sign
     exponent := to_integer(unsigned(float_input(30 downto 23))) - 127; --take exponent and subtract bias
-    shift := -(exponent - 23); -- subtract fraction size (23) and inverrt sign, indicates the amount to right shift inorder to get fraction
-    fraction := to_integer(unsigned(float_input(22 downto shift))); -- get fracton needede to reprecent the value as integer
-
+    shift := -(exponent - 23); -- subtract fraction size (23) and inverrt sign, indicates the amount to right shift inorder to get 
+    
+    if shift < 23 then 
+        fraction := shift_right(unsigned(float_input(22 downto 0)), shift); -- right shift fraction to get missing integer part
+        fractionInt := to_integer(fraction); -- conver shiftet fracton to integer
+    end if;
+        
     if sign then
-        return std_logic_vector(to_unsigned(-((2**exponent) + fraction), 32));
+        return std_logic_vector(to_signed(-((2**exponent) + fractionInt), 32));
     else
-        return std_logic_vector(to_unsigned((2**exponent) + fraction, 32));
+        return std_logic_vector(to_signed((2**exponent) + fractionInt, 32));
     end if;
   end float32ToInteger;
 
 begin
   
   process (ena) begin
-    if (ena = '1') then
-        result <= float32ToInteger(to_Std_Logic_Vector(to_float(0.0)));
-    end if;
+    result <= float32ToInteger(to_Std_Logic_Vector(to_float(2.0)));
 end process;
 
 end Behavioral;

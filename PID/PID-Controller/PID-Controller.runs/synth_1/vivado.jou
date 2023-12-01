@@ -3,12 +3,12 @@
 # SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
 # IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
 # SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
-# Start of session at: Sun Nov 26 11:22:32 2023
-# Process ID: 11133
+# Start of session at: Fri Dec  1 09:43:51 2023
+# Process ID: 6182
 # Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1
-# Command line: vivado -log PID_PWM_test.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source PID_PWM_test.tcl
-# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1/PID_PWM_test.vds
+# Command line: vivado -log PID.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source PID.tcl
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1/PID.vds
 # Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1/vivado.jou
-# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2816.646 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2864.173 MHz, CPU Physical cores: 4, Host memory: 16695 MB
 #-----------------------------------------------------------
-source PID_PWM_test.tcl -notrace
+source PID.tcl -notrace

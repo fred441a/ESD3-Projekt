@@ -1,1 +1,1 @@
-ÂdDesign change found in an area of the design that prevents previous synthesis information being used
+ÂCsynth_design options have changed between reference and incremental
