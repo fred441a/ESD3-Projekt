@@ -63,11 +63,11 @@ component fpu is
 end component;
 
 -- These values are the inv og dist matrix. Take directly from Matlab Script
-signal pitchRollVal:            float32:= to_float(576.0);
-signal yawVal:                  float32:= to_float(357.0);
-signal latVal:                  float32:= to_float(178.0);
+signal pitchRollVal:            float32:= to_float(5760.0);
+signal yawVal:                  float32:= to_float(178570.0);
+signal latVal:                  float32:= to_float(1786.0);
 -- Matlab script stops
-signal liftConst:                   float32:= to_float((3.3)*0.2250); -- Tallet inde 
+signal liftConst:                   float32:= to_float((3.3)*0.2250); -- Dette her er et dummie tal 
 --
 
 signal r0:  float32;
