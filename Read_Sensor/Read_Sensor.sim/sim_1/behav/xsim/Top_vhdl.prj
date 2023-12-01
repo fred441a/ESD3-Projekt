@@ -1,0 +1,11 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Read_Sensor.srcs/sources_1/new/I2C_Master.vhd" \
+"../../../../Read_Sensor.srcs/sources_1/new/Read_byte.vhd" \
+"../../../../Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd" \
+"../../../../Read_Sensor.srcs/sources_1/new/sharedTypes.vhd" \
+"../../../../Read_Sensor.srcs/sources_1/new/change_sensor.vhd" \
+"../../../../Read_Sensor.srcs/sources_1/new/Top.vhd" \
+
+# Do not sort compile order
+nosort
