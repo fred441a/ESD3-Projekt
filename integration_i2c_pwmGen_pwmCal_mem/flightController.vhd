@@ -38,8 +38,8 @@ entity flightController is
   CLK :                 in std_logic;
   scl_slave:            inout std_logic;
   sda_slave:            inout std_logic;
-  --scl_master:         inout std_logic;
-  --sda_master:         inout std_logic;
+  scl_master:           inout std_logic;
+  sda_master:           inout std_logic;
   -- emergency_stop:    in std_logic;
   PWM:                  out std_logic_vector (3 downto 0)
   );
@@ -47,6 +47,7 @@ end flightController;
 
 architecture Behavioral of flightController is
    signal memory: ram_type := (others =>(OTHERS => '0'));
+   signal INTERNAL_READY_FLAG: STD_LOGIC := '0';
    
     component pwmModule is
         Port (     
@@ -80,7 +81,22 @@ architecture Behavioral of flightController is
 		WRITE_DATA    : out std_logic_vector(31 downto 0);
 		WRITE_REQ     : out std_logic
 	);
-    end component;   
+    end component;
+    
+    component change_sensor is
+        port (
+        clk : in STD_LOGIC;
+        scl : inout STD_LOGIC;
+        sda : inout STD_LOGIC;
+
+        EN : IN STD_LOGIC;
+
+        WriteMemBus : inout STD_LOGIC_VECTOR( 31 downto 0 );
+        ADDRMemBus : inout STD_LOGIC_VECTOR( 7 downto 0 );
+        MemWrite : INOUT STD_LOGIC;
+        ReadMem : IN ram_type    
+        );   
+    end component;
     
      -- Write internal signals here:
     signal calibrationPwmOut    : std_logic_vector(7 downto 0);
@@ -105,6 +121,9 @@ begin
             end if;
             
             if (EXTERNAL_WRITE_REQ = '1') then -- write recieved data from mcu
+                memory(to_integer(unsigned(EXTERNAL_WRITE_ADDRESS))) <= EXTERNAL_WRITE_DATA;
+            end if;
+            if (INTERNAL_READY_FLAG = '1') then -- write recieved data from mcu
                 memory(to_integer(unsigned(EXTERNAL_WRITE_ADDRESS))) <= EXTERNAL_WRITE_DATA;
             end if;
         end if;
@@ -140,6 +159,17 @@ begin
         WRITE_DATA => EXTERNAL_WRITE_DATA,
         WRITE_REQ => EXTERNAL_WRITE_REQ
     );
-
-
+    
+    readSensor: change_sensor
+    port map(
+        clk => CLK,
+        scl => scl_master,
+        sda => sda_master,
+        EN => INTERNAL_READY_FLAG,
+        WriteMemBus =>
+        ADDRMemBus =>
+        MemWrite =>
+        ReadMem =>    
+        
+    );
 end Behavioral;
