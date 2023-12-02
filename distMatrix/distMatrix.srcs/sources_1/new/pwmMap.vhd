@@ -59,8 +59,6 @@ signal ch1conv:         float32;
 signal ch2conv:         float32;
 signal ch3conv:         float32;
 
-constant scale:         INTEGER := 32;
-
 -- Bruges til at omskrive float32 to stdLogic32
 function float32ToInteger(float_input : std_logic_vector(31 downto 0)) return std_logic_vector is
     variable exponent, shift, fractionInt : INTEGER := 0;
@@ -91,28 +89,28 @@ begin
 if(MCLK'event and MCLK = '1') then
 
         if (stateSwitch = 0) then
-            ch0conv <= ch0*scale;
+            ch0conv <= ch0*0.32;
             if (ch0conv > 255) then
                 ch0conv <= to_float(255.0);
             end if;    
         Outch0 <= float32ToInteger(to_Std_Logic_Vector(ch0conv))(7 downto 0);
      
         elsif(stateSwitch = 1) then
-        ch1conv <= ch1*scale;
+        ch1conv <= ch1*0.32;
             if (ch1conv > 255) then
                 ch1conv <= to_float(255.0);
             end if;
         Outch1 <= float32ToInteger(to_Std_Logic_Vector(ch1conv))(7 downto 0);
            
         elsif(stateSwitch = 2) then
-        ch2conv <= ch2*scale;
+        ch2conv <= ch2*0.32;
             if (ch2conv > 255) then
                 ch2conv <= to_float(255.0);
             end if;
         Outch2 <= float32ToInteger(to_Std_Logic_Vector(ch2conv))(7 downto 0);
       
         elsif(stateSwitch = 3) then
-        ch3conv <= ch3*scale;
+        ch3conv <= ch3*0.32;
             if (ch3conv > 255) then
                 ch3conv <= to_float(255.0);
             end if;
