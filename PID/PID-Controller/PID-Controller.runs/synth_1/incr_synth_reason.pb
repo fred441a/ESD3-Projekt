@@ -1,1 +1,1 @@
-ï¿½Csynth_design options have changed between reference and incremental
+Â6No compile time benefit to using incremental synthesis

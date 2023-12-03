@@ -7,4 +7,4 @@
 # Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 #
 
-vivado -log TEST_HARNESS.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source TEST_HARNESS.tcl
+vivado -log TEST_HARNESS.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source TEST_HARNESS.tcl -notrace
