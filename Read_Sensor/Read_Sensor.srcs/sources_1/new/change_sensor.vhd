@@ -118,8 +118,10 @@ begin
                     WriteMemBus => WriteMemBus,
                     ADDRMemBus => ADDRMemBus,
                     MemWrite => MemWrite,
+                    readmem =>ReadMem,
 
-                    BusyOut=>BCBusy
+                    BusyOut=>BCBusy,
+                    dointegrate => '0'
                  );
 
         PROCESS ( CLK )

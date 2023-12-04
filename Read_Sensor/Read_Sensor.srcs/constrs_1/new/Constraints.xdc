@@ -1,13 +1,11 @@
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
-set_property IOSTANDARD LVCMOS33 [get_ports en]
 set_property IOSTANDARD LVCMOS33 [get_ports scl]
 set_property IOSTANDARD LVCMOS33 [get_ports sda]
 set_property PACKAGE_PIN L17 [get_ports clk]
 set_property PACKAGE_PIN M3 [get_ports scl]
-set_property PACKAGE_PIN J3 [get_ports sda]
-set_property PACKAGE_PIN L3 [get_ports en]
+set_property PACKAGE_PIN A16 [get_ports sda]
 
-set_property PACKAGE_PIN L3 [get_ports enable]
+set_property PACKAGE_PIN A14 [get_ports enable]
 set_property IOSTANDARD LVCMOS33 [get_ports enable]
 
 set_property IOSTANDARD LVCMOS33 [get_ports LED_1]
