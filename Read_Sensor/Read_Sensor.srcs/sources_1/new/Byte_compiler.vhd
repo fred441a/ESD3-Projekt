@@ -39,7 +39,8 @@ entity Byte_compiler is
             scl: INOUT STD_LOGIC;
             sda: INOUT STD_LOGIC;
 
-            DoIntegrate: in STD_LOGIC; ENALL: in STD_LOGIC;
+            DoIntegrate: in STD_LOGIC;
+            ENALL: in STD_LOGIC;
             ENABLE: in STD_LOGIC_VECTOR(3 downto 0);
             I2CADDR : in STD_LOGIC_VECTOR (6 downto 0);
             ADDR1 : in STD_LOGIC_VECTOR (7 downto 0);

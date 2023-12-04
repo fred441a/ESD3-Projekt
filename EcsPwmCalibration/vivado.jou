@@ -5,8 +5,10 @@
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
 # Start of session at: Wed Nov 29 13:57:06 2023
 # Process ID: 28632
+# Start of session at: Thu Nov 16 12:51:43 2023
+# Process ID: 9100
 # Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent28016 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20440 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
 # Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/vivado.log
 # Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration\vivado.jou
 # Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB

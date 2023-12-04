@@ -1,0 +1,649 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date         : Mon Nov 20 11:19:11 2023
+| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file flightController_timing_summary_routed.rpt -pb flightController_timing_summary_routed.pb -rpx flightController_timing_summary_routed.rpx -warn_on_violation
+| Design       : flightController
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                  Violations  
+---------  ----------------  ---------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell  1000        
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (1680)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (3414)
+5. checking no_input_delay (2)
+6. checking no_output_delay (5)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (1680)
+---------------------------
+ There are 1680 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (3414)
+---------------------------------------------------
+ There are 3414 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (2)
+------------------------------
+ There are 2 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (5)
+-------------------------------
+ There are 5 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                 3419          inf        0.000                      0                 3419           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay          3419 Endpoints
+Min Delay          3419 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/DATA_IN_reg[6]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        9.431ns  (logic 1.220ns (12.936%)  route 8.211ns (87.064%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         6.472     6.928    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X16Y140        LUT6 (Prop_lut6_I4_O)        0.124     7.052 r  i2cExternal/BUFFER_32[30]_i_17/O
+                         net (fo=1, routed)           0.000     7.052    i2cExternal/BUFFER_32[30]_i_17_n_0
+    SLICE_X16Y140        MUXF7 (Prop_muxf7_I1_O)      0.217     7.269 r  i2cExternal/BUFFER_32_reg[30]_i_10/O
+                         net (fo=1, routed)           0.441     7.710    i2cExternal/BUFFER_32_reg[30]_i_10_n_0
+    SLICE_X16Y140        LUT6 (Prop_lut6_I3_O)        0.299     8.009 r  i2cExternal/BUFFER_32[30]_i_3/O
+                         net (fo=2, routed)           1.298     9.307    i2cExternal/BUFFER_32[30]_i_3_n_0
+    SLICE_X19Y131        LUT6 (Prop_lut6_I4_O)        0.124     9.431 r  i2cExternal/DATA_IN[6]_i_1/O
+                         net (fo=1, routed)           0.000     9.431    i2cExternal/DATA_IN[6]_i_1_n_0
+    SLICE_X19Y131        FDRE                                         r  i2cExternal/DATA_IN_reg[6]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[23]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        9.275ns  (logic 1.247ns (13.445%)  route 8.028ns (86.555%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         6.498     6.954    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X19Y141        LUT6 (Prop_lut6_I4_O)        0.124     7.078 r  i2cExternal/BUFFER_32[23]_i_16/O
+                         net (fo=1, routed)           0.000     7.078    i2cExternal/BUFFER_32[23]_i_16_n_0
+    SLICE_X19Y141        MUXF7 (Prop_muxf7_I1_O)      0.245     7.323 r  i2cExternal/BUFFER_32_reg[23]_i_10/O
+                         net (fo=1, routed)           0.438     7.761    i2cExternal/BUFFER_32_reg[23]_i_10_n_0
+    SLICE_X20Y142        LUT6 (Prop_lut6_I1_O)        0.298     8.059 r  i2cExternal/BUFFER_32[23]_i_4/O
+                         net (fo=1, routed)           1.092     9.151    i2cExternal/I_I2CITF/BUFFER_32_reg[23]_0
+    SLICE_X23Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.275 r  i2cExternal/I_I2CITF/BUFFER_32[23]_i_2/O
+                         net (fo=1, routed)           0.000     9.275    i2cExternal/p_1_in[23]
+    SLICE_X23Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[12]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        9.252ns  (logic 1.220ns (13.186%)  route 8.032ns (86.814%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         6.107     6.563    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X22Y139        LUT6 (Prop_lut6_I4_O)        0.124     6.687 r  i2cExternal/BUFFER_32[12]_i_15/O
+                         net (fo=1, routed)           0.000     6.687    i2cExternal/BUFFER_32[12]_i_15_n_0
+    SLICE_X22Y139        MUXF7 (Prop_muxf7_I1_O)      0.217     6.904 r  i2cExternal/BUFFER_32_reg[12]_i_9/O
+                         net (fo=1, routed)           0.772     7.676    i2cExternal/BUFFER_32_reg[12]_i_9_n_0
+    SLICE_X26Y143        LUT6 (Prop_lut6_I1_O)        0.299     7.975 r  i2cExternal/BUFFER_32[12]_i_3/O
+                         net (fo=1, routed)           1.153     9.128    i2cExternal/I_I2CITF/BUFFER_32_reg[12]_0
+    SLICE_X24Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.252 r  i2cExternal/I_I2CITF/BUFFER_32[12]_i_1/O
+                         net (fo=1, routed)           0.000     9.252    i2cExternal/p_1_in[12]
+    SLICE_X24Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[5]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        9.224ns  (logic 1.240ns (13.443%)  route 7.984ns (86.557%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         5.928     6.384    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X20Y140        LUT6 (Prop_lut6_I4_O)        0.124     6.508 r  i2cExternal/BUFFER_32[5]_i_14/O
+                         net (fo=1, routed)           0.000     6.508    i2cExternal/BUFFER_32[5]_i_14_n_0
+    SLICE_X20Y140        MUXF7 (Prop_muxf7_I0_O)      0.238     6.746 r  i2cExternal/BUFFER_32_reg[5]_i_9/O
+                         net (fo=1, routed)           0.966     7.712    i2cExternal/BUFFER_32_reg[5]_i_9_n_0
+    SLICE_X25Y142        LUT6 (Prop_lut6_I1_O)        0.298     8.010 r  i2cExternal/BUFFER_32[5]_i_3/O
+                         net (fo=1, routed)           1.090     9.100    i2cExternal/I_I2CITF/BUFFER_32_reg[5]_0
+    SLICE_X25Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.224 r  i2cExternal/I_I2CITF/BUFFER_32[5]_i_1/O
+                         net (fo=1, routed)           0.000     9.224    i2cExternal/p_1_in[5]
+    SLICE_X25Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[30]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        9.218ns  (logic 1.220ns (13.235%)  route 7.998ns (86.765%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         6.472     6.928    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X16Y140        LUT6 (Prop_lut6_I4_O)        0.124     7.052 r  i2cExternal/BUFFER_32[30]_i_17/O
+                         net (fo=1, routed)           0.000     7.052    i2cExternal/BUFFER_32[30]_i_17_n_0
+    SLICE_X16Y140        MUXF7 (Prop_muxf7_I1_O)      0.217     7.269 r  i2cExternal/BUFFER_32_reg[30]_i_10/O
+                         net (fo=1, routed)           0.441     7.710    i2cExternal/BUFFER_32_reg[30]_i_10_n_0
+    SLICE_X16Y140        LUT6 (Prop_lut6_I3_O)        0.299     8.009 r  i2cExternal/BUFFER_32[30]_i_3/O
+                         net (fo=2, routed)           1.086     9.094    i2cExternal/I_I2CITF/BUFFER_32_reg[30]_0
+    SLICE_X22Y131        LUT6 (Prop_lut6_I2_O)        0.124     9.218 r  i2cExternal/I_I2CITF/BUFFER_32[30]_i_1/O
+                         net (fo=1, routed)           0.000     9.218    i2cExternal/p_1_in[30]
+    SLICE_X22Y131        FDRE                                         r  i2cExternal/BUFFER_32_reg[30]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[15]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        9.128ns  (logic 1.220ns (13.365%)  route 7.908ns (86.635%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         6.265     6.721    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X19Y141        LUT6 (Prop_lut6_I4_O)        0.124     6.845 r  i2cExternal/BUFFER_32[15]_i_16/O
+                         net (fo=1, routed)           0.000     6.845    i2cExternal/BUFFER_32[15]_i_16_n_0
+    SLICE_X19Y141        MUXF7 (Prop_muxf7_I1_O)      0.217     7.062 r  i2cExternal/BUFFER_32_reg[15]_i_10/O
+                         net (fo=1, routed)           0.618     7.680    i2cExternal/BUFFER_32_reg[15]_i_10_n_0
+    SLICE_X22Y145        LUT6 (Prop_lut6_I1_O)        0.299     7.979 r  i2cExternal/BUFFER_32[15]_i_4/O
+                         net (fo=1, routed)           1.025     9.004    i2cExternal/I_I2CITF/BUFFER_32_reg[15]_0
+    SLICE_X24Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.128 r  i2cExternal/I_I2CITF/BUFFER_32[15]_i_2/O
+                         net (fo=1, routed)           0.000     9.128    i2cExternal/p_1_in[15]
+    SLICE_X24Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[15]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[22]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.806ns  (logic 1.247ns (14.161%)  route 7.559ns (85.839%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         6.267     6.723    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X23Y139        LUT6 (Prop_lut6_I4_O)        0.124     6.847 r  i2cExternal/BUFFER_32[22]_i_15/O
+                         net (fo=1, routed)           0.000     6.847    i2cExternal/BUFFER_32[22]_i_15_n_0
+    SLICE_X23Y139        MUXF7 (Prop_muxf7_I1_O)      0.245     7.092 r  i2cExternal/BUFFER_32_reg[22]_i_9/O
+                         net (fo=1, routed)           0.579     7.671    i2cExternal/BUFFER_32_reg[22]_i_9_n_0
+    SLICE_X23Y142        LUT6 (Prop_lut6_I1_O)        0.298     7.969 r  i2cExternal/BUFFER_32[22]_i_3/O
+                         net (fo=1, routed)           0.713     8.682    i2cExternal/I_I2CITF/BUFFER_32_reg[22]_0
+    SLICE_X23Y138        LUT6 (Prop_lut6_I2_O)        0.124     8.806 r  i2cExternal/I_I2CITF/BUFFER_32[22]_i_1/O
+                         net (fo=1, routed)           0.000     8.806    i2cExternal/p_1_in[22]
+    SLICE_X23Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[22]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.756ns  (logic 1.220ns (13.934%)  route 7.536ns (86.066%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         6.328     6.784    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X20Y140        LUT6 (Prop_lut6_I4_O)        0.124     6.908 r  i2cExternal/BUFFER_32[4]_i_15/O
+                         net (fo=1, routed)           0.000     6.908    i2cExternal/BUFFER_32[4]_i_15_n_0
+    SLICE_X20Y140        MUXF7 (Prop_muxf7_I1_O)      0.217     7.125 r  i2cExternal/BUFFER_32_reg[4]_i_9/O
+                         net (fo=1, routed)           0.718     7.843    i2cExternal/BUFFER_32_reg[4]_i_9_n_0
+    SLICE_X21Y143        LUT6 (Prop_lut6_I1_O)        0.299     8.142 r  i2cExternal/BUFFER_32[4]_i_3/O
+                         net (fo=1, routed)           0.490     8.632    i2cExternal/I_I2CITF/BUFFER_32_reg[4]_0
+    SLICE_X25Y138        LUT6 (Prop_lut6_I2_O)        0.124     8.756 r  i2cExternal/I_I2CITF/BUFFER_32[4]_i_1/O
+                         net (fo=1, routed)           0.000     8.756    i2cExternal/p_1_in[4]
+    SLICE_X25Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[10]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.735ns  (logic 1.220ns (13.967%)  route 7.515ns (86.033%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         5.485     5.941    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X13Y144        LUT6 (Prop_lut6_I4_O)        0.124     6.065 r  i2cExternal/BUFFER_32[10]_i_13/O
+                         net (fo=1, routed)           0.000     6.065    i2cExternal/BUFFER_32[10]_i_13_n_0
+    SLICE_X13Y144        MUXF7 (Prop_muxf7_I1_O)      0.217     6.282 r  i2cExternal/BUFFER_32_reg[10]_i_8/O
+                         net (fo=1, routed)           1.071     7.353    i2cExternal/BUFFER_32_reg[10]_i_8_n_0
+    SLICE_X18Y142        LUT6 (Prop_lut6_I0_O)        0.299     7.652 r  i2cExternal/BUFFER_32[10]_i_3/O
+                         net (fo=1, routed)           0.959     8.611    i2cExternal/I_I2CITF/BUFFER_32_reg[10]_0
+    SLICE_X24Y136        LUT6 (Prop_lut6_I2_O)        0.124     8.735 r  i2cExternal/I_I2CITF/BUFFER_32[10]_i_1/O
+                         net (fo=1, routed)           0.000     8.735    i2cExternal/p_1_in[10]
+    SLICE_X24Y136        FDRE                                         r  i2cExternal/BUFFER_32_reg[10]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/BUFFER_32_reg[14]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.674ns  (logic 1.220ns (14.065%)  route 7.454ns (85.935%))
+  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=387, routed)         5.862     6.318    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X23Y139        LUT6 (Prop_lut6_I4_O)        0.124     6.442 r  i2cExternal/BUFFER_32[14]_i_15/O
+                         net (fo=1, routed)           0.000     6.442    i2cExternal/BUFFER_32[14]_i_15_n_0
+    SLICE_X23Y139        MUXF7 (Prop_muxf7_I1_O)      0.217     6.659 r  i2cExternal/BUFFER_32_reg[14]_i_9/O
+                         net (fo=1, routed)           1.004     7.663    i2cExternal/BUFFER_32_reg[14]_i_9_n_0
+    SLICE_X24Y143        LUT6 (Prop_lut6_I1_O)        0.299     7.962 r  i2cExternal/BUFFER_32[14]_i_3/O
+                         net (fo=1, routed)           0.588     8.550    i2cExternal/I_I2CITF/BUFFER_32_reg[14]_0
+    SLICE_X24Y138        LUT6 (Prop_lut6_I2_O)        0.124     8.674 r  i2cExternal/I_I2CITF/BUFFER_32[14]_i_1/O
+                         net (fo=1, routed)           0.000     8.674    i2cExternal/p_1_in[14]
+    SLICE_X24Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 i2cExternal/I_I2CITF/WR_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRq_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.208ns  (logic 0.141ns (67.788%)  route 0.067ns (32.212%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X19Y127        FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/WR_reg/C
+    SLICE_X19Y127        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/I_I2CITF/WR_reg/Q
+                         net (fo=2, routed)           0.067     0.208    i2cExternal/WR
+    SLICE_X19Y127        FDRE                                         r  i2cExternal/WRq_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/I_I2CITF/rd_d_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/I_I2CITF/RD_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.217ns  (logic 0.141ns (64.847%)  route 0.076ns (35.153%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X22Y126        FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/rd_d_reg/C
+    SLICE_X22Y126        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/I_I2CITF/rd_d_reg/Q
+                         net (fo=2, routed)           0.076     0.217    i2cExternal/I_I2CITF/rd_d_reg_n_0
+    SLICE_X22Y126        FDRE                                         r  i2cExternal/I_I2CITF/RD_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[28]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[28]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.251ns  (logic 0.141ns (56.174%)  route 0.110ns (43.826%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X21Y131        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[28]/C
+    SLICE_X21Y131        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[28]/Q
+                         net (fo=1, routed)           0.110     0.251    i2cExternal/BUFFER_32_reg_n_0_[28]
+    SLICE_X20Y132        FDRE                                         r  i2cExternal/WRITE_DATA_reg[28]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[31]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[31]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.260ns  (logic 0.141ns (54.232%)  route 0.119ns (45.768%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X22Y131        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[31]/C
+    SLICE_X22Y131        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[31]/Q
+                         net (fo=1, routed)           0.119     0.260    i2cExternal/BUFFER_32_reg_n_0_[31]
+    SLICE_X23Y131        FDRE                                         r  i2cExternal/WRITE_DATA_reg[31]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_8_reg[7]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_ADDRESS_reg[7]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.260ns  (logic 0.141ns (54.127%)  route 0.119ns (45.873%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X20Y129        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[7]/C
+    SLICE_X20Y129        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_8_reg[7]/Q
+                         net (fo=4, routed)           0.119     0.260    i2cExternal/BUFFER_8_reg_n_0_[7]
+    SLICE_X22Y130        FDRE                                         r  i2cExternal/WRITE_ADDRESS_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.262ns  (logic 0.141ns (53.808%)  route 0.121ns (46.192%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X25Y138        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[4]/C
+    SLICE_X25Y138        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[4]/Q
+                         net (fo=2, routed)           0.121     0.262    i2cExternal/BUFFER_32_reg_n_0_[4]
+    SLICE_X25Y137        FDRE                                         r  i2cExternal/WRITE_DATA_reg[4]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/WRITE_DATA_reg[17]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            memory_reg[40][17]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.263ns  (logic 0.141ns (53.625%)  route 0.122ns (46.375%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X25Y130        FDRE                         0.000     0.000 r  i2cExternal/WRITE_DATA_reg[17]/C
+    SLICE_X25Y130        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/WRITE_DATA_reg[17]/Q
+                         net (fo=46, routed)          0.122     0.263    EXTERNAL_WRITE_DATA[17]
+    SLICE_X26Y129        FDRE                                         r  memory_reg[40][17]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[12]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[12]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.264ns  (logic 0.141ns (53.486%)  route 0.123ns (46.514%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X24Y138        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[12]/C
+    SLICE_X24Y138        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[12]/Q
+                         net (fo=2, routed)           0.123     0.264    i2cExternal/BUFFER_32_reg_n_0_[12]
+    SLICE_X25Y137        FDRE                                         r  i2cExternal/WRITE_DATA_reg[12]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[5]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[5]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.264ns  (logic 0.141ns (53.433%)  route 0.123ns (46.567%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X25Y138        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[5]/C
+    SLICE_X25Y138        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[5]/Q
+                         net (fo=2, routed)           0.123     0.264    i2cExternal/BUFFER_32_reg_n_0_[5]
+    SLICE_X24Y137        FDRE                                         r  i2cExternal/WRITE_DATA_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[8]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[8]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.264ns  (logic 0.141ns (53.422%)  route 0.123ns (46.578%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X24Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[8]/C
+    SLICE_X24Y130        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[8]/Q
+                         net (fo=2, routed)           0.123     0.264    i2cExternal/BUFFER_32_reg_n_0_[8]
+    SLICE_X25Y130        FDRE                                         r  i2cExternal/WRITE_DATA_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+

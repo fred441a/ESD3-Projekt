@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use work.shared_types.all;
+use work.shared_types.all; -- shared type definitions from memory module
 
 entity I2C_EXTERNAL_ACCESS is
 GENERIC (deviceAddress : std_logic_vector(7 downto 0) := x"08");
@@ -10,7 +10,11 @@ GENERIC (deviceAddress : std_logic_vector(7 downto 0) := x"08");
 		nRST		: in	std_logic;
 		SCL			: inout	std_logic;
 		SDA			: inout	std_logic;
-		MEMORY      : inout ram_type
+		MEMORY_READ : in ram_type; -- input of memory module for read
+
+		WRITE_ADDRESS : out std_logic_vector(7 downto 0);  -- address wanted to write to in memory module
+		WRITE_DATA    : out std_logic_vector(31 downto 0); -- data to write to memory module
+		WRITE_REQ      : out std_logic                     -- pulse indicating a write-request to memory module
 	);
 end I2C_EXTERNAL_ACCESS;
 
@@ -94,8 +98,8 @@ begin
            elsif (RDqq = '0' and RDq = '1') then -- rising edge - READ-REQUEST
              case state is
                 when B3_MSB =>                
-                    BUFFER_32 <= MEMORY(to_integer(unsigned(BUFFER_8)));
-                    DATA_IN <= MEMORY(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
+                    BUFFER_32 <= MEMORY_READ(to_integer(unsigned(BUFFER_8)));
+                    DATA_IN <= MEMORY_READ(to_integer(unsigned(BUFFER_8)))(31 DOWNTO 24); --MSB
                     state <= B2;
                 when B2 =>
                     DATA_IN <= BUFFER_32(23 DOWNTO 16);
@@ -128,7 +132,7 @@ begin
                CASE BUFFER_8 IS
                   WHEN x"01" =>
                     -- overwrite "internal ready" flag with current value
-                    BUFFER_32(1) <= MEMORY(to_integer(unsigned(BUFFER_8)))(1); 
+                    BUFFER_32(1) <= MEMORY_READ(setupReg)(1); 
                     state <= WRITE;
                   WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
                     -- on external write access to readonly registers - reset
@@ -138,11 +142,16 @@ begin
                     state <= WRITE;                    
                END CASE;
            elsif (state = WRITE) then
-               MEMORY(to_integer(unsigned(BUFFER_8))) <= BUFFER_32;
+               WRITE_ADDRESS <= BUFFER_8;
+               WRITE_DATA <= BUFFER_32;
+               WRITE_REQ <= '1';
                state <= RESET;
            elsif (state = RESET) then
               BUFFER_32 <= (others => '0');
-              BUFFER_8 <= (others => '0');
+              BUFFER_8 <= (others => '0');              
+              WRITE_ADDRESS <= (others => '0');
+              WRITE_DATA <= (others => '0');
+              WRITE_REQ <= '0';
               state <= B3_MSB; --reset
            end if;
        end if;

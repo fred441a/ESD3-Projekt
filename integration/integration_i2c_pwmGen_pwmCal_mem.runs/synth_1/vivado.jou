@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Mon Nov 20 11:17:26 2023
+# Process ID: 30724
+# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration_i2c_pwmGen_pwmCal_mem/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1
+# Command line: vivado -log flightController.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source flightController.tcl
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration_i2c_pwmGen_pwmCal_mem/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.vds
+# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration_i2c_pwmGen_pwmCal_mem/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/vivado.jou
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2981.528 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+#-----------------------------------------------------------
+source flightController.tcl -notrace

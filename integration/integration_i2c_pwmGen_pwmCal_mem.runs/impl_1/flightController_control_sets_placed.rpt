@@ -1,0 +1,143 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date         : Mon Nov 20 11:18:50 2023
+| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Command      : report_control_sets -verbose -file flightController_control_sets_placed.rpt
+| Design       : flightController
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    65 |
+|    Minimum number of control sets                        |    65 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    32 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    65 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     8 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    49 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              37 |           20 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |               7 |            2 |
+| Yes          | No                    | No                     |            1545 |          466 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              91 |           28 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+--------------------------------------------+--------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                Enable Signal               |           Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------------+--------------------------------------+------------------+----------------+--------------+
+| ~CLK_IBUF_BUFG |                                            |                                      |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/state[3]_i_1_n_0      |                                      |                4 |              4 |         1.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/next_state[3]_i_1_n_0 |                                      |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG |                                            | pwmGen/count[6]_i_1__0_n_0           |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[7]_i_1_n_0           | i2cExternal/BUFFER_32                |                4 |              7 |         1.75 |
+|  CLK_IBUF_BUFG | pwmCal/count0                              |                                      |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | i2cExternal/DATA_IN[7]_i_1_n_0             |                                      |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/WR13_out              |                                      |                1 |              8 |         8.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/shiftreg[7]_i_1_n_0   |                                      |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[31]_i_1_n_0          | i2cExternal/BUFFER_32                |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/address_i[7]_i_1_n_0  |                                      |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[23]_i_1_n_0          | i2cExternal/BUFFER_32                |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[15]_i_1_n_0          | i2cExternal/BUFFER_32                |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32                      | i2cExternal/BUFFER_8[7]_i_1_n_0      |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | pwmGen/count[6]_i_1__0_n_0                 |                                      |                3 |             11 |         3.67 |
+|  CLK_IBUF_BUFG | pwmCal/clkDivider[11]_i_2_n_0              | pwmCal/clkDivider[11]_i_1_n_0        |                3 |             12 |         4.00 |
+|  CLK_IBUF_BUFG | pwmCal/output[7]_i_1_n_0                   |                                      |                4 |             16 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_1[0]      |                                      |                5 |             31 |         6.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_9[0]      |                                      |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_6[0]      |                                      |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_5[0]      |                                      |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_13[0]     |                                      |               19 |             32 |         1.68 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_12[0]     |                                      |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_1[0]      |                                      |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_0[0]      |                                      |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_1[0]      |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_0[0]      |                                      |               18 |             32 |         1.78 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_2[0]             |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_5[0]      |                                      |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_0[0]      |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_3[0]      |                                      |               20 |             32 |         1.60 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_4[0]      |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_0[0]      |                                      |                5 |             32 |         6.40 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_1[0]      |                                      |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_10[0]     |                                      |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_11[0]     |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_12[0]     |                                      |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_2[0]      |                                      |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_3[0]      |                                      |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_0[0]             |                                      |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_1[0]             |                                      |               16 |             32 |         2.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_1[0]      |                                      |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_3[0]             |                                      |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/finish_reg[0]                  |                                      |                5 |             32 |         6.40 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_6[0]      |                                      |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_7[0]      |                                      |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_8[0]      |                                      |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_9[0]      |                                      |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_2[0]      |                                      |                5 |             32 |         6.40 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_3[0]      |                                      |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_10[0]     |                                      |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_11[0]     |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_14[0]     |                                      |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_2[0]      |                                      |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_3[0]      |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_4[0]      |                                      |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_7[0]      |                                      |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_8[0]      |                                      |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_2[0]      |                                      |                5 |             32 |         6.40 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_0[0]      |                                      |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/E[0]                           |                                      |               21 |             32 |         1.52 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_0[0]      |                                      |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_4[0]      |                                      |               11 |             32 |         2.91 |
+|  CLK_IBUF_BUFG |                                            |                                      |               19 |             36 |         1.89 |
+|  CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS[7]_i_2_n_0       | i2cExternal/WRITE_ADDRESS[7]_i_1_n_0 |               10 |             40 |         4.00 |
++----------------+--------------------------------------------+--------------------------------------+------------------+----------------+--------------+
+
+
