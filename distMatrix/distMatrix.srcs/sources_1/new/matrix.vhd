@@ -67,7 +67,7 @@ signal pitchRollVal:            float32:= to_float(5760.0);
 signal yawVal:                  float32:= to_float(178570.0);
 signal latVal:                  float32:= to_float(1786.0);
 -- Matlab script stops
-signal liftConst:                   float32:= to_float((3.3)*0.2250); -- Dette her er et dummie tal 
+--signal liftConst:                   float32:= to_float((3.3)*0.2250); -- Dette her er et dummie tal 
 --
 
 signal c0:  float32;
@@ -152,6 +152,7 @@ if(MCLK'event and MCLK = '1') then
         when PLUSr0 =>
             case r0state is
                 when PLUSr00 =>
+                    tempRes <= (others => '0');
                     data0 <= c0;
                     data1 <= c1;
                     op <= "01"; -- plus
@@ -168,7 +169,7 @@ if(MCLK'event and MCLK = '1') then
                     r0state <= READr01;
                when READr01 =>     
                     temp <= inData;
-                    tempRes <= tempRes + temp;
+                    tempRes <= temp;
                     r0state <= PLUSr02;
                     
                 when PLUSr02 =>
@@ -178,7 +179,7 @@ if(MCLK'event and MCLK = '1') then
                     r0state <= READr02;
                 when READr02 =>    
                     temp <= inData;
-                    ch0 <= tempRes + temp;
+                    ch0 <= temp;
                 when others =>
                 end case;
        state <= PLUSr1;
@@ -186,6 +187,7 @@ if(MCLK'event and MCLK = '1') then
        when PLUSr1 =>
             case r1state is
                 when PLUSr10 =>
+                    tempRes <= (others => '0');
                     data0 <= c0;
                     data1 <= c1;
                     op <= "10"; --Minus
@@ -202,7 +204,7 @@ if(MCLK'event and MCLK = '1') then
                     r1state <= READr11;
                when READr11 =>     
                     temp <= inData;
-                    tempRes <= tempRes + temp;
+                    tempRes <= temp;
                     r1state <= PLUSr12;
                     
                 when PLUSr12 =>
@@ -212,13 +214,14 @@ if(MCLK'event and MCLK = '1') then
                     r1state <= READr12;
                 when READr12 =>    
                     temp <= inData;
-                    ch1 <= tempRes + temp;
+                    ch1 <= temp;
                 when others =>
                 end case;
         state <= PLUSr2;
        when PLUSr2 =>
             case r2state is
                 when PLUSr20 =>
+                    tempRes <= (others => '0');
                     data0 <= c3;
                     data1 <= c2;
                     op <= "01"; --Plus
@@ -235,7 +238,7 @@ if(MCLK'event and MCLK = '1') then
                     r2state <= READr21;
                when READr21 =>     
                     temp <= inData;
-                    tempRes <= tempRes + temp;
+                    tempRes <= temp;
                     r2state <= PLUSr22;
                     
                 when PLUSr22 =>
@@ -245,13 +248,14 @@ if(MCLK'event and MCLK = '1') then
                     r2state <= READr22;
                 when READr22 =>    
                     temp <= inData;
-                    ch2 <= tempRes + temp;
+                    ch2 <= temp;
                 when others =>
                 end case;
        state <= PLUSr2;
        when PLUSr3 =>
             case r3state is
                 when PLUSr30 =>
+                    tempRes <= (others => '0');
                     data0 <= c3;
                     data1 <= c2;
                     op <= "10"; --minus
@@ -268,7 +272,7 @@ if(MCLK'event and MCLK = '1') then
                     r3state <= READr31;
                when READr31 =>     
                     temp <= inData;
-                    tempRes <= tempRes + temp;
+                    tempRes <= temp;
                     r3state <= PLUSr32;
                     
                 when PLUSr32 =>
@@ -278,7 +282,7 @@ if(MCLK'event and MCLK = '1') then
                     r3state <= READr32;
                 when READr32 =>    
                     temp <= inData;
-                    ch3 <= tempRes + temp;
+                    ch3 <= temp;
                 when others =>
                 end case;    
        when others =>

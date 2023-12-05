@@ -3,10 +3,10 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon Dec  4 13:29:26 2023
-# Process ID: 17088
+# Start of session at: Tue Dec  5 07:49:39 2023
+# Process ID: 5488
 # Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent6480 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\distMatrix\distMatrix.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9364 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\distMatrix\distMatrix.xpr
 # Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/vivado.log
 # Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix\vivado.jou
 # Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
@@ -14,3 +14,99 @@
 start_gui
 open_project C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.xpr
 update_compile_order -fileset sources_1
+launch_simulation
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+open_run synth_1 -name synth_1
+report_utilization -name utilization_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+close_design
+open_run synth_1 -name synth_1
+report_utilization -name utilization_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[7]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[6]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[5]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[4]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha0[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[7]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[6]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[5]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[4]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[3]}]]
+set_property IOSTANDARD LVCMOS25 [get_ports [list {cha1[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha1[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[7]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[6]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[5]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[4]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {cha2[0]}]]
+place_ports {cha0[7]} G17
+place_ports {cha0[6]} G19
+set_property package_pin "" [get_ports [list  {cha0[5]}]]
+startgroup
+set_property package_pin "" [get_ports [list  {cha0[7]}]]
+place_ports {cha0[0]} G17
+endgroup
+startgroup
+set_property package_pin "" [get_ports [list  {cha0[6]}]]
+place_ports {cha0[1]} G19
+endgroup
+place_ports {cha0[2]} N18
+place_ports {cha0[3]} L18
+place_ports {cha0[4]} H17
+place_ports {cha0[5]} H19
+place_ports {cha0[6]} J19
+place_ports {cha0[7]} K18
+place_ports {cha1[7]} A14
+place_ports {cha1[6]} A15
+place_ports {cha1[5]} A16
+place_ports {cha1[4]} A18
+place_ports {cha1[3]} B18
+place_ports {cha1[2]} B17
+place_ports {cha1[1]} C15
+place_ports {cha1[0]} C16
+place_ports {cha2[7]} C17
+place_ports {cha2[6]} D17
+place_ports {cha2[5]} D18
+place_ports {cha2[4]} D19
+place_ports {cha2[3]} E18
+place_ports {cha2[2]} E19
+place_ports {cha2[1]} F18
+set_property package_pin "" [get_ports [list  {cha2[0]}]]
+place_ports {cha1[3]} W19
+place_ports {cha2[0]} W17
+save_constraints
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+close_design
+open_run impl_1
+report_utilization -name utilization_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+open_hw_manager
+open_run synth_1 -name synth_1
+place_ports {cha0[0]} U8
+place_ports {cha0[1]} W7
+place_ports {cha0[2]} U7
+place_ports {cha0[3]} U3
+place_ports {cha0[4]} W6
+place_ports {cha0[5]} U2
+place_ports {cha0[6]} U5
+place_ports {cha0[7]} W4
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -jobs 8
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
