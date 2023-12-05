@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Mon Nov 20 11:19:11 2023
-| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Tool Version : Vivado v.2023.1 (lin64) Build 3865809 Sun May  7 15:04:56 MDT 2023
+| Date         : Mon Dec  4 15:30:24 2023
+| Host         : Lenova running 64-bit Debian GNU/Linux trixie/sid
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file flightController_timing_summary_routed.rpt -pb flightController_timing_summary_routed.pb -rpx flightController_timing_summary_routed.rpx -warn_on_violation
 | Design       : flightController
 | Device       : 7a35t-cpg236
@@ -40,9 +40,10 @@ Timing Summary Report
 | ------------------
 ------------------------------------------------------------------------------------------------
 
-Rule       Severity          Description                  Violations  
----------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  1000        
+Rule       Severity          Description                       Violations  
+---------  ----------------  --------------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell       314         
+HPDR-1     Warning           Port pin direction inconsistency  3           
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -52,12 +53,12 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (1680)
+1. checking no_clock (314)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (3414)
-5. checking no_input_delay (2)
-6. checking no_output_delay (5)
+4. checking unconstrained_internal_endpoints (629)
+5. checking no_input_delay (0)
+6. checking no_output_delay (6)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -65,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (1680)
----------------------------
- There are 1680 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
+1. checking no_clock (314)
+--------------------------
+ There are 314 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
 
 
 2. checking constant_clock (0)
@@ -80,23 +81,23 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (3414)
----------------------------------------------------
- There are 3414 pins that are not constrained for maximum delay. (HIGH)
+4. checking unconstrained_internal_endpoints (629)
+--------------------------------------------------
+ There are 629 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (2)
+5. checking no_input_delay (0)
 ------------------------------
- There are 2 input ports with no input delay specified. (HIGH)
+ There are 0 input ports with no input delay specified.
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (5)
+6. checking no_output_delay (6)
 -------------------------------
- There are 5 ports with no output delay specified. (HIGH)
+ There are 6 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -141,7 +142,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                 3419          inf        0.000                      0                 3419           NA           NA                      NA                    NA  
+        inf        0.000                      0                  636          inf        0.000                      0                  636           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -210,261 +211,362 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay          3419 Endpoints
-Min Delay          3419 Endpoints
+Max Delay           636 Endpoints
+Min Delay           636 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 pwmGen/PWM_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/DATA_IN_reg[6]/D
+  Destination:            PWM[1]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        9.431ns  (logic 1.220ns (12.936%)  route 8.211ns (87.064%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        8.681ns  (logic 4.038ns (46.513%)  route 4.643ns (53.487%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         6.472     6.928    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X16Y140        LUT6 (Prop_lut6_I4_O)        0.124     7.052 r  i2cExternal/BUFFER_32[30]_i_17/O
-                         net (fo=1, routed)           0.000     7.052    i2cExternal/BUFFER_32[30]_i_17_n_0
-    SLICE_X16Y140        MUXF7 (Prop_muxf7_I1_O)      0.217     7.269 r  i2cExternal/BUFFER_32_reg[30]_i_10/O
-                         net (fo=1, routed)           0.441     7.710    i2cExternal/BUFFER_32_reg[30]_i_10_n_0
-    SLICE_X16Y140        LUT6 (Prop_lut6_I3_O)        0.299     8.009 r  i2cExternal/BUFFER_32[30]_i_3/O
-                         net (fo=2, routed)           1.298     9.307    i2cExternal/BUFFER_32[30]_i_3_n_0
-    SLICE_X19Y131        LUT6 (Prop_lut6_I4_O)        0.124     9.431 r  i2cExternal/DATA_IN[6]_i_1/O
-                         net (fo=1, routed)           0.000     9.431    i2cExternal/DATA_IN[6]_i_1_n_0
-    SLICE_X19Y131        FDRE                                         r  i2cExternal/DATA_IN_reg[6]/D
+    SLICE_X60Y99         FDRE                         0.000     0.000 r  pwmGen/PWM_reg[1]/C
+    SLICE_X60Y99         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  pwmGen/PWM_reg[1]/Q
+                         net (fo=1, routed)           4.643     5.161    PWM_OBUF[1]
+    A14                  OBUF (Prop_obuf_I_O)         3.520     8.681 r  PWM_OBUF[1]_inst/O
+                         net (fo=0)                   0.000     8.681    PWM[1]
+    A14                                                               r  PWM[1] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 i2cExternal/I_I2CITF/SDA_OUT_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[23]/D
+  Destination:            sda_slave
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        9.275ns  (logic 1.247ns (13.445%)  route 8.028ns (86.555%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        8.293ns  (logic 4.036ns (48.673%)  route 4.256ns (51.327%))
+  Logic Levels:           2  (FDRE=1 OBUFT=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         6.498     6.954    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X19Y141        LUT6 (Prop_lut6_I4_O)        0.124     7.078 r  i2cExternal/BUFFER_32[23]_i_16/O
-                         net (fo=1, routed)           0.000     7.078    i2cExternal/BUFFER_32[23]_i_16_n_0
-    SLICE_X19Y141        MUXF7 (Prop_muxf7_I1_O)      0.245     7.323 r  i2cExternal/BUFFER_32_reg[23]_i_10/O
-                         net (fo=1, routed)           0.438     7.761    i2cExternal/BUFFER_32_reg[23]_i_10_n_0
-    SLICE_X20Y142        LUT6 (Prop_lut6_I1_O)        0.298     8.059 r  i2cExternal/BUFFER_32[23]_i_4/O
-                         net (fo=1, routed)           1.092     9.151    i2cExternal/I_I2CITF/BUFFER_32_reg[23]_0
-    SLICE_X23Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.275 r  i2cExternal/I_I2CITF/BUFFER_32[23]_i_2/O
-                         net (fo=1, routed)           0.000     9.275    i2cExternal/p_1_in[23]
-    SLICE_X23Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[23]/D
+    SLICE_X50Y100        FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/SDA_OUT_reg/C
+    SLICE_X50Y100        FDRE (Prop_fdre_C_Q)         0.518     0.518 f  i2cExternal/I_I2CITF/SDA_OUT_reg/Q
+                         net (fo=3, routed)           4.256     4.774    sda_master_TRI
+    A15                  OBUFT (TriStatE_obuft_T_O)
+                                                      3.518     8.293 r  sda_slave_OBUFT_inst/O
+                         net (fo=0)                   0.000     8.293    sda_slave
+    A15                                                               r  sda_slave (INOUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[12]/D
+  Source:                 scl_master
+                            (input port)
+  Destination:            scl_slave
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        9.252ns  (logic 1.220ns (13.186%)  route 8.032ns (86.814%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        6.894ns  (logic 4.962ns (71.975%)  route 1.932ns (28.025%))
+  Logic Levels:           2  (IBUF=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         6.107     6.563    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X22Y139        LUT6 (Prop_lut6_I4_O)        0.124     6.687 r  i2cExternal/BUFFER_32[12]_i_15/O
-                         net (fo=1, routed)           0.000     6.687    i2cExternal/BUFFER_32[12]_i_15_n_0
-    SLICE_X22Y139        MUXF7 (Prop_muxf7_I1_O)      0.217     6.904 r  i2cExternal/BUFFER_32_reg[12]_i_9/O
-                         net (fo=1, routed)           0.772     7.676    i2cExternal/BUFFER_32_reg[12]_i_9_n_0
-    SLICE_X26Y143        LUT6 (Prop_lut6_I1_O)        0.299     7.975 r  i2cExternal/BUFFER_32[12]_i_3/O
-                         net (fo=1, routed)           1.153     9.128    i2cExternal/I_I2CITF/BUFFER_32_reg[12]_0
-    SLICE_X24Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.252 r  i2cExternal/I_I2CITF/BUFFER_32[12]_i_1/O
-                         net (fo=1, routed)           0.000     9.252    i2cExternal/p_1_in[12]
-    SLICE_X24Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[12]/D
+    A16                                               0.000     0.000 r  scl_master (INOUT)
+                         net (fo=0)                   0.000     0.000    scl_master
+    A16                  IBUF (Prop_ibuf_I_O)         1.457     1.457 r  scl_master_IBUF_inst/O
+                         net (fo=1, routed)           1.932     3.389    scl_slave_OBUF
+    C15                  OBUF (Prop_obuf_I_O)         3.505     6.894 r  scl_slave_OBUF_inst/O
+                         net (fo=0)                   0.000     6.894    scl_slave
+    C15                                                               r  scl_slave (INOUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 i2cExternal/I_I2CITF/SDA_OUT_reg/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[5]/D
+  Destination:            sda_master
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        9.224ns  (logic 1.240ns (13.443%)  route 7.984ns (86.557%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        6.568ns  (logic 4.045ns (61.596%)  route 2.522ns (38.404%))
+  Logic Levels:           2  (FDRE=1 OBUFT=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         5.928     6.384    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X20Y140        LUT6 (Prop_lut6_I4_O)        0.124     6.508 r  i2cExternal/BUFFER_32[5]_i_14/O
-                         net (fo=1, routed)           0.000     6.508    i2cExternal/BUFFER_32[5]_i_14_n_0
-    SLICE_X20Y140        MUXF7 (Prop_muxf7_I0_O)      0.238     6.746 r  i2cExternal/BUFFER_32_reg[5]_i_9/O
-                         net (fo=1, routed)           0.966     7.712    i2cExternal/BUFFER_32_reg[5]_i_9_n_0
-    SLICE_X25Y142        LUT6 (Prop_lut6_I1_O)        0.298     8.010 r  i2cExternal/BUFFER_32[5]_i_3/O
-                         net (fo=1, routed)           1.090     9.100    i2cExternal/I_I2CITF/BUFFER_32_reg[5]_0
-    SLICE_X25Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.224 r  i2cExternal/I_I2CITF/BUFFER_32[5]_i_1/O
-                         net (fo=1, routed)           0.000     9.224    i2cExternal/p_1_in[5]
-    SLICE_X25Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[5]/D
+    SLICE_X50Y100        FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/SDA_OUT_reg/C
+    SLICE_X50Y100        FDRE (Prop_fdre_C_Q)         0.518     0.518 f  i2cExternal/I_I2CITF/SDA_OUT_reg/Q
+                         net (fo=3, routed)           2.522     3.040    sda_master_TRI
+    M3                   OBUFT (TriStatE_obuft_T_O)
+                                                      3.527     6.568 r  sda_master_OBUFT_inst/O
+                         net (fo=0)                   0.000     6.568    sda_master
+    M3                                                                r  sda_master (INOUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 pwmGen/PWM_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[30]/D
+  Destination:            PWM[0]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        9.218ns  (logic 1.220ns (13.235%)  route 7.998ns (86.765%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        6.246ns  (logic 3.966ns (63.493%)  route 2.280ns (36.507%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         6.472     6.928    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X16Y140        LUT6 (Prop_lut6_I4_O)        0.124     7.052 r  i2cExternal/BUFFER_32[30]_i_17/O
-                         net (fo=1, routed)           0.000     7.052    i2cExternal/BUFFER_32[30]_i_17_n_0
-    SLICE_X16Y140        MUXF7 (Prop_muxf7_I1_O)      0.217     7.269 r  i2cExternal/BUFFER_32_reg[30]_i_10/O
-                         net (fo=1, routed)           0.441     7.710    i2cExternal/BUFFER_32_reg[30]_i_10_n_0
-    SLICE_X16Y140        LUT6 (Prop_lut6_I3_O)        0.299     8.009 r  i2cExternal/BUFFER_32[30]_i_3/O
-                         net (fo=2, routed)           1.086     9.094    i2cExternal/I_I2CITF/BUFFER_32_reg[30]_0
-    SLICE_X22Y131        LUT6 (Prop_lut6_I2_O)        0.124     9.218 r  i2cExternal/I_I2CITF/BUFFER_32[30]_i_1/O
-                         net (fo=1, routed)           0.000     9.218    i2cExternal/p_1_in[30]
-    SLICE_X22Y131        FDRE                                         r  i2cExternal/BUFFER_32_reg[30]/D
+    SLICE_X59Y96         FDRE                         0.000     0.000 r  pwmGen/PWM_reg[0]/C
+    SLICE_X59Y96         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pwmGen/PWM_reg[0]/Q
+                         net (fo=1, routed)           2.280     2.736    PWM_OBUF[0]
+    N1                   OBUF (Prop_obuf_I_O)         3.510     6.246 r  PWM_OBUF[0]_inst/O
+                         net (fo=0)                   0.000     6.246    PWM[0]
+    N1                                                                r  PWM[0] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 pwmGen/PWM_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[15]/D
+  Destination:            PWM[3]
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        9.128ns  (logic 1.220ns (13.365%)  route 7.908ns (86.635%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        6.141ns  (logic 4.029ns (65.608%)  route 2.112ns (34.392%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         6.265     6.721    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X19Y141        LUT6 (Prop_lut6_I4_O)        0.124     6.845 r  i2cExternal/BUFFER_32[15]_i_16/O
-                         net (fo=1, routed)           0.000     6.845    i2cExternal/BUFFER_32[15]_i_16_n_0
-    SLICE_X19Y141        MUXF7 (Prop_muxf7_I1_O)      0.217     7.062 r  i2cExternal/BUFFER_32_reg[15]_i_10/O
-                         net (fo=1, routed)           0.618     7.680    i2cExternal/BUFFER_32_reg[15]_i_10_n_0
-    SLICE_X22Y145        LUT6 (Prop_lut6_I1_O)        0.299     7.979 r  i2cExternal/BUFFER_32[15]_i_4/O
-                         net (fo=1, routed)           1.025     9.004    i2cExternal/I_I2CITF/BUFFER_32_reg[15]_0
-    SLICE_X24Y138        LUT6 (Prop_lut6_I2_O)        0.124     9.128 r  i2cExternal/I_I2CITF/BUFFER_32[15]_i_2/O
-                         net (fo=1, routed)           0.000     9.128    i2cExternal/p_1_in[15]
-    SLICE_X24Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[15]/D
+    SLICE_X60Y96         FDRE                         0.000     0.000 r  pwmGen/PWM_reg[3]/C
+    SLICE_X60Y96         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  pwmGen/PWM_reg[3]/Q
+                         net (fo=1, routed)           2.112     2.630    PWM_OBUF[3]
+    M1                   OBUF (Prop_obuf_I_O)         3.511     6.141 r  PWM_OBUF[3]_inst/O
+                         net (fo=0)                   0.000     6.141    PWM[3]
+    M1                                                                r  PWM[3] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[22]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/WaitClock_reg[29]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.806ns  (logic 1.247ns (14.161%)  route 7.559ns (85.839%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        6.061ns  (logic 3.392ns (55.965%)  route 2.669ns (44.035%))
+  Logic Levels:           15  (CARRY4=12 FDRE=1 LUT2=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         6.267     6.723    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X23Y139        LUT6 (Prop_lut6_I4_O)        0.124     6.847 r  i2cExternal/BUFFER_32[22]_i_15/O
-                         net (fo=1, routed)           0.000     6.847    i2cExternal/BUFFER_32[22]_i_15_n_0
-    SLICE_X23Y139        MUXF7 (Prop_muxf7_I1_O)      0.245     7.092 r  i2cExternal/BUFFER_32_reg[22]_i_9/O
-                         net (fo=1, routed)           0.579     7.671    i2cExternal/BUFFER_32_reg[22]_i_9_n_0
-    SLICE_X23Y142        LUT6 (Prop_lut6_I1_O)        0.298     7.969 r  i2cExternal/BUFFER_32[22]_i_3/O
-                         net (fo=1, routed)           0.713     8.682    i2cExternal/I_I2CITF/BUFFER_32_reg[22]_0
-    SLICE_X23Y138        LUT6 (Prop_lut6_I2_O)        0.124     8.806 r  i2cExternal/I_I2CITF/BUFFER_32[22]_i_1/O
-                         net (fo=1, routed)           0.000     8.806    i2cExternal/p_1_in[22]
-    SLICE_X23Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[22]/D
+    SLICE_X54Y92         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
+    SLICE_X54Y92         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/Q
+                         net (fo=3, routed)           0.677     1.195    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]
+    SLICE_X55Y92         LUT2 (Prop_lut2_I1_O)        0.124     1.319 r  readSensor/Byte_compiler/Read_Byte/i__carry_i_1/O
+                         net (fo=1, routed)           0.541     1.860    readSensor/Byte_compiler/Read_Byte/i__carry_i_1_n_0
+    SLICE_X55Y94         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     2.440 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000     2.440    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry_n_0
+    SLICE_X55Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.554 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0/CO[3]
+                         net (fo=1, routed)           0.000     2.554    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0_n_0
+    SLICE_X55Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.668 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1/CO[3]
+                         net (fo=1, routed)           0.000     2.668    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1_n_0
+    SLICE_X55Y97         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228     2.896 f  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2/CO[2]
+                         net (fo=34, routed)          1.451     4.347    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2_n_1
+    SLICE_X54Y92         LUT2 (Prop_lut2_I1_O)        0.313     4.660 r  readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4/O
+                         net (fo=1, routed)           0.000     4.660    readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4_n_0
+    SLICE_X54Y92         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376     5.036 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     5.036    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2_n_0
+    SLICE_X54Y93         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.153 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.153    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1_n_0
+    SLICE_X54Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.270 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.270    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1_n_0
+    SLICE_X54Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.387 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.387    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1_n_0
+    SLICE_X54Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.504 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.504    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1_n_0
+    SLICE_X54Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.621 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.621    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1_n_0
+    SLICE_X54Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.738 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.738    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1_n_0
+    SLICE_X54Y99         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.323     6.061 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1/O[1]
+                         net (fo=1, routed)           0.000     6.061    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1_n_6
+    SLICE_X54Y99         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[29]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[4]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/WaitClock_reg[31]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.756ns  (logic 1.220ns (13.934%)  route 7.536ns (86.066%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        6.053ns  (logic 3.384ns (55.907%)  route 2.669ns (44.093%))
+  Logic Levels:           15  (CARRY4=12 FDRE=1 LUT2=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         6.328     6.784    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X20Y140        LUT6 (Prop_lut6_I4_O)        0.124     6.908 r  i2cExternal/BUFFER_32[4]_i_15/O
-                         net (fo=1, routed)           0.000     6.908    i2cExternal/BUFFER_32[4]_i_15_n_0
-    SLICE_X20Y140        MUXF7 (Prop_muxf7_I1_O)      0.217     7.125 r  i2cExternal/BUFFER_32_reg[4]_i_9/O
-                         net (fo=1, routed)           0.718     7.843    i2cExternal/BUFFER_32_reg[4]_i_9_n_0
-    SLICE_X21Y143        LUT6 (Prop_lut6_I1_O)        0.299     8.142 r  i2cExternal/BUFFER_32[4]_i_3/O
-                         net (fo=1, routed)           0.490     8.632    i2cExternal/I_I2CITF/BUFFER_32_reg[4]_0
-    SLICE_X25Y138        LUT6 (Prop_lut6_I2_O)        0.124     8.756 r  i2cExternal/I_I2CITF/BUFFER_32[4]_i_1/O
-                         net (fo=1, routed)           0.000     8.756    i2cExternal/p_1_in[4]
-    SLICE_X25Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[4]/D
+    SLICE_X54Y92         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
+    SLICE_X54Y92         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/Q
+                         net (fo=3, routed)           0.677     1.195    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]
+    SLICE_X55Y92         LUT2 (Prop_lut2_I1_O)        0.124     1.319 r  readSensor/Byte_compiler/Read_Byte/i__carry_i_1/O
+                         net (fo=1, routed)           0.541     1.860    readSensor/Byte_compiler/Read_Byte/i__carry_i_1_n_0
+    SLICE_X55Y94         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     2.440 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000     2.440    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry_n_0
+    SLICE_X55Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.554 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0/CO[3]
+                         net (fo=1, routed)           0.000     2.554    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0_n_0
+    SLICE_X55Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.668 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1/CO[3]
+                         net (fo=1, routed)           0.000     2.668    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1_n_0
+    SLICE_X55Y97         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228     2.896 f  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2/CO[2]
+                         net (fo=34, routed)          1.451     4.347    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2_n_1
+    SLICE_X54Y92         LUT2 (Prop_lut2_I1_O)        0.313     4.660 r  readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4/O
+                         net (fo=1, routed)           0.000     4.660    readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4_n_0
+    SLICE_X54Y92         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376     5.036 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     5.036    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2_n_0
+    SLICE_X54Y93         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.153 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.153    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1_n_0
+    SLICE_X54Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.270 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.270    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1_n_0
+    SLICE_X54Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.387 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.387    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1_n_0
+    SLICE_X54Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.504 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.504    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1_n_0
+    SLICE_X54Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.621 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.621    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1_n_0
+    SLICE_X54Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.738 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.738    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1_n_0
+    SLICE_X54Y99         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315     6.053 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1/O[3]
+                         net (fo=1, routed)           0.000     6.053    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1_n_4
+    SLICE_X54Y99         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[31]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[10]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/WaitClock_reg[30]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.735ns  (logic 1.220ns (13.967%)  route 7.515ns (86.033%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        5.977ns  (logic 3.308ns (55.346%)  route 2.669ns (44.654%))
+  Logic Levels:           15  (CARRY4=12 FDRE=1 LUT2=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         5.485     5.941    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X13Y144        LUT6 (Prop_lut6_I4_O)        0.124     6.065 r  i2cExternal/BUFFER_32[10]_i_13/O
-                         net (fo=1, routed)           0.000     6.065    i2cExternal/BUFFER_32[10]_i_13_n_0
-    SLICE_X13Y144        MUXF7 (Prop_muxf7_I1_O)      0.217     6.282 r  i2cExternal/BUFFER_32_reg[10]_i_8/O
-                         net (fo=1, routed)           1.071     7.353    i2cExternal/BUFFER_32_reg[10]_i_8_n_0
-    SLICE_X18Y142        LUT6 (Prop_lut6_I0_O)        0.299     7.652 r  i2cExternal/BUFFER_32[10]_i_3/O
-                         net (fo=1, routed)           0.959     8.611    i2cExternal/I_I2CITF/BUFFER_32_reg[10]_0
-    SLICE_X24Y136        LUT6 (Prop_lut6_I2_O)        0.124     8.735 r  i2cExternal/I_I2CITF/BUFFER_32[10]_i_1/O
-                         net (fo=1, routed)           0.000     8.735    i2cExternal/p_1_in[10]
-    SLICE_X24Y136        FDRE                                         r  i2cExternal/BUFFER_32_reg[10]/D
+    SLICE_X54Y92         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
+    SLICE_X54Y92         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/Q
+                         net (fo=3, routed)           0.677     1.195    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]
+    SLICE_X55Y92         LUT2 (Prop_lut2_I1_O)        0.124     1.319 r  readSensor/Byte_compiler/Read_Byte/i__carry_i_1/O
+                         net (fo=1, routed)           0.541     1.860    readSensor/Byte_compiler/Read_Byte/i__carry_i_1_n_0
+    SLICE_X55Y94         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     2.440 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000     2.440    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry_n_0
+    SLICE_X55Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.554 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0/CO[3]
+                         net (fo=1, routed)           0.000     2.554    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0_n_0
+    SLICE_X55Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.668 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1/CO[3]
+                         net (fo=1, routed)           0.000     2.668    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1_n_0
+    SLICE_X55Y97         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228     2.896 f  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2/CO[2]
+                         net (fo=34, routed)          1.451     4.347    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2_n_1
+    SLICE_X54Y92         LUT2 (Prop_lut2_I1_O)        0.313     4.660 r  readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4/O
+                         net (fo=1, routed)           0.000     4.660    readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4_n_0
+    SLICE_X54Y92         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376     5.036 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     5.036    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2_n_0
+    SLICE_X54Y93         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.153 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.153    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1_n_0
+    SLICE_X54Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.270 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.270    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1_n_0
+    SLICE_X54Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.387 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.387    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1_n_0
+    SLICE_X54Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.504 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.504    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1_n_0
+    SLICE_X54Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.621 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.621    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1_n_0
+    SLICE_X54Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.738 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.738    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1_n_0
+    SLICE_X54Y99         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.239     5.977 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1/O[2]
+                         net (fo=1, routed)           0.000     5.977    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1_n_5
+    SLICE_X54Y99         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[30]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[0]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/BUFFER_32_reg[14]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.674ns  (logic 1.220ns (14.065%)  route 7.454ns (85.935%))
-  Logic Levels:           5  (FDRE=1 LUT6=3 MUXF7=1)
+  Data Path Delay:        5.957ns  (logic 3.288ns (55.196%)  route 2.669ns (44.804%))
+  Logic Levels:           15  (CARRY4=12 FDRE=1 LUT2=2)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X18Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
-    SLICE_X18Y130        FDRE (Prop_fdre_C_Q)         0.456     0.456 r  i2cExternal/BUFFER_8_reg[0]/Q
-                         net (fo=387, routed)         5.862     6.318    i2cExternal/BUFFER_8_reg_n_0_[0]
-    SLICE_X23Y139        LUT6 (Prop_lut6_I4_O)        0.124     6.442 r  i2cExternal/BUFFER_32[14]_i_15/O
-                         net (fo=1, routed)           0.000     6.442    i2cExternal/BUFFER_32[14]_i_15_n_0
-    SLICE_X23Y139        MUXF7 (Prop_muxf7_I1_O)      0.217     6.659 r  i2cExternal/BUFFER_32_reg[14]_i_9/O
-                         net (fo=1, routed)           1.004     7.663    i2cExternal/BUFFER_32_reg[14]_i_9_n_0
-    SLICE_X24Y143        LUT6 (Prop_lut6_I1_O)        0.299     7.962 r  i2cExternal/BUFFER_32[14]_i_3/O
-                         net (fo=1, routed)           0.588     8.550    i2cExternal/I_I2CITF/BUFFER_32_reg[14]_0
-    SLICE_X24Y138        LUT6 (Prop_lut6_I2_O)        0.124     8.674 r  i2cExternal/I_I2CITF/BUFFER_32[14]_i_1/O
-                         net (fo=1, routed)           0.000     8.674    i2cExternal/p_1_in[14]
-    SLICE_X24Y138        FDRE                                         r  i2cExternal/BUFFER_32_reg[14]/D
+    SLICE_X54Y92         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/C
+    SLICE_X54Y92         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]/Q
+                         net (fo=3, routed)           0.677     1.195    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]
+    SLICE_X55Y92         LUT2 (Prop_lut2_I1_O)        0.124     1.319 r  readSensor/Byte_compiler/Read_Byte/i__carry_i_1/O
+                         net (fo=1, routed)           0.541     1.860    readSensor/Byte_compiler/Read_Byte/i__carry_i_1_n_0
+    SLICE_X55Y94         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.580     2.440 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry/CO[3]
+                         net (fo=1, routed)           0.000     2.440    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry_n_0
+    SLICE_X55Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.554 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0/CO[3]
+                         net (fo=1, routed)           0.000     2.554    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__0_n_0
+    SLICE_X55Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114     2.668 r  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1/CO[3]
+                         net (fo=1, routed)           0.000     2.668    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__1_n_0
+    SLICE_X55Y97         CARRY4 (Prop_carry4_CI_CO[2])
+                                                      0.228     2.896 f  readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2/CO[2]
+                         net (fo=34, routed)          1.451     4.347    readSensor/Byte_compiler/Read_Byte/STATE0_inferred__0/i__carry__2_n_1
+    SLICE_X54Y92         LUT2 (Prop_lut2_I1_O)        0.313     4.660 r  readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4/O
+                         net (fo=1, routed)           0.000     4.660    readSensor/Byte_compiler/Read_Byte/WaitClock[0]_i_4_n_0
+    SLICE_X54Y92         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376     5.036 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2/CO[3]
+                         net (fo=1, routed)           0.000     5.036    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[0]_i_2_n_0
+    SLICE_X54Y93         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.153 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.153    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[4]_i_1_n_0
+    SLICE_X54Y94         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.270 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.270    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[8]_i_1_n_0
+    SLICE_X54Y95         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.387 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.387    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[12]_i_1_n_0
+    SLICE_X54Y96         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.504 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.504    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[16]_i_1_n_0
+    SLICE_X54Y97         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.621 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.621    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[20]_i_1_n_0
+    SLICE_X54Y98         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.738 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     5.738    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[24]_i_1_n_0
+    SLICE_X54Y99         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     5.957 r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1/O[0]
+                         net (fo=1, routed)           0.000     5.957    readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]_i_1_n_7
+    SLICE_X54Y99         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/WaitClock_reg[28]/D
   -------------------------------------------------------------------    -------------------
 
 
@@ -474,173 +576,177 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 i2cExternal/I_I2CITF/WR_reg/C
+  Source:                 memory_reg[39][8]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRq_reg/D
+  Destination:            readSensor/ENABLE_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.208ns  (logic 0.141ns (67.788%)  route 0.067ns (32.212%))
-  Logic Levels:           1  (FDRE=1)
+  Data Path Delay:        0.245ns  (logic 0.191ns (77.926%)  route 0.054ns (22.074%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X19Y127        FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/WR_reg/C
-    SLICE_X19Y127        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/I_I2CITF/WR_reg/Q
-                         net (fo=2, routed)           0.067     0.208    i2cExternal/WR
-    SLICE_X19Y127        FDRE                                         r  i2cExternal/WRq_reg/D
+    SLICE_X55Y91         FDRE                         0.000     0.000 r  memory_reg[39][8]/C
+    SLICE_X55Y91         FDRE (Prop_fdre_C_Q)         0.146     0.146 r  memory_reg[39][8]/Q
+                         net (fo=1, routed)           0.054     0.200    readSensor/ENABLE_reg[3]_2[8]
+    SLICE_X54Y91         LUT6 (Prop_lut6_I0_O)        0.045     0.245 r  readSensor/ENABLE[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.245    readSensor/ENABLE[0]
+    SLICE_X54Y91         FDRE                                         r  readSensor/ENABLE_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/I_I2CITF/rd_d_reg/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[4]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/I_I2CITF/RD_reg/D
+  Destination:            readSensor/Byte_compiler/WriteMemBus_reg[20]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.217ns  (logic 0.141ns (64.847%)  route 0.076ns (35.153%))
+  Data Path Delay:        0.256ns  (logic 0.141ns (55.088%)  route 0.115ns (44.912%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X22Y126        FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/rd_d_reg/C
-    SLICE_X22Y126        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/I_I2CITF/rd_d_reg/Q
-                         net (fo=2, routed)           0.076     0.217    i2cExternal/I_I2CITF/rd_d_reg_n_0
-    SLICE_X22Y126        FDRE                                         r  i2cExternal/I_I2CITF/RD_reg/D
+    SLICE_X58Y98         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[4]/C
+    SLICE_X58Y98         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[4]/Q
+                         net (fo=4, routed)           0.115     0.256    readSensor/Byte_compiler/DATA[4]
+    SLICE_X60Y97         FDRE                                         r  readSensor/Byte_compiler/WriteMemBus_reg[20]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_32_reg[28]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[5]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRITE_DATA_reg[28]/D
+  Destination:            readSensor/Byte_compiler/WriteMemBus_reg[21]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.251ns  (logic 0.141ns (56.174%)  route 0.110ns (43.826%))
+  Data Path Delay:        0.257ns  (logic 0.141ns (54.866%)  route 0.116ns (45.134%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X21Y131        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[28]/C
-    SLICE_X21Y131        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[28]/Q
-                         net (fo=1, routed)           0.110     0.251    i2cExternal/BUFFER_32_reg_n_0_[28]
-    SLICE_X20Y132        FDRE                                         r  i2cExternal/WRITE_DATA_reg[28]/D
+    SLICE_X58Y97         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[5]/C
+    SLICE_X58Y97         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[5]/Q
+                         net (fo=4, routed)           0.116     0.257    readSensor/Byte_compiler/DATA[5]
+    SLICE_X60Y97         FDRE                                         r  readSensor/Byte_compiler/WriteMemBus_reg[21]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_32_reg[31]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state_reg[5]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRITE_DATA_reg[31]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.260ns  (logic 0.141ns (54.232%)  route 0.119ns (45.768%))
-  Logic Levels:           1  (FDRE=1)
+  Data Path Delay:        0.262ns  (logic 0.186ns (70.964%)  route 0.076ns (29.036%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X22Y131        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[31]/C
-    SLICE_X22Y131        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[31]/Q
-                         net (fo=1, routed)           0.119     0.260    i2cExternal/BUFFER_32_reg_n_0_[31]
-    SLICE_X23Y131        FDRE                                         r  i2cExternal/WRITE_DATA_reg[31]/D
+    SLICE_X57Y98         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state_reg[5]/C
+    SLICE_X57Y98         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state_reg[5]/Q
+                         net (fo=5, routed)           0.076     0.217    readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state_reg_n_0_[5]
+    SLICE_X56Y98         LUT6 (Prop_lut6_I5_O)        0.045     0.262 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state[4]_i_1/O
+                         net (fo=1, routed)           0.000     0.262    readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state[4]_i_1_n_0
+    SLICE_X56Y98         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/I2C_Master/FSM_onehot_state_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_8_reg[7]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[6]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRITE_ADDRESS_reg[7]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[6]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.260ns  (logic 0.141ns (54.127%)  route 0.119ns (45.873%))
+  Data Path Delay:        0.263ns  (logic 0.128ns (48.591%)  route 0.135ns (51.409%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X20Y129        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[7]/C
-    SLICE_X20Y129        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_8_reg[7]/Q
-                         net (fo=4, routed)           0.119     0.260    i2cExternal/BUFFER_8_reg_n_0_[7]
-    SLICE_X22Y130        FDRE                                         r  i2cExternal/WRITE_ADDRESS_reg[7]/D
+    SLICE_X57Y97         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[6]/C
+    SLICE_X57Y97         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[6]/Q
+                         net (fo=2, routed)           0.135     0.263    readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx[6]
+    SLICE_X55Y97         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[6]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_32_reg[4]/C
+  Source:                 i2cExternal/BUFFER_8_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRITE_DATA_reg[4]/D
+  Destination:            i2cExternal/WRITE_ADDRESS_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.262ns  (logic 0.141ns (53.808%)  route 0.121ns (46.192%))
+  Data Path Delay:        0.266ns  (logic 0.141ns (52.916%)  route 0.125ns (47.084%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X25Y138        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[4]/C
-    SLICE_X25Y138        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[4]/Q
-                         net (fo=2, routed)           0.121     0.262    i2cExternal/BUFFER_32_reg_n_0_[4]
-    SLICE_X25Y137        FDRE                                         r  i2cExternal/WRITE_DATA_reg[4]/D
+    SLICE_X49Y97         FDRE                         0.000     0.000 r  i2cExternal/BUFFER_8_reg[0]/C
+    SLICE_X49Y97         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_8_reg[0]/Q
+                         net (fo=2, routed)           0.125     0.266    i2cExternal/BUFFER_8_reg_n_0_[0]
+    SLICE_X49Y95         FDRE                                         r  i2cExternal/WRITE_ADDRESS_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/WRITE_DATA_reg[17]/C
+  Source:                 readSensor/I2CADDR_reg[5]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            memory_reg[40][17]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/I2C_Master/addr_rw_reg[6]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.263ns  (logic 0.141ns (53.625%)  route 0.122ns (46.375%))
+  Data Path Delay:        0.268ns  (logic 0.141ns (52.684%)  route 0.127ns (47.316%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X25Y130        FDRE                         0.000     0.000 r  i2cExternal/WRITE_DATA_reg[17]/C
-    SLICE_X25Y130        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/WRITE_DATA_reg[17]/Q
-                         net (fo=46, routed)          0.122     0.263    EXTERNAL_WRITE_DATA[17]
-    SLICE_X26Y129        FDRE                                         r  memory_reg[40][17]/D
+    SLICE_X57Y96         FDRE                         0.000     0.000 r  readSensor/I2CADDR_reg[5]/C
+    SLICE_X57Y96         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  readSensor/I2CADDR_reg[5]/Q
+                         net (fo=2, routed)           0.127     0.268    readSensor/Byte_compiler/Read_Byte/I2C_Master/D[6]
+    SLICE_X55Y96         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/I2C_Master/addr_rw_reg[6]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_32_reg[12]/C
+  Source:                 readSensor/I2CADDR_reg[6]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRITE_DATA_reg[12]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/I2C_Master/addr_rw_reg[7]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.264ns  (logic 0.141ns (53.486%)  route 0.123ns (46.514%))
+  Data Path Delay:        0.268ns  (logic 0.141ns (52.684%)  route 0.127ns (47.316%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X24Y138        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[12]/C
-    SLICE_X24Y138        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[12]/Q
-                         net (fo=2, routed)           0.123     0.264    i2cExternal/BUFFER_32_reg_n_0_[12]
-    SLICE_X25Y137        FDRE                                         r  i2cExternal/WRITE_DATA_reg[12]/D
+    SLICE_X57Y96         FDRE                         0.000     0.000 r  readSensor/I2CADDR_reg[6]/C
+    SLICE_X57Y96         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  readSensor/I2CADDR_reg[6]/Q
+                         net (fo=2, routed)           0.127     0.268    readSensor/Byte_compiler/Read_Byte/I2C_Master/D[7]
+    SLICE_X55Y96         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/I2C_Master/addr_rw_reg[7]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_32_reg[5]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRITE_DATA_reg[5]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[1]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.264ns  (logic 0.141ns (53.433%)  route 0.123ns (46.567%))
+  Data Path Delay:        0.268ns  (logic 0.141ns (52.684%)  route 0.127ns (47.316%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X25Y138        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[5]/C
-    SLICE_X25Y138        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[5]/Q
-                         net (fo=2, routed)           0.123     0.264    i2cExternal/BUFFER_32_reg_n_0_[5]
-    SLICE_X24Y137        FDRE                                         r  i2cExternal/WRITE_DATA_reg[5]/D
+    SLICE_X57Y97         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[1]/C
+    SLICE_X57Y97         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[1]/Q
+                         net (fo=2, routed)           0.127     0.268    readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx[1]
+    SLICE_X55Y97         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 i2cExternal/BUFFER_32_reg[8]/C
+  Source:                 readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            i2cExternal/WRITE_DATA_reg[8]/D
+  Destination:            readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[3]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.264ns  (logic 0.141ns (53.422%)  route 0.123ns (46.578%))
+  Data Path Delay:        0.269ns  (logic 0.141ns (52.470%)  route 0.128ns (47.530%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X24Y130        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[8]/C
-    SLICE_X24Y130        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[8]/Q
-                         net (fo=2, routed)           0.123     0.264    i2cExternal/BUFFER_32_reg_n_0_[8]
-    SLICE_X25Y130        FDRE                                         r  i2cExternal/WRITE_DATA_reg[8]/D
+    SLICE_X57Y97         FDRE                         0.000     0.000 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[3]/C
+    SLICE_X57Y97         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx_reg[3]/Q
+                         net (fo=2, routed)           0.128     0.269    readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rx[3]
+    SLICE_X55Y97         FDRE                                         r  readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 

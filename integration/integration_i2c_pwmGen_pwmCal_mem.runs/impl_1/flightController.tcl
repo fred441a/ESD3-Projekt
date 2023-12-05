@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "/home/mikkel/repoes/ESD3/ESD3-Projekt/integration_i2c_pwmGen_pwmCal_mem/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1/flightController.tcl"
+  variable script "/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1/flightController.tcl"
   variable category "vivado_impl"
 }
 
@@ -124,10 +124,10 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param xicom.use_bs_reader 1
-  set_param chipscope.maxJobs 1
-  set_param runs.launchOptions { -jobs 4  }
+  set_param chipscope.maxJobs 3
+  set_param runs.launchOptions { -jobs 6  }
   open_checkpoint flightController_routed.dcp
-  set_property webtalk.parent_dir /home/mikkel/repoes/ESD3/ESD3-Projekt/integration_i2c_pwmGen_pwmCal_mem/integration_i2c_pwmGen_pwmCal_mem.cache/wt [current_project]
+  set_property webtalk.parent_dir /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.cache/wt [current_project]
 set_property TOP flightController [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }

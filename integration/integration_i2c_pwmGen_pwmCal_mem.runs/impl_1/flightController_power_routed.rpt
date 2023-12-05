@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date             : Mon Nov 20 11:19:11 2023
-| Host             : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Tool Version     : Vivado v.2023.1 (lin64) Build 3865809 Sun May  7 15:04:56 MDT 2023
+| Date             : Mon Dec  4 15:30:24 2023
+| Host             : Lenova running 64-bit Debian GNU/Linux trixie/sid
 | Command          : report_power -file flightController_power_routed.rpt -pb flightController_power_summary_routed.pb -rpx flightController_power_routed.rpx
 | Design           : flightController
 | Device           : xc7a35tcpg236-1
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 3.154        |
+| Total On-Chip Power (W)  | 3.225        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 3.073        |
+| Dynamic (W)              | 3.144        |
 | Device Static (W)        | 0.081        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 69.2         |
-| Junction Temperature (C) | 40.8         |
+| Max Ambient (C)          | 68.9         |
+| Junction Temperature (C) | 41.1         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,17 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     1.206 |     2664 |       --- |             --- |
-|   LUT as Logic |     1.115 |      717 |     20800 |            3.45 |
-|   Register     |     0.039 |     1680 |     41600 |            4.04 |
-|   CARRY4       |     0.027 |       13 |      8150 |            0.16 |
-|   F7/F8 Muxes  |     0.019 |      133 |     32600 |            0.41 |
+| Slice Logic    |     1.004 |      779 |       --- |             --- |
+|   LUT as Logic |     0.905 |      327 |     20800 |            1.57 |
+|   Register     |     0.051 |      314 |     41600 |            0.75 |
+|   CARRY4       |     0.042 |       25 |      8150 |            0.31 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       10 |       --- |             --- |
-| Signals        |     1.133 |     2213 |       --- |             --- |
-| I/O            |     0.734 |        7 |       106 |            6.60 |
+|   Others       |     0.000 |       18 |       --- |             --- |
+| Signals        |     0.681 |      467 |       --- |             --- |
+| I/O            |     1.459 |        9 |       106 |            8.49 |
 | Static Power   |     0.081 |          |           |                 |
-| Total          |     3.154 |          |           |                 |
+| Total          |     3.225 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +71,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     2.364 |       2.347 |      0.017 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.040 |       0.027 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.207 |       0.206 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     1.710 |       1.693 |      0.017 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.067 |       0.053 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.412 |       0.411 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -136,14 +135,17 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+------------------+-----------+
-| Name             | Power (W) |
-+------------------+-----------+
-| flightController |     3.073 |
-|   i2cExternal    |     1.707 |
-|     I_I2CITF     |     0.647 |
-|   pwmCal         |     0.102 |
-|   pwmGen         |     0.240 |
-+------------------+-----------+
++-------------------+-----------+
+| Name              | Power (W) |
++-------------------+-----------+
+| flightController  |     3.144 |
+|   i2cExternal     |     0.107 |
+|     I_I2CITF      |     0.054 |
+|   pwmCal          |     0.058 |
+|   pwmGen          |     0.251 |
+|   readSensor      |     1.132 |
+|     Byte_compiler |     0.772 |
+|       Read_Byte   |     0.437 |
++-------------------+-----------+
 
 

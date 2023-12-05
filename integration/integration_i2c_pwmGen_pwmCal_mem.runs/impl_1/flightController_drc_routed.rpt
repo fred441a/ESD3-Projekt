@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Mon Nov 20 11:19:09 2023
-| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Tool Version : Vivado v.2023.1 (lin64) Build 3865809 Sun May  7 15:04:56 MDT 2023
+| Date         : Mon Dec  4 15:30:23 2023
+| Host         : Lenova running 64-bit Debian GNU/Linux trixie/sid
 | Command      : report_drc -file flightController_drc_routed.rpt -pb flightController_drc_routed.pb -rpx flightController_drc_routed.rpx
 | Design       : flightController
 | Device       : xc7a35tcpg236-1
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 2
+             Violations found: 5
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| RPBF-3   | Warning  | IO port buffering is incomplete                     | 1          |
+| RPBF-3   | Warning  | IO port buffering is incomplete                     | 4          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -49,7 +49,22 @@ Related violations: <none>
 
 RPBF-3#1 Warning
 IO port buffering is incomplete  
+Device port scl_master expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#2 Warning
+IO port buffering is incomplete  
 Device port scl_slave expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#3 Warning
+IO port buffering is incomplete  
+Device port sda_master expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#4 Warning
+IO port buffering is incomplete  
+Device port sda_slave expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>
 
 

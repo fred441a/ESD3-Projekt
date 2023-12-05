@@ -70,6 +70,7 @@ architecture Behavioral of flightController is
     end component;
     
     component I2C_EXTERNAL_ACCESS is
+        generic (deviceAddress : std_logic_vector(7 downto 0));
         port(
 		MCLK		: in	std_logic;
 		nRST		: in	std_logic;
@@ -101,10 +102,19 @@ architecture Behavioral of flightController is
      -- Write internal signals here:
     signal calibrationPwmOut    : std_logic_vector(7 downto 0);
     signal calibrationPwmFinish : std_logic;
+
+    signal sda_master_buffer : std_logic ;
+    signal scl_master_buffer : std_logic ;
     
     signal EXTERNAL_WRITE_ADDRESS : std_logic_vector(7 downto 0);
-	signal EXTERNAL_WRITE_DATA    : std_logic_vector(31 downto 0);
-	signal EXTERNAL_WRITE_REQ     : std_logic := '0';
+    signal EXTERNAL_WRITE_DATA    : std_logic_vector(31 downto 0);
+    signal EXTERNAL_WRITE_REQ     : std_logic := '0';
+    
+    signal SENSOR_WRITE_ADDRESS : std_logic_vector(7 downto 0);
+    signal SENSOR_WRITE_DATA : std_logic_vector (31 downto 0);
+    signal SENSOR_WRITE_REQ : std_logic := '0';
+
+	
 begin
     
     MEMORY_WRITE: process (CLK) begin
@@ -123,11 +133,36 @@ begin
             if (EXTERNAL_WRITE_REQ = '1') then -- write recieved data from mcu
                 memory(to_integer(unsigned(EXTERNAL_WRITE_ADDRESS))) <= EXTERNAL_WRITE_DATA;
             end if;
-            if (INTERNAL_READY_FLAG = '1') then -- write recieved data from mcu
-                memory(to_integer(unsigned(EXTERNAL_WRITE_ADDRESS))) <= EXTERNAL_WRITE_DATA;
+
+            if (SENSOR_WRITE_REQ = '1') then -- write recieved data from mcu
+                memory(to_integer(unsigned(SENSOR_WRITE_ADDRESS))) <= SENSOR_WRITE_DATA;
             end if;
+            
+            -- \/ this seems wrong...
+--            if (INTERNAL_READY_FLAG = '1') then -- write recieved data from mcu
+--                memory(to_integer(unsigned(EXTERNAL_WRITE_ADDRESS))) <= EXTERNAL_WRITE_DATA;
+--            end if;
         end if;
     end process;
+
+    Slave2MasterConnect : process (CLK)
+    begin
+        CASE INTERNAL_READY_FLAG IS
+            WHEN '1' =>
+                sda_master_buffer <= sda_master;
+                scl_master_buffer <= scl_master;
+            WHEN '0' =>
+                sda_master_buffer <= '1';
+                scl_master_buffer <= '1';
+                sda_master <= sda_master or sda_slave;
+                scl_master <= scl_master or scl_slave;
+                sda_slave <= sda_master or sda_slave;
+                scl_slave <= scl_master or scl_slave;
+
+        END CASE;
+
+    end process;
+
 
     pwmCal: createCalibration
     port map (
@@ -148,6 +183,7 @@ begin
     );
 
     i2cExternal: I2C_EXTERNAL_ACCESS
+    generic map (deviceAddress => x"08")
     port map(
         MCLK => CLK,
         nRST => '1', -- this module shall never reset
@@ -163,13 +199,12 @@ begin
     readSensor: change_sensor
     port map(
         clk => CLK,
-        scl => scl_master,
-        sda => sda_master,
+        scl => scl_master_buffer,
+        sda => sda_master_buffer,
         EN => INTERNAL_READY_FLAG,
-        WriteMemBus =>
-        ADDRMemBus =>
-        MemWrite =>
-        ReadMem =>    
-        
+        WriteMemBus => SENSOR_WRITE_DATA,
+        ADDRMemBus => SENSOR_WRITE_ADDRESS,
+        MemWrite => SENSOR_WRITE_REQ,
+        ReadMem => memory
     );
 end Behavioral;
