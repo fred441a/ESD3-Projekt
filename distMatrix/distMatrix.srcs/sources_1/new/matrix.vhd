@@ -46,9 +46,7 @@ entity matrix is
         ch0 :       out float32;
         ch1 :       out float32;
         ch2 :       out float32;
-        ch3 :       out float32;
-        
-       debug2:      out std_logic := '0'
+        ch3 :       out float32
         );
 end matrix;
 
@@ -65,9 +63,9 @@ component fpu is
 end component;
 
 -- These values are the inv og dist matrix. Take directly from Matlab Script
-signal pitchRollVal:            float32:= to_float(8146);
+signal pitchRollVal:            float32:= to_float(81460);
 signal yawVal:                  float32:= to_float(178570.0);
-signal latVal:                  float32:= to_float(1786.0);
+signal latVal:                  float32:= to_float(17860.0);
 -- Matlab script stops
 signal liftConst:                   float32:= to_float((((2600)*0.9)/4)); -- Dette her er det rigtige TAL
 --
@@ -113,6 +111,7 @@ process(MCLK)
 
 begin
 if(MCLK'event and MCLK = '1') then
+
     case  state is 
         when MULTc0 =>
             data0 <= pitchRollVal;
@@ -146,7 +145,6 @@ if(MCLK'event and MCLK = '1') then
             data1 <= pidLat;
             op <= "11";
             state <= READc3;
-            debug2 <= '1'; -- Dette her er bare for at se om lortet sku virker
         when READc3 =>                 
             c3 <= inData;
             state <= PLUSr0;

@@ -40,22 +40,19 @@ entity topBrain is
   cha2:     out std_logic_vector (7 downto 0);
   cha3:     out std_logic_vector (7 downto 0);
   
-  debug1:    out std_logic;
-  debug2:   out std_logic
-  
-  --pitchPid:     in float32;
-  --rollPid:      in float32;
-  --yawPid:       in float32;
-  --latPid:       in float32
+  pitchPid:     in float32;
+  rollPid:      in float32;
+  yawPid:       in float32;
+  latPid:       in float32
   
   );
 end topBrain;
 
 architecture Behavioral of topBrain is
-signal pitchPid:        float32:=to_float(0.008);
-signal rollPid:         float32:=to_float(0.0);
-signal yawPid:          float32:=to_float(0.0);
-signal latPid:          float32:=to_float(0.0);
+--signal pitchPid:        float32:=to_float(-0.000);
+--signal rollPid:         float32:=to_float(-0.0009);
+--signal yawPid:          float32:=to_float(0.0003);
+--signal latPid:          float32:=to_float(0.0004);
   
 component matrix is
     port (
@@ -109,9 +106,7 @@ port map (
     ch0 => sigch0,
     ch1 => sigch1,
     ch2 => sigch2,
-    ch3 => sigch3,
-    
-    debug2 => debug2
+    ch3 => sigch3
 );
 
 pwmMapSlave: pwmMap
@@ -125,8 +120,7 @@ port map (
     outch0 => cha0,
     outch1 => cha1,    
     outch2 => cha2,
-    outch3 => cha3,
-    debug1 => debug1    
+    outch3 => cha3
 );
     
 end Behavioral;

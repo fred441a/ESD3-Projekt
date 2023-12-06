@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Dec  6 11:47:56 2023
+| Date         : Wed Dec  6 13:49:07 2023
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file topBrain_control_sets_placed.rpt
 | Design       : topBrain
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    25 |
-|    Minimum number of control sets                        |    25 |
+| Total control sets                                       |    26 |
+|    Minimum number of control sets                        |    26 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    45 |
+| Unused register locations in slices containing registers |    50 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    25 |
+| Total control sets |    26 |
 | >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     4 |
-| >= 6 to < 8        |     0 |
+| >= 4 to < 6        |     5 |
+| >= 6 to < 8        |     3 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     0 |
-| >= 12 to < 14      |     4 |
-| >= 14 to < 16      |     4 |
-| >= 16              |    12 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    17 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,46 +58,47 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              62 |           37 |
+| No           | No                    | No                     |              17 |            8 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             113 |           52 |
-| Yes          | No                    | No                     |             376 |          132 |
+| No           | Yes                   | No                     |               1 |            1 |
+| Yes          | No                    | No                     |             507 |          217 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              12 |            5 |
+| Yes          | Yes                   | No                     |              41 |           27 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+--------------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  Clock Signal  |                   Enable Signal                  |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+--------------------------------------------------+----------------------------------+------------------+----------------+--------------+
-|  CLK_IBUF_BUFG |                                                  | matrixReloaded/debug20           |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG | matrixReloaded/FSM_sequential_state[3]_i_1_n_0   |                                  |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG | matrixReloaded/data0[8]_i_1_n_0                  | matrixReloaded/data0[4]_i_1_n_0  |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG | matrixReloaded/data0[8]_i_1_n_0                  | matrixReloaded/data0[7]_i_1_n_0  |                2 |              4 |         2.00 |
-|  CLK_IBUF_BUFG | matrixReloaded/data0[8]_i_1_n_0                  | matrixReloaded/data0[3]_i_1_n_0  |                2 |              4 |         2.00 |
-|  CLK_IBUF_BUFG |                                                  | pwmMapSlave/ch0conv_reg[8]_1     |                8 |             13 |         1.62 |
-|  CLK_IBUF_BUFG |                                                  | pwmMapSlave/ch1conv_reg[8]_1     |                6 |             13 |         2.17 |
-|  CLK_IBUF_BUFG |                                                  | pwmMapSlave/ch2conv_reg[8]_1     |                5 |             13 |         2.60 |
-|  CLK_IBUF_BUFG |                                                  | pwmMapSlave/ch3conv_reg[8]_1     |                7 |             13 |         1.86 |
-|  CLK_IBUF_BUFG |                                                  | matrixReloaded/ch1conv[-8]_i_7_0 |                5 |             15 |         3.00 |
-|  CLK_IBUF_BUFG |                                                  | matrixReloaded/ch0conv[-8]_i_7_0 |                7 |             15 |         2.14 |
-|  CLK_IBUF_BUFG |                                                  | matrixReloaded/ch3conv[-8]_i_7_0 |                7 |             15 |         2.14 |
-|  CLK_IBUF_BUFG |                                                  | matrixReloaded/ch2conv[-8]_i_7_0 |                6 |             15 |         2.50 |
-|  CLK_IBUF_BUFG | matrixReloaded/ch1[8]_i_1_n_0                    |                                  |               12 |             32 |         2.67 |
-|  CLK_IBUF_BUFG | matrixReloaded/c1                                |                                  |                8 |             32 |         4.00 |
-|  CLK_IBUF_BUFG | matrixReloaded/c0                                |                                  |               10 |             32 |         3.20 |
-|  CLK_IBUF_BUFG | matrixReloaded/c3                                |                                  |               10 |             32 |         3.20 |
-|  CLK_IBUF_BUFG | matrixReloaded/c2                                |                                  |                9 |             32 |         3.56 |
-|  CLK_IBUF_BUFG | matrixReloaded/ch0[8]_i_1_n_0                    |                                  |               15 |             32 |         2.13 |
-|  CLK_IBUF_BUFG | matrixReloaded/tempRes                           |                                  |                8 |             32 |         4.00 |
-|  CLK_IBUF_BUFG | matrixReloaded/ch3[8]_i_1_n_0                    |                                  |               11 |             32 |         2.91 |
-|  CLK_IBUF_BUFG | matrixReloaded/ch2[8]_i_1_n_0                    |                                  |               14 |             32 |         2.29 |
-| ~CLK_IBUF_BUFG | matrixReloaded/fpuCalculations/output[8]_i_1_n_0 |                                  |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | matrixReloaded/data0[8]_i_1_n_0                  |                                  |               18 |             52 |         2.89 |
-|  CLK_IBUF_BUFG |                                                  |                                  |               37 |             62 |         1.68 |
-+----------------+--------------------------------------------------+----------------------------------+------------------+----------------+--------------+
++----------------+--------------------------------------------------+---------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                   Enable Signal                  |         Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------------------+---------------------------------+------------------+----------------+--------------+
+|  CLK_IBUF_BUFG |                                                  | matrixReloaded/debug20          |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG | matrixReloaded/FSM_sequential_state[3]_i_1_n_0   |                                 |                1 |              4 |         4.00 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch0conv                              | pwmMapSlave/ch0conv[6]_i_1_n_0  |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch1conv                              | pwmMapSlave/ch1conv[6]_i_1_n_0  |                1 |              5 |         5.00 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch2conv                              | pwmMapSlave/ch2conv[6]_i_1_n_0  |                5 |              5 |         1.00 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch3conv                              | pwmMapSlave/ch3conv[6]_i_1_n_0  |                4 |              5 |         1.25 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch0conv                              | pwmMapSlave/ch0conv[-1]_i_1_n_0 |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch2conv                              | pwmMapSlave/ch2conv[-1]_i_1_n_0 |                6 |              7 |         1.17 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch3conv                              | pwmMapSlave/ch3conv[-1]_i_1_n_0 |                5 |              7 |         1.40 |
+|  CLK_IBUF_BUFG |                                                  |                                 |                8 |             17 |         2.12 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch0conv                              |                                 |               10 |             20 |         2.00 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch2conv                              |                                 |               10 |             20 |         2.00 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch3conv                              |                                 |               11 |             20 |         1.82 |
+|  CLK_IBUF_BUFG | pwmMapSlave/ch1conv                              |                                 |               14 |             27 |         1.93 |
+|  CLK_IBUF_BUFG | pwmMapSlave/FSM_onehot_switch_reg_n_0_[2]        |                                 |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | matrixReloaded/c0                                |                                 |               10 |             32 |         3.20 |
+|  CLK_IBUF_BUFG | matrixReloaded/c1                                |                                 |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | matrixReloaded/c3                                |                                 |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | matrixReloaded/c2                                |                                 |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | matrixReloaded/ch0[8]_i_1_n_0                    |                                 |               15 |             32 |         2.13 |
+|  CLK_IBUF_BUFG | matrixReloaded/tempRes                           |                                 |               10 |             32 |         3.20 |
+|  CLK_IBUF_BUFG | matrixReloaded/ch3[8]_i_1_n_0                    |                                 |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | matrixReloaded/ch2[8]_i_1_n_0                    |                                 |               11 |             32 |         2.91 |
+|  CLK_IBUF_BUFG | matrixReloaded/ch1[8]_i_1_n_0                    |                                 |               15 |             32 |         2.13 |
+| ~CLK_IBUF_BUFG | matrixReloaded/fpuCalculations/output[8]_i_1_n_0 |                                 |               15 |             32 |         2.13 |
+|  CLK_IBUF_BUFG | matrixReloaded/data0[8]_i_1_n_0                  |                                 |               32 |             64 |         2.00 |
++----------------+--------------------------------------------------+---------------------------------+------------------+----------------+--------------+
 
 
