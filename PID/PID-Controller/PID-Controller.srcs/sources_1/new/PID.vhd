@@ -107,8 +107,8 @@ begin
         kp        => to_float(MEMORY(altitudeP)), -- Altitude Kp
         ki        => to_float(MEMORY(altitudeI)), -- Altitude Ki
         kd        => to_float(MEMORY(altitudeD)), -- Altitude Kd
-        SetPoint  => to_float(MEMORY(altitudeWanted)), -- Wanted altitude
-        Measured  => to_float(MEMORY(altitudeI2CSlaveValues)), -- Measured altitude,
+        SetPoint  => to_float(unsigned(MEMORY(altitudeWanted))), -- Wanted altitude
+        Measured  => to_float(unsigned(MEMORY(altitudeI2CSlaveValues))), -- Measured altitude,
         Result    => RES_ALTITUDE,
         ResultReady => altitudeReady,
 
@@ -161,11 +161,11 @@ begin
     Port map (
         MCLK      => MCLK,
         EN        => yawEn,
-        kp        => to_float(MEMORY(16#11#)), -- YAW Kp
-        ki        => to_float(MEMORY(16#12#)), -- YAW Ki
-        kd        => to_float(MEMORY(16#13#)), -- YAW Kd
-        SetPoint  => to_float(MEMORY(16#10#)), -- Wanted YAW
-        Measured  => to_float(MEMORY(16#26#)), -- Measured YAW around z-axis,
+        kp        => to_float(MEMORY(yawP)), -- YAW Kp
+        ki        => to_float(MEMORY(yawI)), -- YAW Ki
+        kd        => to_float(MEMORY(yawD)), -- YAW Kd
+        SetPoint  => to_float(MEMORY(yawWanted)), -- Wanted YAW
+        Measured  => to_float(MEMORY(gyroscopeI2CSlaveValuesZ)), -- Measured YAW around z-axis,
         Result    => RES_YAW,
         ResultReady => yawReady,
         
