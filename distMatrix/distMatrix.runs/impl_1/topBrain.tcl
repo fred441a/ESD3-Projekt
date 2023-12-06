@@ -124,7 +124,6 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 4
-  set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 8  }
   open_checkpoint topBrain_routed.dcp
   set_property webtalk.parent_dir C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrix/distMatrix.cache/wt [current_project]

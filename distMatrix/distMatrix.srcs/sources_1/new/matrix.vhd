@@ -69,7 +69,7 @@ signal pitchRollVal:            float32:= to_float(8146);
 signal yawVal:                  float32:= to_float(178570.0);
 signal latVal:                  float32:= to_float(1786.0);
 -- Matlab script stops
-signal liftConst:                   float32:= to_float(((2600)*0.225)); -- Dette her er det rigtige TAL
+signal liftConst:                   float32:= to_float((((2600)*0.9)/4)); -- Dette her er det rigtige TAL
 --
 
 signal c0:  float32;
@@ -82,8 +82,6 @@ signal        data0:     float32;
 signal        data1:     float32;
 signal        op:        std_logic_vector (1 downto 0);
 signal        inData:    float32;
-
-signal        temp:      float32;
 signal        tempRes:   float32 := (others => '0');
 
 type tstate is (MULTc0, MULTc1, MULTc2, MULTc3, PLUSr0, PLUSr1, PLUSr2, PLUSr3, READc0, READc1, READc2, READc3);
@@ -160,8 +158,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "01"; -- plus
                     r0state <= READr00;
                 when READr00 =>     
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r0state <= PLUSr01;
                     
                 when PLUSr01 =>
@@ -170,8 +167,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "01"; --plus
                     r0state <= READr01;
                when READr01 =>     
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r0state <= PLUSr02;
                     
                 when PLUSr02 =>
@@ -180,8 +176,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "01"; --Plus
                     r0state <= READr02;
                 when READr02 =>    
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r0state <= PLUSr03;
                     
                when PLUSr03 => 
@@ -190,8 +185,7 @@ if(MCLK'event and MCLK = '1') then
                     opval <= "01";
                     r0state <= READr03;
                when READr03 =>
-                    temp <= inData;
-                    ch0 <= temp;
+                    ch0 <= inData;
                     r0state<=PLUSr00;
                     state <= PLUSr1;
                 when others =>
@@ -206,8 +200,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "10"; --Minus
                     r1state <= READr10;
                 when READr10 =>     
-                    temp <= inData;
-                    tempRes <=temp;
+                    tempRes <= inData;
                     r1state <= PLUSr11;
                     
                 when PLUSr11 =>
@@ -216,8 +209,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "10"; --minus
                     r1state <= READr11;
                when READr11 =>     
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r1state <= PLUSr12;
                     
                 when PLUSr12 =>
@@ -226,8 +218,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "01"; --plus
                     r1state <= READr12;
                 when READr12 =>    
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r1state <= PLUSr13;
                     
                when PLUSr13 => 
@@ -236,8 +227,7 @@ if(MCLK'event and MCLK = '1') then
                     opval <= "01";
                     r1state <= READr13;
                when READr13 =>
-                    temp <= inData;
-                    ch0 <= temp;
+                    ch1 <= inData;
                     r1state<=PLUSr10;
                     state <= PLUSr2;
                 when others =>
@@ -251,8 +241,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "01"; --Plus
                     r2state <= READr20;
                 when READr20 =>     
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r2state <= PLUSr21;
                     
                 when PLUSr21 =>
@@ -261,8 +250,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "10"; --minus
                     r2state <= READr21;
                when READr21 =>     
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r2state <= PLUSr22;
                     
                 when PLUSr22 =>
@@ -271,8 +259,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "10"; --minus
                     r2state <= READr22;
                 when READr22 =>    
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r2state <= PLUSr23;
                     
                when PLUSr23 => 
@@ -281,8 +268,7 @@ if(MCLK'event and MCLK = '1') then
                     opval <= "01";
                     r2state <= READr23;
                when READr23 =>
-                    temp <= inData;
-                    ch0 <= temp;
+                    ch2 <= inData;
                     r2state<=PLUSr20;
                     state <= PLUSr3;
                 when others =>
@@ -295,8 +281,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "10"; --minus
                     r3state <= READr30;
                 when READr30 =>     
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r3state <= PLUSr31;
                     
                 when PLUSr31 =>
@@ -305,8 +290,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "01"; --plus
                     r3state <= READr31;
                when READr31 =>     
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r3state <= PLUSr32;
                     
                 when PLUSr32 =>
@@ -315,8 +299,7 @@ if(MCLK'event and MCLK = '1') then
                     op <= "10"; --minus
                     r3state <= READr32;
                 when READr32 =>    
-                    temp <= inData;
-                    tempRes <= temp;
+                    tempRes <= inData;
                     r3state <= PLUSr33;
                     
                when PLUSr33 => 
@@ -325,8 +308,7 @@ if(MCLK'event and MCLK = '1') then
                     opval <= "01";
                     r3state <= READr33;
                when READr33 =>
-                    temp <= inData;
-                    ch0 <= temp;
+                    ch3 <= inData;
                     r3state<=PLUSr30;
                     state <= MULTc0;
                 when others =>

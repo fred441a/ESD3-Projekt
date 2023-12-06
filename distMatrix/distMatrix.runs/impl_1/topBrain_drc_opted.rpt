@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Dec  6 11:23:11 2023
+| Date         : Wed Dec  6 11:47:50 2023
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_drc -file topBrain_drc_opted.rpt -pb topBrain_drc_opted.pb -rpx topBrain_drc_opted.rpx
 | Design       : topBrain
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 26
+             Violations found: 32
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| DPIP-1   | Warning  | Input pipelining                                    | 5          |
+| DPIP-1   | Warning  | Input pipelining                                    | 11         |
 | DPOP-1   | Warning  | PREG Output pipelining                              | 10         |
 | DPOP-2   | Warning  | MREG Output pipelining                              | 10         |
 +----------+----------+-----------------------------------------------------+------------+
@@ -72,6 +72,36 @@ Related violations: <none>
 DPIP-1#5 Warning
 Input pipelining  
 DSP pwmMapSlave/fract0__0 input pwmMapSlave/fract0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#6 Warning
+Input pipelining  
+DSP pwmMapSlave/fract0__1 input pwmMapSlave/fract0__1/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#7 Warning
+Input pipelining  
+DSP pwmMapSlave/fract0__2 input pwmMapSlave/fract0__2/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#8 Warning
+Input pipelining  
+DSP pwmMapSlave/fract0__3 input pwmMapSlave/fract0__3/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#9 Warning
+Input pipelining  
+DSP pwmMapSlave/fract0__4 input pwmMapSlave/fract0__4/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#10 Warning
+Input pipelining  
+DSP pwmMapSlave/fract0__5 input pwmMapSlave/fract0__5/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#11 Warning
+Input pipelining  
+DSP pwmMapSlave/fract0__6 input pwmMapSlave/fract0__6/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPOP-1#1 Warning
