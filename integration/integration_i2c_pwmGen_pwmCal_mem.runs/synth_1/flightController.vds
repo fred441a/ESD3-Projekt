@@ -1,122 +1,254 @@
 #-----------------------------------------------------------
-# Vivado v2023.1 (64-bit)
-# SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
-# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
-# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Tue Dec  5 11:06:48 2023
-# Process ID: 186435
-# Current directory: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Wed Dec  6 11:06:36 2023
+# Process ID: 41517
+# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1
 # Command line: vivado -log flightController.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source flightController.tcl
-# Log file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.vds
-# Journal file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/vivado.jou
-# Running On: Lenova, OS: Linux, CPU Frequency: 1782.593 MHz, CPU Physical cores: 12, Host memory: 15517 MB
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.vds
+# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/vivado.jou
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 3185.239 MHz, CPU Physical cores: 4, Host memory: 16695 MB
 #-----------------------------------------------------------
 source flightController.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1331.801 ; gain = 0.023 ; free physical = 7073 ; free virtual = 11367
-Command: read_checkpoint -auto_incremental -incremental /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1272.504 ; gain = 0.023 ; free physical = 3416 ; free virtual = 8316
+Command: read_checkpoint -auto_incremental -incremental /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top flightController -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+WARNING: [Vivado_Tcl 4-1809] The reference checkpoint is from an old version of Vivado; A full resynthesis flow will be run
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 186465
+INFO: [Synth 8-7075] Helper process launched with PID 41568
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1998.672 ; gain = 380.738 ; free physical = 6077 ; free virtual = 10370
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1999.094 ; gain = 380.770 ; free physical = 2378 ; free virtual = 7309
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'flightController' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:48]
-INFO: [Synth 8-3491] module 'createCalibration' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:35' bound to instance 'pwmCal' of component 'createCalibration' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:157]
-INFO: [Synth 8-638] synthesizing module 'createCalibration' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
-INFO: [Synth 8-256] done synthesizing module 'createCalibration' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
-INFO: [Synth 8-3491] module 'pwmModule' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:34' bound to instance 'pwmGen' of component 'pwmModule' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:165]
-INFO: [Synth 8-638] synthesizing module 'pwmModule' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
-INFO: [Synth 8-256] done synthesizing module 'pwmModule' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'flightController' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:49]
+INFO: [Synth 8-3491] module 'createCalibration' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:35' bound to instance 'pwmCal' of component 'createCalibration' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:188]
+INFO: [Synth 8-638] synthesizing module 'createCalibration' [/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'createCalibration' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
+INFO: [Synth 8-3491] module 'pwmModule' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:34' bound to instance 'pwmGen' of component 'pwmModule' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:196]
+INFO: [Synth 8-638] synthesizing module 'pwmModule' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'pwmModule' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
 	Parameter deviceAddress bound to: 8'b00001000 
-INFO: [Synth 8-3491] module 'I2C_EXTERNAL_ACCESS' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:6' bound to instance 'i2cExternal' of component 'I2C_EXTERNAL_ACCESS' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:175]
-INFO: [Synth 8-638] synthesizing module 'I2C_EXTERNAL_ACCESS' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:21]
+INFO: [Synth 8-3491] module 'I2C_EXTERNAL_ACCESS' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:6' bound to instance 'i2cExternal' of component 'I2C_EXTERNAL_ACCESS' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:206]
+INFO: [Synth 8-638] synthesizing module 'I2C_EXTERNAL_ACCESS' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:21]
 	Parameter deviceAddress bound to: 8'b00001000 
-WARNING: [Synth 8-5640] Port 'read_done' is missing in component declaration [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:24]
+WARNING: [Synth 8-5640] Port 'read_done' is missing in component declaration [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:24]
 	Parameter DEVICE bound to: 8'b00001000 
-INFO: [Synth 8-3491] module 'I2CSLAVE' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2cslave.vhd:13' bound to instance 'I_I2CITF' of component 'I2CSLAVE' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:65]
-INFO: [Synth 8-638] synthesizing module 'I2CSLAVE' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2cslave.vhd:32]
+INFO: [Synth 8-3491] module 'I2CSLAVE' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:13' bound to instance 'I_I2CITF' of component 'I2CSLAVE' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:65]
+INFO: [Synth 8-638] synthesizing module 'I2CSLAVE' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:32]
 	Parameter DEVICE bound to: 8'b00001000 
-INFO: [Synth 8-256] done synthesizing module 'I2CSLAVE' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2cslave.vhd:32]
-INFO: [Synth 8-256] done synthesizing module 'I2C_EXTERNAL_ACCESS' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:21]
-INFO: [Synth 8-3491] module 'change_sensor' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:35' bound to instance 'readSensor' of component 'change_sensor' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:189]
-INFO: [Synth 8-638] synthesizing module 'change_sensor' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:51]
-INFO: [Synth 8-638] synthesizing module 'Byte_compiler' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:61]
-INFO: [Synth 8-638] synthesizing module 'Read_Byte' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:51]
-INFO: [Synth 8-638] synthesizing module 'i2c_master' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:54]
-INFO: [Synth 8-256] done synthesizing module 'i2c_master' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:54]
-INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:104]
-INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:128]
-INFO: [Synth 8-256] done synthesizing module 'Read_Byte' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:51]
-INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:95]
-INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:128]
-INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:151]
-INFO: [Synth 8-226] default block is never used [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:174]
-INFO: [Synth 8-256] done synthesizing module 'Byte_compiler' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:61]
-INFO: [Synth 8-256] done synthesizing module 'change_sensor' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:51]
-INFO: [Synth 8-256] done synthesizing module 'flightController' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:48]
-WARNING: [Synth 8-7129] Port ADDRMemBus[7] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[6] in module Byte_compiler is either unconnected or has no load
+INFO: [Synth 8-256] done synthesizing module 'I2CSLAVE' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd:32]
+INFO: [Synth 8-256] done synthesizing module 'I2C_EXTERNAL_ACCESS' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:21]
+INFO: [Synth 8-3491] module 'change_sensor' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:35' bound to instance 'readSensor' of component 'change_sensor' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:220]
+INFO: [Synth 8-638] synthesizing module 'change_sensor' [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'Byte_compiler' [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:61]
+INFO: [Synth 8-638] synthesizing module 'Read_Byte' [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:51]
+INFO: [Synth 8-638] synthesizing module 'i2c_master' [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'i2c_master' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:54]
+INFO: [Synth 8-226] default block is never used [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:104]
+INFO: [Synth 8-226] default block is never used [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:128]
+INFO: [Synth 8-256] done synthesizing module 'Read_Byte' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:51]
+INFO: [Synth 8-226] default block is never used [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:95]
+INFO: [Synth 8-226] default block is never used [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:128]
+INFO: [Synth 8-226] default block is never used [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:151]
+INFO: [Synth 8-226] default block is never used [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:174]
+INFO: [Synth 8-256] done synthesizing module 'Byte_compiler' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:61]
+INFO: [Synth 8-256] done synthesizing module 'change_sensor' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:51]
+INFO: [Synth 8-3491] module 'PID' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:37' bound to instance 'pidBlock' of component 'PID' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:232]
+INFO: [Synth 8-638] synthesizing module 'PID' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:48]
+INFO: [Synth 8-3491] module 'fpu' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:35' bound to instance 'SHARED_FPU' of component 'FPU' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:94]
+INFO: [Synth 8-638] synthesizing module 'fpu' [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:45]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:53]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'fpu' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:45]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_ALTITUDE' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:103]
+INFO: [Synth 8-638] synthesizing module 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:55]
+WARNING: [Synth 8-614] signal 'EN' is read in the process but is not in the sensitivity list [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'PID_Controller' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:55]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_PITCH' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:122]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_ROLL' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:141]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_YAW' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:160]
+INFO: [Synth 8-256] done synthesizing module 'PID' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:48]
+INFO: [Synth 8-3491] module 'topBrain' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:35' bound to instance 'DIST_MATRIX' of component 'topBrain' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:242]
+INFO: [Synth 8-638] synthesizing module 'topBrain' [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:51]
+INFO: [Synth 8-3491] module 'matrix' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:38' bound to instance 'matrixReloaded' of component 'matrix' [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:94]
+INFO: [Synth 8-638] synthesizing module 'matrix' [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:53]
+INFO: [Synth 8-3491] module 'fpu' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:35' bound to instance 'fpuCalculations' of component 'fpu' [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:103]
+INFO: [Synth 8-256] done synthesizing module 'matrix' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd:53]
+INFO: [Synth 8-3491] module 'pwmMap' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:37' bound to instance 'pwmMapSlave' of component 'pwmMap' [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:108]
+INFO: [Synth 8-638] synthesizing module 'pwmMap' [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:54]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:92]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:92]
+INFO: [Synth 8-256] done synthesizing module 'pwmMap' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'topBrain' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'flightController' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:49]
+WARNING: [Synth 8-7129] Port MEMORY[0][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][28] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][27] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][26] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][25] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][24] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][23] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][22] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][21] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][20] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][19] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][18] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][17] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][16] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][15] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][14] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][13] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][12] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][11] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][10] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][9] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][8] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][7] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][6] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][5] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][4] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][3] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][2] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][1] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][0] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][28] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][27] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][26] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][25] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][24] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][23] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][22] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][21] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][20] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][19] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][18] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][17] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][16] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][15] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][14] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][13] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][12] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][11] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][10] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][9] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][8] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][7] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][6] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][5] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][4] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][3] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][2] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][1] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][0] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][28] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][27] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][26] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][25] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][24] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][23] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][22] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][21] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][20] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][19] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][18] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][17] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][16] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][15] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][14] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][13] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][12] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][11] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][10] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][9] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][8] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][7] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][6] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][5] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][4] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][3] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][2] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][1] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][0] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][28] in module PID is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2089.641 ; gain = 471.707 ; free physical = 5977 ; free virtual = 10272
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2159.688 ; gain = 541.363 ; free physical = 2184 ; free virtual = 7122
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2107.453 ; gain = 489.520 ; free physical = 5965 ; free virtual = 10260
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2174.531 ; gain = 556.207 ; free physical = 2172 ; free virtual = 7110
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2107.453 ; gain = 489.520 ; free physical = 5965 ; free virtual = 10260
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2174.531 ; gain = 556.207 ; free physical = 2172 ; free virtual = 7110
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2107.453 ; gain = 0.000 ; free physical = 5965 ; free virtual = 10259
-WARNING: [Netlist 29-1115] Found multi-term driver net: scl_slave.
-WARNING: [Netlist 29-1115] Found multi-term driver net: sda_slave.
+Netlist sorting complete. Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2174.531 ; gain = 0.000 ; free physical = 2172 ; free virtual = 7110
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc]
-Finished Parsing XDC File [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/flightController_propImpl.xdc].
+Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc]
+Finished Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/flightController_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/flightController_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 5928 ; free virtual = 10222
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2268.266 ; gain = 0.000 ; free physical = 2118 ; free virtual = 7070
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 5928 ; free virtual = 10222
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2268.266 ; gain = 0.000 ; free physical = 2118 ; free virtual = 7070
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5926 ; free virtual = 10221
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2268.266 ; gain = 649.941 ; free physical = 2113 ; free virtual = 7057
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5926 ; free virtual = 10221
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2268.266 ; gain = 649.941 ; free physical = 2113 ; free virtual = 7056
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5926 ; free virtual = 10221
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2268.266 ; gain = 649.941 ; free physical = 2113 ; free virtual = 7056
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_master'
 INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'Read_Byte'
 INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'Byte_compiler'
 INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'change_sensor'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'PID_Controller'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'PID'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'matrix'
+INFO: [Synth 8-802] inferred FSM for state register 'r0state_reg' in module 'matrix'
+INFO: [Synth 8-802] inferred FSM for state register 'r1state_reg' in module 'matrix'
+INFO: [Synth 8-802] inferred FSM for state register 'r2state_reg' in module 'matrix'
+INFO: [Synth 8-802] inferred FSM for state register 'r3state_reg' in module 'matrix'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -167,63 +299,181 @@ INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 
                     accz |                             1010 |                             1010
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'change_sensor'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+              calc_error |                            00000 |                            00000
+               res_error |                            00001 |                            00001
+             accum_error |                            00010 |                            00010
+         accum_error_res |                            00011 |                            00011
+                   p_mul |                            00100 |                            00100
+               p_mul_res |                            00101 |                            00101
+                   i_mul |                            00110 |                            00110
+               i_mul_res |                            00111 |                            00111
+                   d_sub |                            01000 |                            01000
+               d_sub_res |                            01001 |                            01001
+                   d_mul |                            01010 |                            01010
+               d_mul_res |                            01011 |                            01011
+                  pi_sum |                            01100 |                            01100
+              pi_sum_res |                            01101 |                            01101
+                  id_sum |                            01110 |                            01110
+              id_sum_res |                            01111 |                            01111
+                   reset |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'PID_Controller'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                altitude |                               00 |                              001
+                   pitch |                               01 |                              010
+                    roll |                               10 |                              011
+                     yaw |                               11 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'PID'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 plusr01 |                             0001 |                              001
+                 readr01 |                             0010 |                              101
+                 plusr02 |                             0100 |                              010
+                 readr02 |                             1000 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r0state_reg' using encoding 'one-hot' in module 'matrix'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 plusr10 |                              000 |                              000
+                 readr10 |                              001 |                              100
+                 plusr11 |                              010 |                              001
+                 readr11 |                              011 |                              101
+                 plusr12 |                              100 |                              010
+                 readr12 |                              101 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r1state_reg' using encoding 'sequential' in module 'matrix'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 plusr20 |                              000 |                              000
+                 readr20 |                              001 |                              100
+                 plusr21 |                              010 |                              001
+                 readr21 |                              011 |                              101
+                 plusr22 |                              100 |                              010
+                 readr22 |                              101 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r2state_reg' using encoding 'sequential' in module 'matrix'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 plusr30 |                              000 |                              000
+                 readr30 |                              001 |                              100
+                 plusr31 |                              010 |                              001
+                 readr31 |                              011 |                              101
+                 plusr32 |                              100 |                              010
+                 readr32 |                              101 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r3state_reg' using encoding 'sequential' in module 'matrix'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  multc0 |                             0000 |                             0000
+                  readc0 |                             0001 |                             1000
+                  multc1 |                             0010 |                             0001
+                  readc1 |                             0011 |                             1001
+                  multc2 |                             0100 |                             0010
+                  readc2 |                             0101 |                             1010
+                  multc3 |                             0110 |                             0011
+                  readc3 |                             0111 |                             1011
+                  plusr0 |                             1000 |                             0100
+                  plusr1 |                             1001 |                             0101
+                  plusr2 |                             1010 |                             0110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'matrix'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5924 ; free virtual = 10220
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 2268.266 ; gain = 649.941 ; free physical = 2103 ; free virtual = 7049
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 15    
+	   2 Input   31 Bit       Adders := 10    
+	   3 Input   28 Bit       Adders := 4     
+	   2 Input   23 Bit       Adders := 10    
 	   2 Input   12 Bit       Adders := 1     
-	   2 Input   11 Bit       Adders := 2     
-	   2 Input    9 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 2     
+	   2 Input   11 Bit       Adders := 8     
+	   5 Input   10 Bit       Adders := 2     
+	   4 Input   10 Bit       Adders := 6     
+	   2 Input   10 Bit       Adders := 16    
+	   3 Input   10 Bit       Adders := 4     
+	   3 Input    9 Bit       Adders := 4     
+	   2 Input    9 Bit       Adders := 9     
+	   2 Input    8 Bit       Adders := 20    
 	   2 Input    7 Bit       Adders := 2     
+	   2 Input    6 Bit       Adders := 18    
 	   2 Input    4 Bit       Adders := 1     
 	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 2     
 +---Registers : 
-	               32 Bit    Registers := 50    
+	               32 Bit    Registers := 110   
 	               12 Bit    Registers := 1     
 	               11 Bit    Registers := 1     
 	                9 Bit    Registers := 1     
-	                8 Bit    Registers := 18    
+	                8 Bit    Registers := 22    
 	                7 Bit    Registers := 3     
 	                4 Bit    Registers := 4     
 	                3 Bit    Registers := 3     
-	                1 Bit    Registers := 45    
+	                2 Bit    Registers := 7     
+	                1 Bit    Registers := 61    
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 66    
-	   4 Input   32 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 147   
+	   5 Input   32 Bit        Muxes := 6     
+	  17 Input   32 Bit        Muxes := 8     
+	   4 Input   32 Bit        Muxes := 7     
+	   6 Input   32 Bit        Muxes := 9     
+	  11 Input   32 Bit        Muxes := 3     
 	   3 Input   32 Bit        Muxes := 2     
-	   5 Input   32 Bit        Muxes := 2     
+	   2 Input   31 Bit        Muxes := 10    
+	  29 Input   29 Bit        Muxes := 10    
+	   2 Input   28 Bit        Muxes := 44    
+	   2 Input   26 Bit        Muxes := 10    
+	  25 Input   25 Bit        Muxes := 8     
+	   2 Input   24 Bit        Muxes := 18    
+	   2 Input   23 Bit        Muxes := 20    
 	   2 Input   12 Bit        Muxes := 1     
-	   2 Input    9 Bit        Muxes := 10    
+	   2 Input   10 Bit        Muxes := 8     
+	   2 Input    9 Bit        Muxes := 26    
 	   9 Input    9 Bit        Muxes := 1     
-	   4 Input    8 Bit        Muxes := 2     
-	   2 Input    8 Bit        Muxes := 11    
+	   4 Input    8 Bit        Muxes := 12    
+	   2 Input    8 Bit        Muxes := 69    
 	   3 Input    8 Bit        Muxes := 1     
 	   6 Input    8 Bit        Muxes := 2     
 	  11 Input    8 Bit        Muxes := 5     
 	  11 Input    7 Bit        Muxes := 1     
-	   2 Input    4 Bit        Muxes := 5     
+	  17 Input    5 Bit        Muxes := 4     
+	   3 Input    4 Bit        Muxes := 38    
+	   2 Input    4 Bit        Muxes := 19    
+	  11 Input    4 Bit        Muxes := 3     
 	   4 Input    4 Bit        Muxes := 1     
-	  11 Input    4 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 26    
+	   6 Input    3 Bit        Muxes := 4     
 	   2 Input    3 Bit        Muxes := 19    
 	  12 Input    3 Bit        Muxes := 1     
 	   3 Input    3 Bit        Muxes := 2     
-	   4 Input    3 Bit        Muxes := 2     
-	   6 Input    3 Bit        Muxes := 1     
-	   6 Input    2 Bit        Muxes := 1     
-	   4 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 239   
-	  11 Input    1 Bit        Muxes := 5     
+	  17 Input    2 Bit        Muxes := 4     
+	   4 Input    2 Bit        Muxes := 3     
+	   6 Input    2 Bit        Muxes := 4     
+	  11 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 683   
+	   4 Input    1 Bit        Muxes := 32    
+	  17 Input    1 Bit        Muxes := 44    
+	   6 Input    1 Bit        Muxes := 26    
+	  11 Input    1 Bit        Muxes := 19    
 	   3 Input    1 Bit        Muxes := 5     
 	   9 Input    1 Bit        Muxes := 8     
 	  12 Input    1 Bit        Muxes := 4     
-	   4 Input    1 Bit        Muxes := 14    
-	   6 Input    1 Bit        Muxes := 11    
 	   8 Input    1 Bit        Muxes := 3     
 	  10 Input    1 Bit        Muxes := 3     
 	   7 Input    1 Bit        Muxes := 2     
@@ -244,131 +494,80 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port ADDRMemBus[7] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[6] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[5] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[4] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[3] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[2] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[1] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ADDRMemBus[0] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port DoIntegrate in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][31] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][30] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][29] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][28] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][27] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][26] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][25] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][24] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][23] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][22] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][21] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][20] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][19] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][18] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][17] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][16] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][15] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][14] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][13] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][12] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][11] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][10] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][9] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][8] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][7] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][6] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][5] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][4] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][3] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][2] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][1] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[0][0] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][31] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][30] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][29] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][28] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][27] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][26] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][25] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][24] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][23] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][22] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][21] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][20] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][19] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][18] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][17] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][16] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][15] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][14] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][13] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][12] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][11] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][10] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][9] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][8] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][7] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][6] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][5] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][4] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][3] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][2] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][1] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[1][0] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][31] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][30] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][29] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][28] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][27] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][26] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][25] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][24] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][23] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][22] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][21] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][20] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][19] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][18] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][17] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][16] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][15] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][14] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][13] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][12] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][11] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][10] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][9] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][8] in module Byte_compiler is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadMem[2][7] in module Byte_compiler is either unconnected or has no load
-INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+DSP Report: Generating DSP fract0, operation Mode is: A*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0xa3d70a)*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5881 ; free virtual = 10186
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:03 ; elapsed = 00:02:05 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1872 ; free virtual = 6839
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+---------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping               | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+---------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|fpu         | A*B                       | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | (PCIN>>17)+A*B            | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (A:0xa3d70a)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (PCIN>>17)+(A:0xa3d70a)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (A:0xa3d70a)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (PCIN>>17)+(A:0xa3d70a)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (A:0xa3d70a)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (PCIN>>17)+(A:0xa3d70a)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (A:0xa3d70a)*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | (PCIN>>17)+(A:0xa3d70a)*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+---------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5871 ; free virtual = 10176
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:10 ; elapsed = 00:02:12 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1867 ; free virtual = 6841
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5871 ; free virtual = 10176
+Finished Timing Optimization : Time (s): cpu = 00:02:10 ; elapsed = 00:02:12 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1867 ; free virtual = 6841
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin scl with 1st driver pin 'readSensori_1992/z' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin scl with 2nd driver pin 'GND' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net scl is connected to at least one constant driver which has been preserved, other driver is ignored [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin sda with 1st driver pin 'readSensori_1993/z' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin sda with 2nd driver pin 'GND' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net sda is connected to at least one constant driver which has been preserved, other driver is ignored [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5871 ; free virtual = 10176
+Finished Technology Mapping : Time (s): cpu = 00:02:14 ; elapsed = 00:02:15 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1872 ; free virtual = 6847
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -385,43 +584,61 @@ Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6030] Inout pin 'scl_sensor' is read and/or written without using tristate logic. Proper direction of connection may be wrongly inferred. Please use specific direction to avoid any incorrect logic issue [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:36]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Finished IO Insertion : Time (s): cpu = 00:02:19 ; elapsed = 00:02:21 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1872 ; free virtual = 6847
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:19 ; elapsed = 00:02:21 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1872 ; free virtual = 6847
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:20 ; elapsed = 00:02:22 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1872 ; free virtual = 6847
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:20 ; elapsed = 00:02:22 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1872 ; free virtual = 6847
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:21 ; elapsed = 00:02:23 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1878 ; free virtual = 6853
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:21 ; elapsed = 00:02:23 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1878 ; free virtual = 6853
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|fpu         | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | A*B          | 24     | 0      | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|pwmMap      | PCIN>>17+A*B | 0      | 0      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
 
 Report BlackBoxes: 
 +-+--------------+----------+
@@ -430,50 +647,49 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |BUFG   |     1|
-|2     |CARRY4 |    25|
-|3     |LUT1   |     6|
-|4     |LUT2   |   305|
-|5     |LUT3   |    90|
-|6     |LUT4   |   168|
-|7     |LUT5   |  1320|
-|8     |LUT6   |   677|
-|9     |MUXF7  |   139|
-|10    |MUXF8  |     3|
-|11    |FDRE   |  1831|
-|12    |IBUF   |     2|
-|13    |IOBUF  |     1|
-|14    |OBUF   |     5|
-|15    |OBUFT  |     1|
-+------+-------+------+
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |  1445|
+|3     |DSP48E1 |    12|
+|4     |LUT1    |   747|
+|5     |LUT2    |  1826|
+|6     |LUT3    |  1089|
+|7     |LUT4    |  5511|
+|8     |LUT5    |  3260|
+|9     |LUT6    |  7548|
+|10    |MUXF7   |   400|
+|11    |FDRE    |  3826|
+|12    |FDSE    |    21|
+|13    |IBUF    |     2|
+|14    |IOBUF   |     1|
+|15    |OBUF    |     4|
++------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:21 ; elapsed = 00:02:23 . Memory (MB): peak = 2464.945 ; gain = 846.621 ; free physical = 1878 ; free virtual = 6853
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 7 critical warnings and 1482 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2253.203 ; gain = 489.520 ; free physical = 5848 ; free virtual = 10153
-Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
+Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:18 ; elapsed = 00:02:20 . Memory (MB): peak = 2464.945 ; gain = 752.887 ; free physical = 1878 ; free virtual = 6852
+Synthesis Optimization Complete : Time (s): cpu = 00:02:21 ; elapsed = 00:02:23 . Memory (MB): peak = 2464.953 ; gain = 846.621 ; free physical = 1878 ; free virtual = 6852
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 6136 ; free virtual = 10441
-INFO: [Netlist 29-17] Analyzing 168 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.18 . Memory (MB): peak = 2464.953 ; gain = 0.000 ; free physical = 2172 ; free virtual = 7148
+INFO: [Netlist 29-17] Analyzing 1858 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 6129 ; free virtual = 10434
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2464.953 ; gain = 0.000 ; free physical = 2171 ; free virtual = 7148
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: 26fb158c
+Synth Design complete | Checksum: 14f2e09f
 INFO: [Common 17-83] Releasing license: Synthesis
-59 Infos, 104 Warnings, 7 Critical Warnings and 0 Errors encountered.
+95 Infos, 108 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:36 . Memory (MB): peak = 2253.203 ; gain = 921.402 ; free physical = 6129 ; free virtual = 10434
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1844.396; main = 1512.957; forked = 378.700
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3190.535; main = 2253.203; forked = 969.348
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-INFO: [Common 17-1381] The checkpoint '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.dcp' has been generated.
+synth_design: Time (s): cpu = 00:02:32 ; elapsed = 00:02:31 . Memory (MB): peak = 2464.953 ; gain = 1170.637 ; free physical = 2171 ; free virtual = 7149
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2047.526; main = 1716.010; forked = 355.551
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3434.480; main = 2464.945; forked = 969.535
+INFO: [Common 17-1381] The checkpoint '/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file flightController_utilization_synth.rpt -pb flightController_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Dec  5 11:07:33 2023...
+INFO: [Common 17-206] Exiting Vivado at Wed Dec  6 11:09:19 2023...

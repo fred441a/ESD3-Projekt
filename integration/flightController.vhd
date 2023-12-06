@@ -111,33 +111,49 @@ architecture Behavioral of flightController is
     );
     end component;
     
+    component topBrain is
+    Port ( 
+          CLK:      in STD_logic;
+          cha0:     out std_logic_vector (7 downto 0);
+          cha1:     out std_logic_vector (7 downto 0);
+          cha2:     out std_logic_vector (7 downto 0);
+          cha3:     out std_logic_vector (7 downto 0);
+          
+          pitchPid:     in float32;
+          rollPid:      in float32;
+          yawPid:       in float32;
+          latPid:       in float32          
+    );
+    end component;
+ 
      -- Write internal signals here:
-    signal calibrationPwmOut    : std_logic_vector(7 downto 0);
-    signal calibrationPwmFinish : std_logic;
+    signal calibrationPwmOut              : std_logic_vector(7 downto 0);
+    signal calibrationPwmFinish           : std_logic;
+    signal resCh0, resCh1, resCh2, resCh3 : std_logic_vector(7 downto 0);
 
-    signal sda_master : std_logic ;
-    signal scl_master : std_logic ;
+    signal sda_master : std_logic;
+    signal scl_master : std_logic;
     
     signal EXTERNAL_WRITE_ADDRESS : std_logic_vector(7 downto 0);
     signal EXTERNAL_WRITE_DATA    : std_logic_vector(31 downto 0);
     signal EXTERNAL_WRITE_REQ     : std_logic := '0';
     
     signal SENSOR_WRITE_ADDRESS : std_logic_vector(7 downto 0);
-    signal SENSOR_WRITE_DATA : std_logic_vector (31 downto 0);
-    signal SENSOR_WRITE_REQ : std_logic := '0';
+    signal SENSOR_WRITE_DATA    : std_logic_vector (31 downto 0);
+    signal SENSOR_WRITE_REQ     : std_logic := '0';
     
     signal RES_PITCH, RES_ROLL, RES_YAW, RES_ALTITUDE : float32;
 	
 begin
 
-    sda_sensor <= (sda_master and INTERNAL_READY_FLAG)or(sda_slave and not INTERNAL_READY_FLAG);
-    scl_sensor <= (scl_master and INTERNAL_READY_FLAG)or(scl_slave and not INTERNAL_READY_FLAG);
+--    sda_sensor <= (sda_master and INTERNAL_READY_FLAG)or(sda_slave and not INTERNAL_READY_FLAG);
+--    scl_sensor <= (scl_master and INTERNAL_READY_FLAG)or(scl_slave and not INTERNAL_READY_FLAG);
 
-    sda_master <= sda_sensor and INTERNAL_READY_FLAG;
-    scl_master <= scl_sensor and INTERNAL_READY_FLAG;
+--    sda_master <= sda_sensor and INTERNAL_READY_FLAG;
+--    scl_master <= scl_sensor and INTERNAL_READY_FLAG;
 
-    sda_slave <= sda_sensor and not INTERNAL_READY_FLAG;
-    scl_slave <= scl_sensor and not INTERNAL_READY_FLAG;
+--    sda_slave <= sda_sensor and not INTERNAL_READY_FLAG;
+--    scl_slave <= scl_sensor and not INTERNAL_READY_FLAG;
     
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 
@@ -150,6 +166,13 @@ begin
                 memory(PWMOut)(15 downto 8)  <= calibrationPwmOut;
                 memory(PWMOut)(23 downto 16) <= calibrationPwmOut;
                 memory(PWMOut)(31 downto 24) <= calibrationPwmOut;
+            else
+                -- only set pwm values after calibration
+                -- i.e when finished calibration
+                memory(PWMOut)(7 downto 0)   <= resCh0;
+                memory(PWMOut)(15 downto 8)  <= resCh1;
+                memory(PWMOut)(23 downto 16) <= resCh2;
+                memory(PWMOut)(31 downto 24) <= resCh3;
             end if;
             
             if (EXTERNAL_WRITE_REQ = '1') then -- write recieved data from mcu
@@ -159,18 +182,13 @@ begin
             if (SENSOR_WRITE_REQ = '1') then -- write recieved data from mcu
                 memory(to_integer(unsigned(SENSOR_WRITE_ADDRESS))) <= SENSOR_WRITE_DATA;
             end if;
-            
-            -- \/ this seems wrong...
---            if (INTERNAL_READY_FLAG = '1') then -- write recieved data from mcu
---                memory(to_integer(unsigned(EXTERNAL_WRITE_ADDRESS))) <= EXTERNAL_WRITE_DATA;
---            end if;
         end if;
     end process;
 
     pwmCal: createCalibration
     port map (
-        CLK => CLK,
-        ready => memory(setupReg)(0), -- "EXTERNAL READY"
+        CLK    => CLK,
+        ready  => memory(setupReg)(0), -- "EXTERNAL READY"
         finish => calibrationPwmFinish,
         output => calibrationPwmOut
     );
@@ -181,34 +199,34 @@ begin
         PercentCh1 => memory(PWMOut)(15 downto 8),
         PercentCh2 => memory(PWMOut)(23 downto 16),
         PercentCh3 => memory(PWMOut)(31 downto 24),
-        clock => CLK,
-        PWM => PWM
+        clock      => CLK,
+        PWM        => PWM
     );
 
     i2cExternal: I2C_EXTERNAL_ACCESS
     generic map (deviceAddress => x"08")
     port map(
-        MCLK => CLK,
-        nRST => '1', -- this module shall never reset
-        SCL => scl_slave,
-        SDA => sda_slave,
-        MEMORY_READ => memory,
+        MCLK          => CLK,
+        nRST          => '1', -- this module shall never reset
+        SCL           => scl_slave,
+        SDA           => sda_slave,
+        MEMORY_READ   => memory,
         
         WRITE_ADDRESS => EXTERNAL_WRITE_ADDRESS,
-        WRITE_DATA => EXTERNAL_WRITE_DATA,
-        WRITE_REQ => EXTERNAL_WRITE_REQ
+        WRITE_DATA    => EXTERNAL_WRITE_DATA,
+        WRITE_REQ     => EXTERNAL_WRITE_REQ
     );
     
     readSensor: change_sensor
     port map(
-        clk => CLK,
-        scl => scl_master,
-        sda => sda_master,
-        EN => INTERNAL_READY_FLAG,
+        clk         => CLK,
+        scl         => scl_master,
+        sda         => sda_master,
+        EN          => INTERNAL_READY_FLAG,
         WriteMemBus => SENSOR_WRITE_DATA,
-        ADDRMemBus => SENSOR_WRITE_ADDRESS,
-        MemWrite => SENSOR_WRITE_REQ,
-        ReadMem => memory
+        ADDRMemBus  => SENSOR_WRITE_ADDRESS,
+        MemWrite    => SENSOR_WRITE_REQ,
+        ReadMem     => memory
     );
     
     pidBlock: PID
@@ -219,5 +237,19 @@ begin
         RES_ROLL     => RES_ROLL,
         RES_YAW      => RES_YAW,
         RES_ALTITUDE => RES_ALTITUDE
+    );
+    
+    DIST_MATRIX: topBrain
+    port map ( 
+        CLK      => CLK,
+        cha0     => resCh0,
+        cha1     => resCh1,
+        cha2     => resCh2,
+        cha3     => resCh3,
+      
+        pitchPid => RES_PITCH,
+        rollPid  => RES_ROLL,
+        yawPid   => RES_YAW,
+        latPid   => RES_ALTITUDE       
     );
 end Behavioral;
