@@ -114,3 +114,11 @@ set_property PACKAGE_PIN F18 [get_ports {cha2[1]}]
 set_property PACKAGE_PIN W19 [get_ports {cha1[3]}]
 set_property PACKAGE_PIN W17 [get_ports {cha2[0]}]
 
+
+set_property PACKAGE_PIN V5 [get_ports debug]
+set_property IOSTANDARD LVCMOS33 [get_ports debug]
+
+set_property PACKAGE_PIN V5 [get_ports debug1]
+set_property IOSTANDARD LVCMOS33 [get_ports debug1]
+set_property PACKAGE_PIN U4 [get_ports debug2]
+set_property IOSTANDARD LVCMOS33 [get_ports debug2]
