@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1701341101" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/fpu.dcp">
   <File Type="PA-TCL" Name="fpu.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="fpu_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="fpu_reports.tcl"/>
   <File Type="RDS-RDS" Name="fpu.vds"/>
   <File Type="RDS-UTIL" Name="fpu_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="fpu_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="fpu.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="fpu_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="fpu_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/fpu.vhd">

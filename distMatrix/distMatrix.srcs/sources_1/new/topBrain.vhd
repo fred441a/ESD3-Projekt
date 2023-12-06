@@ -38,17 +38,21 @@ entity topBrain is
   cha0:     out std_logic_vector (7 downto 0);
   cha1:     out std_logic_vector (7 downto 0);
   cha2:     out std_logic_vector (7 downto 0);
-  cha3:     out std_logic_vector (7 downto 0);
+  cha3:     out std_logic_vector (7 downto 0)
   
-  pitchPid:     in float32;
-  rollPid:      in float32;
-  yawPid:       in float32;
-  latPid:       in float32
+  --pitchPid:     in float32;
+  --rollPid:      in float32;
+  --yawPid:       in float32;
+  --latPid:       in float32
   
   );
 end topBrain;
 
 architecture Behavioral of topBrain is
+signal pitchPid:        float32:=to_float(0.0);
+signal rollPid:         float32:=to_float(1.0);
+signal yawPid:          float32:=to_float(0.0);
+signal latPid:          float32:=to_float(0.0);
   
 component matrix is
     port (
