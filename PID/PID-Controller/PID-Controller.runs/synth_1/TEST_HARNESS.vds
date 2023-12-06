@@ -1,0 +1,502 @@
+#-----------------------------------------------------------
+# Vivado v2023.1.1 (64-bit)
+# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
+# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
+# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
+# Start of session at: Sun Dec  3 14:18:19 2023
+# Process ID: 17266
+# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1
+# Command line: vivado -log TEST_HARNESS.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TEST_HARNESS.tcl
+# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1/TEST_HARNESS.vds
+# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1/vivado.jou
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 3038.036 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+#-----------------------------------------------------------
+source TEST_HARNESS.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1273.410 ; gain = 0.023 ; free physical = 9812 ; free virtual = 13548
+Command: read_checkpoint -auto_incremental -incremental /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/utils_1/imports/synth_1/PID.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/utils_1/imports/synth_1/PID.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top TEST_HARNESS -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17301
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1998.031 ; gain = 380.738 ; free physical = 8769 ; free virtual = 12504
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'TEST_HARNESS' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:44]
+INFO: [Synth 8-3491] module 'PID' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:37' bound to instance 'PID_BLOCK' of component 'PID' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:82]
+INFO: [Synth 8-638] synthesizing module 'PID' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:48]
+INFO: [Synth 8-3491] module 'fpu' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:35' bound to instance 'SHARED_FPU' of component 'FPU' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:94]
+INFO: [Synth 8-638] synthesizing module 'fpu' [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:45]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:53]
+WARNING: [Synth 8-7143] Equality comparison of non constant with static metalogical value is evaluated as 'false'. This may cause simulation-synthesis differences [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'fpu' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd:45]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_ALTITUDE' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:103]
+INFO: [Synth 8-638] synthesizing module 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:55]
+WARNING: [Synth 8-614] signal 'EN' is read in the process but is not in the sensitivity list [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'PID_Controller' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:55]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_PITCH' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:122]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_ROLL' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:141]
+INFO: [Synth 8-3491] module 'PID_Controller' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd:35' bound to instance 'PID_YAW' of component 'PID_Controller' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:160]
+INFO: [Synth 8-256] done synthesizing module 'PID' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'TEST_HARNESS' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:44]
+WARNING: [Synth 8-3848] Net ram[0] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[1] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[2] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[3] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[4] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[5] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[6] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[7] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[8] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[9] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[10] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[11] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[12] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[13] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[14] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[15] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[16] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[17] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[18] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[19] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[20] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[21] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[22] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[23] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[24] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[25] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[26] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[27] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[28] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[29] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[30] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[31] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[32] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[33] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[34] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[35] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[36] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[37] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[38] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[39] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[40] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[41] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[42] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[43] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[44] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-3848] Net ram[45] in module/entity TEST_HARNESS does not have driver. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/test-harness.vhd:77]
+WARNING: [Synth 8-7129] Port MEMORY[0][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][28] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][27] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][26] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][25] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][24] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][23] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][22] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][21] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][20] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][19] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][18] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][17] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][16] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][15] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][14] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][13] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][12] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][11] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][10] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][9] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][8] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][7] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][6] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][5] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][4] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][3] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][2] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][1] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[0][0] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][28] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][27] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][26] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][25] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][24] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][23] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][22] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][21] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][20] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][19] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][18] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][17] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][16] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][15] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][14] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][13] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][12] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][11] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][10] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][9] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][8] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][7] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][6] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][5] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][4] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][3] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][2] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][1] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[1][0] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][28] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][27] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][26] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][25] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][24] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][23] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][22] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][21] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][20] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][19] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][18] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][17] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][16] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][15] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][14] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][13] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][12] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][11] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][10] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][9] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][8] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][7] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][6] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][5] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][4] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][3] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][2] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][1] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[10][0] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][31] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][30] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][29] in module PID is either unconnected or has no load
+WARNING: [Synth 8-7129] Port MEMORY[15][28] in module PID is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2106.625 ; gain = 489.332 ; free physical = 8646 ; free virtual = 12383
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2118.500 ; gain = 501.207 ; free physical = 8638 ; free virtual = 12375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2118.500 ; gain = 501.207 ; free physical = 8638 ; free virtual = 12375
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2118.500 ; gain = 0.000 ; free physical = 8638 ; free virtual = 12375
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/constrs_1/new/constraint.xdc]
+WARNING: [Vivado 12-584] No ports matched 'mclk'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/constrs_1/new/constraint.xdc:1]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/constrs_1/new/constraint.xdc:1]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'mclk'. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/constrs_1/new/constraint.xdc:2]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/constrs_1/new/constraint.xdc:2]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/constrs_1/new/constraint.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2216.234 ; gain = 0.000 ; free physical = 8574 ; free virtual = 12311
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2216.234 ; gain = 0.000 ; free physical = 8574 ; free virtual = 12311
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2216.234 ; gain = 598.941 ; free physical = 8571 ; free virtual = 12308
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2216.234 ; gain = 598.941 ; free physical = 8571 ; free virtual = 12308
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2216.234 ; gain = 598.941 ; free physical = 8571 ; free virtual = 12308
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'PID_Controller'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'PID'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+              calc_error |                            00000 |                            00000
+               res_error |                            00001 |                            00001
+             accum_error |                            00010 |                            00010
+         accum_error_res |                            00011 |                            00011
+                   p_mul |                            00100 |                            00100
+               p_mul_res |                            00101 |                            00101
+                   i_mul |                            00110 |                            00110
+               i_mul_res |                            00111 |                            00111
+                   d_sub |                            01000 |                            01000
+               d_sub_res |                            01001 |                            01001
+                   d_mul |                            01010 |                            01010
+               d_mul_res |                            01011 |                            01011
+                  pi_sum |                            01100 |                            01100
+              pi_sum_res |                            01101 |                            01101
+                  id_sum |                            01110 |                            01110
+              id_sum_res |                            01111 |                            01111
+                   reset |                            10000 |                            10000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'PID_Controller'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                altitude |                               00 |                              001
+                   pitch |                               01 |                              010
+                    roll |                               10 |                              011
+                     yaw |                               11 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'PID'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2216.234 ; gain = 598.941 ; free physical = 8569 ; free virtual = 12307
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 4     
+	   2 Input   31 Bit       Adders := 3     
+	   3 Input   28 Bit       Adders := 2     
+	   2 Input   23 Bit       Adders := 3     
+	   2 Input   12 Bit       Adders := 2     
+	   2 Input   11 Bit       Adders := 1     
+	   5 Input   10 Bit       Adders := 1     
+	   4 Input   10 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 8     
+	   3 Input    9 Bit       Adders := 2     
+	   2 Input    9 Bit       Adders := 3     
+	   2 Input    8 Bit       Adders := 3     
+	   2 Input    6 Bit       Adders := 5     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 43    
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 16    
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 22    
+	   5 Input   32 Bit        Muxes := 2     
+	  17 Input   32 Bit        Muxes := 8     
+	   4 Input   32 Bit        Muxes := 2     
+	   2 Input   31 Bit        Muxes := 3     
+	  29 Input   29 Bit        Muxes := 3     
+	   2 Input   28 Bit        Muxes := 22    
+	   2 Input   26 Bit        Muxes := 3     
+	  25 Input   25 Bit        Muxes := 2     
+	   2 Input   24 Bit        Muxes := 7     
+	   2 Input   23 Bit        Muxes := 6     
+	   2 Input   12 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 4     
+	   2 Input    9 Bit        Muxes := 8     
+	   4 Input    8 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 15    
+	  17 Input    5 Bit        Muxes := 4     
+	   3 Input    4 Bit        Muxes := 9     
+	   2 Input    4 Bit        Muxes := 3     
+	   4 Input    3 Bit        Muxes := 6     
+	  17 Input    2 Bit        Muxes := 4     
+	   4 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 164   
+	   4 Input    1 Bit        Muxes := 8     
+	  17 Input    1 Bit        Muxes := 44    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP fract0, operation Mode is: A*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+DSP Report: operator fract0 is absorbed into DSP fract0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8512 ; free virtual = 12258
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|fpu         | A*B            | 25     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | (PCIN>>17)+A*B | 25     | 8      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8511 ; free virtual = 12258
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8511 ; free virtual = 12258
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:45 ; elapsed = 00:00:46 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|fpu         | A*B          | 24     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|fpu         | PCIN>>17+A*B | 0      | 7      | -      | -      | 31     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   438|
+|3     |DSP48E1 |     2|
+|4     |LUT1    |   217|
+|5     |LUT2    |   553|
+|6     |LUT3    |   292|
+|7     |LUT4    |  1208|
+|8     |LUT5    |  1566|
+|9     |LUT6    |  2170|
+|10    |MUXF7   |     3|
+|11    |FDRE    |  1328|
+|12    |IBUF    |     1|
+|13    |OBUF    |    12|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.914 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 833 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:48 ; elapsed = 00:00:49 . Memory (MB): peak = 2266.914 ; gain = 551.887 ; free physical = 8510 ; free virtual = 12256
+Synthesis Optimization Complete : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2266.922 ; gain = 649.621 ; free physical = 8510 ; free virtual = 12256
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2266.922 ; gain = 0.000 ; free physical = 8808 ; free virtual = 12554
+INFO: [Netlist 29-17] Analyzing 443 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2266.922 ; gain = 0.000 ; free physical = 8803 ; free virtual = 12549
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 52bad026
+INFO: [Common 17-83] Releasing license: Synthesis
+39 Infos, 152 Warnings, 2 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:58 ; elapsed = 00:00:56 . Memory (MB): peak = 2266.922 ; gain = 972.699 ; free physical = 8803 ; free virtual = 12549
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1913.900; main = 1583.104; forked = 378.063
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3236.445; main = 2266.914; forked = 969.531
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint '/home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.runs/synth_1/TEST_HARNESS.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file TEST_HARNESS_utilization_synth.rpt -pb TEST_HARNESS_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Dec  3 14:19:26 2023...

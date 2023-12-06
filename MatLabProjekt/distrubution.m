@@ -1,5 +1,5 @@
 CL=1.4e-5;
-CD=CL/2;
+CD=CL/10;
 L=0.31;
 A=[(CL*L) (CL*L) -(CL*L) -(CL*L)
    (CL*L) -(CL*L) -(CL*L) (CL*L)
@@ -7,4 +7,5 @@ A=[(CL*L) (CL*L) -(CL*L) -(CL*L)
    (CL) (CL) (CL) (CL)];
 tau=[1 0 0 0]';
 omega=inv(A)*tau;
-inv(A)
+dis=inv(A)
+A

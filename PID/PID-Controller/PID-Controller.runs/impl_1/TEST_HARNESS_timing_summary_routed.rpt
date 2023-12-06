@@ -1,0 +1,1461 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date         : Sun Dec  3 14:20:30 2023
+| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file TEST_HARNESS_timing_summary_routed.rpt -pb TEST_HARNESS_timing_summary_routed.pb -rpx TEST_HARNESS_timing_summary_routed.rpx -warn_on_violation
+| Design       : TEST_HARNESS
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                  Violations  
+---------  ----------------  ---------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell  1000        
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (1328)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (2572)
+5. checking no_input_delay (0)
+6. checking no_output_delay (12)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (1328)
+---------------------------
+ There are 1328 register/latch pins with no clock driven by root clock pin: MCLK (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (2572)
+---------------------------------------------------
+ There are 2572 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (0)
+------------------------------
+ There are 0 input ports with no input delay specified.
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (12)
+--------------------------------
+ There are 12 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                 2584          inf        0.000                      0                 2584           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay          2584 Endpoints
+Min Delay          2584 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-15]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        52.626ns  (logic 9.094ns (17.280%)  route 43.532ns (82.720%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.931    52.502    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X36Y36         LUT5 (Prop_lut5_I1_O)        0.124    52.626 r  PID_BLOCK/SHARED_FPU/output[-15]_i_1/O
+                         net (fo=1, routed)           0.000    52.626    PID_BLOCK/SHARED_FPU/output[-15]_i_1_n_0
+    SLICE_X36Y36         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-15]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-16]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        52.274ns  (logic 9.094ns (17.397%)  route 43.180ns (82.603%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.578    52.150    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X36Y35         LUT5 (Prop_lut5_I1_O)        0.124    52.274 r  PID_BLOCK/SHARED_FPU/output[-16]_i_1/O
+                         net (fo=1, routed)           0.000    52.274    PID_BLOCK/SHARED_FPU/output[-16]_i_1_n_0
+    SLICE_X36Y35         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-16]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-18]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        52.213ns  (logic 9.094ns (17.417%)  route 43.119ns (82.583%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.518    52.089    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X34Y34         LUT5 (Prop_lut5_I1_O)        0.124    52.213 r  PID_BLOCK/SHARED_FPU/output[-18]_i_1/O
+                         net (fo=1, routed)           0.000    52.213    PID_BLOCK/SHARED_FPU/output[-18]_i_1_n_0
+    SLICE_X34Y34         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-18]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-20]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        52.193ns  (logic 9.094ns (17.424%)  route 43.099ns (82.576%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.498    52.069    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X34Y34         LUT5 (Prop_lut5_I1_O)        0.124    52.193 r  PID_BLOCK/SHARED_FPU/output[-20]_i_1/O
+                         net (fo=1, routed)           0.000    52.193    PID_BLOCK/SHARED_FPU/output[-20]_i_1_n_0
+    SLICE_X34Y34         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-20]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-17]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        52.054ns  (logic 9.094ns (17.470%)  route 42.960ns (82.530%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.358    51.930    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X34Y35         LUT5 (Prop_lut5_I1_O)        0.124    52.054 r  PID_BLOCK/SHARED_FPU/output[-17]_i_1/O
+                         net (fo=1, routed)           0.000    52.054    PID_BLOCK/SHARED_FPU/output[-17]_i_1_n_0
+    SLICE_X34Y35         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-17]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-22]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.988ns  (logic 9.094ns (17.493%)  route 42.894ns (82.507%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.292    51.864    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X36Y35         LUT5 (Prop_lut5_I1_O)        0.124    51.988 r  PID_BLOCK/SHARED_FPU/output[-22]_i_1/O
+                         net (fo=1, routed)           0.000    51.988    PID_BLOCK/SHARED_FPU/output[-22]_i_1_n_0
+    SLICE_X36Y35         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-22]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-11]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.904ns  (logic 9.094ns (17.521%)  route 42.810ns (82.479%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.208    51.780    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X34Y36         LUT5 (Prop_lut5_I1_O)        0.124    51.904 r  PID_BLOCK/SHARED_FPU/output[-11]_i_1/O
+                         net (fo=1, routed)           0.000    51.904    PID_BLOCK/SHARED_FPU/output[-11]_i_1_n_0
+    SLICE_X34Y36         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-11]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-13]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.891ns  (logic 9.094ns (17.525%)  route 42.797ns (82.475%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.195    51.767    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X35Y36         LUT5 (Prop_lut5_I1_O)        0.124    51.891 r  PID_BLOCK/SHARED_FPU/output[-13]_i_1/O
+                         net (fo=1, routed)           0.000    51.891    PID_BLOCK/SHARED_FPU/output[-13]_i_1_n_0
+    SLICE_X35Y36         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-13]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-12]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.889ns  (logic 9.094ns (17.526%)  route 42.795ns (82.474%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.193    51.765    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X35Y36         LUT5 (Prop_lut5_I1_O)        0.124    51.889 r  PID_BLOCK/SHARED_FPU/output[-12]_i_1/O
+                         net (fo=1, routed)           0.000    51.889    PID_BLOCK/SHARED_FPU/output[-12]_i_1_n_0
+    SLICE_X35Y36         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-12]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/input0_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/SHARED_FPU/output_reg[-3]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.839ns  (logic 9.094ns (17.543%)  route 42.745ns (82.457%))
+  Logic Levels:           41  (CARRY4=8 FDRE=1 LUT2=2 LUT3=2 LUT4=8 LUT5=6 LUT6=14)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y48          FDRE                         0.000     0.000 r  PID_BLOCK/input0_reg[4]/C
+    SLICE_X2Y48          FDRE (Prop_fdre_C_Q)         0.518     0.518 f  PID_BLOCK/input0_reg[4]/Q
+                         net (fo=22, routed)          3.643     4.161    PID_BLOCK/SHARED_FPU/output_reg[8]_1[27]
+    SLICE_X40Y39         LUT4 (Prop_lut4_I0_O)        0.124     4.285 f  PID_BLOCK/SHARED_FPU/fract0__0_i_15/O
+                         net (fo=1, routed)           0.279     4.564    PID_BLOCK/SHARED_FPU/fract0__0_i_15_n_0
+    SLICE_X40Y39         LUT5 (Prop_lut5_I4_O)        0.124     4.688 r  PID_BLOCK/SHARED_FPU/fract0__0_i_8/O
+                         net (fo=50, routed)          3.020     7.709    PID_BLOCK/SHARED_FPU/fract0__0_i_8_n_0
+    SLICE_X11Y28         LUT4 (Prop_lut4_I0_O)        0.124     7.833 r  PID_BLOCK/SHARED_FPU/output[8]_i_140/O
+                         net (fo=1, routed)           0.000     7.833    PID_BLOCK/SHARED_FPU/output[8]_i_140_n_0
+    SLICE_X11Y28         CARRY4 (Prop_carry4_S[0]_O[2])
+                                                      0.547     8.380 r  PID_BLOCK/SHARED_FPU/output_reg[8]_i_90/O[2]
+                         net (fo=100, routed)         3.033    11.412    PID_BLOCK/SHARED_FPU/output_reg[8]_i_90_n_5
+    SLICE_X14Y24         LUT4 (Prop_lut4_I1_O)        0.324    11.736 f  PID_BLOCK/SHARED_FPU/output[7]_i_562/O
+                         net (fo=2, routed)           1.199    12.936    PID_BLOCK/SHARED_FPU/output[7]_i_562_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I3_O)        0.328    13.264 r  PID_BLOCK/SHARED_FPU/output[7]_i_1914/O
+                         net (fo=1, routed)           0.151    13.415    PID_BLOCK/SHARED_FPU/output[7]_i_1914_n_0
+    SLICE_X7Y25          LUT6 (Prop_lut6_I5_O)        0.124    13.539 r  PID_BLOCK/SHARED_FPU/output[7]_i_1113/O
+                         net (fo=1, routed)           0.823    14.362    PID_BLOCK/SHARED_FPU/output[7]_i_1113_n_0
+    SLICE_X7Y24          LUT6 (Prop_lut6_I0_O)        0.124    14.486 r  PID_BLOCK/SHARED_FPU/output[7]_i_560/O
+                         net (fo=1, routed)           0.738    15.224    PID_BLOCK/SHARED_FPU/output[7]_i_560_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I5_O)        0.124    15.348 r  PID_BLOCK/SHARED_FPU/output[7]_i_327/O
+                         net (fo=1, routed)           0.670    16.018    PID_BLOCK/SHARED_FPU/output[7]_i_327_n_0
+    SLICE_X6Y24          LUT6 (Prop_lut6_I3_O)        0.124    16.142 f  PID_BLOCK/SHARED_FPU/output[7]_i_202/O
+                         net (fo=1, routed)           1.254    17.395    PID_BLOCK/SHARED_FPU/output[7]_i_202_n_0
+    SLICE_X12Y21         LUT6 (Prop_lut6_I2_O)        0.124    17.519 r  PID_BLOCK/SHARED_FPU/output[7]_i_117/O
+                         net (fo=3, routed)           0.546    18.066    PID_BLOCK/SHARED_FPU/output[7]_i_117_n_0
+    SLICE_X15Y21         LUT3 (Prop_lut3_I2_O)        0.124    18.190 r  PID_BLOCK/SHARED_FPU/output[4]_i_87/O
+                         net (fo=1, routed)           0.513    18.703    PID_BLOCK/SHARED_FPU/output[4]_i_87_n_0
+    SLICE_X12Y21         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.550    19.253 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_57/CO[3]
+                         net (fo=1, routed)           0.000    19.253    PID_BLOCK/SHARED_FPU/output_reg[4]_i_57_n_0
+    SLICE_X12Y22         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.370 r  PID_BLOCK/SHARED_FPU/output_reg[4]_i_92/CO[3]
+                         net (fo=1, routed)           0.000    19.370    PID_BLOCK/SHARED_FPU/output_reg[4]_i_92_n_0
+    SLICE_X12Y23         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.315    19.685 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_69/O[3]
+                         net (fo=11, routed)          1.937    21.622    PID_BLOCK/SHARED_FPU/l126_in
+    SLICE_X28Y31         LUT4 (Prop_lut4_I1_O)        0.335    21.957 f  PID_BLOCK/SHARED_FPU/output[4]_i_59/O
+                         net (fo=4, routed)           1.262    23.218    PID_BLOCK/SHARED_FPU/output[4]_i_59_n_0
+    SLICE_X29Y36         LUT6 (Prop_lut6_I5_O)        0.326    23.544 f  PID_BLOCK/SHARED_FPU/output[4]_i_30/O
+                         net (fo=7, routed)           0.469    24.014    PID_BLOCK/SHARED_FPU/output[4]_i_30_n_0
+    SLICE_X29Y36         LUT5 (Prop_lut5_I4_O)        0.124    24.138 r  PID_BLOCK/SHARED_FPU/output[7]_i_41/O
+                         net (fo=19, routed)          1.405    25.543    PID_BLOCK/SHARED_FPU/output[7]_i_41_n_0
+    SLICE_X29Y33         LUT6 (Prop_lut6_I4_O)        0.124    25.667 r  PID_BLOCK/SHARED_FPU/output[0]_i_14/O
+                         net (fo=1, routed)           0.931    26.598    PID_BLOCK/SHARED_FPU/output[0]_i_14_n_0
+    SLICE_X28Y39         LUT4 (Prop_lut4_I3_O)        0.124    26.722 r  PID_BLOCK/SHARED_FPU/output[0]_i_10/O
+                         net (fo=1, routed)           0.000    26.722    PID_BLOCK/SHARED_FPU/output[0]_i_10_n_0
+    SLICE_X28Y39         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.401    27.123 r  PID_BLOCK/SHARED_FPU/output_reg[0]_i_5/CO[3]
+                         net (fo=1, routed)           0.000    27.123    PID_BLOCK/SHARED_FPU/output_reg[0]_i_5_n_0
+    SLICE_X28Y40         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334    27.457 f  PID_BLOCK/SHARED_FPU/output_reg[4]_i_12/O[1]
+                         net (fo=6, routed)           0.980    28.437    PID_BLOCK/SHARED_FPU/output_reg[4]_i_12_n_6
+    SLICE_X29Y39         LUT2 (Prop_lut2_I0_O)        0.331    28.768 r  PID_BLOCK/SHARED_FPU/output[7]_i_113/O
+                         net (fo=1, routed)           0.433    29.202    PID_BLOCK/SHARED_FPU/output[7]_i_113_n_0
+    SLICE_X29Y39         LUT6 (Prop_lut6_I5_O)        0.326    29.528 r  PID_BLOCK/SHARED_FPU/output[7]_i_40/O
+                         net (fo=3, routed)           1.369    30.897    PID_BLOCK/SHARED_FPU/output[7]_i_40_n_0
+    SLICE_X30Y36         LUT6 (Prop_lut6_I0_O)        0.124    31.021 f  PID_BLOCK/SHARED_FPU/output[4]_i_11/O
+                         net (fo=40, routed)          2.134    33.155    PID_BLOCK/SHARED_FPU/output[4]_i_11_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I3_O)        0.152    33.307 r  PID_BLOCK/SHARED_FPU/output[7]_i_1952/O
+                         net (fo=8, routed)           0.728    34.034    PID_BLOCK/SHARED_FPU/output[7]_i_1952_n_0
+    SLICE_X15Y34         LUT6 (Prop_lut6_I5_O)        0.348    34.382 r  PID_BLOCK/SHARED_FPU/output[-1]_i_232/O
+                         net (fo=65, routed)          3.454    37.837    PID_BLOCK/SHARED_FPU/output[-1]_i_180_n_0
+    SLICE_X10Y27         LUT2 (Prop_lut2_I0_O)        0.124    37.961 r  PID_BLOCK/SHARED_FPU/output[7]_i_2150/O
+                         net (fo=104, routed)         2.335    40.295    PID_BLOCK/SHARED_FPU/output[7]_i_2150_n_0
+    SLICE_X11Y39         LUT5 (Prop_lut5_I2_O)        0.124    40.419 r  PID_BLOCK/SHARED_FPU/output[7]_i_2947/O
+                         net (fo=1, routed)           0.657    41.076    PID_BLOCK/SHARED_FPU/output[7]_i_2947_n_0
+    SLICE_X11Y37         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.526    41.602 r  PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162/CO[3]
+                         net (fo=1, routed)           0.000    41.602    PID_BLOCK/SHARED_FPU/output_reg[7]_i_2162_n_0
+    SLICE_X11Y38         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.114    41.716 f  PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351/CO[3]
+                         net (fo=1, routed)           1.283    42.999    PID_BLOCK/SHARED_FPU/output_reg[7]_i_1351_n_0
+    SLICE_X14Y37         LUT4 (Prop_lut4_I0_O)        0.146    43.145 f  PID_BLOCK/SHARED_FPU/output[7]_i_679/O
+                         net (fo=1, routed)           1.005    44.150    PID_BLOCK/SHARED_FPU/output[7]_i_679_n_0
+    SLICE_X14Y32         LUT5 (Prop_lut5_I4_O)        0.328    44.478 f  PID_BLOCK/SHARED_FPU/output[7]_i_370/O
+                         net (fo=1, routed)           0.889    45.367    PID_BLOCK/SHARED_FPU/output[7]_i_370_n_0
+    SLICE_X15Y31         LUT6 (Prop_lut6_I5_O)        0.124    45.491 f  PID_BLOCK/SHARED_FPU/output[7]_i_238/O
+                         net (fo=1, routed)           0.149    45.640    PID_BLOCK/SHARED_FPU/output[7]_i_238_n_0
+    SLICE_X15Y31         LUT4 (Prop_lut4_I3_O)        0.124    45.764 f  PID_BLOCK/SHARED_FPU/output[7]_i_133/O
+                         net (fo=1, routed)           0.645    46.409    PID_BLOCK/SHARED_FPU/output[7]_i_133_n_0
+    SLICE_X15Y30         LUT5 (Prop_lut5_I4_O)        0.124    46.533 r  PID_BLOCK/SHARED_FPU/output[7]_i_46/O
+                         net (fo=1, routed)           0.982    47.515    PID_BLOCK/SHARED_FPU/output[7]_i_46_n_0
+    SLICE_X33Y31         LUT6 (Prop_lut6_I5_O)        0.124    47.639 r  PID_BLOCK/SHARED_FPU/output[7]_i_13/O
+                         net (fo=30, routed)          1.619    49.258    PID_BLOCK/SHARED_FPU/output[7]_i_13_n_0
+    SLICE_X33Y38         LUT6 (Prop_lut6_I0_O)        0.124    49.382 r  PID_BLOCK/SHARED_FPU/output[4]_i_13/O
+                         net (fo=3, routed)           1.066    50.448    PID_BLOCK/SHARED_FPU/output[4]_i_13_n_0
+    SLICE_X34Y39         LUT3 (Prop_lut3_I0_O)        0.124    50.572 r  PID_BLOCK/SHARED_FPU/output[-1]_i_2/O
+                         net (fo=22, routed)          1.143    51.715    PID_BLOCK/SHARED_FPU/output[-1]_i_2_n_0
+    SLICE_X33Y37         LUT5 (Prop_lut5_I1_O)        0.124    51.839 r  PID_BLOCK/SHARED_FPU/output[-3]_i_1/O
+                         net (fo=1, routed)           0.000    51.839    PID_BLOCK/SHARED_FPU/output[-3]_i_1_n_0
+    SLICE_X33Y37         FDRE                                         r  PID_BLOCK/SHARED_FPU/output_reg[-3]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_ROLL/error_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/PID_ROLL/prevError_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.202ns  (logic 0.128ns (63.220%)  route 0.074ns (36.780%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y43         FDRE                         0.000     0.000 r  PID_BLOCK/PID_ROLL/error_reg[2]/C
+    SLICE_X15Y43         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  PID_BLOCK/PID_ROLL/error_reg[2]/Q
+                         net (fo=3, routed)           0.074     0.202    PID_BLOCK/PID_ROLL/error__0[2]
+    SLICE_X14Y43         FDRE                                         r  PID_BLOCK/PID_ROLL/prevError_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_ROLL/ResultReady_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/rRq_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.208ns  (logic 0.141ns (67.788%)  route 0.067ns (32.212%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X7Y57          FDRE                         0.000     0.000 r  PID_BLOCK/PID_ROLL/ResultReady_reg/C
+    SLICE_X7Y57          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  PID_BLOCK/PID_ROLL/ResultReady_reg/Q
+                         net (fo=2, routed)           0.067     0.208    PID_BLOCK/rollReady
+    SLICE_X7Y57          FDRE                                         r  PID_BLOCK/rRq_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_ALTITUDE/ResultReady_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/aRq_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.220ns  (logic 0.164ns (74.580%)  route 0.056ns (25.420%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X8Y52          FDRE                         0.000     0.000 r  PID_BLOCK/PID_ALTITUDE/ResultReady_reg/C
+    SLICE_X8Y52          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  PID_BLOCK/PID_ALTITUDE/ResultReady_reg/Q
+                         net (fo=2, routed)           0.056     0.220    PID_BLOCK/altitudeReady
+    SLICE_X8Y52          FDRE                                         r  PID_BLOCK/aRq_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_YAW/fpuVal1_reg[-12]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/input1_reg[-12]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.240ns  (logic 0.186ns (77.466%)  route 0.054ns (22.534%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y42         FDRE                         0.000     0.000 r  PID_BLOCK/PID_YAW/fpuVal1_reg[-12]/C
+    SLICE_X15Y42         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  PID_BLOCK/PID_YAW/fpuVal1_reg[-12]/Q
+                         net (fo=1, routed)           0.054     0.195    PID_BLOCK/PID_PITCH/input1_reg[8][11]
+    SLICE_X14Y42         LUT6 (Prop_lut6_I2_O)        0.045     0.240 r  PID_BLOCK/PID_PITCH/input1[-12]_i_1/O
+                         net (fo=1, routed)           0.000     0.240    PID_BLOCK/input1[-12]
+    SLICE_X14Y42         FDRE                                         r  PID_BLOCK/input1_reg[-12]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_ALTITUDE/fpuVal1_reg[-5]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/input1_reg[-5]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.240ns  (logic 0.186ns (77.466%)  route 0.054ns (22.534%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X11Y49         FDRE                         0.000     0.000 r  PID_BLOCK/PID_ALTITUDE/fpuVal1_reg[-5]/C
+    SLICE_X11Y49         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  PID_BLOCK/PID_ALTITUDE/fpuVal1_reg[-5]/Q
+                         net (fo=1, routed)           0.054     0.195    PID_BLOCK/PID_PITCH/fpuVal1[-5]
+    SLICE_X10Y49         LUT6 (Prop_lut6_I1_O)        0.045     0.240 r  PID_BLOCK/PID_PITCH/input1[-5]_i_1/O
+                         net (fo=1, routed)           0.000     0.240    PID_BLOCK/input1[-5]
+    SLICE_X10Y49         FDRE                                         r  PID_BLOCK/input1_reg[-5]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_ROLL/error_reg[-12]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/PID_ROLL/prevError_reg[-12]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.240ns  (logic 0.141ns (58.676%)  route 0.099ns (41.324%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X15Y43         FDRE                         0.000     0.000 r  PID_BLOCK/PID_ROLL/error_reg[-12]/C
+    SLICE_X15Y43         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  PID_BLOCK/PID_ROLL/error_reg[-12]/Q
+                         net (fo=3, routed)           0.099     0.240    PID_BLOCK/PID_ROLL/error__0[-12]
+    SLICE_X14Y43         FDRE                                         r  PID_BLOCK/PID_ROLL/prevError_reg[-12]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_ROLL/fpuVal1_reg[-6]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/input1_reg[-6]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.244ns  (logic 0.186ns (76.126%)  route 0.058ns (23.874%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y48          FDRE                         0.000     0.000 r  PID_BLOCK/PID_ROLL/fpuVal1_reg[-6]/C
+    SLICE_X5Y48          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  PID_BLOCK/PID_ROLL/fpuVal1_reg[-6]/Q
+                         net (fo=1, routed)           0.058     0.199    PID_BLOCK/PID_PITCH/input1_reg[8]_0[17]
+    SLICE_X4Y48          LUT6 (Prop_lut6_I5_O)        0.045     0.244 r  PID_BLOCK/PID_PITCH/input1[-6]_i_1/O
+                         net (fo=1, routed)           0.000     0.244    PID_BLOCK/input1[-6]
+    SLICE_X4Y48          FDRE                                         r  PID_BLOCK/input1_reg[-6]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_YAW/fpuVal1_reg[8]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/input1_reg[8]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.245ns  (logic 0.186ns (75.768%)  route 0.059ns (24.232%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y54          FDRE                         0.000     0.000 r  PID_BLOCK/PID_YAW/fpuVal1_reg[8]/C
+    SLICE_X5Y54          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  PID_BLOCK/PID_YAW/fpuVal1_reg[8]/Q
+                         net (fo=1, routed)           0.059     0.200    PID_BLOCK/PID_PITCH/input1_reg[8][31]
+    SLICE_X4Y54          LUT6 (Prop_lut6_I2_O)        0.045     0.245 r  PID_BLOCK/PID_PITCH/input1[8]_i_1/O
+                         net (fo=1, routed)           0.000     0.245    PID_BLOCK/input1[8]
+    SLICE_X4Y54          FDRE                                         r  PID_BLOCK/input1_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_PITCH/fpuVal1_reg[-10]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/input1_reg[-10]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.258ns  (logic 0.209ns (80.975%)  route 0.049ns (19.025%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X12Y48         FDRE                         0.000     0.000 r  PID_BLOCK/PID_PITCH/fpuVal1_reg[-10]/C
+    SLICE_X12Y48         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  PID_BLOCK/PID_PITCH/fpuVal1_reg[-10]/Q
+                         net (fo=1, routed)           0.049     0.213    PID_BLOCK/PID_PITCH/fpuVal1_reg[-_n_0_10]
+    SLICE_X13Y48         LUT6 (Prop_lut6_I0_O)        0.045     0.258 r  PID_BLOCK/PID_PITCH/input1[-10]_i_1/O
+                         net (fo=1, routed)           0.000     0.258    PID_BLOCK/input1[-10]
+    SLICE_X13Y48         FDRE                                         r  PID_BLOCK/input1_reg[-10]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 PID_BLOCK/PID_ALTITUDE/fpuVal1_reg[-17]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            PID_BLOCK/input1_reg[-17]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.258ns  (logic 0.209ns (80.975%)  route 0.049ns (19.025%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y41          FDRE                         0.000     0.000 r  PID_BLOCK/PID_ALTITUDE/fpuVal1_reg[-17]/C
+    SLICE_X2Y41          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  PID_BLOCK/PID_ALTITUDE/fpuVal1_reg[-17]/Q
+                         net (fo=1, routed)           0.049     0.213    PID_BLOCK/PID_PITCH/fpuVal1[-17]
+    SLICE_X3Y41          LUT6 (Prop_lut6_I1_O)        0.045     0.258 r  PID_BLOCK/PID_PITCH/input1[-17]_i_1/O
+                         net (fo=1, routed)           0.000     0.258    PID_BLOCK/input1[-17]
+    SLICE_X3Y41          FDRE                                         r  PID_BLOCK/input1_reg[-17]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
