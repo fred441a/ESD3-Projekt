@@ -37,7 +37,7 @@ entity change_sensor is
         clk : in STD_LOGIC;
         scl : inout STD_LOGIC;
         sda : inout STD_LOGIC;
-
+        
         EN : IN STD_LOGIC;
 
         WriteMemBus : inout STD_LOGIC_VECTOR( 31 downto 0 );
@@ -118,8 +118,10 @@ begin
                     WriteMemBus => WriteMemBus,
                     ADDRMemBus => ADDRMemBus,
                     MemWrite => MemWrite,
+                    readmem =>ReadMem,
 
-                    BusyOut=>BCBusy
+                    BusyOut=>BCBusy,
+                    dointegrate => '0'
                  );
 
         PROCESS ( CLK )
