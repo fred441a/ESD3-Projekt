@@ -22,6 +22,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
+use IEEE.float_pkg.all;
 use work.shared_types.all;
 
 -- Uncomment the following library declaration if using
@@ -99,6 +100,17 @@ architecture Behavioral of flightController is
         );   
     end component;
     
+    component PID is
+    port (
+        MCLK         : in std_logic;
+        MEMORY       : in ram_type;      
+        RES_PITCH    : out float32;
+        RES_ROLL     : out float32;
+        RES_YAW      : out float32;
+        RES_ALTITUDE : out float32
+    );
+    end component;
+    
      -- Write internal signals here:
     signal calibrationPwmOut    : std_logic_vector(7 downto 0);
     signal calibrationPwmFinish : std_logic;
@@ -113,7 +125,8 @@ architecture Behavioral of flightController is
     signal SENSOR_WRITE_ADDRESS : std_logic_vector(7 downto 0);
     signal SENSOR_WRITE_DATA : std_logic_vector (31 downto 0);
     signal SENSOR_WRITE_REQ : std_logic := '0';
-
+    
+    signal RES_PITCH, RES_ROLL, RES_YAW, RES_ALTITUDE : float32;
 	
 begin
 
@@ -196,5 +209,15 @@ begin
         ADDRMemBus => SENSOR_WRITE_ADDRESS,
         MemWrite => SENSOR_WRITE_REQ,
         ReadMem => memory
+    );
+    
+    pidBlock: PID
+    port  map (
+        MCLK         => CLK,
+        MEMORY       => memory,      
+        RES_PITCH    => RES_PITCH,
+        RES_ROLL     => RES_ROLL,
+        RES_YAW      => RES_YAW,
+        RES_ALTITUDE => RES_ALTITUDE
     );
 end Behavioral;

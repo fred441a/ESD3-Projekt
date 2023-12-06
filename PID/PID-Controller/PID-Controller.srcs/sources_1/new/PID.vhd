@@ -104,11 +104,11 @@ begin
     Port map (
         MCLK      => MCLK,
         EN        => altitudeEn,
-        kp        => to_float(MEMORY(16#03#)), -- Altitude Kp
-        ki        => to_float(MEMORY(16#04#)), -- Altitude Ki
-        kd        => to_float(MEMORY(16#05#)), -- Altitude Kd
-        SetPoint  => to_float(MEMORY(16#02#)), -- Wanted altitude
-        Measured  => to_float(MEMORY(16#18#)), -- Measured altitude,
+        kp        => to_float(MEMORY(altitudeP)), -- Altitude Kp
+        ki        => to_float(MEMORY(altitudeI)), -- Altitude Ki
+        kd        => to_float(MEMORY(altitudeD)), -- Altitude Kd
+        SetPoint  => to_float(MEMORY(altitudeWanted)), -- Wanted altitude
+        Measured  => to_float(MEMORY(altitudeI2CSlaveValues)), -- Measured altitude,
         Result    => RES_ALTITUDE,
         ResultReady => altitudeReady,
 
@@ -123,11 +123,11 @@ begin
     Port map (
         MCLK      => MCLK,
         EN        => pitchEn,
-        kp        => to_float(MEMORY(16#07#)), -- Pitch Kp
-        ki        => to_float(MEMORY(16#08#)), -- Pitch Ki
-        kd        => to_float(MEMORY(16#09#)), -- Pitch Kd
-        SetPoint  => to_float(MEMORY(16#06#)), -- Wanted Pitch
-        Measured  => to_float(MEMORY(16#22#)), -- Measured Pitch around x-axis,
+        kp        => to_float(MEMORY(pitchP)), -- Pitch Kp
+        ki        => to_float(MEMORY(pitchI)), -- Pitch Ki
+        kd        => to_float(MEMORY(pitchD)), -- Pitch Kd
+        SetPoint  => to_float(MEMORY(pitchWanted)), -- Wanted Pitch
+        Measured  => to_float(MEMORY(gyroscopeI2CSlaveValuesX)), -- Measured Pitch around x-axis,
         Result    => RES_PITCH,
         ResultReady => pitchReady,
                 
@@ -142,11 +142,11 @@ begin
     Port map (
         MCLK      => MCLK,
         EN        => rollEn,
-        kp        => to_float(MEMORY(16#0C#)), -- ROLL Kp
-        ki        => to_float(MEMORY(16#0D#)), -- ROLL Ki
-        kd        => to_float(MEMORY(16#0E#)), -- ROLL Kd
-        SetPoint  => to_float(MEMORY(16#0B#)), -- Wanted ROLL
-        Measured  => to_float(MEMORY(16#24#)), -- Measured ROLL around y-axis,
+        kp        => to_float(MEMORY(rollP)), -- ROLL Kp
+        ki        => to_float(MEMORY(rollI)), -- ROLL Ki
+        kd        => to_float(MEMORY(rollD)), -- ROLL Kd
+        SetPoint  => to_float(MEMORY(rollWanted)), -- Wanted ROLL
+        Measured  => to_float(MEMORY(gyroscopeI2CSlaveValuesY)), -- Measured ROLL around y-axis,
         Result    => RES_ROLL,
         ResultReady => rollReady,
         
