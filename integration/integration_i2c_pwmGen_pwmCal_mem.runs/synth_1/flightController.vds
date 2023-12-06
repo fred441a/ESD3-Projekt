@@ -3,16 +3,16 @@
 # SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Mon Dec  4 15:28:17 2023
-# Process ID: 145538
+# Start of session at: Tue Dec  5 11:06:48 2023
+# Process ID: 186435
 # Current directory: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1
 # Command line: vivado -log flightController.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source flightController.tcl
 # Log file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.vds
 # Journal file: /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/vivado.jou
-# Running On: Lenova, OS: Linux, CPU Frequency: 2053.743 MHz, CPU Physical cores: 12, Host memory: 15517 MB
+# Running On: Lenova, OS: Linux, CPU Frequency: 1782.593 MHz, CPU Physical cores: 12, Host memory: 15517 MB
 #-----------------------------------------------------------
 source flightController.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1330.938 ; gain = 0.023 ; free physical = 5807 ; free virtual = 9311
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1331.801 ; gain = 0.023 ; free physical = 7073 ; free virtual = 11367
 Command: read_checkpoint -auto_incremental -incremental /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -20,28 +20,24 @@ Command: synth_design -top flightController -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
-INFO: [Vivado_Tcl 4-1810] synth_design options have changed between reference and incremental; A full resynthesis will be run
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 145564
+INFO: [Synth 8-7075] Helper process launched with PID 186465
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1996.840 ; gain = 378.770 ; free physical = 4817 ; free virtual = 8321
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1998.672 ; gain = 380.738 ; free physical = 6077 ; free virtual = 10370
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'flightController' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:48]
-WARNING: [Synth 8-614] signal 'INTERNAL_READY_FLAG' is read in the process but is not in the sensitivity list [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:148]
-WARNING: [Synth 8-614] signal 'sda_master' is read in the process but is not in the sensitivity list [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:148]
-WARNING: [Synth 8-614] signal 'scl_master' is read in the process but is not in the sensitivity list [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:148]
-WARNING: [Synth 8-614] signal 'sda_slave' is read in the process but is not in the sensitivity list [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:148]
-WARNING: [Synth 8-614] signal 'scl_slave' is read in the process but is not in the sensitivity list [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:148]
-INFO: [Synth 8-3491] module 'createCalibration' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:35' bound to instance 'pwmCal' of component 'createCalibration' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:167]
+INFO: [Synth 8-3491] module 'createCalibration' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:35' bound to instance 'pwmCal' of component 'createCalibration' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:157]
 INFO: [Synth 8-638] synthesizing module 'createCalibration' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
 INFO: [Synth 8-256] done synthesizing module 'createCalibration' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
-INFO: [Synth 8-3491] module 'pwmModule' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:34' bound to instance 'pwmGen' of component 'pwmModule' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:175]
+INFO: [Synth 8-3491] module 'pwmModule' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:34' bound to instance 'pwmGen' of component 'pwmModule' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:165]
 INFO: [Synth 8-638] synthesizing module 'pwmModule' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
 INFO: [Synth 8-256] done synthesizing module 'pwmModule' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
 	Parameter deviceAddress bound to: 8'b00001000 
-INFO: [Synth 8-3491] module 'I2C_EXTERNAL_ACCESS' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:6' bound to instance 'i2cExternal' of component 'I2C_EXTERNAL_ACCESS' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:185]
+INFO: [Synth 8-3491] module 'I2C_EXTERNAL_ACCESS' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:6' bound to instance 'i2cExternal' of component 'I2C_EXTERNAL_ACCESS' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:175]
 INFO: [Synth 8-638] synthesizing module 'I2C_EXTERNAL_ACCESS' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:21]
 	Parameter deviceAddress bound to: 8'b00001000 
 WARNING: [Synth 8-5640] Port 'read_done' is missing in component declaration [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:24]
@@ -51,7 +47,7 @@ INFO: [Synth 8-638] synthesizing module 'I2CSLAVE' [/home/fred441a/Documents/Uni
 	Parameter DEVICE bound to: 8'b00001000 
 INFO: [Synth 8-256] done synthesizing module 'I2CSLAVE' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2cslave.vhd:32]
 INFO: [Synth 8-256] done synthesizing module 'I2C_EXTERNAL_ACCESS' (0#1) [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:21]
-INFO: [Synth 8-3491] module 'change_sensor' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:35' bound to instance 'readSensor' of component 'change_sensor' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:199]
+INFO: [Synth 8-3491] module 'change_sensor' declared at '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:35' bound to instance 'readSensor' of component 'change_sensor' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:189]
 INFO: [Synth 8-638] synthesizing module 'change_sensor' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd:51]
 INFO: [Synth 8-638] synthesizing module 'Byte_compiler' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd:61]
 INFO: [Synth 8-638] synthesizing module 'Read_Byte' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd:51]
@@ -70,18 +66,18 @@ INFO: [Synth 8-256] done synthesizing module 'flightController' (0#1) [/home/fre
 WARNING: [Synth 8-7129] Port ADDRMemBus[7] in module Byte_compiler is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ADDRMemBus[6] in module Byte_compiler is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2088.809 ; gain = 470.738 ; free physical = 4715 ; free virtual = 8221
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2089.641 ; gain = 471.707 ; free physical = 5977 ; free virtual = 10272
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2106.621 ; gain = 488.551 ; free physical = 4703 ; free virtual = 8209
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2107.453 ; gain = 489.520 ; free physical = 5965 ; free virtual = 10260
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2106.621 ; gain = 488.551 ; free physical = 4703 ; free virtual = 8209
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2107.453 ; gain = 489.520 ; free physical = 5965 ; free virtual = 10260
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2106.621 ; gain = 0.000 ; free physical = 4703 ; free virtual = 8209
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2107.453 ; gain = 0.000 ; free physical = 5965 ; free virtual = 10259
 WARNING: [Netlist 29-1115] Found multi-term driver net: scl_slave.
 WARNING: [Netlist 29-1115] Found multi-term driver net: sda_slave.
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -94,35 +90,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/flightController_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2251.371 ; gain = 0.000 ; free physical = 4618 ; free virtual = 8123
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 5928 ; free virtual = 10222
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2251.371 ; gain = 0.000 ; free physical = 4618 ; free virtual = 8123
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 5928 ; free virtual = 10222
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4615 ; free virtual = 8121
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5926 ; free virtual = 10221
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4615 ; free virtual = 8120
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5926 ; free virtual = 10221
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4615 ; free virtual = 8120
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Preparing Guide Design
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Doing Graph Differ : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4613 ; free virtual = 8120
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Preparing Guide Design : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4613 ; free virtual = 8120
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5926 ; free virtual = 10221
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'i2c_master'
 INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'Read_Byte'
@@ -179,18 +168,8 @@ INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'change_sensor'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4614 ; free virtual = 8121
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5924 ; free virtual = 10220
 ---------------------------------------------------------------------------------
-
-
-Incremental Synthesis Report Summary:
-
-1. Incremental synthesis run: no
-
-   Reason for not running incremental synthesis : synth_design options have changed between reference and incremental
-
-
-INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -365,31 +344,31 @@ WARNING: [Synth 8-7129] Port ReadMem[2][8] in module Byte_compiler is either unc
 WARNING: [Synth 8-7129] Port ReadMem[2][7] in module Byte_compiler is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4605 ; free virtual = 8120
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5881 ; free virtual = 10186
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4604 ; free virtual = 8119
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5871 ; free virtual = 10176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4604 ; free virtual = 8119
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5871 ; free virtual = 10176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin scl with 1st driver pin 'readSensori_1992/z' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin scl with 2nd driver pin 'VCC' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin scl with 2nd driver pin 'GND' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
 CRITICAL WARNING: [Synth 8-6858] multi-driven net scl is connected to at least one constant driver which has been preserved, other driver is ignored [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin sda with 1st driver pin 'readSensori_1993/z' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin sda with 2nd driver pin 'VCC' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin sda with 2nd driver pin 'GND' [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
 CRITICAL WARNING: [Synth 8-6858] multi-driven net sda is connected to at least one constant driver which has been preserved, other driver is ignored [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd:36]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4604 ; free virtual = 8119
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5871 ; free virtual = 10176
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -406,39 +385,39 @@ Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6030] Inout pin 'scl_master' is read and/or written without using tristate logic. Proper direction of connection may be wrongly inferred. Please use specific direction to avoid any incorrect logic issue [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:36]
+CRITICAL WARNING: [Synth 8-6030] Inout pin 'scl_sensor' is read and/or written without using tristate logic. Proper direction of connection may be wrongly inferred. Please use specific direction to avoid any incorrect logic issue [/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/flightController.vhd:36]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4602 ; free virtual = 8117
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4602 ; free virtual = 8117
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4602 ; free virtual = 8117
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4602 ; free virtual = 8117
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4602 ; free virtual = 8117
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4602 ; free virtual = 8117
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -456,41 +435,45 @@ Report Cell Usage:
 +------+-------+------+
 |1     |BUFG   |     1|
 |2     |CARRY4 |    25|
-|3     |LUT1   |     7|
-|4     |LUT2   |   101|
-|5     |LUT3   |    61|
-|6     |LUT4   |    77|
-|7     |LUT5   |    77|
-|8     |LUT6   |    98|
-|9     |FDRE   |   314|
-|10    |IBUF   |     2|
-|11    |OBUF   |     5|
-|12    |OBUFT  |     2|
+|3     |LUT1   |     6|
+|4     |LUT2   |   305|
+|5     |LUT3   |    90|
+|6     |LUT4   |   168|
+|7     |LUT5   |  1320|
+|8     |LUT6   |   677|
+|9     |MUXF7  |   139|
+|10    |MUXF8  |     3|
+|11    |FDRE   |  1831|
+|12    |IBUF   |     2|
+|13    |IOBUF  |     1|
+|14    |OBUF   |     5|
+|15    |OBUFT  |     1|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4602 ; free virtual = 8117
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 7 critical warnings and 1482 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2251.371 ; gain = 488.551 ; free physical = 4601 ; free virtual = 8117
-Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2251.371 ; gain = 633.301 ; free physical = 4601 ; free virtual = 8117
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2253.203 ; gain = 489.520 ; free physical = 5848 ; free virtual = 10153
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2253.203 ; gain = 635.270 ; free physical = 5848 ; free virtual = 10153
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2251.371 ; gain = 0.000 ; free physical = 4858 ; free virtual = 8373
-INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 2 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 6136 ; free virtual = 10441
+INFO: [Netlist 29-17] Analyzing 168 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2251.371 ; gain = 0.000 ; free physical = 4893 ; free virtual = 8408
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2253.203 ; gain = 0.000 ; free physical = 6129 ; free virtual = 10434
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: acf54b7d
+Synth Design complete | Checksum: 26fb158c
 INFO: [Common 17-83] Releasing license: Synthesis
-57 Infos, 109 Warnings, 7 Critical Warnings and 0 Errors encountered.
+59 Infos, 104 Warnings, 7 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:35 . Memory (MB): peak = 2251.371 ; gain = 920.434 ; free physical = 4893 ; free virtual = 8408
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1862.555; main = 1527.716; forked = 381.948
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3188.703; main = 2251.371; forked = 969.348
+synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:36 . Memory (MB): peak = 2253.203 ; gain = 921.402 ; free physical = 6129 ; free virtual = 10434
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1844.396; main = 1512.957; forked = 378.700
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3190.535; main = 2253.203; forked = 969.348
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint '/home/fred441a/Documents/Uni/Projekt/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file flightController_utilization_synth.rpt -pb flightController_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Dec  4 15:29:01 2023...
+INFO: [Common 17-206] Exiting Vivado at Tue Dec  5 11:07:33 2023...

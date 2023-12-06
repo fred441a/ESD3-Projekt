@@ -37,7 +37,7 @@ entity change_sensor is
         clk : in STD_LOGIC;
         scl : inout STD_LOGIC;
         sda : inout STD_LOGIC;
-
+        
         EN : IN STD_LOGIC;
 
         WriteMemBus : inout STD_LOGIC_VECTOR( 31 downto 0 );

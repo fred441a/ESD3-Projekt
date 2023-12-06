@@ -38,8 +38,8 @@ entity flightController is
   CLK :                 in std_logic;
   scl_slave:            inout std_logic;
   sda_slave:            inout std_logic;
-  scl_master:           inout std_logic;
-  sda_master:           inout std_logic;
+  scl_sensor:           inout std_logic;
+  sda_sensor:           inout std_logic;
   -- emergency_stop:    in std_logic;
   PWM:                  out std_logic_vector (3 downto 0)
   );
@@ -103,8 +103,8 @@ architecture Behavioral of flightController is
     signal calibrationPwmOut    : std_logic_vector(7 downto 0);
     signal calibrationPwmFinish : std_logic;
 
-    signal sda_master_buffer : std_logic ;
-    signal scl_master_buffer : std_logic ;
+    signal sda_master : std_logic ;
+    signal scl_master : std_logic ;
     
     signal EXTERNAL_WRITE_ADDRESS : std_logic_vector(7 downto 0);
     signal EXTERNAL_WRITE_DATA    : std_logic_vector(31 downto 0);
@@ -116,6 +116,15 @@ architecture Behavioral of flightController is
 
 	
 begin
+
+    sda_sensor <= (sda_master and INTERNAL_READY_FLAG)or(sda_slave and not INTERNAL_READY_FLAG);
+    scl_sensor <= (scl_master and INTERNAL_READY_FLAG)or(scl_slave and not INTERNAL_READY_FLAG);
+
+    sda_master <= sda_sensor and INTERNAL_READY_FLAG;
+    scl_master <= scl_sensor and INTERNAL_READY_FLAG;
+
+    sda_slave <= sda_sensor and not INTERNAL_READY_FLAG;
+    scl_slave <= scl_sensor and not INTERNAL_READY_FLAG;
     
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 
@@ -144,25 +153,6 @@ begin
 --            end if;
         end if;
     end process;
-
-    Slave2MasterConnect : process (CLK)
-    begin
-        CASE INTERNAL_READY_FLAG IS
-            WHEN '1' =>
-                sda_master_buffer <= sda_master;
-                scl_master_buffer <= scl_master;
-            WHEN '0' =>
-                sda_master_buffer <= '1';
-                scl_master_buffer <= '1';
-                sda_master <= sda_master or sda_slave;
-                scl_master <= scl_master or scl_slave;
-                sda_slave <= sda_master or sda_slave;
-                scl_slave <= scl_master or scl_slave;
-
-        END CASE;
-
-    end process;
-
 
     pwmCal: createCalibration
     port map (
@@ -199,8 +189,8 @@ begin
     readSensor: change_sensor
     port map(
         clk => CLK,
-        scl => scl_master_buffer,
-        sda => sda_master_buffer,
+        scl => scl_master,
+        sda => sda_master,
         EN => INTERNAL_READY_FLAG,
         WriteMemBus => SENSOR_WRITE_DATA,
         ADDRMemBus => SENSOR_WRITE_ADDRESS,

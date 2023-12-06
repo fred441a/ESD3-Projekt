@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (lin64) Build 3865809 Sun May  7 15:04:56 MDT 2023
-| Date         : Mon Dec  4 15:30:08 2023
+| Date         : Tue Dec  5 11:08:11 2023
 | Host         : Lenova running 64-bit Debian GNU/Linux trixie/sid
 | Command      : report_control_sets -verbose -file flightController_control_sets_placed.rpt
 | Design       : flightController
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    28 |
-|    Minimum number of control sets                        |    28 |
+| Total control sets                                       |    70 |
+|    Minimum number of control sets                        |    70 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    94 |
+| Unused register locations in slices containing registers |    49 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    28 |
-| >= 0 to < 4        |     5 |
+| Total control sets |    70 |
+| >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     2 |
-| >= 6 to < 8        |     2 |
-| >= 8 to < 10       |     8 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |    10 |
 | >= 10 to < 12      |     1 |
-| >= 12 to < 14      |     5 |
-| >= 14 to < 16      |     0 |
-| >= 16              |     5 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    51 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,49 +58,91 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              53 |           27 |
+| No           | No                    | No                     |              63 |           31 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              16 |            5 |
-| Yes          | No                    | No                     |             191 |           57 |
+| Yes          | No                    | No                     |            1648 |          610 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              54 |           18 |
+| Yes          | Yes                   | No                     |             104 |           28 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+------------------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
-|  Clock Signal  |                           Enable Signal                          |                        Set/Reset Signal                        | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------+------------------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
-| ~CLK_IBUF_BUFG | i2cExternal/E[0]                                                 |                                                                |                1 |              1 |         1.00 |
-| ~CLK_IBUF_BUFG |                                                                  |                                                                |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32                                            | i2cExternal/BUFFER_8[0]_i_1_n_0                                |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/address_i[0]_i_1_n_0                        |                                                                |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS[0]_i_2_n_0                             | i2cExternal/WRITE_ADDRESS[0]_i_1_n_0                           |                1 |              2 |         2.00 |
-|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/state[3]_i_1_n_0                            |                                                                |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/memory_reg[22][0][0]                    |                                                                |                2 |              4 |         2.00 |
-|  CLK_IBUF_BUFG |                                                                  | pwmGen/p_0_in                                                  |                2 |              7 |         3.50 |
-|  CLK_IBUF_BUFG | pwmCal/count0                                                    | pwmCal/count[6]_i_1__1_n_0                                     |                3 |              7 |         2.33 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/I2C_Master/data_rd[7]_i_1_n_0 |                                                                |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/E[1]                          | readSensor/Byte_compiler/MemWrite_reg0                         |                2 |              8 |         4.00 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/E[2]                          | readSensor/Byte_compiler/MemWrite_reg0                         |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/E[0]                          | readSensor/Byte_compiler/MemWrite_reg0                         |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/E[3]                          | readSensor/Byte_compiler/MemWrite_reg0                         |                1 |              8 |         8.00 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/I2C_Master/addr_rw0           |                                                                |                2 |              8 |         4.00 |
-|  CLK_IBUF_BUFG |                                                                  | readSensor/Byte_compiler/Read_Byte/I2C_Master/count[8]_i_1_n_0 |                3 |              9 |         3.00 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/I2C_Master/busy1              |                                                                |                2 |              9 |         4.50 |
-|  CLK_IBUF_BUFG | pwmGen/p_0_in                                                    |                                                                |                3 |             11 |         3.67 |
-|  CLK_IBUF_BUFG | pwmCal/clkDivider[11]_i_2_n_0                                    | pwmCal/clkDivider[11]_i_1_n_0                                  |                4 |             12 |         3.00 |
-| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/E[0]                                    |                                                                |                4 |             12 |         3.00 |
-| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/MemWrite_reg_0[0]                       |                                                                |                3 |             12 |         4.00 |
-| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[1]_0[0]                  |                                                                |                4 |             12 |         3.00 |
-| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[5][0]                    |                                                                |                5 |             12 |         2.40 |
-|  CLK_IBUF_BUFG | pwmCal/output[7]_i_1_n_0                                         |                                                                |                5 |             16 |         3.20 |
-|  CLK_IBUF_BUFG | readSensor/ADDRMemBus[5]_i_1_n_0                                 |                                                                |                7 |             17 |         2.43 |
-|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/WaitClock                     |                                                                |                8 |             32 |         4.00 |
-| ~CLK_IBUF_BUFG | pwmCal/E[0]                                                      |                                                                |                6 |             32 |         5.33 |
-|  CLK_IBUF_BUFG |                                                                  |                                                                |               26 |             52 |         2.00 |
-+----------------+------------------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
++----------------+--------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                      Enable Signal                     |                        Set/Reset Signal                        | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
+| ~CLK_IBUF_BUFG |                                                        |                                                                |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/state[3]_i_1_n_0                  |                                                                |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG | readSensor/Byte_compiler/memory_reg[22][0][0]          |                                                                |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG |                                                        | pwmGen/p_0_in                                                  |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[7]_i_1_n_0                       | i2cExternal/BUFFER_32                                          |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | pwmCal/count0                                          | pwmCal/count[6]_i_1__1_n_0                                     |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/I2C_Master/addr_rw0 |                                                                |                4 |              8 |         2.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/shiftreg[7]_i_1_n_0               |                                                                |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/DATA_OUT[7]_i_1_n_0               |                                                                |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[23]_i_1_n_0                      | i2cExternal/BUFFER_32                                          |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[15]_i_1_n_0                      | i2cExternal/BUFFER_32                                          |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/address_i[7]_i_1_n_0              |                                                                |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/DATA_IN[7]_i_1_n_0                         |                                                                |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[31]_i_1_n_0                      | i2cExternal/BUFFER_32                                          |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/I2C_Master/busy1    |                                                                |                2 |              9 |         4.50 |
+|  CLK_IBUF_BUFG |                                                        | readSensor/Byte_compiler/Read_Byte/I2C_Master/count[8]_i_1_n_0 |                3 |              9 |         3.00 |
+|  CLK_IBUF_BUFG | pwmGen/p_0_in                                          |                                                                |                4 |             11 |         2.75 |
+|  CLK_IBUF_BUFG | pwmCal/clkDivider[11]_i_2_n_0                          | pwmCal/clkDivider[11]_i_1_n_0                                  |                4 |             12 |         3.00 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32                                  | i2cExternal/BUFFER_8[7]_i_1_n_0                                |                4 |             14 |         3.50 |
+|  CLK_IBUF_BUFG | pwmCal/output[7]_i_1_n_0                               |                                                                |                4 |             16 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/E[0]                                       |                                                                |                6 |             31 |         5.17 |
+| ~CLK_IBUF_BUFG | i2cExternal/ADDRMemBus_reg[0]_rep__9[0]                |                                                                |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_1[0]                  |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_2[0]                  |                                                                |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_10[0]                 |                                                                |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_0[0]                  |                                                                |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_6[0]                  |                                                                |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_4[0]                  |                                                                |               16 |             32 |         2.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_0[0]                  |                                                                |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_2[0]                  |                                                                |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_4[0]                  |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_5[0]                  |                                                                |               15 |             32 |         2.13 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_7[0]                  |                                                                |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_1[0]                  |                                                                |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_2[0]                  |                                                                |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_0[0]                         |                                                                |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[2][0]          |                                                                |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[2]_rep__12[0]  |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_4[0]                  |                                                                |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_5[0]                  |                                                                |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_2[0]                  |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_7[0]                  |                                                                |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_8[0]                  |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_9[0]                  |                                                                |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_1[0]                  |                                                                |               15 |             32 |         2.13 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_2[0]                  |                                                                |               11 |             32 |         2.91 |
+|  CLK_IBUF_BUFG | readSensor/Byte_compiler/Read_Byte/WaitClock           |                                                                |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[2]_rep__8_1[0] |                                                                |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[3][0]          |                                                                |               15 |             32 |         2.13 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[3]_0[0]        |                                                                |               15 |             32 |         2.13 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[4]_1[0]        |                                                                |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[4]_2[0]        |                                                                |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[5]_0[0]        |                                                                |               18 |             32 |         1.78 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[5]_1[0]        |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[5]_2[0]        |                                                                |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[5]_3[0]        |                                                                |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[5]_4[0]        |                                                                |               20 |             32 |         1.60 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/E[0]                          |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/MemWrite_reg_0[0]             |                                                                |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/MemWrite_reg_1[0]             |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/ADDRMemBus_reg[1]_rep__13[0]  |                                                                |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_3[0]                  |                                                                |               17 |             32 |         1.88 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_4[0]                  |                                                                |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_0[0]                  |                                                                |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_1[0]                  |                                                                |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_3[0]                  |                                                                |                7 |             32 |         4.57 |
+| ~CLK_IBUF_BUFG | readSensor/Byte_compiler/MemWrite_reg_2[0]             |                                                                |               19 |             32 |         1.68 |
+|  CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS[7]_i_2_n_0                   | i2cExternal/WRITE_ADDRESS[7]_i_1_n_0                           |                7 |             40 |         5.71 |
+|  CLK_IBUF_BUFG | readSensor/ADDRMemBus[5]_i_1_n_0                       |                                                                |               23 |             61 |         2.65 |
+|  CLK_IBUF_BUFG |                                                        |                                                                |               30 |             62 |         2.07 |
++----------------+--------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+--------------+
 
 
