@@ -54,7 +54,7 @@ architecture Behavioral of matrix is
 
 component fpu is
     port (
-    CLK: in            std_logic;
+    CLK: in             std_logic;
     input0: in          float32;
     input1: in          float32;
     opVal: in           STD_LOGIC_VECTOR (1 downto 0);
@@ -63,41 +63,39 @@ component fpu is
 end component;
 
 -- These values are the inv og dist matrix. Take directly from Matlab Script
-signal pitchRollVal:            float32:= to_float(5760.0);
+signal pitchRollVal:            float32:= to_float(81460);
 signal yawVal:                  float32:= to_float(178570.0);
-signal latVal:                  float32:= to_float(1786.0);
+signal latVal:                  float32:= to_float(17860.0);
 -- Matlab script stops
-signal liftConst:                   float32:= to_float((3.3)*0.2250); -- Dette her er et dummie tal 
+signal liftConst:                   float32:= to_float((((2600)*0.9)/4)); -- Dette her er det rigtige TAL
 --
 
-signal r0:  float32;
-signal r1:  float32;
-signal r2:  float32;
-signal r3:  float32;
+signal c0:  float32;
+signal c1:  float32;
+signal c2:  float32;
+signal c3:  float32;
 signal opVal:                       std_logic_vector (1 downto 0) := (others => '0');
 
 signal        data0:     float32;
 signal        data1:     float32;
 signal        op:        std_logic_vector (1 downto 0);
 signal        inData:    float32;
-
-signal        temp:      float32;
 signal        tempRes:   float32 := (others => '0');
 
-type tstate is (MULTr0, MULTr1, MULTr2, MULTr3, PLUSc0, PLUSc1, PLUSc2, PLUSc3, READr0, READr1, READr2, READr3);
-signal state    :tstate := MULTr0;
+type tstate is (MULTc0, MULTc1, MULTc2, MULTc3, PLUSr0, PLUSr1, PLUSr2, PLUSr3, READc0, READc1, READc2, READc3);
+signal state    :tstate := MULTc0;
 
-type tstatec0 is (PLUSc00, PLUSc01, PLUSc02, PLUSc03, READc00, READc01, READc02);
-signal c0state   :tstatec0 :=PLUSc01;
+type tstateR0 is (PLUSr00, PLUSr01, PLUSr02, PLUSr03, READr00, READr01, READr02, READr03);
+signal r0state   :tstateR0 :=PLUSr00;
 
-type tstatec1 is (PLUSc10, PLUSc11, PLUSc12, PLUSc13, READc10, READc11, READc12);
-signal c1state   :tstatec1 :=PLUSc10;
+type tstateR1 is (PLUSr10, PLUSr11, PLUSr12, PLUSr13, READr10, READr11, READr12, READr13);
+signal r1state   :tstater1 :=PLUSr10;
 
-type tstatec2 is (PLUSc20, PLUSc21, PLUSc22, PLUSc23, READc20, READc21, READc22);
-signal c2state   :tstatec2 :=PLUSc20;
+type tstateR2 is (PLUSr20, PLUSr21, PLUSr22, PLUSr23, READr20, READr21, READr22, READr23);
+signal r2state   :tstater2 :=PLUSr20;
 
-type tstatec3 is (PLUSc30, PLUSc31, PLUSc32, PLUSc33, READc30, READc31, READc32);
-signal c3state   :tstatec3 :=PLUSc30;
+type tstateR3 is (PLUSr30, PLUSr31, PLUSr32, PLUSr33, READr30, READr31, READr32, READr33);
+signal r3state   :tstateR3 :=PLUSr30;
 begin
 
 fpuCalculations: fpu
@@ -113,174 +111,206 @@ process(MCLK)
 
 begin
 if(MCLK'event and MCLK = '1') then
+
     case  state is 
-        when MULTr0 =>
+        when MULTc0 =>
             data0 <= pitchRollVal;
             data1 <= pidPitch;
             op <= "11";
-            state <= READr0;
-        when READr0 =>
-            r0 <= inData;
-            state <= MULTr1;
+            state <= READc0;
+        when READc0 =>
+            c0 <= inData;
+            state <= MULTc1;
                 
-        when MULTr1 =>
+        when MULTc1 =>
             data0 <= pitchRollVal;
             data1 <= pidRoll;
             op <= "11";
-            state <= READr1;
-        when READr1 =>                    
-            r1 <= inData;
-            state <= MULTr2;
+            state <= READc1;
+        when READc1 =>                    
+            c1 <= inData;
+            state <= MULTc2;
             
-        when MULTr2 =>
+        when MULTc2 =>
             data0 <= yawVal;
             data1 <= pidYaw;
             op <= "11";
-            state <= READr2;
-        when READr2 =>                   
-            r2 <= inData;
-            state <= MULTr3;
+            state <= READc2;
+        when READc2 =>                   
+            c2 <= inData;
+            state <= MULTc3;
             
-        when MULTr3 =>
+        when MULTc3 =>
             data0 <= latVal;
             data1 <= pidLat;
             op <= "11";
-            state <= READr3;
-        when READr3 =>                 
-            r3 <= inData;
-            state <= PLUSc0;
-        when PLUSc0 =>
-            case c0state is
-                when PLUSc00 =>
-                    data0 <= r0;
-                    data1 <= r1;
+            state <= READc3;
+        when READc3 =>                 
+            c3 <= inData;
+            state <= PLUSr0;
+        when PLUSr0 =>
+            case r0state is
+                when PLUSr00 =>
+                    data0 <= c0;
+                    data1 <= c1;
                     op <= "01"; -- plus
-                    c0state <= READc00;
-                when READc00 =>     
-                    temp <= inData;
-                    tempRes <= temp;
-                    c0state <= PLUSc01;
+                    r0state <= READr00;
+                when READr00 =>     
+                    tempRes <= inData;
+                    r0state <= PLUSr01;
                     
-                when PLUSc01 =>
+                when PLUSr01 =>
                     data0 <= tempRes;
-                    data1 <= r2;
+                    data1 <= c2;
                     op <= "01"; --plus
-                    c0state <= READc01;
-               when READc01 =>     
-                    temp <= inData;
-                    tempRes <= tempRes + temp;
-                    c0state <= PLUSc02;
+                    r0state <= READr01;
+               when READr01 =>     
+                    tempRes <= inData;
+                    r0state <= PLUSr02;
                     
-                when PLUSc02 =>
+                when PLUSr02 =>
                     data0 <= tempRes;
-                    data1 <= r3;
+                    data1 <= c3;
                     op <= "01"; --Plus
-                    c0state <= READc02;
-                when READc02 =>    
-                    temp <= inData;
-                    ch0 <= tempRes + temp;
+                    r0state <= READr02;
+                when READr02 =>    
+                    tempRes <= inData;
+                    r0state <= PLUSr03;
+                    
+               when PLUSr03 => 
+                    data0 <= tempRes;
+                    data1 <= liftConst;
+                    opval <= "01";
+                    r0state <= READr03;
+               when READr03 =>
+                    ch0 <= inData;
+                    r0state<=PLUSr00;
+                    state <= PLUSr1;
                 when others =>
                 end case;
-       state <= PLUSc1;
        
-       when PLUSc1 =>
-            case c1state is
-                when PLUSc10 =>
-                    data0 <= r0;
-                    data1 <= r1;
+       
+       when PLUSr1 =>
+            case r1state is
+                when PLUSr10 =>
+                    data0 <= c0;
+                    data1 <= c1;
                     op <= "10"; --Minus
-                    c1state <= READc10;
-                when READc10 =>     
-                    temp <= inData;
-                    tempRes <=temp;
-                    c1state <= PLUSc11;
+                    r1state <= READr10;
+                when READr10 =>     
+                    tempRes <= inData;
+                    r1state <= PLUSr11;
                     
-                when PLUSc11 =>
+                when PLUSr11 =>
                     data0 <= tempRes;
-                    data1 <= r2;
+                    data1 <= c2;
                     op <= "10"; --minus
-                    c1state <= READc11;
-               when READc11 =>     
-                    temp <= inData;
-                    tempRes <= tempRes + temp;
-                    c1state <= PLUSc12;
+                    r1state <= READr11;
+               when READr11 =>     
+                    tempRes <= inData;
+                    r1state <= PLUSr12;
                     
-                when PLUSc12 =>
+                when PLUSr12 =>
                     data0 <= tempRes;
-                    data1 <= r3;
+                    data1 <= c3;
                     op <= "01"; --plus
-                    c1state <= READc12;
-                when READc12 =>    
-                    temp <= inData;
-                    ch1 <= tempRes + temp;
+                    r1state <= READr12;
+                when READr12 =>    
+                    tempRes <= inData;
+                    r1state <= PLUSr13;
+                    
+               when PLUSr13 => 
+                    data0 <= tempRes;
+                    data1 <= liftConst;
+                    opval <= "01";
+                    r1state <= READr13;
+               when READr13 =>
+                    ch1 <= inData;
+                    r1state<=PLUSr10;
+                    state <= PLUSr2;
                 when others =>
                 end case;
-        state <= PLUSc2;
-       when PLUSc2 =>
-            case c2state is
-                when PLUSc20 =>
-                    data0 <= r3;
-                    data1 <= r2;
+                
+       when PLUSr2 =>
+            case r2state is
+                when PLUSr20 =>
+                    data0 <= c3;
+                    data1 <= c2;
                     op <= "01"; --Plus
-                    c2state <= READc20;
-                when READc20 =>     
-                    temp <= inData;
-                    tempRes <= temp;
-                    c2state <= PLUSc21;
+                    r2state <= READr20;
+                when READr20 =>     
+                    tempRes <= inData;
+                    r2state <= PLUSr21;
                     
-                when PLUSc21 =>
+                when PLUSr21 =>
                     data0 <= tempRes;
-                    data1 <= r1;
-                    op <= "10"; --Plus
-                    c2state <= READc21;
-               when READc21 =>     
-                    temp <= inData;
-                    tempRes <= tempRes + temp;
-                    c2state <= PLUSc22;
-                    
-                when PLUSc22 =>
-                    data0 <= tempRes;
-                    data1 <= r0;
+                    data1 <= c1;
                     op <= "10"; --minus
-                    c2state <= READc22;
-                when READc22 =>    
-                    temp <= inData;
-                    ch2 <= tempRes + temp;
+                    r2state <= READr21;
+               when READr21 =>     
+                    tempRes <= inData;
+                    r2state <= PLUSr22;
+                    
+                when PLUSr22 =>
+                    data0 <= tempRes;
+                    data1 <= c0;
+                    op <= "10"; --minus
+                    r2state <= READr22;
+                when READr22 =>    
+                    tempRes <= inData;
+                    r2state <= PLUSr23;
+                    
+               when PLUSr23 => 
+                    data0 <= tempRes;
+                    data1 <= liftConst;
+                    opval <= "01";
+                    r2state <= READr23;
+               when READr23 =>
+                    ch2 <= inData;
+                    r2state<=PLUSr20;
+                    state <= PLUSr3;
                 when others =>
                 end case;
-       state <= PLUSc2;
-       when PLUSc3 =>
-            case c3state is
-                when PLUSc30 =>
-                    data0 <= r3;
-                    data1 <= r2;
+       when PLUSr3 =>
+            case r3state is
+                when PLUSr30 =>
+                    data0 <= c3;
+                    data1 <= c2;
                     op <= "10"; --minus
-                    c3state <= READc30;
-                when READc30 =>     
-                    temp <= inData;
-                    tempRes <= temp;
-                    c3state <= PLUSc31;
+                    r3state <= READr30;
+                when READr30 =>     
+                    tempRes <= inData;
+                    r3state <= PLUSr31;
                     
-                when PLUSc31 =>
+                when PLUSr31 =>
                     data0 <= tempRes;
-                    data1 <= r1;
+                    data1 <= c1;
                     op <= "01"; --plus
-                    c3state <= READc31;
-               when READc31 =>     
-                    temp <= inData;
-                    tempRes <= tempRes + temp;
-                    c3state <= PLUSc32;
+                    r3state <= READr31;
+               when READr31 =>     
+                    tempRes <= inData;
+                    r3state <= PLUSr32;
                     
-                when PLUSc32 =>
+                when PLUSr32 =>
                     data0 <= tempRes;
-                    data1 <= r0;
+                    data1 <= c0;
                     op <= "10"; --minus
-                    c3state <= READc32;
-                when READc32 =>    
-                    temp <= inData;
-                    ch3 <= tempRes + temp;
+                    r3state <= READr32;
+                when READr32 =>    
+                    tempRes <= inData;
+                    r3state <= PLUSr33;
+                    
+               when PLUSr33 => 
+                    data0 <= tempRes;
+                    data1 <= liftConst;
+                    opval <= "01";
+                    r3state <= READr33;
+               when READr33 =>
+                    ch3 <= inData;
+                    r3state<=PLUSr30;
+                    state <= MULTc0;
                 when others =>
-                end case;    
+                end case;  
        when others =>
        end case;
        

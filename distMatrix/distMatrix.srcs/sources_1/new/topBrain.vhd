@@ -34,7 +34,7 @@ use ieee.numeric_std.all;
 
 entity topBrain is
   Port ( 
-  CLK:      in STD_logic;
+  CLK:      in  STD_logic;
   cha0:     out std_logic_vector (7 downto 0);
   cha1:     out std_logic_vector (7 downto 0);
   cha2:     out std_logic_vector (7 downto 0);
@@ -49,6 +49,10 @@ entity topBrain is
 end topBrain;
 
 architecture Behavioral of topBrain is
+--signal pitchPid:        float32:=to_float(-0.000);
+--signal rollPid:         float32:=to_float(-0.0009);
+--signal yawPid:          float32:=to_float(0.0003);
+--signal latPid:          float32:=to_float(0.0004);
   
 component matrix is
     port (
@@ -61,7 +65,9 @@ component matrix is
     ch0: out float32;
     ch1: out float32;
     ch2: out float32;
-    ch3: out float32
+    ch3: out float32;
+    
+    debug2: out std_logic
     );
 end component;
 
@@ -76,7 +82,9 @@ component pwmMap is
     outCh0: out         std_logic_vector(7 downto 0);
     outCh1: out         std_logic_vector(7 downto 0);
     outCh2: out         std_logic_vector(7 downto 0);
-    outCh3: out         std_logic_vector(7 downto 0)
+    outCh3: out         std_logic_vector(7 downto 0);
+    
+    debug1: out         std_logic
     );
 end component;
 
@@ -112,7 +120,7 @@ port map (
     outch0 => cha0,
     outch1 => cha1,    
     outch2 => cha2,
-    outch3 => cha3    
+    outch3 => cha3
 );
     
 end Behavioral;
