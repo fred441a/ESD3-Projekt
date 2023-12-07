@@ -1,7 +1,7 @@
 // Integrationtest of ESP/FPGA/Sensors
 
 #define FPGAAddress 0x08         // I2C address of the FPGA
-#define READ_SENSOR_I2C_WORKS 0  // Conditional compiling variable to change if the running code uses the FPGA as i2c master or if the ESP is the I2C master
+#define READ_SENSOR_I2C_WORKS 1  // Conditional compiling variable to change if the running code uses the FPGA as i2c master or if the ESP is the I2C master
 #define builtInLED 2             // Builtin LED pin for debugging
 
 #include <Adafruit_MPU6050.h>
@@ -60,6 +60,7 @@ void setup(void) {
   // power
   Serial.println(F("VL53L0X API Simple Ranging example\n\n"));
   Serial.println("Calibration done");
+  setupFPGA();
   readyFPGA();                     // Sending ready signal for FPGA
   digitalWrite(builtInLED, HIGH);  // Sets the builtInLED on so we know when to switch the physical switch
   delay(15000);                    // Delay while the FPGA is setting up
@@ -70,7 +71,7 @@ void loop() {
 #if READ_SENSOR_I2C_WORKS == 1
   getData();
   delay(1000);
-  Serial.println("Starter forfra");
+  //Serial.println("Starter forfra");
 #else
   //   Get a new normalized sensor event
   sensors_event_t accel;
@@ -104,36 +105,19 @@ void loop() {
   Serial.println();
 
   delay(100);
-
-//   serial plotter friendly format
-/*Serial.print(temp.temperature);
-  Serial.print(",");
-
-  Serial.print(accel.acceleration.x);
-  Serial.print(",");
-  Serial.print(accel.acceleration.y);
-  Serial.print(",");
-  Serial.print(accel.acceleration.z);
-  Serial.print(",");
-
-  Serial.print(gyro.gyro.x);
-  Serial.print(",");
-  Serial.print(gyro.gyro.y);
-  Serial.print(",");
-  Serial.print(gyro.gyro.z);
-  Serial.println();
-  delay(10);*/
-
-//Serial.print("Reading a measurement... ");
-//lox.rangingTest(&measure, false);  // pass in 'true' to get debug data printout!
-
-/*if (measure.RangeStatus != 4) {  // phase failures have incorrect data
-    Serial.print("Distance (mm): ");
-    Serial.println(measure.RangeMilliMeter);
-  } else {
-    Serial.println(" out of range ");
-  }*/
 #endif
+}
+
+void setupFPGA() {
+  // setup altitude
+  // writeToAddress(FPGAAddress, 0x16, b00000000000000000000001100000001 | (0x00000052 << 1)); // addr: 0x52 
+  // writeToAddress(FPGAAddress, 0x17, 0x00004344); // Z-axis MSB: 0x LSB: 0x
+
+  // setup gyro
+  writeToAddress(FPGAAddress, 0x20, 0b00000000000000000000001100000001 | 0x00000068); // addr: 0x68 
+  writeToAddress(FPGAAddress, 0x21, 0x00004344); // X-axis MSB: 0x43 LSB: 0x44 
+  writeToAddress(FPGAAddress, 0x23, 0x00004546); // Y-axis MSB: 0x46 LSB: 0x46
+  writeToAddress(FPGAAddress, 0x25, 0x00004748); // Z-axis MSB: 0x47 LSB: 0x48
 }
 
 void readyFPGA() {
@@ -141,14 +125,13 @@ void readyFPGA() {
 }
 
 void getData() {
-  // writte to all registers
-  //writeToAddress(SLAVE_ADDR, 0x01, 0xffffffff);
-  //for (int i = 2; i <= 45; i++)
-  //   writeToAddress(SLAVE_ADDR, i, 0x18192021);
-
   // read all register values
-  for (int i = 1; i <= 45; i++)
-    readFromAddress(FPGAAddress, i);
+    
+  readFromAddress(FPGAAddress, 0x01); // setup
+  readFromAddress(FPGAAddress, 0x18); // alt z
+  readFromAddress(FPGAAddress, 0x22); // gyro x
+  readFromAddress(FPGAAddress, 0x24); // gyro y
+  readFromAddress(FPGAAddress, 0x26); // gyro z
 }
 
 void writeToAddress(uint8_t slaveAddress, uint8_t regAddress, uint32_t data) {
