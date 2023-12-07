@@ -41,8 +41,7 @@ entity pwmMap is
     ch1: in             float32;
     ch2: in             float32;
     ch3: in             float32;
-    
-    
+   
     outCh0: out         std_logic_vector(7 downto 0);
     outCh1: out         std_logic_vector(7 downto 0);
     outCh2: out         std_logic_vector(7 downto 0);
@@ -59,11 +58,21 @@ signal ch1conv:         float32;
 signal ch2conv:         float32;
 signal ch3conv:         float32;
 
+type tswitch is (DESCALE, CLAMP, OUTPUT);
+signal switch   :tswitch := DESCALE;
+
+--signal ch0: float32 :=to_float(50);
+--signal ch1: float32 :=to_float(900);
+--signal ch2: float32 :=to_float(350);
+--signal ch3: float32 :=to_float(700);
+
 -- Bruges til at omskrive float32 to stdLogic32
 function float32ToInteger(float_input : std_logic_vector(31 downto 0)) return std_logic_vector is
     variable exponent, shift, fractionInt : INTEGER := 0;
     variable sign : BOOLEAN;
     variable fraction : unsigned(22 downto 0);
+   
+    
   begin
     sign := float_input(31) = '1'; -- get sign
     exponent := to_integer(unsigned(float_input(30 downto 23))) - 127; --take exponent and subtract bias
@@ -85,39 +94,54 @@ function float32ToInteger(float_input : std_logic_vector(31 downto 0)) return st
 begin
 
 process(MCLK)
+
 begin
 if(MCLK'event and MCLK = '1') then
 
-        if (stateSwitch = 0) then
-            ch0conv <= ch0*0.32;
+case switch is
+
+    when DESCALE =>
+        ch0conv <= ch0*0.32;
+        ch1conv <= ch1*0.32;
+        ch2conv <= ch2*0.32;
+        ch3conv <= ch3*0.32;
+        switch <= CLAMP;
+        
+    when CLAMP =>
             if (ch0conv > 255) then
                 ch0conv <= to_float(255.0);
-            end if;    
-        Outch0 <= float32ToInteger(to_Std_Logic_Vector(ch0conv))(7 downto 0);
-     
-        elsif(stateSwitch = 1) then
-        ch1conv <= ch1*0.32;
+            elsif (ch0conv < 1) then
+                ch0conv <= to_float(1.0);
+            end if;
+            
             if (ch1conv > 255) then
                 ch1conv <= to_float(255.0);
+            elsif (ch1conv < 1) then
+                ch1conv <= to_float(1.0);                
             end if;
-        Outch1 <= float32ToInteger(to_Std_Logic_Vector(ch1conv))(7 downto 0);
-           
-        elsif(stateSwitch = 2) then
-        ch2conv <= ch2*0.32;
-            if (ch2conv > 255) then
+            
+             if (ch2conv > 255) then
                 ch2conv <= to_float(255.0);
+            elsif (ch2conv < 1) then
+                ch2conv <= to_float(1.0);
             end if;
-        Outch2 <= float32ToInteger(to_Std_Logic_Vector(ch2conv))(7 downto 0);
-      
-        elsif(stateSwitch = 3) then
-        ch3conv <= ch3*0.32;
-            if (ch3conv > 255) then
+            
+             if (ch3conv > 255) then
                 ch3conv <= to_float(255.0);
-            end if;
-        Outch3 <= float32ToInteger(to_Std_Logic_Vector(ch3conv))(7 downto 0);            
-        end if;
-    
-    stateSwitch <= stateSwitch + 1;
+            elsif (ch3conv < 1) then
+                ch3conv <= to_float(1.0);
+            end if; 
+            
+            switch <= OUTPUT;
+            
+    when OUTPUT =>               
+        Outch0 <= float32ToInteger(to_Std_Logic_Vector(ch0conv))(7 downto 0);
+        Outch1 <= float32ToInteger(to_Std_Logic_Vector(ch1conv))(7 downto 0);   
+        Outch2 <= float32ToInteger(to_Std_Logic_Vector(ch2conv))(7 downto 0);
+        Outch3 <= float32ToInteger(to_Std_Logic_Vector(ch3conv))(7 downto 0);
+        switch <= DESCALE;
+   when others =>
+   end case;
     
 end if;
 end process;
