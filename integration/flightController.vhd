@@ -154,6 +154,7 @@ begin
 
 --    sda_slave <= sda_sensor and not INTERNAL_READY_FLAG;
 --    scl_slave <= scl_sensor and not INTERNAL_READY_FLAG;
+INTERNAL_READY_FLAG <= memory(setupReg)(1);
     
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Wed Dec  6 12:20:04 2023
+| Date         : Thu Dec  7 15:09:47 2023
 | Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command      : report_drc -file flightController_drc_opted.rpt -pb flightController_drc_opted.pb -rpx flightController_drc_opted.rpx
 | Design       : flightController
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 38
+             Violations found: 40
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| DPIP-1   | Warning  | Input pipelining                                    | 12         |
+| DPIP-1   | Warning  | Input pipelining                                    | 14         |
 | DPOP-1   | Warning  | PREG Output pipelining                              | 12         |
 | DPOP-2   | Warning  | MREG Output pipelining                              | 12         |
 | RPBF-3   | Warning  | IO port buffering is incomplete                     | 1          |
@@ -97,15 +97,25 @@ Related violations: <none>
 
 DPIP-1#10 Warning
 Input pipelining  
-DSP pidBlock/SHARED_FPU/fract0 input pidBlock/SHARED_FPU/fract0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP DIST_MATRIX/pwmMapSlave/fract0__5 input DIST_MATRIX/pwmMapSlave/fract0__5/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#11 Warning
 Input pipelining  
-DSP pidBlock/SHARED_FPU/fract0 input pidBlock/SHARED_FPU/fract0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP DIST_MATRIX/pwmMapSlave/fract0__6 input DIST_MATRIX/pwmMapSlave/fract0__6/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#12 Warning
+Input pipelining  
+DSP pidBlock/SHARED_FPU/fract0 input pidBlock/SHARED_FPU/fract0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#13 Warning
+Input pipelining  
+DSP pidBlock/SHARED_FPU/fract0 input pidBlock/SHARED_FPU/fract0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPIP-1#14 Warning
 Input pipelining  
 DSP pidBlock/SHARED_FPU/fract0__0 input pidBlock/SHARED_FPU/fract0__0/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
