@@ -7,6 +7,7 @@
 #include <Adafruit_MPU6050.h>   // Library for gyroscope and accelormeter
 
 #define INCLUDE_vTaskSuspend 1            // Definition of suspend function being active
+#define builtInLED 2                      // Builtin LED pin for debugging
 #define externalEnablePin 25              // The pin to activate the FPGA
 #define takeOffPin 32                     // Pin to start take off
 #define landPin 33                        // Pin to land again
@@ -65,14 +66,15 @@ void setup() {
   Wire.begin();           // Join I2C bus
   Wire.setClock(400000);  // 400khz
 
+  pinMode(builtInLED, OUTPUT);           // Enables the LED for debugging
   pinMode(externalEnablePin, OUTPUT);    // Enables the pin to be used as a power-source
   pinMode(heightReachedPin, OUTPUT);     // Enables the pin to be used as a power-source
   pinMode(somethingIsWrongPin, OUTPUT);  // Enables the pin to be used as a power-source
   pinMode(allGoodPin, OUTPUT);           // Enables the pin to be used as a power-source
   pinMode(emergencyButtonPin, INPUT);    // Enables the pin to be used as a input
   pinMode(emergencyLightPin, OUTPUT);    // Enables the pin to be used as a power-source
-  pinMode(takeOffPin, INPUT_PULLUP);
-  pinMode(landPin, INPUT_PULLUP);
+  pinMode(takeOffPin, INPUT_PULLUP);     // Sets the pin ready for button input using builtin pullup resistors
+  pinMode(landPin, INPUT_PULLUP);        // Sets the pin ready for button input using builtin pullup resistors
 
   while (!Serial) {  // Wait until serial port opens for native USB devices
     delay(10);
@@ -110,8 +112,10 @@ void setup() {
   mpu_gyro->printSensorDetails();            // Internal update in sensor library
 
   Serial.println("Calibration done");
-  readyFPGA();  // Sending ready signal for FPGA
-  //delay(15000);  // Delay while the FPGA is setting up
+  readyFPGA();   // Sending ready signal for FPGA
+  digitalWrite(builtInLED, HIGH); // Sets the builtInLED on so we know when to switch the physical switch
+  delay(15000);  // Delay while the FPGA is setting up
+  digitalWrite(builtInLED, LOW);// Sets the builtInLED off so we know when we can no longer switch the physical switch
 
   Serial.println("Task creation");                                                 // Status update to figure out which function is running
   xTaskCreate(MyIdleTask, "IdleTask", 1000, NULL, 0, NULL);                        // Idle task to check if there is any time left to execute tasks in
@@ -191,11 +195,11 @@ float readFloatFromAddress(uint8_t slaveAddress, uint8_t regAddress) {
   //Serial.print("Reg: 0x");               // Current register address being read
   //Serial.print(regAddress, HEX);         // The actual address in hex
   //Serial.print(" value: 0x");            // The value read from the register address
-  float floatReading = 0;                            // 32 bit value read
+  float floatReading = 0;                             // 32 bit value read
   for (int i = 0; i <= 3 && Wire.available(); i++) {  // Slave may send less than requested, but a cap has been implemented as well
     //char c = Wire.read();                             // Receive a byte as character
     //Serial.print(c, HEX);                // Print the character
-    *((uint32_t*)&floatReading) = (*((uint32_t*)&floatReading) << 8) | Wire.read();  // Shift previous bytes and combine with the new byte
+    *((uint32_t *)&floatReading) = (*((uint32_t *)&floatReading) << 8) | Wire.read();  // Shift previous bytes and combine with the new byte
   }
   //Serial.println();  // Newline for readability
   Serial.println(floatReading);
