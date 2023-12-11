@@ -41,7 +41,7 @@ entity flightController is
   sda_slave:            inout std_logic;
   scl_sensor:           inout std_logic;
   sda_sensor:           inout std_logic;
-  -- emergency_stop:    in std_logic;
+  emergency_stop:       in std_logic;
   PWM:                  out std_logic_vector (3 downto 0)
   );
 end flightController;
@@ -143,18 +143,11 @@ architecture Behavioral of flightController is
     signal SENSOR_WRITE_REQ     : std_logic := '0';
     
     signal RES_PITCH, RES_ROLL, RES_YAW, RES_ALTITUDE : float32;
-	
 begin
 
---    sda_sensor <= (sda_master and INTERNAL_READY_FLAG)or(sda_slave and not INTERNAL_READY_FLAG);
---    scl_sensor <= (scl_master and INTERNAL_READY_FLAG)or(scl_slave and not INTERNAL_READY_FLAG);
-
---    sda_master <= sda_sensor and INTERNAL_READY_FLAG;
---    scl_master <= scl_sensor and INTERNAL_READY_FLAG;
-
---    sda_slave <= sda_sensor and not INTERNAL_READY_FLAG;
---    scl_slave <= scl_sensor and not INTERNAL_READY_FLAG;
 INTERNAL_READY_FLAG <= memory(setupReg)(1);
+-- emergency_stop shall be pulled up, when connected to GND the emergency stop is activated.
+PWM <= (others => '0') when not emergency_stop; 
     
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 
