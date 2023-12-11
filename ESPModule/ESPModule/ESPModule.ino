@@ -79,8 +79,8 @@ void setup() {
   pinMode(emergencyLightPin, OUTPUT);    // Enables the pin to be used as a power-source
   pinMode(takeOffPin, INPUT_PULLUP);     // Sets the pin ready for button input using builtin pullup resistors
   pinMode(landPin, INPUT_PULLUP);        // Sets the pin ready for button input using builtin pullup resistors
-  digitalWrite(emergencyLightPin, LOW);
-  
+  digitalWrite(emergencyLightPin, HIGH);
+
   while (!Serial) {  // Wait until serial port opens for native USB devices
     delay(10);
   }
@@ -524,7 +524,7 @@ static void rollDesired(void *pvParameters) {
 
 void stop() {                             // Emergency stop function
                                           //Serial.println("Stop for satan!");      // Status update to figure out which function is running
-  digitalWrite(emergencyLightPin, HIGH);  // Lights up the emergency lights
+  digitalWrite(emergencyLightPin, LOW);  // Lights up the emergency lights
   vTaskSuspend(hdlHeightRead);            // Suspends heightRead function
   vTaskSuspend(hdlHeightDesired);         // Suspends heightDesired function
   vTaskSuspend(hdlYawRead);               // Suspends yawRead function
