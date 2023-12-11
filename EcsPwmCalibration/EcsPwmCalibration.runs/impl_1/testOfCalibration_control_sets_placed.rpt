@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Mon Nov 20 14:48:30 2023
+| Date         : Mon Dec 11 16:02:31 2023
 | Host         : DippeePrime running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file testOfCalibration_control_sets_placed.rpt
 | Design       : testOfCalibration
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              16 |            9 |
+| No           | No                    | No                     |               8 |            7 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              15 |            6 |
-| Yes          | No                    | No                     |               7 |            3 |
+| No           | Yes                   | No                     |               7 |            2 |
+| Yes          | No                    | No                     |              23 |            7 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |              23 |            6 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -73,12 +73,12 @@ Table of Contents
 +----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
 |  Clock Signal  |             Enable Signal             |            Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
-|  CLK_IBUF_BUFG |                                       | pwmModule1/p_0_in                     |                3 |              7 |         2.33 |
-|  CLK_IBUF_BUFG | pwmCalibration/rise1                  |                                       |                3 |              7 |         2.33 |
-|  CLK_IBUF_BUFG |                                       | pwmCalibration/rise[7]_i_1_n_0        |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG |                                       | pwmModule1/p_0_in                     |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | pwmCalibration/count0                 |                                       |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG |                                       |                                       |                7 |              8 |         1.14 |
 |  CLK_IBUF_BUFG | pwmCalibration/clkDivider[11]_i_2_n_0 | pwmCalibration/clkDivider[11]_i_1_n_0 |                3 |             11 |         3.67 |
 |  CLK_IBUF_BUFG | pwmModule1/p_0_in                     | pwmModule1/clear                      |                3 |             12 |         4.00 |
-|  CLK_IBUF_BUFG |                                       |                                       |                9 |             16 |         1.78 |
+|  CLK_IBUF_BUFG | pwmCalibration/output[7]_i_1_n_0      |                                       |                5 |             16 |         3.20 |
 +----------------+---------------------------------------+---------------------------------------+------------------+----------------+--------------+
 
 

@@ -45,7 +45,7 @@ end createCalibration;
 architecture Behavioral of createCalibration is
 signal count:       unsigned(6 downto 0) := (others => '0'); -- To descale clock
 signal clkDivider:   unsigned(11 downto 0)  := (others => '0'); -- skal være 12 bit for at nå 2048
-signal rise:        unsigned(7 downto 0) := (others => '0'); -- To make it go up and then down
+signal rise:        unsigned(7 downto 0) := "00000001"; -- To make it go up and then down
 signal go:          std_logic := '0'; -- Internal flag so the code can start
 signal state:       std_logic := '0'; -- Has the purpos of inc and dec, calibration
 signal halt:        std_logic := '0'; -- Stops the code from running. Is set low at the end of calibration cycle.
@@ -81,7 +81,7 @@ if(CLK'event and CLK = '1') then
         if( clkDivider = newPWM) then
             clkDivider <= (others => '0');
             rise <= rise +1; -- increases by one
-            output <= std_logic_vector(unsigned(rise)); -- sends it to pwmModule
+            output <= std_logic_vector(unsigned(rise+1)); -- sends it to pwmModule
         end if;
     
         if(rise = desVal) then -- Changes state so it will decrease can happen
@@ -91,14 +91,14 @@ if(CLK'event and CLK = '1') then
 
 -- Falling begins    
         if (clkDivider = newPWM AND state = '1') then
-            rise <= (others => '0');
+            --rise <= "00000001";
             rise <= rise -1; -- decreases one by one
-            output <= std_logic_vector(unsigned(rise));
+            output <= std_logic_vector(unsigned(rise-1));
         end if;
 -- Falling ends
 
 --Finished begins        
-        if(rise = 0 AND state = '1') then -- It has finished calibration now
+        if(rise = 1 AND state = '1') then -- It has finished calibration now
             finish <= '1'; -- external flag, to say it is finished calibrating
             halt <= '1'; --Makes sure the procces ends.  
         end if;
