@@ -148,7 +148,7 @@ begin
 
 INTERNAL_READY_FLAG <= memory(setupReg)(1);
 -- emergency_stop shall be pulled up, when connected to GND the emergency stop is activated.
-PWM <= (others => '0') when emergency_stop = '1' else PWM_internal; 
+PWM <= (others => '0') when not emergency_stop = '1' else PWM_internal; 
     
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 
