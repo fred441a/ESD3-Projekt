@@ -1,14 +1,14 @@
 #-----------------------------------------------------------
-# Vivado v2023.1.1 (64-bit)
-# SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
-# IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
-# SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
-# Start of session at: Thu Dec  7 15:08:07 2023
-# Process ID: 37518
-# Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1
-# Command line: vivado -log flightController.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source flightController.tcl -notrace
-# Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1/flightController.vdi
-# Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1/vivado.jou
-# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 900.071 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Dec 11 16:56:39 2023
+# Process ID: 41524
+# Current directory: C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1
+# Command line: vivado.exe -log flightController.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source flightController.tcl -notrace
+# Log file: C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1/flightController.vdi
+# Journal file: C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1\vivado.jou
+# Running On: LAPTOP-RKFHNDQJ, OS: Windows, CPU Frequency: 2808 MHz, CPU Physical cores: 4, Host memory: 34246 MB
 #-----------------------------------------------------------
 source flightController.tcl -notrace

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.tcl"
+  variable script "C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,43 +70,37 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 2
 set_param xicom.use_bs_reader 1
-set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.cache/wt [current_project]
-set_property parent.project_path /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.xpr [current_project]
+set_property webtalk.parent_dir {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.cache/wt} [current_project]
+set_property parent.project_path {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property board_part_repo_paths {/home/mikkel/.Xilinx/Vivado/2023.1.1/xhub/board_store/xilinx_board_store} [current_project]
-set_property board_part digilentinc.com:cmod_a7-35t:part0:1.2 [current_project]
-set_property ip_output_repo /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.cache/ip [current_project]
+set_property ip_output_repo {c:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/sources_1/new/sharedTypes.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/I2C_Master.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Read_byte.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/Byte_compiler.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/Read_Sensor/Read_Sensor.srcs/sources_1/new/change_sensor.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/sources_1/new/sharedTypes.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd}
 }
 read_vhdl -vhdl2008 -library xil_defaultlib {
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd}
+  {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/flightController.vhd}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -117,12 +111,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc
-set_property used_in_implementation false [get_files /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc]
+read_xdc {{C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp
+read_checkpoint -auto_incremental -incremental {C:/Users/Christian Lykke/Documents/Skole/Aalborg Universitet/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp}
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

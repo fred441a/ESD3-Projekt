@@ -85,20 +85,20 @@ architecture Behavioral of flightController is
 	);
     end component;
     
-    component change_sensor is
-        port (
-        clk : in STD_LOGIC;
-        scl : inout STD_LOGIC;
-        sda : inout STD_LOGIC;
+--    component change_sensor is
+--        port (
+--        clk : in STD_LOGIC;
+--        scl : inout STD_LOGIC;
+--        sda : inout STD_LOGIC;
 
-        EN : IN STD_LOGIC;
+--        EN : IN STD_LOGIC;
 
-        WriteMemBus : inout STD_LOGIC_VECTOR( 31 downto 0 );
-        ADDRMemBus : inout STD_LOGIC_VECTOR( 7 downto 0 );
-        MemWrite : INOUT STD_LOGIC;
-        ReadMem : IN ram_type    
-        );   
-    end component;
+--        WriteMemBus : inout STD_LOGIC_VECTOR( 31 downto 0 );
+--        ADDRMemBus : inout STD_LOGIC_VECTOR( 7 downto 0 );
+--        MemWrite : INOUT STD_LOGIC;
+--        ReadMem : IN ram_type    
+--        );   
+--    end component;
     
     component PID is
     port (
@@ -143,11 +143,12 @@ architecture Behavioral of flightController is
     signal SENSOR_WRITE_REQ     : std_logic := '0';
     
     signal RES_PITCH, RES_ROLL, RES_YAW, RES_ALTITUDE : float32;
+    signal PWM_internal: std_logic_vector (3 downto 0);
 begin
 
 INTERNAL_READY_FLAG <= memory(setupReg)(1);
 -- emergency_stop shall be pulled up, when connected to GND the emergency stop is activated.
-PWM <= (others => '0') when not emergency_stop; 
+PWM <= (others => '0') when emergency_stop = '1' else PWM_internal; 
     
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 
@@ -194,7 +195,7 @@ PWM <= (others => '0') when not emergency_stop;
         PercentCh2 => memory(PWMOut)(23 downto 16),
         PercentCh3 => memory(PWMOut)(31 downto 24),
         clock      => CLK,
-        PWM        => PWM
+        PWM        => PWM_internal
     );
 
     i2cExternal: I2C_EXTERNAL_ACCESS
@@ -211,17 +212,17 @@ PWM <= (others => '0') when not emergency_stop;
         WRITE_REQ     => EXTERNAL_WRITE_REQ
     );
     
-    readSensor: change_sensor
-    port map(
-        clk         => CLK,
-        scl         => scl_master,
-        sda         => sda_master,
-        EN          => INTERNAL_READY_FLAG,
-        WriteMemBus => SENSOR_WRITE_DATA,
-        ADDRMemBus  => SENSOR_WRITE_ADDRESS,
-        MemWrite    => SENSOR_WRITE_REQ,
-        ReadMem     => memory
-    );
+--    readSensor: change_sensor
+--    port map(
+--        clk         => CLK,
+--        scl         => scl_master,
+--        sda         => sda_master,
+--        EN          => INTERNAL_READY_FLAG,
+--        WriteMemBus => SENSOR_WRITE_DATA,
+--        ADDRMemBus  => SENSOR_WRITE_ADDRESS,
+--        MemWrite    => SENSOR_WRITE_REQ,
+--        ReadMem     => memory
+--    );
     
     pidBlock: PID
     port  map (
