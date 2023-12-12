@@ -56,10 +56,10 @@ process(clock)
         if(count = high) then
             count <= (others => '0');
             sclCount <= sclCount +1;
-    end if;
+        end if;
     
     if (sclCount +1 = pwmHigh) then
-        sclCount <= (others => '0');     
+        sclCount <= ("000000000001");     
     end if;
             
             --PWM channel 0

@@ -36,7 +36,7 @@ entity createCalibration is
        
     Port (
         CLK      : in    STD_LOGIC; -- 12M hz internal clock
-        ready    : in    STD_LOGIC; -- Flag form user
+        ready    : in    STD_LOGIC;-- Flag form user
         finish   : out   STD_LOGIC; -- Flag to say it is done
         output   : out   STD_LOGIC_VECTOR (7 downto 0) -- Out put to become pwm
            );
@@ -46,11 +46,12 @@ architecture Behavioral of createCalibration is
 signal count:       unsigned(6 downto 0) := (others => '0'); -- To descale clock
 signal clkDivider:   unsigned(11 downto 0)  := (others => '0'); -- skal være 12 bit for at nå 2048
 signal rise:        unsigned(7 downto 0) := "00000001"; -- To make it go up and then down
+signal hold:        unsigned(7 downto 0) := (others => '0');
 signal go:          std_logic := '0'; -- Internal flag so the code can start
-signal state:       std_logic := '0'; -- Has the purpos of inc and dec, calibration
+signal state:       std_logic_vector (1 downto 0) := "00"; -- Has the purpos of inc and dec, calibration
 signal halt:        std_logic := '0'; -- Stops the code from running. Is set low at the end of calibration cycle.
 constant newPWM :   INTEGER := 2327; -- otherwise it will be 1 clock Cycles slower the PWM modul and then trail
-constant desVal :   INTEGER := 255; -- Desired val pwm wil go uo to. 255 = 100% of duty cycle
+constant desVal :   INTEGER := 254; -- Desired val pwm wil go uo to. 255 = 100% of duty cycle. Has to been one smaller then max
 CONSTANT high   :   INTEGER := 103; -- To descale clock so it ends with roughly 50 Hz
 begin
 process(CLK) 
@@ -59,6 +60,7 @@ begin
 
 if(CLK'event and CLK = '1') then
 -- Waiting ()
+
 
 --Ready starts
     if(ready = '1') then --Ready given by the user
@@ -78,27 +80,35 @@ if(CLK'event and CLK = '1') then
 -- Descaling clock ends
 
 -- Rising begins    
-        if( clkDivider = newPWM) then
+        if( clkDivider = newPWM AND state = "00") then
             clkDivider <= (others => '0');
             rise <= rise +1; -- increases by one
-            output <= std_logic_vector(unsigned(rise+1)); -- sends it to pwmModule
+            output <= std_logic_vector(unsigned(rise)); -- sends it to pwmModule
+                if(rise = desVal) then -- Changes state so it will decrease can happen
+                    state <= "01";
+                end if;
         end if;
     
-        if(rise = desVal) then -- Changes state so it will decrease can happen
-            state <= '1';
-        end if;
 -- Rising ends
 
+    if (clkDivider = newPwm AND state = "01") then
+        clkDivider <= (others => '0');
+            hold <= hold + 1;
+            if (hold >= 150) then -- roughly 1 seconds as 50hz
+                state <= "10";
+            end if;      
+    end if;
+    
 -- Falling begins    
-        if (clkDivider = newPWM AND state = '1') then
-            --rise <= "00000001";
+        if (clkDivider = newPWM AND state = "10") then
+            clkDivider <= (others => '0');
             rise <= rise -1; -- decreases one by one
-            output <= std_logic_vector(unsigned(rise-1));
+            output <= std_logic_vector(unsigned(rise));
         end if;
 -- Falling ends
 
 --Finished begins        
-        if(rise = 1 AND state = '1') then -- It has finished calibration now
+        if(rise = 1 AND state = "10") then -- It has finished calibration now
             finish <= '1'; -- external flag, to say it is finished calibrating
             halt <= '1'; --Makes sure the procces ends.  
         end if;
