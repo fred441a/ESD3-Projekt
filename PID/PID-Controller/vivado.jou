@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Dec 11 10:13:20 2023
+# Process ID: 14304
+# Current directory: C:/Users/theil/OneDrive/Skrivebord/P3Projekt/PID/PID-Controller
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent29112 C:\Users\theil\OneDrive\Skrivebord\P3Projekt\PID\PID-Controller\PID-Controller.xpr
+# Log file: C:/Users/theil/OneDrive/Skrivebord/P3Projekt/PID/PID-Controller/vivado.log
+# Journal file: C:/Users/theil/OneDrive/Skrivebord/P3Projekt/PID/PID-Controller\vivado.jou
+# Running On: JohanTheil, OS: Windows, CPU Frequency: 2611 MHz, CPU Physical cores: 10, Host memory: 16839 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/theil/OneDrive/Skrivebord/P3Projekt/PID/PID-Controller/PID-Controller.xpr
+update_compile_order -fileset sources_1
