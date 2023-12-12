@@ -224,15 +224,15 @@ PWM <= (others => '0') when not emergency_stop = '1' else PWM_internal;
 --        ReadMem     => memory
 --    );
     
---    pidBlock: PID
---    port  map (
---        MCLK         => CLK,
---        MEMORY       => memory,      
---        RES_PITCH    => RES_PITCH,
---        RES_ROLL     => RES_ROLL,
---        RES_YAW      => RES_YAW,
---        RES_ALTITUDE => RES_ALTITUDE
---    );
+    pidBlock: PID
+    port  map (
+        MCLK         => CLK,
+        MEMORY       => memory,      
+        RES_PITCH    => RES_PITCH,
+        RES_ROLL     => RES_ROLL,
+        RES_YAW      => RES_YAW,
+        RES_ALTITUDE => RES_ALTITUDE
+    );
     
     DIST_MATRIX: topBrain
     port map ( 

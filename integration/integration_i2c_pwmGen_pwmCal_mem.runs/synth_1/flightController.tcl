@@ -97,6 +97,8 @@ read_vhdl -library xil_defaultlib {
   /home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd
 }
 read_vhdl -vhdl2008 -library xil_defaultlib {
+  /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID-Controller.vhd
+  /home/mikkel/repoes/ESD3/ESD3-Projekt/PID/PID-Controller/PID-Controller.srcs/sources_1/new/PID.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/floatProcessUnit/floatProcessUnit.srcs/sources_1/new/fpu.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd
 }
