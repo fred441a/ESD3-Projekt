@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Tue Dec 12 09:17:53 2023
-| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Mon Dec 11 17:16:37 2023
+| Host         : LAPTOP-RKFHNDQJ running 64-bit major release  (build 9200)
 | Command      : report_utilization -file flightController_utilization_synth.rpt -pb flightController_utilization_synth.pb
 | Design       : flightController
 | Device       : xc7a35tcpg236-1
@@ -31,13 +31,13 @@ Table of Contents
 +-------------------------+-------+-------+------------+-----------+-------+
 |        Site Type        |  Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+-------+-------+------------+-----------+-------+
-| Slice LUTs*             | 16485 |     0 |          0 |     20800 | 79.25 |
-|   LUT as Logic          | 16485 |     0 |          0 |     20800 | 79.25 |
+| Slice LUTs*             | 14810 |     0 |          0 |     20800 | 71.20 |
+|   LUT as Logic          | 14810 |     0 |          0 |     20800 | 71.20 |
 |   LUT as Memory         |     0 |     0 |          0 |      9600 |  0.00 |
-| Slice Registers         |  3872 |     0 |          0 |     41600 |  9.31 |
-|   Register as Flip Flop |  3868 |     0 |          0 |     41600 |  9.30 |
-|   Register as Latch     |     4 |     0 |          0 |     41600 | <0.01 |
-| F7 Muxes                |   434 |     0 |          0 |     16300 |  2.66 |
+| Slice Registers         |  3669 |     0 |          0 |     41600 |  8.82 |
+|   Register as Flip Flop |  3669 |     0 |          0 |     41600 |  8.82 |
+|   Register as Latch     |     0 |     0 |          0 |     41600 |  0.00 |
+| F7 Muxes                |   425 |     0 |          0 |     16300 |  2.61 |
 | F8 Muxes                |     3 |     0 |          0 |      8150 |  0.04 |
 +-------------------------+-------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -59,7 +59,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |          Yes |           - |          Set |
 | 4     |          Yes |           - |        Reset |
 | 53    |          Yes |         Set |            - |
-| 3815  |          Yes |       Reset |            - |
+| 3616  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -152,22 +152,20 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     | 8504 |                 LUT |
-| FDRE     | 3815 |        Flop & Latch |
-| LUT5     | 3792 |                 LUT |
-| LUT4     | 3611 |                 LUT |
-| LUT3     | 2313 |                 LUT |
-| LUT2     | 1993 |                 LUT |
-| CARRY4   | 1461 |          CarryLogic |
-| LUT1     |  744 |                 LUT |
-| MUXF7    |  434 |               MuxFx |
+| LUT6     | 7087 |                 LUT |
+| LUT5     | 3762 |                 LUT |
+| FDRE     | 3616 |        Flop & Latch |
+| LUT4     | 3525 |                 LUT |
+| LUT3     | 2140 |                 LUT |
+| LUT2     | 1911 |                 LUT |
+| CARRY4   | 1449 |          CarryLogic |
+| LUT1     |  743 |                 LUT |
+| MUXF7    |  425 |               MuxFx |
 | FDSE     |   53 |        Flop & Latch |
 | DSP48E1  |   12 |    Block Arithmetic |
 | OBUF     |    4 |                  IO |
-| LDCE     |    4 |        Flop & Latch |
 | IBUF     |    4 |                  IO |
 | MUXF8    |    3 |               MuxFx |
-| BUFG     |    2 |               Clock |
 | OBUFT    |    1 |                  IO |
 +----------+------+---------------------+
 
