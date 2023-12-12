@@ -142,7 +142,7 @@ architecture Behavioral of flightController is
     signal SENSOR_WRITE_DATA    : std_logic_vector (31 downto 0);
     signal SENSOR_WRITE_REQ     : std_logic := '0';
     
-    signal RES_PITCH, RES_ROLL, RES_YAW, RES_ALTITUDE : float32;
+    signal RES_PITCH, RES_ROLL, RES_YAW, RES_ALTITUDE : float32 := to_float(0.0);
     signal PWM_internal: std_logic_vector (3 downto 0);
 begin
 
@@ -224,15 +224,15 @@ PWM <= (others => '0') when not emergency_stop = '1' else PWM_internal;
 --        ReadMem     => memory
 --    );
     
-    pidBlock: PID
-    port  map (
-        MCLK         => CLK,
-        MEMORY       => memory,      
-        RES_PITCH    => RES_PITCH,
-        RES_ROLL     => RES_ROLL,
-        RES_YAW      => RES_YAW,
-        RES_ALTITUDE => RES_ALTITUDE
-    );
+--    pidBlock: PID
+--    port  map (
+--        MCLK         => CLK,
+--        MEMORY       => memory,      
+--        RES_PITCH    => RES_PITCH,
+--        RES_ROLL     => RES_ROLL,
+--        RES_YAW      => RES_YAW,
+--        RES_ALTITUDE => RES_ALTITUDE
+--    );
     
     DIST_MATRIX: topBrain
     port map ( 
