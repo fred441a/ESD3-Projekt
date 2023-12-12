@@ -241,7 +241,12 @@ PWM <= (others => '0') when not emergency_stop = '1' else PWM_internal;
         cha1     => resCh1,
         cha2     => resCh2,
         cha3     => resCh3,
-      
+              
+--        pitchPid => to_float(memory(pitchWanted)),
+--        rollPid  => to_float(memory(rollWanted)),
+--        yawPid   => to_float(memory(yawWanted)),
+--        latPid   => to_float(unsigned(memory(altitudeWanted)))
+
         pitchPid => RES_PITCH,
         rollPid  => RES_ROLL,
         yawPid   => RES_YAW,

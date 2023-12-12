@@ -89,7 +89,7 @@ function float32ToInteger(float_input : std_logic_vector(31 downto 0)) return st
         return std_logic_vector(to_signed((2**exponent) + fractionInt, 32));
     end if;
   end float32ToInteger;
-  -- Og nu er den færdig med det.
+  -- Og nu er den fï¿½rdig med det.
        
 begin
 
@@ -101,10 +101,10 @@ if(MCLK'event and MCLK = '1') then
 case switch is
 
     when DESCALE =>
-        ch0conv <= ch0*0.32;
-        ch1conv <= ch1*0.32;
-        ch2conv <= ch2*0.32;
-        ch3conv <= ch3*0.32;
+        ch0conv <= ch0*to_float(0.32);
+        ch1conv <= ch1*to_float(0.32);
+        ch2conv <= ch2*to_float(0.32);
+        ch3conv <= ch3*to_float(0.32);
         switch <= CLAMP;
         
     when CLAMP =>

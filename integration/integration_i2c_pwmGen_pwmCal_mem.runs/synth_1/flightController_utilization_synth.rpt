@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Tue Dec 12 18:48:17 2023
+| Date         : Tue Dec 12 22:34:05 2023
 | Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command      : report_utilization -file flightController_utilization_synth.rpt -pb flightController_utilization_synth.pb
 | Design       : flightController
@@ -31,13 +31,13 @@ Table of Contents
 +-------------------------+-------+-------+------------+-----------+-------+
 |        Site Type        |  Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+-------+-------+------------+-----------+-------+
-| Slice LUTs*             | 14807 |     0 |          0 |     20800 | 71.19 |
-|   LUT as Logic          | 14807 |     0 |          0 |     20800 | 71.19 |
+| Slice LUTs*             | 14818 |     0 |          0 |     20800 | 71.24 |
+|   LUT as Logic          | 14818 |     0 |          0 |     20800 | 71.24 |
 |   LUT as Memory         |     0 |     0 |          0 |      9600 |  0.00 |
 | Slice Registers         |  3669 |     0 |          0 |     41600 |  8.82 |
 |   Register as Flip Flop |  3669 |     0 |          0 |     41600 |  8.82 |
 |   Register as Latch     |     0 |     0 |          0 |     41600 |  0.00 |
-| F7 Muxes                |   425 |     0 |          0 |     16300 |  2.61 |
+| F7 Muxes                |   423 |     0 |          0 |     16300 |  2.60 |
 | F8 Muxes                |     3 |     0 |          0 |      8150 |  0.04 |
 +-------------------------+-------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -58,8 +58,8 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 48    |          Yes |         Set |            - |
-| 3621  |          Yes |       Reset |            - |
+| 56    |          Yes |         Set |            - |
+| 3613  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -152,16 +152,16 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     | 7084 |                 LUT |
-| LUT5     | 3768 |                 LUT |
-| FDRE     | 3621 |        Flop & Latch |
-| LUT4     | 3521 |                 LUT |
-| LUT3     | 2140 |                 LUT |
-| LUT2     | 1912 |                 LUT |
+| LUT6     | 7089 |                 LUT |
+| LUT5     | 3767 |                 LUT |
+| FDRE     | 3613 |        Flop & Latch |
+| LUT4     | 3529 |                 LUT |
+| LUT3     | 2138 |                 LUT |
+| LUT2     | 1913 |                 LUT |
 | CARRY4   | 1449 |          CarryLogic |
 | LUT1     |  743 |                 LUT |
-| MUXF7    |  425 |               MuxFx |
-| FDSE     |   48 |        Flop & Latch |
+| MUXF7    |  423 |               MuxFx |
+| FDSE     |   56 |        Flop & Latch |
 | DSP48E1  |   12 |    Block Arithmetic |
 | OBUF     |    4 |                  IO |
 | IBUF     |    4 |                  IO |
