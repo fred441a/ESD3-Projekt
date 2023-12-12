@@ -15,9 +15,9 @@
 #define SLAVE_ADDR 0x08
 
 void setup() {
-  Wire.begin();        // join I2C bus (address optional for master)
-  Wire.setClock(400000); // 400khz
-  Serial.begin(115200);  // start serial for output
+  Wire.begin();           // join I2C bus (address optional for master)
+  Wire.setClock(400000);  // 400khz
+  Serial.begin(115200);   // start serial for output
 
   getData();
 }
@@ -38,27 +38,28 @@ void getData() {
 }
 
 void writeToAddress(uint8_t slaveAddress, uint8_t regAddress, uint32_t data) {
-  Wire.beginTransmission(slaveAddress);  
-  Wire.write(regAddress); // register to write to
+  Wire.beginTransmission(slaveAddress);
+  Wire.write(regAddress);  // register to write to
   Wire.write((byte)(data >> 24));
   Wire.write((byte)(data >> 16));
   Wire.write((byte)(data >> 8));
   Wire.write((byte)(data >> 0));
-  Wire.endTransmission(); 
+  Wire.endTransmission();
 }
 
 void readFromAddress(uint8_t slaveAddress, uint8_t regAddress) {
-  Wire.beginTransmission(slaveAddress);  
-  Wire.write(regAddress); // register to read from
-  Wire.endTransmission();  
+  Wire.beginTransmission(slaveAddress);
+  Wire.write(regAddress);  // register to read from
+  Wire.endTransmission();
 
-  Wire.requestFrom(slaveAddress, 4);    // request 4 bytes from slave device #8
+  Wire.requestFrom(slaveAddress, 4);  // request 4 bytes from slave device #8
 
-  Serial.print("Reg: 0x"); Serial.print(regAddress, HEX);
+  Serial.print("Reg: 0x");
+  Serial.print(regAddress, HEX);
   Serial.print(" value: 0x");
-  while (Wire.available()) { // slave may send less than requested
-    char c = Wire.read(); // receive a byte as character
-    Serial.print(c, HEX);         // print the character
+  while (Wire.available()) {  // slave may send less than requested
+    char c = Wire.read();     // receive a byte as character
+    Serial.print(c, HEX);     // print the character
   }
   Serial.println();
 }
