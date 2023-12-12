@@ -104,6 +104,7 @@ port map (
     pidLat => latPid,
     
     ch0 => sigch0,
+    
     ch1 => sigch1,
     ch2 => sigch2,
     ch3 => sigch3

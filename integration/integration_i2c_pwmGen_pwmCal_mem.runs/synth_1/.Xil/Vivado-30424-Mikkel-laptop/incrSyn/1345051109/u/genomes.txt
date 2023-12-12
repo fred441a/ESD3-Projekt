@@ -1,3 +1,0 @@
-matrix
-pwmMap
-flightController__GC0

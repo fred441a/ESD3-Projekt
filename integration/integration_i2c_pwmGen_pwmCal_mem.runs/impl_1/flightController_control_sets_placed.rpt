@@ -1,0 +1,169 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date         : Tue Dec 12 18:26:24 2023
+| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Command      : report_control_sets -verbose -file flightController_control_sets_placed.rpt
+| Design       : flightController
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    91 |
+|    Minimum number of control sets                        |    91 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    83 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    91 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     9 |
+| >= 6 to < 8        |     6 |
+| >= 8 to < 10       |     8 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    65 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              84 |           40 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |               7 |            2 |
+| Yes          | No                    | No                     |            2013 |          738 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             141 |           47 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+---------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                         Enable Signal                         |               Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+---------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
+|  CLK_IBUF_BUFG | pwmCal/clkDivider[11]_i_2_n_0                                 |                                             |                1 |              1 |         1.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/state[3]_i_1_n_0                         |                                             |                4 |              4 |         1.00 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/FSM_sequential_state[3]_i_1_n_0 |                                             |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/next_state[3]_i_1_n_0                    |                                             |                1 |              4 |         4.00 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                               | DIST_MATRIX/pwmMapSlave/ch3conv[6]_i_1_n_0  |                4 |              5 |         1.25 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                               | DIST_MATRIX/pwmMapSlave/ch2conv[6]_i_1_n_0  |                2 |              5 |         2.50 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch1conv                               | DIST_MATRIX/pwmMapSlave/ch1conv[6]_i_1_n_0  |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                               | DIST_MATRIX/pwmMapSlave/ch0conv[6]_i_1_n_0  |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/data0[8]_i_1_n_0                | DIST_MATRIX/matrixReloaded/data0[4]_i_1_n_0 |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/data0[8]_i_1_n_0                | DIST_MATRIX/matrixReloaded/data0[3]_i_1_n_0 |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG |                                                               | pwmGen/count[6]_i_1__0_n_0                  |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                               | DIST_MATRIX/pwmMapSlave/ch3conv[-1]_i_1_n_0 |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                               | DIST_MATRIX/pwmMapSlave/ch2conv[-1]_i_1_n_0 |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                               | DIST_MATRIX/pwmMapSlave/ch0conv[-1]_i_1_n_0 |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[7]_i_1_n_0                              | i2cExternal/BUFFER_32                       |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | pwmCal/count0                                                 |                                             |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/shiftreg[7]_i_1_n_0                      |                                             |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/DATA_IN[7]_i_1_n_0                                |                                             |                4 |              8 |         2.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/address_i[7]_i_1_n_0                     |                                             |                4 |              8 |         2.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/WR13_out                                 |                                             |                1 |              8 |         8.00 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[31]_i_1_n_0                             | i2cExternal/BUFFER_32                       |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[23]_i_1_n_0                             | i2cExternal/BUFFER_32                       |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32                                         | i2cExternal/BUFFER_8[7]_i_1_n_0             |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[15]_i_1_n_0                             | i2cExternal/BUFFER_32                       |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | pwmCal/clkDivider[11]_i_2_n_0                                 | pwmCal/clkDivider[11]_i_1_n_0               |                3 |             11 |         3.67 |
+|  CLK_IBUF_BUFG | pwmGen/count[6]_i_1__0_n_0                                    |                                             |                3 |             11 |         3.67 |
+|  CLK_IBUF_BUFG | pwmCal/output[7]_i_1__0_n_0                                   |                                             |                5 |             16 |         3.20 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                               |                                             |                7 |             20 |         2.86 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                               |                                             |               11 |             20 |         1.82 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                               |                                             |               12 |             20 |         1.67 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch1conv                               |                                             |               15 |             27 |         1.80 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_0[0]                         |                                             |               12 |             31 |         2.58 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_3[0]                         |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/fpuCalculations/output[8]_i_1_n_0  |                                             |               16 |             32 |         2.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_6[0]                                |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_5[0]                                |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_4[0]                                |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_3[0]                                |                                             |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_2[0]                                |                                             |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_1[0]                                |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_2[0]                         |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_1[0]                         |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_0[0]                         |                                             |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_6[0]                         |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_5[0]                         |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_5[0]                         |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_4[0]                         |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_3[0]                         |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_4[0]                         |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_3[0]                         |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/E[0]                                              |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_0[0]                                |                                             |               16 |             32 |         2.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_4[0]                         |                                             |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_3[0]                         |                                             |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_0[0]                         |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_0[0]                         |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_1[0]                         |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_3[0]                         |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_4[0]                         |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_4[0]                         |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_0[0]                         |                                             |               23 |             32 |         1.39 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_1[0]                         |                                             |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c0                                 |                                             |               10 |             32 |         3.20 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c1                                 |                                             |                7 |             32 |         4.57 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c2                                 |                                             |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c3                                 |                                             |                6 |             32 |         5.33 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/ch0[8]_i_1_n_0                  |                                             |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/ch1[8]_i_1_n_0                  |                                             |                8 |             32 |         4.00 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/ch2[8]_i_1_n_0                  |                                             |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/ch3[8]_i_1_n_0                  |                                             |               19 |             32 |         1.68 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/tempRes                            |                                             |               11 |             32 |         2.91 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/FSM_onehot_switch_reg_n_0_[2]         |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_1[0]                         |                                             |               20 |             32 |         1.60 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_2[0]                         |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_6[0]                         |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_2[0]                         |                                             |               17 |             32 |         1.88 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_2[0]                         |                                             |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_1[0]                         |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_0[0]                         |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_5[0]                         |                                             |               15 |             32 |         2.13 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_2[0]                         |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_1[0]                         |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_3[0]                         |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_2[0]                         |                                             |                5 |             32 |         6.40 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_8[0]                         |                                             |               19 |             32 |         1.68 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_7[0]                         |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_5[0]                         |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG |                                                               |                                             |               11 |             33 |         3.00 |
+|  CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS[7]_i_2_n_0                          | i2cExternal/WRITE_ADDRESS[7]_i_1_n_0        |                7 |             40 |         5.71 |
+|  CLK_IBUF_BUFG |                                                               |                                             |               29 |             51 |         1.76 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/i_/data0[8]_i_1_n_0                |                                             |               19 |             56 |         2.95 |
++----------------+---------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
+
+

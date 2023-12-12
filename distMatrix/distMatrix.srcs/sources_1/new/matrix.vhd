@@ -74,7 +74,6 @@ signal c0:  float32;
 signal c1:  float32;
 signal c2:  float32;
 signal c3:  float32;
-signal opVal:                       std_logic_vector (1 downto 0) := (others => '0');
 
 signal        data0:     float32;
 signal        data1:     float32;
@@ -180,7 +179,7 @@ if(MCLK'event and MCLK = '1') then
                when PLUSr03 => 
                     data0 <= tempRes;
                     data1 <= liftConst;
-                    opval <= "01";
+                    op <= "01";
                     r0state <= READr03;
                when READr03 =>
                     ch0 <= inData;
@@ -222,7 +221,7 @@ if(MCLK'event and MCLK = '1') then
                when PLUSr13 => 
                     data0 <= tempRes;
                     data1 <= liftConst;
-                    opval <= "01";
+                    op <= "01";
                     r1state <= READr13;
                when READr13 =>
                     ch1 <= inData;
@@ -263,7 +262,7 @@ if(MCLK'event and MCLK = '1') then
                when PLUSr23 => 
                     data0 <= tempRes;
                     data1 <= liftConst;
-                    opval <= "01";
+                    op <= "01";
                     r2state <= READr23;
                when READr23 =>
                     ch2 <= inData;
@@ -303,11 +302,11 @@ if(MCLK'event and MCLK = '1') then
                when PLUSr33 => 
                     data0 <= tempRes;
                     data1 <= liftConst;
-                    opval <= "01";
+                    op <= "01";
                     r3state <= READr33;
                when READr33 =>
                     ch3 <= inData;
-                    r3state<=PLUSr30;
+                    r3state <= PLUSr30;
                     state <= MULTc0;
                 when others =>
                 end case;  
