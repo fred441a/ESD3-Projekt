@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Tue Dec 12 22:35:09 2023
+| Date         : Wed Dec 13 14:56:26 2023
 | Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command      : report_control_sets -verbose -file flightController_control_sets_placed.rpt
 | Design       : flightController
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |   131 |
-|    Minimum number of control sets                        |   131 |
+| Total control sets                                       |   132 |
+|    Minimum number of control sets                        |   132 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   123 |
+| Unused register locations in slices containing registers |   124 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,13 +39,13 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |   131 |
+| Total control sets |   132 |
 | >= 0 to < 4        |     1 |
 | >= 4 to < 6        |    11 |
 | >= 6 to < 8        |     7 |
 | >= 8 to < 10       |     8 |
-| >= 10 to < 12      |     1 |
-| >= 12 to < 14      |     1 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     3 |
 | >= 14 to < 16      |     0 |
 | >= 16              |   102 |
 +--------------------+-------+
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             170 |           66 |
+| No           | No                    | No                     |             171 |           69 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               7 |            2 |
-| Yes          | No                    | No                     |            3352 |         1506 |
+| Yes          | No                    | No                     |            3349 |         1376 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             140 |           56 |
+| Yes          | Yes                   | No                     |             157 |           54 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,136 +74,137 @@ Table of Contents
 |  Clock Signal  |                          Enable Signal                          |               Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------+-----------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
 |  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                                 | DIST_MATRIX/pwmMapSlave/i__n_0              |                1 |              1 |         1.00 |
-|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/next_state[3]_i_1_n_0                      |                                             |                2 |              4 |         2.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/state[3]_i_1_n_0                           |                                             |                3 |              4 |         1.33 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/next_state[3]_i_1_n_0                      |                                             |                3 |              4 |         1.33 |
 |  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/FSM_sequential_state[3]_i_1__0_n_0   |                                             |                1 |              4 |         4.00 |
-|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/state[3]_i_1_n_0                           |                                             |                2 |              4 |         2.00 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                                 | DIST_MATRIX/pwmMapSlave/ch2conv[6]_i_1_n_0  |                3 |              5 |         1.67 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch1conv                                 | DIST_MATRIX/pwmMapSlave/ch1conv[6]_i_1_n_0  |                2 |              5 |         2.50 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                                 | DIST_MATRIX/pwmMapSlave/ch0conv[6]_i_1_n_0  |                3 |              5 |         1.67 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                                 | DIST_MATRIX/pwmMapSlave/ch3conv[6]_i_1_n_0  |                4 |              5 |         1.25 |
-|  CLK_IBUF_BUFG | pidBlock/yawEn_reg_n_0                                          |                                             |                2 |              5 |         2.50 |
-|  CLK_IBUF_BUFG | pidBlock/rollEn_reg_n_0                                         |                                             |                2 |              5 |         2.50 |
-|  CLK_IBUF_BUFG | pidBlock/pitchEn_reg_n_0                                        |                                             |                1 |              5 |         5.00 |
-|  CLK_IBUF_BUFG | pidBlock/altitudeEn_reg_n_0                                     |                                             |                2 |              5 |         2.50 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                                 | DIST_MATRIX/pwmMapSlave/i___308__1_n_0      |                4 |              7 |         1.75 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                                 | DIST_MATRIX/pwmMapSlave/ch3conv[6]_i_1_n_0  |                2 |              5 |         2.50 |
+|  CLK_IBUF_BUFG | pidBlock/altitudeEn_reg_n_0                                     |                                             |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | pidBlock/pitchEn_reg_n_0                                        |                                             |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | pidBlock/rollEn_reg_n_0                                         |                                             |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | pidBlock/yawEn_reg_n_0                                          |                                             |                1 |              5 |         5.00 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                                 | DIST_MATRIX/pwmMapSlave/ch0conv[6]_i_1_n_0  |                4 |              5 |         1.25 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch1conv                                 | DIST_MATRIX/pwmMapSlave/ch1conv[6]_i_1_n_0  |                3 |              5 |         1.67 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                                 | DIST_MATRIX/pwmMapSlave/ch2conv[6]_i_1_n_0  |                4 |              5 |         1.25 |
 |  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                                 | DIST_MATRIX/pwmMapSlave/i___333__1_n_0      |                3 |              7 |         2.33 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                                 | DIST_MATRIX/pwmMapSlave/i___326__1_n_0      |                3 |              7 |         2.33 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/data0_reg[7]_i_1_n_0                 | DIST_MATRIX/matrixReloaded/data0[8]_i_1_n_0 |                5 |              7 |         1.40 |
-|  CLK_IBUF_BUFG | pwmCal/count0                                                   |                                             |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/data0_reg[7]_i_1_n_0                 | DIST_MATRIX/matrixReloaded/data0[8]_i_1_n_0 |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                                 | DIST_MATRIX/pwmMapSlave/i___308__1_n_0      |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                                 | DIST_MATRIX/pwmMapSlave/i___326__1_n_0      |                4 |              7 |         1.75 |
 |  CLK_IBUF_BUFG |                                                                 | pwmGen/count[6]_i_1__0_n_0                  |                2 |              7 |         3.50 |
-|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[7]_i_1_n_0                                | i2cExternal/BUFFER_32                       |                3 |              7 |         2.33 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[7]_i_1_n_0                                | i2cExternal/BUFFER_32                       |                2 |              7 |         3.50 |
+|  CLK_IBUF_BUFG | pwmCal/count0                                                   |                                             |                2 |              7 |         3.50 |
 |  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/shiftreg[7]_i_1_n_0                        |                                             |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/WR13_out                                   |                                             |                2 |              8 |         4.00 |
-|  CLK_IBUF_BUFG | i2cExternal/DATA_IN[7]_i_1_n_0                                  |                                             |                4 |              8 |         2.00 |
-|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/address_i[7]_i_1_n_0                       |                                             |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[31]_i_1_n_0                               | i2cExternal/BUFFER_32                       |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32                                           | i2cExternal/BUFFER_8[7]_i_1_n_0             |                2 |              8 |         4.00 |
 |  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[23]_i_1_n_0                               | i2cExternal/BUFFER_32                       |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[31]_i_1_n_0                               | i2cExternal/BUFFER_32                       |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/address_i[7]_i_1_n_0                       |                                             |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | i2cExternal/DATA_IN[7]_i_1_n_0                                  |                                             |                3 |              8 |         2.67 |
+|  CLK_IBUF_BUFG | pwmCal/hold                                                     |                                             |                2 |              8 |         4.00 |
+|  CLK_IBUF_BUFG | i2cExternal/I_I2CITF/WR13_out                                   |                                             |                1 |              8 |         8.00 |
 |  CLK_IBUF_BUFG | i2cExternal/BUFFER_32[15]_i_1_n_0                               | i2cExternal/BUFFER_32                       |                3 |              8 |         2.67 |
-|  CLK_IBUF_BUFG | pwmGen/count[6]_i_1__0_n_0                                      |                                             |                4 |             11 |         2.75 |
-|  CLK_IBUF_BUFG | pwmCal/clkDivider[11]_i_2_n_0                                   | pwmCal/clkDivider[11]_i_1_n_0               |                3 |             12 |         4.00 |
-|  CLK_IBUF_BUFG | pwmCal/output[7]_i_1__1_n_0                                     |                                             |                3 |             16 |         5.33 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                                 |                                             |               10 |             19 |         1.90 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                                 |                                             |               11 |             20 |         1.82 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                                 |                                             |               10 |             20 |         2.00 |
+|  CLK_IBUF_BUFG | pwmGen/count[6]_i_1__0_n_0                                      | pwmGen/clear                                |                3 |             12 |         4.00 |
+|  CLK_IBUF_BUFG | pwmCal/clkDivider[0]_i_2_n_0                                    | pwmCal/clkDivider[0]_i_1_n_0                |                3 |             12 |         4.00 |
+|  CLK_IBUF_BUFG | i2cExternal/BUFFER_32                                           | i2cExternal/BUFFER_8[7]_i_1_n_0             |                2 |             13 |         6.50 |
+|  CLK_IBUF_BUFG | pwmCal/rise                                                     |                                             |                3 |             16 |         5.33 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch3conv                                 |                                             |               12 |             19 |         1.58 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch0conv                                 |                                             |               10 |             20 |         2.00 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch2conv                                 |                                             |               13 |             20 |         1.54 |
 |  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/ch1conv                                 |                                             |               12 |             27 |         2.25 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_0[0]                           |                                             |               24 |             31 |         1.29 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_7[0]                           |                                             |               11 |             32 |         2.91 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_8[0]                           |                                             |               18 |             32 |         1.78 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_0[0]                           |                                             |               13 |             32 |         2.46 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_4[0]                                  |                                             |               21 |             32 |         1.52 |
-| ~CLK_IBUF_BUFG | i2cExternal/E[0]                                                |                                             |               14 |             32 |         2.29 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_5[0]                                  |                                             |               15 |             32 |         2.13 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_6[0]                                  |                                             |               21 |             32 |         1.52 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_5[0]                           |                                             |                8 |             32 |         4.00 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_3[0]                                  |                                             |                9 |             32 |         3.56 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_2[0]                                  |                                             |               12 |             32 |         2.67 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_10[0]                                 |                                             |               10 |             32 |         3.20 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_1[0]                                  |                                             |               12 |             32 |         2.67 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_0[0]                                  |                                             |               19 |             32 |         1.68 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_6[0]                           |                                             |               12 |             32 |         2.67 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_8[0]                                  |                                             |               20 |             32 |         1.60 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_2[0]                           |                                             |               14 |             32 |         2.29 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_3[0]                           |                                             |               14 |             32 |         2.29 |
-| ~CLK_IBUF_BUFG | pidBlock/SHARED_FPU/output[8]_i_1_n_0                           |                                             |               13 |             32 |         2.46 |
-| ~CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/fpuCalculations/output[8]_i_1__0_n_0 |                                             |               20 |             32 |         1.60 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_5[0]                           |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_0[0]                           |                                             |               22 |             31 |         1.41 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_7[0]                                  |                                             |               22 |             32 |         1.45 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_6[0]                           |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_5[0]                           |                                             |               15 |             32 |         2.13 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_0[0]                                  |                                             |               16 |             32 |         2.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_6[0]                                  |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_2[0]                           |                                             |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_1[0]                           |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_3[0]                           |                                             |               21 |             32 |         1.52 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_2[0]                           |                                             |               18 |             32 |         1.78 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_2[0]                           |                                             |                6 |             32 |         5.33 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_1[0]                           |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_0[0]                           |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_6[0]                           |                                             |               16 |             32 |         2.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/E[0]                                                |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_7[0]                           |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | pidBlock/SHARED_FPU/output[8]_i_1_n_0                           |                                             |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/fpuCalculations/output[8]_i_1__0_n_0 |                                             |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_8[0]                                  |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_5[0]                           |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_11[0]                                 |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_10[0]                                 |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_2[0]                                  |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_1[0]                                  |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_3[0]                           |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_2[0]                           |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_1[0]                           |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_3[0]                                  |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_4[0]                                  |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_5[0]                                  |                                             |               10 |             32 |         3.20 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_9[0]                                  |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_0[0]                           |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_6[0]                           |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_7[0]                           |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_2[0]                           |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_1[0]                           |                                             |               12 |             32 |         2.67 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_4[0]                           |                                             |               14 |             32 |         2.29 |
 | ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_3[0]                           |                                             |               12 |             32 |         2.67 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_5[0]                           |                                             |               24 |             32 |         1.33 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_4[0]                           |                                             |               18 |             32 |         1.78 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_1[0]                           |                                             |                7 |             32 |         4.57 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[1]_0[0]                           |                                             |               13 |             32 |         2.46 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_5[0]                           |                                             |               11 |             32 |         2.91 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_4[0]                           |                                             |               14 |             32 |         2.29 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_1[0]                           |                                             |                7 |             32 |         4.57 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[5]_0[0]                           |                                             |               13 |             32 |         2.46 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_4[0]                           |                                             |               12 |             32 |         2.67 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_3[0]                           |                                             |               16 |             32 |         2.00 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_2[0]                           |                                             |               14 |             32 |         2.29 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_1[0]                           |                                             |                8 |             32 |         4.00 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_6[0]                           |                                             |               19 |             32 |         1.68 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_4[0]                           |                                             |                9 |             32 |         3.56 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_1[0]                           |                                             |               10 |             32 |         3.20 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_0[0]                           |                                             |                9 |             32 |         3.56 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_3[0]                           |                                             |               15 |             32 |         2.13 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_2[0]                           |                                             |               14 |             32 |         2.29 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_1[0]                           |                                             |               12 |             32 |         2.67 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_0[0]                           |                                             |               15 |             32 |         2.13 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_7[0]                           |                                             |               19 |             32 |         1.68 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_6[0]                           |                                             |               21 |             32 |         1.52 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_9[0]                                  |                                             |                8 |             32 |         4.00 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[3]_2[0]                           |                                             |               17 |             32 |         1.88 |
-| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_7[0]                                  |                                             |               15 |             32 |         2.13 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/error0                                        |                                             |               14 |             32 |         2.29 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/error0                                    |                                             |                6 |             32 |         5.33 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/FSM_onehot_switch_reg_n_0_[2]           |                                             |               12 |             32 |         2.67 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/errorAccum0                                  |                                             |               17 |             32 |         1.88 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/error0                                       |                                             |               10 |             32 |         3.20 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/Result0                                      |                                             |               11 |             32 |         2.91 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/prevError0                                    |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/rd0                                           |                                             |               18 |             32 |         1.78 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/ri0                                           |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/rp0                                           |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/temp0                                         |                                             |               20 |             32 |         1.60 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/errorAccum0                               |                                             |               10 |             32 |         3.20 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/errorAccum0                                   |                                             |               17 |             32 |         1.88 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/Result0                                       |                                             |               13 |             32 |         2.46 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/prevError0                                     |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/rd0                                            |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/ri0                                            |                                             |               19 |             32 |         1.68 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/rp0                                            |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/temp0                                          |                                             |               17 |             32 |         1.88 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/errorAccum0                                    |                                             |               18 |             32 |         1.78 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/Result0                                        |                                             |               12 |             32 |         2.67 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/error0                                         |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/tempRes                              |                                             |               15 |             32 |         2.13 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch3[8]_i_1_n_0                       |                                             |               15 |             32 |         2.13 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch2[8]_i_1_n_0                       |                                             |               17 |             32 |         1.88 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch1[8]_i_1_n_0                       |                                             |               12 |             32 |         2.67 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch0[8]_i_1_n_0                       |                                             |               13 |             32 |         2.46 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c3                                   |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c2                                   |                                             |               15 |             32 |         2.13 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c1                                   |                                             |               16 |             32 |         2.00 |
-|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c0                                   |                                             |               19 |             32 |         1.68 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/prevError0                                   |                                             |               13 |             32 |         2.46 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/Result0                                   |                                             |                9 |             32 |         3.56 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_4[0]                           |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_1[0]                           |                                             |               13 |             32 |         2.46 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[2]_0[0]                           |                                             |               14 |             32 |         2.29 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_5[0]                           |                                             |               18 |             32 |         1.78 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[0]_4[0]                           |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_REQ_reg_12[0]                                 |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_4[0]                           |                                             |               11 |             32 |         2.91 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_3[0]                           |                                             |                8 |             32 |         4.00 |
+| ~CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS_reg[4]_0[0]                           |                                             |                9 |             32 |         3.56 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/rp0                                          |                                             |               10 |             32 |         3.20 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/Result0                                   |                                             |               13 |             32 |         2.46 |
 |  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/temp0                                     |                                             |                6 |             32 |         5.33 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/rp0                                       |                                             |                8 |             32 |         4.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/ri0                                       |                                             |                7 |             32 |         4.57 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/rd0                                       |                                             |                8 |             32 |         4.00 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/prevError[8]_i_1__2_n_0                   |                                             |                7 |             32 |         4.57 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/temp0                                        |                                             |               15 |             32 |         2.13 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/rp0                                          |                                             |               14 |             32 |         2.29 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/rp0                                       |                                             |                6 |             32 |         5.33 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/ri0                                       |                                             |                9 |             32 |         3.56 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/rd0                                       |                                             |               11 |             32 |         2.91 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/prevError[8]_i_1__2_n_0                   |                                             |                8 |             32 |         4.00 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/ri0                                          |                                             |               17 |             32 |         1.88 |
 |  CLK_IBUF_BUFG | pidBlock/PID_PITCH/rd0                                          |                                             |               14 |             32 |         2.29 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/ri0                                          |                                             |               14 |             32 |         2.29 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/rp0                                            |                                             |               11 |             32 |         2.91 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/temp0                                          |                                             |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/prevError0                                   |                                             |                9 |             32 |         3.56 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/tempRes                              |                                             |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/errorAccum0                               |                                             |               10 |             32 |         3.20 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/error0                                    |                                             |                6 |             32 |         5.33 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/errorAccum0                                  |                                             |               14 |             32 |         2.29 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/error0                                       |                                             |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/Result0                                      |                                             |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/Result0                                       |                                             |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/error0                                        |                                             |                8 |             32 |         4.00 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/errorAccum0                                   |                                             |               10 |             32 |         3.20 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/prevError0                                     |                                             |               15 |             32 |         2.13 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/rd0                                            |                                             |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/ri0                                            |                                             |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/rp0                                           |                                             |               15 |             32 |         2.13 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/pwmMapSlave/FSM_onehot_switch_reg_n_0_[2]           |                                             |               13 |             32 |         2.46 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch3[8]_i_1_n_0                       |                                             |               15 |             32 |         2.13 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch2[8]_i_1_n_0                       |                                             |               14 |             32 |         2.29 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch1[8]_i_1_n_0                       |                                             |               16 |             32 |         2.00 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/ch0[8]_i_1_n_0                       |                                             |               16 |             32 |         2.00 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c3                                   |                                             |               19 |             32 |         1.68 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c2                                   |                                             |               19 |             32 |         1.68 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c1                                   |                                             |               17 |             32 |         1.88 |
+|  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/c0                                   |                                             |               17 |             32 |         1.88 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/temp0                                        |                                             |               10 |             32 |         3.20 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/Result0                                        |                                             |               16 |             32 |         2.00 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/error0                                         |                                             |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/errorAccum0                                    |                                             |               12 |             32 |         2.67 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/prevError0                                    |                                             |               14 |             32 |         2.29 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/rd0                                           |                                             |               17 |             32 |         1.88 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/ri0                                           |                                             |               15 |             32 |         2.13 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/temp0                                         |                                             |               15 |             32 |         2.13 |
 | ~CLK_IBUF_BUFG |                                                                 |                                             |               11 |             33 |         3.00 |
-|  CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS[7]_i_2_n_0                            | i2cExternal/WRITE_REQ5_out                  |               11 |             40 |         3.64 |
+|  CLK_IBUF_BUFG | i2cExternal/WRITE_ADDRESS[7]_i_2_n_0                            | i2cExternal/WRITE_ADDRESS[7]_i_1_n_0        |                8 |             40 |         5.00 |
 |  CLK_IBUF_BUFG | DIST_MATRIX/matrixReloaded/data0_reg[7]_i_1_n_0                 |                                             |               33 |             57 |         1.73 |
-|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/fpuVal0_reg0                                 |                                             |               36 |             66 |         1.83 |
-|  CLK_IBUF_BUFG | pidBlock/PID_YAW/fpuVal0_reg0                                   |                                             |               38 |             66 |         1.74 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/fpuVal0_reg0                                  |                                             |               40 |             66 |         1.65 |
-|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/fpuVal0[8]_i_1__2_n_0                     |                                             |               38 |             66 |         1.74 |
-|  CLK_IBUF_BUFG |                                                                 |                                             |               55 |            137 |         2.49 |
+|  CLK_IBUF_BUFG | pidBlock/PID_PITCH/fpuVal0_reg0                                 |                                             |               33 |             66 |         2.00 |
+|  CLK_IBUF_BUFG | pidBlock/PID_YAW/fpuVal0_reg0                                   |                                             |               34 |             66 |         1.94 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ALTITUDE/fpuVal0[8]_i_1__2_n_0                     |                                             |               41 |             66 |         1.61 |
+|  CLK_IBUF_BUFG | pidBlock/PID_ROLL/fpuVal0_reg0                                  |                                             |               37 |             66 |         1.78 |
+|  CLK_IBUF_BUFG |                                                                 |                                             |               58 |            138 |         2.38 |
 +----------------+-----------------------------------------------------------------+---------------------------------------------+------------------+----------------+--------------+
 
 

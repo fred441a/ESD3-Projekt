@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param xicom.use_bs_reader 1
-set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -88,12 +86,12 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
   /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/sources_1/new/sharedTypes.vhd
-  /home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2cslave.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/matrix.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd
+  /home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd
   /home/mikkel/repoes/ESD3/ESD3-Projekt/distMatrix/distMatrix.srcs/sources_1/new/topBrain.vhd
 }
 read_vhdl -vhdl2008 -library xil_defaultlib {

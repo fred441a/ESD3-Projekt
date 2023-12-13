@@ -3,16 +3,16 @@
 # SW Build 3900603 on Fri Jun 16 19:30:25 MDT 2023
 # IP Build 3900379 on Sat Jun 17 05:28:05 MDT 2023
 # SharedData Build 3899622 on Fri Jun 16 03:34:24 MDT 2023
-# Start of session at: Tue Dec 12 22:32:13 2023
-# Process ID: 128779
+# Start of session at: Wed Dec 13 14:53:32 2023
+# Process ID: 43384
 # Current directory: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1
 # Command line: vivado -log flightController.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source flightController.tcl
 # Log file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.vds
 # Journal file: /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/vivado.jou
-# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 3000.240 MHz, CPU Physical cores: 4, Host memory: 16695 MB
+# Running On: Mikkel-laptop, OS: Linux, CPU Frequency: 2891.187 MHz, CPU Physical cores: 4, Host memory: 16695 MB
 #-----------------------------------------------------------
 source flightController.tcl -notrace
-create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1335.496 ; gain = 0.023 ; free physical = 2150 ; free virtual = 8349
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1272.508 ; gain = 0.023 ; free physical = 3586 ; free virtual = 8921
 Command: read_checkpoint -auto_incremental -incremental /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/utils_1/imports/synth_1/flightController.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,17 +25,17 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 128824
+INFO: [Synth 8-7075] Helper process launched with PID 43418
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1995.430 ; gain = 376.801 ; free physical = 1174 ; free virtual = 7374
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1996.160 ; gain = 377.770 ; free physical = 2541 ; free virtual = 7877
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'flightController' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:49]
 INFO: [Synth 8-3491] module 'createCalibration' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:35' bound to instance 'pwmCal' of component 'createCalibration' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:183]
 INFO: [Synth 8-638] synthesizing module 'createCalibration' [/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
 INFO: [Synth 8-256] done synthesizing module 'createCalibration' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd:45]
-INFO: [Synth 8-3491] module 'pwmModule' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:34' bound to instance 'pwmGen' of component 'pwmModule' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:191]
-INFO: [Synth 8-638] synthesizing module 'pwmModule' [/home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
-INFO: [Synth 8-256] done synthesizing module 'pwmModule' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd:43]
+INFO: [Synth 8-3491] module 'pwmModule' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd:34' bound to instance 'pwmGen' of component 'pwmModule' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:191]
+INFO: [Synth 8-638] synthesizing module 'pwmModule' [/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'pwmModule' (0#1) [/home/mikkel/repoes/ESD3/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd:43]
 	Parameter deviceAddress bound to: 8'b00001000 
 INFO: [Synth 8-3491] module 'I2C_EXTERNAL_ACCESS' declared at '/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:6' bound to instance 'i2cExternal' of component 'I2C_EXTERNAL_ACCESS' [/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/flightController.vhd:201]
 INFO: [Synth 8-638] synthesizing module 'I2C_EXTERNAL_ACCESS' [/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/i2c_external_access.vhd:21]
@@ -181,18 +181,18 @@ WARNING: [Synth 8-7129] Port MEMORY[15][29] in module PID is either unconnected 
 WARNING: [Synth 8-7129] Port MEMORY[15][28] in module PID is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2150.992 ; gain = 532.363 ; free physical = 1004 ; free virtual = 7205
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2151.723 ; gain = 533.332 ; free physical = 2353 ; free virtual = 7690
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2165.836 ; gain = 547.207 ; free physical = 992 ; free virtual = 7193
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2166.566 ; gain = 548.176 ; free physical = 2344 ; free virtual = 7681
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2165.836 ; gain = 547.207 ; free physical = 992 ; free virtual = 7193
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2166.566 ; gain = 548.176 ; free physical = 2344 ; free virtual = 7681
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2165.836 ; gain = 0.000 ; free physical = 992 ; free virtual = 7193
+Netlist sorting complete. Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.18 . Memory (MB): peak = 2166.566 ; gain = 0.000 ; free physical = 2344 ; free virtual = 7681
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -203,28 +203,28 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/flightController_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2261.602 ; gain = 0.000 ; free physical = 919 ; free virtual = 7120
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2255.363 ; gain = 0.000 ; free physical = 2330 ; free virtual = 7667
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2261.602 ; gain = 0.000 ; free physical = 919 ; free virtual = 7120
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2255.363 ; gain = 0.000 ; free physical = 2330 ; free virtual = 7667
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2261.602 ; gain = 642.973 ; free physical = 910 ; free virtual = 7121
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2255.363 ; gain = 636.973 ; free physical = 2316 ; free virtual = 7653
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2261.602 ; gain = 642.973 ; free physical = 910 ; free virtual = 7121
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2255.363 ; gain = 636.973 ; free physical = 2316 ; free virtual = 7653
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2261.602 ; gain = 642.973 ; free physical = 910 ; free virtual = 7121
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2255.363 ; gain = 636.973 ; free physical = 2316 ; free virtual = 7653
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'PID_Controller'
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'PID'
@@ -343,7 +343,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'switch_reg' using encoding 'one-hot' in module 'pwmMap'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2261.602 ; gain = 642.973 ; free physical = 905 ; free virtual = 7111
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 2255.363 ; gain = 636.973 ; free physical = 2321 ; free virtual = 7660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -356,14 +356,14 @@ Detailed RTL Component Info :
 	   3 Input   28 Bit       Adders := 4     
 	   2 Input   23 Bit       Adders := 12    
 	   2 Input   12 Bit       Adders := 1     
-	   2 Input   11 Bit       Adders := 8     
+	   2 Input   11 Bit       Adders := 6     
 	   5 Input   10 Bit       Adders := 2     
 	   4 Input   10 Bit       Adders := 6     
 	   2 Input   10 Bit       Adders := 16    
 	   3 Input   10 Bit       Adders := 4     
 	   3 Input    9 Bit       Adders := 4     
 	   2 Input    9 Bit       Adders := 10    
-	   2 Input    8 Bit       Adders := 20    
+	   2 Input    8 Bit       Adders := 21    
 	   3 Input    8 Bit       Adders := 2     
 	   2 Input    7 Bit       Adders := 2     
 	   2 Input    6 Bit       Adders := 18    
@@ -372,14 +372,12 @@ Detailed RTL Component Info :
 	   2 Input      1 Bit         XORs := 2     
 +---Registers : 
 	               32 Bit    Registers := 107   
-	               12 Bit    Registers := 1     
-	               11 Bit    Registers := 1     
-	                8 Bit    Registers := 12    
+	                8 Bit    Registers := 13    
 	                7 Bit    Registers := 2     
 	                4 Bit    Registers := 3     
 	                3 Bit    Registers := 2     
-	                2 Bit    Registers := 6     
-	                1 Bit    Registers := 43    
+	                2 Bit    Registers := 7     
+	                1 Bit    Registers := 42    
 +---Muxes : 
 	   2 Input   32 Bit        Muxes := 91    
 	   5 Input   32 Bit        Muxes := 4     
@@ -396,7 +394,6 @@ Detailed RTL Component Info :
 	  25 Input   25 Bit        Muxes := 8     
 	   2 Input   24 Bit        Muxes := 18    
 	   2 Input   23 Bit        Muxes := 24    
-	   2 Input   12 Bit        Muxes := 1     
 	   2 Input   10 Bit        Muxes := 8     
 	   2 Input    9 Bit        Muxes := 16    
 	   4 Input    8 Bit        Muxes := 12    
@@ -475,7 +472,7 @@ DSP Report: Generating DSP fract0, operation Mode is: (PCIN>>17)+(A:0xa3d70a)*B.
 DSP Report: operator fract0 is absorbed into DSP fract0.
 DSP Report: operator fract0 is absorbed into DSP fract0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:14 ; elapsed = 00:01:16 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 817 ; free virtual = 7040
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2162 ; free virtual = 7526
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -505,19 +502,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:21 ; elapsed = 00:01:22 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 838 ; free virtual = 7060
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:25 ; elapsed = 00:01:26 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2155 ; free virtual = 7519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:21 ; elapsed = 00:01:22 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 838 ; free virtual = 7060
+Finished Timing Optimization : Time (s): cpu = 00:01:25 ; elapsed = 00:01:26 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2155 ; free virtual = 7519
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:24 ; elapsed = 00:01:26 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 837 ; free virtual = 7059
+Finished Technology Mapping : Time (s): cpu = 00:01:28 ; elapsed = 00:01:30 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2153 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -535,37 +532,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:30 ; elapsed = 00:01:31 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Finished IO Insertion : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:30 ; elapsed = 00:01:31 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:34 ; elapsed = 00:01:35 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:31 ; elapsed = 00:01:32 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:34 ; elapsed = 00:01:36 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:31 ; elapsed = 00:01:32 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:35 ; elapsed = 00:01:36 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:31 ; elapsed = 00:01:33 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:35 ; elapsed = 00:01:37 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:31 ; elapsed = 00:01:33 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:35 ; elapsed = 00:01:37 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -601,46 +598,46 @@ Report Cell Usage:
 |      |Cell    |Count |
 +------+--------+------+
 |1     |BUFG    |     1|
-|2     |CARRY4  |  1449|
+|2     |CARRY4  |  1455|
 |3     |DSP48E1 |    12|
-|4     |LUT1    |   743|
-|5     |LUT2    |  1913|
-|6     |LUT3    |  2138|
-|7     |LUT4    |  3529|
-|8     |LUT5    |  3767|
-|9     |LUT6    |  7089|
-|10    |MUXF7   |   423|
+|4     |LUT1    |   744|
+|5     |LUT2    |  1924|
+|6     |LUT3    |  2134|
+|7     |LUT4    |  3555|
+|8     |LUT5    |  3768|
+|9     |LUT6    |  7040|
+|10    |MUXF7   |   430|
 |11    |MUXF8   |     3|
-|12    |FDRE    |  3613|
-|13    |FDSE    |    56|
+|12    |FDRE    |  3627|
+|13    |FDSE    |    57|
 |14    |IBUF    |     3|
 |15    |IOBUF   |     1|
 |16    |OBUF    |     4|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:31 ; elapsed = 00:01:33 . Memory (MB): peak = 2369.555 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:35 ; elapsed = 00:01:37 . Memory (MB): peak = 2368.324 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:28 ; elapsed = 00:01:30 . Memory (MB): peak = 2369.555 ; gain = 655.160 ; free physical = 854 ; free virtual = 7076
-Synthesis Optimization Complete : Time (s): cpu = 00:01:31 ; elapsed = 00:01:33 . Memory (MB): peak = 2369.562 ; gain = 750.926 ; free physical = 854 ; free virtual = 7076
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:32 ; elapsed = 00:01:34 . Memory (MB): peak = 2368.324 ; gain = 661.137 ; free physical = 2157 ; free virtual = 7518
+Synthesis Optimization Complete : Time (s): cpu = 00:01:35 ; elapsed = 00:01:37 . Memory (MB): peak = 2368.332 ; gain = 749.934 ; free physical = 2157 ; free virtual = 7518
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.16 . Memory (MB): peak = 2369.562 ; gain = 0.000 ; free physical = 1136 ; free virtual = 7358
-INFO: [Netlist 29-17] Analyzing 1888 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2368.332 ; gain = 0.000 ; free physical = 2445 ; free virtual = 7807
+INFO: [Netlist 29-17] Analyzing 1901 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2369.562 ; gain = 0.000 ; free physical = 1133 ; free virtual = 7355
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2368.332 ; gain = 0.000 ; free physical = 2444 ; free virtual = 7806
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: d5993dd9
+Synth Design complete | Checksum: 4a117616
 INFO: [Common 17-83] Releasing license: Synthesis
 78 Infos, 107 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:42 ; elapsed = 00:01:40 . Memory (MB): peak = 2369.562 ; gain = 1034.066 ; free physical = 1133 ; free virtual = 7355
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2023.300; main = 1688.709; forked = 382.028
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3339.086; main = 2369.555; forked = 969.531
+synth_design: Time (s): cpu = 00:01:46 ; elapsed = 00:01:45 . Memory (MB): peak = 2368.332 ; gain = 1074.012 ; free physical = 2444 ; free virtual = 7806
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2004.944; main = 1685.646; forked = 365.954
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3321.082; main = 2368.324; forked = 952.758
 INFO: [Common 17-1381] The checkpoint '/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file flightController_utilization_synth.rpt -pb flightController_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Dec 12 22:34:05 2023...
+INFO: [Common 17-206] Exiting Vivado at Wed Dec 13 14:55:29 2023...

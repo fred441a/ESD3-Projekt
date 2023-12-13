@@ -98,12 +98,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../PWM_Project/PWM_Project.srcs/sources_1/new/Top.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PPRDIR/../EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/project/createCalibration.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -129,6 +123,12 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../distMatrix/distMatrix.srcs/sources_1/new/pwmMap.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../EcsPwmCalibration/EcsPwmCalibration.srcs/sources_1/imports/new/pwmModule.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
