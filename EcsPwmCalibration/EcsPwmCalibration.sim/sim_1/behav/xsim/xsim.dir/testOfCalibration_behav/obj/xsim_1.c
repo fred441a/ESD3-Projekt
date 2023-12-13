@@ -54,18 +54,18 @@
 #endif
 typedef void (*funcp)(char *, char *);
 extern int main(int, char**);
-IKI_DLLESPEC extern void execute_29(char*, char *);
-IKI_DLLESPEC extern void execute_31(char*, char *);
+IKI_DLLESPEC extern void execute_36(char*, char *);
+IKI_DLLESPEC extern void execute_38(char*, char *);
 IKI_DLLESPEC extern void transaction_0(char*, char*, unsigned, unsigned, unsigned);
 IKI_DLLESPEC extern void vhdl_transfunc_eventcallback(char*, char*, unsigned, unsigned, unsigned, char *);
-funcp funcTab[4] = {(funcp)execute_29, (funcp)execute_31, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback};
+funcp funcTab[4] = {(funcp)execute_36, (funcp)execute_38, (funcp)transaction_0, (funcp)vhdl_transfunc_eventcallback};
 const int NumRelocateId= 4;
 
 void relocate(char *dp)
 {
 	iki_relocate(dp, "xsim.dir/testOfCalibration_behav/xsim.reloc",  (void **)funcTab, 4);
-	iki_vhdl_file_variable_register(dp + 4856);
-	iki_vhdl_file_variable_register(dp + 4912);
+	iki_vhdl_file_variable_register(dp + 5088);
+	iki_vhdl_file_variable_register(dp + 5144);
 
 
 	/*Populate the transaction function pointer field in the whole net structure */
