@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../i2cslave.vhd" \
+"../../../../i2cdemo.vhd" \
+
+# Do not sort compile order
+nosort

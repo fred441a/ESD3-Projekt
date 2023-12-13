@@ -1,0 +1,7 @@
+set_property SRC_FILE_INFO {cfile:/home/mikkel/repoes/ESD3/ESD3-Projekt/I2C_Slave/I2C_Slave.srcs/constrs_2/new/constraint.xdc rfile:../../../I2C_Slave.srcs/constrs_2/new/constraint.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN L17 [get_ports MCLK]
+set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN M3 [get_ports SCL]
+set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN J3 [get_ports SDA]

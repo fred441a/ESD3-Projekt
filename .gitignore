@@ -84,3 +84,7 @@
 !*.elf
 !*.bmm
 !*.xmp
+#MY ARDUINO FILES!!!
+!*.ino
+!*.svg
+!*.m

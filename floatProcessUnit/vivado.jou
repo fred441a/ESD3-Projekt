@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Tue Dec  5 08:25:35 2023
+# Process ID: 22944
+# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13888 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\floatProcessUnit\floatProcessUnit.xpr
+# Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit/vivado.log
+# Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/floatProcessUnit/floatProcessUnit.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source fpu.tcl
+restart
+add_force {/fpu/input0} -radix hex {0x43fa0000 0ns}
+add_force {/fpu/input1} -radix hex {0x451c4000 0ns}
+add_force {/fpu/opVal} -radix bin {01 0ns}
+add_force {/fpu/CLK} -radix bin {1 0ns} {0 41666ps} -repeat_every 83333ps
+run 1 ms
+add_force {/fpu/opVal} -radix bin {10 0ns}
+run 100 ns
+add_force {/fpu/opVal} -radix hex {0x3 0ns}
+run 100 ns
+add_force {/fpu/opVal} -radix bin {00 0ns}
+run 100 ns
+run 100 ns
+close_sim
