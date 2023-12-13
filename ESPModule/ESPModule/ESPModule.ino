@@ -90,7 +90,7 @@ void setup() {
   pinMode(emergencyLightPin, OUTPUT);    // Enables the pin to be used as a power-source
   pinMode(takeOffPin, INPUT_PULLUP);     // Sets the pin ready for button input using builtin pullup resistors
   pinMode(landPin, INPUT_PULLUP);        // Sets the pin ready for button input using builtin pullup resistors
-  digitalWrite(emergencyLightPin, HIGH);
+  digitalWrite(emergencyLightPin, LOW);
 
   while (!Serial) {  // Wait until serial port opens for native USB devices
     delay(10);
@@ -312,7 +312,7 @@ static void safeTakeOff(void *pvParameters) {
       vTaskResume(hdlRollDesired);           // Resumes rollDesired function
       writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -357,7 +357,7 @@ static void safeLand(void *pvParameters) {
       vTaskResume(hdlRollDesired);           // Resumes rollDesired function
       writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -379,7 +379,7 @@ static void heightRead(void *pvParameters) {
       }
       //currentHeight = measure.RangeMilliMeter;        // Updates the currentHeight variable with the newest measured value
   #endif
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -415,7 +415,7 @@ static void heightDesired(void *pvParameters) {
     writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with current desired height
     // Serial.println("heightDesired");                   // Status update to figure out which function is running
     // Serial.println(desiredHeight);
-    vTaskDelay(20 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -423,7 +423,7 @@ static void yawRead(void *pvParameters) {
   while (1) {
     //Serial.println("yawRead");  // Status update to figure out which function is running
     // Yaw reading code goes here
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -447,7 +447,7 @@ static void yawDesired(void *pvParameters) {
       // desiredYaw = -1.0;
     }
     writeToAddress(FPGAAddress, 0x10, *((uint32_t*)&desiredYaw));  // Updates the desired memory module address with current desired yaw value
-    vTaskDelay(10 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
   }
 }
 
@@ -477,7 +477,7 @@ static void pitchRead(void *pvParameters) {
       writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
       writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
   #endif
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -504,7 +504,7 @@ static void pitchDesired(void *pvParameters) {
    //Serial.println("pitchDesired");  // Status update to figure out which function is running
     //Serial.println(desiredPitch);
     writeToAddress(FPGAAddress, 0x06, *((uint32_t*)&desiredPitch));  // Updates the desired memory module address with current desired pitch value
-    vTaskDelay(10 / portTICK_PERIOD_MS);              // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);              // Delay for 10 milliseconds
   }
 }
 
@@ -534,7 +534,7 @@ static void rollRead(void *pvParameters) {
       writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
       writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
   #endif
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -561,13 +561,13 @@ static void rollDesired(void *pvParameters) {
    //Serial.println("rollDesired");  // Status update to figure out which function is running
     //Serial.println(desiredRoll);
     writeToAddress(FPGAAddress, 0x0B, *((uint32_t*)&desiredRoll));  // Updates the desired memory module address with current desired roll value
-    vTaskDelay(10 / portTICK_PERIOD_MS);             // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);             // Delay for 10 milliseconds
   }
 }
 
 void stop() {                             // Emergency stop function
                                           //Serial.println("Stop for satan!");      // Status update to figure out which function is running
-  digitalWrite(emergencyLightPin, LOW);  // Lights up the emergency lights
+  digitalWrite(emergencyLightPin, HIGH);  // Lights up the emergency lights
   vTaskSuspend(hdlHeightRead);            // Suspends heightRead function
   vTaskSuspend(hdlHeightDesired);         // Suspends heightDesired function
   vTaskSuspend(hdlYawRead);               // Suspends yawRead function
@@ -581,6 +581,6 @@ void stop() {                             // Emergency stop function
 static void MyIdleTask(void *pvParameters) {
   while (1) {
     //Serial.println(F("Idle state"));
-    vTaskDelay(10 / portTICK_PERIOD_MS);
+    vTaskDelay(50 / portTICK_PERIOD_MS);
   }
 }
