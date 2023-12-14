@@ -485,8 +485,8 @@ static void pitchDesired(void *pvParameters) {
   while (1) {
     joystickInputX = analogRead(joystickInputXPin);                // Reading from the joystick saved as input value
     if (joystickInputX >= 3500) {                                  // If the joystick is completely at the top, the drone should go forward fast
-      // desiredPitch = 3;
-      desiredPitch = 1.0;                                            // Set the desiredPitch value to +3 (forward)
+      desiredPitch = 3;
+      // desiredPitch = 1.0;                                            // Set the desiredPitch value to +3 (forward)
     } else if (joystickInputX >= 3000 && joystickInputX < 3500) {  // If the joystick is somewhat at the top, the drone should go forward
       desiredPitch = 1.5;                                          // Set the desiredPitch value to +1.5 (forward)
     } else if (joystickInputX > 2500 && joystickInputX < 3000) {   // If the joystick is a little at the top, the drone should go forward slowly
@@ -496,8 +496,8 @@ static void pitchDesired(void *pvParameters) {
     } else if (joystickInputX <= 1000 && joystickInputX > 500) {   // If the joystick is somewhat at the bottom, the drone should go backwards
       desiredPitch = -1.5;                                         // Set the desiredPitch value to -1.5 (backwards)
     } else if (joystickInputX <= 500) {                            // If the joystick is completely at the bottom, the drone should go backwards fast
-      // desiredPitch = -3;
-      desiredPitch = -1.0;                                           // Set the desiredPitch value to -3 (backwards)
+      desiredPitch = -3;
+      // desiredPitch = -1.0;                                           // Set the desiredPitch value to -3 (backwards)
     } else {                                                       // If there is no joystick input, the drone should hover
       desiredPitch = 0;                                            // Resets the desiredRoll to 0, to ensure that the drone hovers flat again
     }
@@ -542,8 +542,8 @@ static void rollDesired(void *pvParameters) {
   while (1) {
     joystickInputY = analogRead(joystickInputYPin);                // Reading from the joystick saved as input value
     if (joystickInputY >= 3500) {                                  // If the joystick is completely at the right, the drone should move right quickly
-      // desiredRoll = 3;
-      desiredRoll = 1.0;                                             // Set the desiredRoll value to +3 (right)
+      desiredRoll = 3;
+      // desiredRoll = 1.0;                                             // Set the desiredRoll value to +3 (right)
     } else if (joystickInputY >= 3000 && joystickInputY < 3500) {  // If the joystick is somewhat at the right, the drone should move right
       desiredRoll = 1.5;                                           // Set the desiredRoll value to +1.5 (right)
     } else if (joystickInputY > 2500 && joystickInputY < 3000) {   // If the joystick is a little at the right, the drone should move right slowly
@@ -553,8 +553,8 @@ static void rollDesired(void *pvParameters) {
     } else if (joystickInputY <= 1000 && joystickInputY > 500) {   // If the joystick is somewhat at the left, the drone should move left
       desiredRoll = -1.5;                                          // Set the desiredRoll value to -1.5 (left)
     } else if (joystickInputY <= 500) {                            // If the joystick is completely at the left, the drone should move left quickly
-      // desiredRoll = -3;
-      desiredRoll = -1.0;                                            // Set the desiredRoll value to -3 (left)
+      desiredRoll = -3;
+      // desiredRoll = -1.0;                                            // Set the desiredRoll value to -3 (left)
     } else {                                                       // If there is no joystick input, the drone should hover
       desiredRoll = 0;                                             // Resets the desiredRoll to 0, to ensure that the drone hovers flat again
     }
