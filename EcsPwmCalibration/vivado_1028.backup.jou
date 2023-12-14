@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Nov 27 14:50:40 2023
+# Process ID: 1028
+# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5956 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
+# Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/vivado.log
+# Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.xpr
+update_compile_order -fileset sources_1
+close_project
+create_project distMatrixRevolutions C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrixRevolutions -part xc7a35tcpg236-1
+set_property board_part digilentinc.com:cmod_a7-35t:part0:1.2 [current_project]
+set_property target_language VHDL [current_project]
+set_property simulator_language VHDL [current_project]
+file mkdir C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrixRevolutions/distMatrixRevolutions.srcs/sources_1/new
+close [ open C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrixRevolutions/distMatrixRevolutions.srcs/sources_1/new/matrixRevolution.vhd w ]
+add_files C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrixRevolutions/distMatrixRevolutions.srcs/sources_1/new/matrixRevolution.vhd
+close [ open C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrixRevolutions/distMatrixRevolutions.srcs/sources_1/new/testBench.vhd w ]
+add_files C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/distMatrixRevolutions/distMatrixRevolutions.srcs/sources_1/new/testBench.vhd
+update_compile_order -fileset sources_1

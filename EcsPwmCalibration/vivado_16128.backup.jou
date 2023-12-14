@@ -1,0 +1,37 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+<<<<<<<< HEAD:EcsPwmCalibration/vivado_17568.backup.jou
+# Start of session at: Wed Nov 15 11:16:44 2023
+# Process ID: 17568
+# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent22860 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
+========
+# Start of session at: Tue Nov 28 09:07:43 2023
+# Process ID: 16128
+# Current directory: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20672 C:\Users\Ditte\aauRepo\esd3\project\ESD3-Projekt\EcsPwmCalibration\EcsPwmCalibration.xpr
+>>>>>>>> origin/master:EcsPwmCalibration/vivado_16128.backup.jou
+# Log file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/vivado.log
+# Journal file: C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration\vivado.jou
+# Running On: DippeePrime, OS: Windows, CPU Frequency: 3110 MHz, CPU Physical cores: 12, Host memory: 16892 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.xpr
+update_compile_order -fileset sources_1
+<<<<<<<< HEAD:EcsPwmCalibration/vivado_17568.backup.jou
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Ditte/aauRepo/esd3/project/ESD3-Projekt/EcsPwmCalibration/EcsPwmCalibration.runs/impl_1/testOfCalibration.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+========
+>>>>>>>> origin/master:EcsPwmCalibration/vivado_16128.backup.jou

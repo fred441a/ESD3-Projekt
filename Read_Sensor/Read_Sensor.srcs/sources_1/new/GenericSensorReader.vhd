@@ -33,6 +33,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity GenericSensorReader is
 --  Port ( );
+Port ( 
+           clk : in STD_LOGIC;
+           scl : inout STD_LOGIC;
+           sda : inout STD_LOGIC;
+           enable: in std_logic;
+           I2CSlaveSetup: inout std_logic_vector( 31 to 0);
+           I2CSlaveAdressesX: inout std_logic_vector(31 to 0);
+           I2CSlaveValuesX: inout std_logic_vector (31 to 0);
+           I2CSlaveAdressesY: inout std_logic_vector(31 to 0);
+           I2CSlaveValuesY: inout std_logic_vector(31 to 0);
+           I2CSlaveAdressesZ: inout std_logic_vector(31 to 0);
+           I2CSlaveValuesZ: inout std_logic_vector(31 to 0)           
+           );
 end GenericSensorReader;
 
 architecture Behavioral of GenericSensorReader is
