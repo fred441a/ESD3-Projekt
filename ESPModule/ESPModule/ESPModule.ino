@@ -64,6 +64,17 @@ float heightP = 1.0;
 float heightI = 0.05;
 float heightD = 3;
 
+float pitchP = 0.0058066;
+float pitchI = 0.0000703;
+float pitchD = 1.1680384;
+
+float rollP = 0.0058066;
+float rollI = 0.0000703;
+float rollD = 1.1680384;
+
+float yawP = 0.3665778;
+float yawI = 0.0612539;
+float yawD = 0.3496298;
 
 void setup() {
   Serial.begin(115200);   // Initialisation of serial monitor
@@ -145,10 +156,28 @@ void loop() {
   delay(1000);
 }
 
-void setupFPGA(){ // Contains PID setup and the like
-writeToAddress(FPGAAddress, 0x03, *((uint32_t*)&heightP));
-writeToAddress(FPGAAddress, 0x04, *((uint32_t*)&heightI));
-writeToAddress(FPGAAddress, 0x05, *((uint32_t*)&heightD));
+void setupFPGA(){ 
+  // Contains PID setup and the like
+  // Altitude
+  writeToAddress(FPGAAddress, 0x03, *((uint32_t*)&heightP));
+  writeToAddress(FPGAAddress, 0x04, *((uint32_t*)&heightI));
+  writeToAddress(FPGAAddress, 0x05, *((uint32_t*)&heightD));
+
+  // PITCH
+  writeToAddress(FPGAAddress, 0x07, *((uint32_t*)&pitchP));
+  writeToAddress(FPGAAddress, 0x08, *((uint32_t*)&pitchI));
+  writeToAddress(FPGAAddress, 0x09, *((uint32_t*)&pitchD));
+
+  // ROLL
+  writeToAddress(FPGAAddress, 0x0C, *((uint32_t*)&rollP));
+  writeToAddress(FPGAAddress, 0x0D, *((uint32_t*)&rollI));
+  writeToAddress(FPGAAddress, 0x0E, *((uint32_t*)&rollD));
+
+  // YAW
+  writeToAddress(FPGAAddress, 0x11, *((uint32_t*)&yawP));
+  writeToAddress(FPGAAddress, 0x12, *((uint32_t*)&yawI));
+  writeToAddress(FPGAAddress, 0x13, *((uint32_t*)&yawD));
+
 }
 
 void readyFPGA() {
@@ -276,7 +305,7 @@ static void safeTakeOff(void *pvParameters) {
       vTaskResume(hdlRollDesired);           // Resumes rollDesired function
       writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -321,7 +350,7 @@ static void safeLand(void *pvParameters) {
       vTaskResume(hdlRollDesired);           // Resumes rollDesired function
       writeToAddress(FPGAAddress, 0x01, 0);  // Sets the safe land flag low in memory module
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -335,15 +364,15 @@ static void heightRead(void *pvParameters) {
     lox.rangingTest(&measure, false);  // Pass in 'true' to get debug data printout!
 
     if (measure.RangeStatus != 4) {  // Phase failures have incorrect data
-      Serial.print("Distance (mm): ");
-      Serial.println(measure.RangeMilliMeter);
+     // Serial.print("Distance (mm): ");
+      //Serial.println(measure.RangeMilliMeter);
       currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
     } else {
       //Serial.println(" out of range ");
     }
     currentHeight = measure.RangeMilliMeter;        // Updates the currentHeight variable with the newest measured value
 #endif
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -376,9 +405,9 @@ static void heightDesired(void *pvParameters) {
       Serial.println("Max height reached");
     }
     writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with current desired height
-   Serial.println("heightDesired");                   // Status update to figure out which function is running
-    Serial.println(desiredHeight);
-    vTaskDelay(20 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+  //Serial.println("heightDesired");                   // Status update to figure out which function is running
+   //Serial.println(desiredHeight);
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -386,7 +415,7 @@ static void yawRead(void *pvParameters) {
   while (1) {
     //Serial.println("yawRead");  // Status update to figure out which function is running
     // Yaw reading code goes here
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -407,8 +436,8 @@ static void yawDesired(void *pvParameters) {
     } else if (joystickInputYaw <= 500) {                              // If the joystick is completely at the left, the drone should turn counterclockwise quickly
       desiredYaw -= 15;                                                // Decrements desiredYaw by 15mm
     }
-    writeToAddress(FPGAAddress, 0x10, desiredYaw);  // Updates the desired memory module address with current desired yaw value
-    vTaskDelay(10 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
+    writeToAddress(FPGAAddress, 0x10, *((uint32_t*)&desiredYaw));  // Updates the desired memory module address with current desired yaw value
+    vTaskDelay(50 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
   }
 }
 
@@ -438,7 +467,7 @@ static void pitchRead(void *pvParameters) {
     writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
     writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
 #endif
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -462,8 +491,8 @@ static void pitchDesired(void *pvParameters) {
     }
    //Serial.println("pitchDesired");  // Status update to figure out which function is running
     //Serial.println(desiredPitch);
-    writeToAddress(FPGAAddress, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
-    vTaskDelay(10 / portTICK_PERIOD_MS);              // Delay for 10 milliseconds
+    writeToAddress(FPGAAddress, 0x06, *((uint32_t*)&desiredPitch));  // Updates the desired memory module address with current desired pitch value
+    vTaskDelay(50 / portTICK_PERIOD_MS);              // Delay for 10 milliseconds
   }
 }
 
@@ -493,7 +522,7 @@ static void rollRead(void *pvParameters) {
     writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
     writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
 #endif
-    vTaskDelay(10 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
+    vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
 
@@ -517,8 +546,8 @@ static void rollDesired(void *pvParameters) {
     }
    //Serial.println("rollDesired");  // Status update to figure out which function is running
     //Serial.println(desiredRoll);
-    writeToAddress(FPGAAddress, 0x0B, desiredRoll);  // Updates the desired memory module address with current desired roll value
-    vTaskDelay(10 / portTICK_PERIOD_MS);             // Delay for 10 milliseconds
+    writeToAddress(FPGAAddress, 0x0B, *((uint32_t*)&desiredRoll));  // Updates the desired memory module address with current desired roll value
+    vTaskDelay(50 / portTICK_PERIOD_MS);             // Delay for 10 milliseconds
   }
 }
 
@@ -538,6 +567,6 @@ void stop() {                             // Emergency stop function
 static void MyIdleTask(void *pvParameters) {
   while (1) {
     //Serial.println(F("Idle state"));
-    vTaskDelay(10 / portTICK_PERIOD_MS);
+    vTaskDelay(50 / portTICK_PERIOD_MS);
   }
 }
