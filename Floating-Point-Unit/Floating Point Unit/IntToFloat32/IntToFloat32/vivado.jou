@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Sat Nov 25 15:58:40 2023
+# Process ID: 12896
+# Current directory: C:/Users/theil/Downloads/Floating-Point-Unit/Floating Point Unit/IntToFloat32/IntToFloat32
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent20504 C:\Users\theil\Downloads\Floating-Point-Unit\Floating Point Unit\IntToFloat32\IntToFloat32\IntToFloat32.xpr
+# Log file: C:/Users/theil/Downloads/Floating-Point-Unit/Floating Point Unit/IntToFloat32/IntToFloat32/vivado.log
+# Journal file: C:/Users/theil/Downloads/Floating-Point-Unit/Floating Point Unit/IntToFloat32/IntToFloat32\vivado.jou
+# Running On: JohanTheil, OS: Windows, CPU Frequency: 2611 MHz, CPU Physical cores: 10, Host memory: 16839 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/theil/Downloads/Floating-Point-Unit/Floating Point Unit/IntToFloat32/IntToFloat32/IntToFloat32.xpr}
+update_compile_order -fileset sources_1

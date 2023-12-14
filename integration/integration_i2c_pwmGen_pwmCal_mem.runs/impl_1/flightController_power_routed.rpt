@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2023.1 (lin64) Build 3865809 Sun May  7 15:04:56 MDT 2023
-| Date             : Tue Dec  5 11:08:29 2023
-| Host             : Lenova running 64-bit Debian GNU/Linux trixie/sid
+| Tool Version     : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date             : Wed Dec 13 14:57:12 2023
+| Host             : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command          : report_power -file flightController_power_routed.rpt -pb flightController_power_summary_routed.pb -rpx flightController_power_routed.rpx
 | Design           : flightController
 | Device           : xc7a35tcpg236-1
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+--------------+
-| Total On-Chip Power (W)  | 10.578       |
-| Design Power Budget (W)  | Unspecified* |
-| Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 10.429       |
-| Device Static (W)        | 0.149        |
-| Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 32.1         |
-| Junction Temperature (C) | 77.9         |
-| Confidence Level         | Low          |
-| Setting File             | ---          |
-| Simulation Activity File | ---          |
-| Design Nets Matched      | NA           |
-+--------------------------+--------------+
++--------------------------+-----------------------------------+
+| Total On-Chip Power (W)  | 384.690 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                      |
+| Power Budget Margin (W)  | NA                                |
+| Dynamic (W)              | 384.204                           |
+| Device Static (W)        | 0.486                             |
+| Effective TJA (C/W)      | 5.0                               |
+| Max Ambient (C)          | 0.0                               |
+| Junction Temperature (C) | 125.0                             |
+| Confidence Level         | Low                               |
+| Setting File             | ---                               |
+| Simulation Activity File | ---                               |
+| Design Nets Matched      | NA                                |
++--------------------------+-----------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,17 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     4.785 |     4583 |       --- |             --- |
-|   LUT as Logic |     4.629 |     2153 |     20800 |           10.35 |
-|   Register     |     0.079 |     1831 |     41600 |            4.40 |
-|   CARRY4       |     0.042 |       25 |      8150 |            0.31 |
-|   F7/F8 Muxes  |     0.030 |      142 |     32600 |            0.44 |
+| Slice Logic    |   226.064 |    24338 |       --- |             --- |
+|   LUT as Logic |   221.676 |    14415 |     20800 |           69.30 |
+|   CARRY4       |     3.941 |     1455 |      8150 |           17.85 |
+|   Register     |     0.283 |     3684 |     41600 |            8.86 |
+|   F7/F8 Muxes  |     0.159 |      433 |     32600 |            1.33 |
 |   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       18 |       --- |             --- |
-| Signals        |     4.180 |     2704 |       --- |             --- |
-| I/O            |     1.464 |        9 |       106 |            8.49 |
-| Static Power   |     0.149 |          |           |                 |
-| Total          |    10.578 |          |           |                 |
+|   Others       |     0.000 |       34 |       --- |             --- |
+| Signals        |   152.579 |    15845 |       --- |             --- |
+| DSPs           |     5.330 |       12 |        90 |           13.33 |
+| I/O            |     0.232 |        8 |       106 |            7.55 |
+| Static Power   |     0.486 |          |           |                 |
+| Total          |   384.690 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,16 +73,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     9.046 |       8.973 |      0.073 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.073 |       0.053 |      0.020 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.413 |       0.412 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |   384.325 |     383.985 |      0.341 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.061 |       0.008 |      0.053 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.063 |       0.062 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
-| Vccbram   |       1.000 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
+| Vccbram   |       1.000 |     0.010 |       0.000 |      0.010 |       NA    | Unspecified | NA         |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |       NA    | Unspecified | NA         |
@@ -136,17 +137,24 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-------------------+-----------+
-| Name              | Power (W) |
-+-------------------+-----------+
-| flightController  |    10.429 |
-|   i2cExternal     |     2.014 |
-|     I_I2CITF      |     0.691 |
-|   pwmCal          |     0.100 |
-|   pwmGen          |     0.272 |
-|   readSensor      |     6.232 |
-|     Byte_compiler |     3.322 |
-|       Read_Byte   |     0.290 |
-+-------------------+-----------+
++-----------------------+-----------+
+| Name                  | Power (W) |
++-----------------------+-----------+
+| flightController      |   384.204 |
+|   DIST_MATRIX         |   228.483 |
+|     matrixReloaded    |   135.472 |
+|       fpuCalculations |   132.151 |
+|     pwmMapSlave       |    93.011 |
+|   i2cExternal         |     3.027 |
+|     I_I2CITF          |     0.504 |
+|   pidBlock            |   151.655 |
+|     PID_ALTITUDE      |     1.962 |
+|     PID_PITCH         |     1.357 |
+|     PID_ROLL          |     1.080 |
+|     PID_YAW           |     1.027 |
+|     SHARED_FPU        |   142.580 |
+|   pwmCal              |     0.092 |
+|   pwmGen              |     0.392 |
++-----------------------+-----------+
 
 

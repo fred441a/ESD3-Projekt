@@ -65,9 +65,9 @@ component matrix is
     ch0: out float32;
     ch1: out float32;
     ch2: out float32;
-    ch3: out float32;
+    ch3: out float32
     
-    debug2: out std_logic
+    --debug2: out std_logic
     );
 end component;
 
@@ -82,9 +82,9 @@ component pwmMap is
     outCh0: out         std_logic_vector(7 downto 0);
     outCh1: out         std_logic_vector(7 downto 0);
     outCh2: out         std_logic_vector(7 downto 0);
-    outCh3: out         std_logic_vector(7 downto 0);
+    outCh3: out         std_logic_vector(7 downto 0)
     
-    debug1: out         std_logic
+    --debug1: out         std_logic
     );
 end component;
 
@@ -103,7 +103,7 @@ port map (
     pidYaw => yawPid,
     pidLat => latPid,
     
-    ch0 => sigch0,
+    ch0 => sigch0,    
     ch1 => sigch1,
     ch2 => sigch2,
     ch3 => sigch3

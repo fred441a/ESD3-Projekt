@@ -90,7 +90,7 @@ void setup() {
   pinMode(emergencyLightPin, OUTPUT);    // Enables the pin to be used as a power-source
   pinMode(takeOffPin, INPUT_PULLUP);     // Sets the pin ready for button input using builtin pullup resistors
   pinMode(landPin, INPUT_PULLUP);        // Sets the pin ready for button input using builtin pullup resistors
-  digitalWrite(emergencyLightPin, HIGH);
+  digitalWrite(emergencyLightPin, LOW);
 
   while (!Serial) {  // Wait until serial port opens for native USB devices
     delay(10);
@@ -136,11 +136,11 @@ void setup() {
 
   Serial.println("Task creation");                                                 // Status update to figure out which function is running
   xTaskCreate(MyIdleTask, "IdleTask", 1000, NULL, 0, NULL);                        // Idle task to check if there is any time left to execute tasks in
-  xTaskCreate(safeTakeOff, "Safely takes off", 5000, NULL, 3, &hdlSafeTakeOff);    // Safely lifts the drone to 500mm
-  xTaskCreate(safeLand, "Safely lands", 5000, NULL, 3, &hdlSafeLand);              // Safely lands the drone
+  // xTaskCreate(safeTakeOff, "Safely takes off", 5000, NULL, 3, &hdlSafeTakeOff);    // Safely lifts the drone to 500mm
+  // xTaskCreate(safeLand, "Safely lands", 5000, NULL, 3, &hdlSafeLand);              // Safely lands the drone
   xTaskCreate(heightRead, "Reads current height", 8000, NULL, 2, &hdlHeightRead);  // Read current height from range sensor
   xTaskCreate(heightDesired, "Desired height", 8000, NULL, 2, &hdlHeightDesired);  // Sets a new desired height
-  xTaskCreate(yawRead, "Reads current yaw", 5000, NULL, 1, &hdlYawRead);           // Read current yaw from range sensor
+  // xTaskCreate(yawRead, "Reads current yaw", 5000, NULL, 1, &hdlYawRead);           // Read current yaw from range sensor
   xTaskCreate(yawDesired, "Desired yaw", 5000, NULL, 1, &hdlYawDesired);           // Sets a new desired yaw
   xTaskCreate(pitchRead, "Reads current pitch", 5000, NULL, 1, &hdlPitchRead);     // Read current pitch from range sensor
   xTaskCreate(pitchDesired, "Desired pitch", 5000, NULL, 1, &hdlPitchDesired);     // Sets a new desired pitch
@@ -154,6 +154,13 @@ void loop() {
   //Serial.println("Der skal ske noget her for at ESP'en er tilfreds");  // #skodMCU
   //getData();
   delay(1000);
+
+  Serial.print("Wanted altitude: ");Serial.print(desiredHeight);Serial.print("      Current altitude: ");Serial.println(currentHeight);
+  Serial.print("Wanted pitch:    ");Serial.print(desiredPitch, 4);   Serial.print(" Current pitch:    ");Serial.println(currentPitch, 4);
+  Serial.print("Wanted roll:     ");Serial.print(desiredRoll, 4);    Serial.print(" Current roll:     ");Serial.println(currentRoll, 4);
+  Serial.print("Wanted yaw:      ");Serial.print(desiredYaw, 4);     Serial.print(" Current yaw:      ");Serial.println(currentYaw, 4);
+  Serial.println();
+
 }
 
 void setupFPGA(){ 
@@ -281,11 +288,11 @@ static void safeTakeOff(void *pvParameters) {
       writeToAddress(FPGAAddress, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
       desiredRoll = 0;                                  // Sets the desired roll to 0 to ensure as level a takeoff as possible
       writeToAddress(FPGAAddress, 0x0B, desiredRoll);   // Updates the desired memory module address with current desired roll value
-#if READ_SENSOR_I2C_WORKS == 1
-      currentHeight = readIntFromAddress(FPGAAddress, 0x18);  // Conditional compiling ensures this only runs if the read sensor fpga implementation works as desired
-#else
-      currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
-#endif
+  #if READ_SENSOR_I2C_WORKS == 1
+        currentHeight = readIntFromAddress(FPGAAddress, 0x18);  // Conditional compiling ensures this only runs if the read sensor fpga implementation works as desired
+  #else
+        currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
+  #endif
       desiredHeight = currentHeight;                       // Updates desired height to current height, so current height is taken into account
       desiredRoll = 0;                                     // Sets roll to 0 so the drone should be level
       desiredPitch = 0;                                    // Sets pitch to 0 so the drone should be level
@@ -326,11 +333,11 @@ static void safeLand(void *pvParameters) {
       writeToAddress(FPGAAddress, 0x06, desiredPitch);  // Updates the desired memory module address with current desired pitch value
       desiredRoll = 0;                                  // Sets the desired roll to 0 to ensure as level a takeoff as possible
       writeToAddress(FPGAAddress, 0x0B, desiredRoll);   // Updates the desired memory module address with current desired roll value
-#if READ_SENSOR_I2C_WORKS == 1
-      currentHeight = readIntFromAddress(FPGAAddress, 0x18);  // Conditional compiling ensures this only runs if the read sensor fpga implementation works as desired
-#else
-      currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
-#endif
+  #if READ_SENSOR_I2C_WORKS == 1
+        currentHeight = readIntFromAddress(FPGAAddress, 0x18);  // Conditional compiling ensures this only runs if the read sensor fpga implementation works as desired
+  #else
+        currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
+  #endif
       desiredHeight = currentHeight;                       // Sets desiredheight to current height, so there is no need to suddenly increase altitude before a landing can occur, in the case desired height is much higher than current height.
       desiredRoll = 0;                                     // Sets roll to 0 so the drone should be level
       desiredPitch = 0;                                    // Sets pitch to 0 so the drone should be level
@@ -356,22 +363,22 @@ static void safeLand(void *pvParameters) {
 
 static void heightRead(void *pvParameters) {
   while (1) {
-#if READ_SENSOR_I2C_WORKS == 1
-    currentHeight = readIntFromAddress(FPGAAddress, 0x18);  // Conditional compiling ensures this only runs if the read sensor fpga implementation works as desired
-#else
-   //Serial.println("heightRead");               // Status update to figure out which function is running
-    //Serial.println("Reading a measurement... ");
-    lox.rangingTest(&measure, false);  // Pass in 'true' to get debug data printout!
+  #if READ_SENSOR_I2C_WORKS == 1
+      currentHeight = readIntFromAddress(FPGAAddress, 0x18);  // Conditional compiling ensures this only runs if the read sensor fpga implementation works as desired
+  #else
+    //Serial.println("heightRead");               // Status update to figure out which function is running
+      //Serial.println("Reading a measurement... ");
+      lox.rangingTest(&measure, false);  // Pass in 'true' to get debug data printout!
 
-    if (measure.RangeStatus != 4) {  // Phase failures have incorrect data
-     // Serial.print("Distance (mm): ");
-      //Serial.println(measure.RangeMilliMeter);
-      currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
-    } else {
-      //Serial.println(" out of range ");
-    }
-    currentHeight = measure.RangeMilliMeter;        // Updates the currentHeight variable with the newest measured value
-#endif
+      if (measure.RangeStatus != 4 && measure.RangeMilliMeter < 2200) {  // Phase failures have incorrect data
+        // Serial.print("Distance (mm): ");
+        // Serial.println(measure.RangeMilliMeter);
+        currentHeight = measure.RangeMilliMeter;  // Updates the currentHeight variable with the newest measured value
+      } else {
+        //Serial.println(" out of range ");
+      }
+      //currentHeight = measure.RangeMilliMeter;        // Updates the currentHeight variable with the newest measured value
+  #endif
     vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
@@ -404,9 +411,10 @@ static void heightDesired(void *pvParameters) {
       desiredHeight = 2200;             // Maximum stable height of altitude sensor
       Serial.println("Max height reached");
     }
+    //writeToAddress(FPGAAddress, 0x02, desiredHeight > 1 ? 1 : 0);
     writeToAddress(FPGAAddress, 0x02, desiredHeight);  // Updates the desired memory module address with current desired height
-  //Serial.println("heightDesired");                   // Status update to figure out which function is running
-   //Serial.println(desiredHeight);
+    // Serial.println("heightDesired");                   // Status update to figure out which function is running
+    // Serial.println(desiredHeight);
     vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
@@ -425,6 +433,7 @@ static void yawDesired(void *pvParameters) {
     joystickInputYaw = analogRead(joystickInputYawPin);                // Reading from the joystick saved as input value
     if (joystickInputYaw >= 3500) {                                    // If the joystick is completely at the right, the drone should turn clockwise quickly
       desiredYaw += 15;                                                // Increments desiredYaw by 15mm
+      // desiredYaw = 1.0;
     } else if (joystickInputYaw >= 3000 && joystickInputYaw < 3500) {  // If the joystick is somewhat at the right, the drone should turn clockwise
       desiredYaw += 10;                                                // Increments desiredYaw by 10mm
     } else if (joystickInputYaw > 2500 && joystickInputYaw < 3000) {   // If the joystick is a little at the right, the drone should turn clockwise slowly
@@ -435,6 +444,7 @@ static void yawDesired(void *pvParameters) {
       desiredYaw -= 10;                                                // Decrements desiredYaw by 10mm
     } else if (joystickInputYaw <= 500) {                              // If the joystick is completely at the left, the drone should turn counterclockwise quickly
       desiredYaw -= 15;                                                // Decrements desiredYaw by 15mm
+      // desiredYaw = -1.0;
     }
     writeToAddress(FPGAAddress, 0x10, *((uint32_t*)&desiredYaw));  // Updates the desired memory module address with current desired yaw value
     vTaskDelay(50 / portTICK_PERIOD_MS);            // Delay for 10 milliseconds
@@ -443,30 +453,30 @@ static void yawDesired(void *pvParameters) {
 
 static void pitchRead(void *pvParameters) {
   while (1) {
-#if READ_SENSOR_I2C_WORKS == 1
-    gyroReadX = readFloatFromAddress(FPGAAddress, 0x22);   // Updates the desired memory module address with current gyro reading on x-axis if conditional compiling demand is met
-    gyroReadY = readFloatFromAddress(FPGAAddress, 0x24);   // Updates the desired memory module address with current gyro reading on y-axis if conditional compiling demand is met
-    gyroReadZ = readFloatFromAddress(FPGAAddress, 0x26);   // Updates the desired memory module address with current gyro reading on z-axis if conditional compiling demand is met
-    accelReadX = readFloatFromAddress(FPGAAddress, 0x28);  // Updates the desired memory module address with current accelerometer reading on x-axis if conditional compiling demand is met
-    accelReadY = readFloatFromAddress(FPGAAddress, 0x2B);  // Updates the desired memory module address with current accelerometer reading on y-axis if conditional compiling demand is met
-    accelReadZ = readFloatFromAddress(FPGAAddress, 0x2D);  // Updates the desired memory module address with current accelerometer reading on z-axis if conditional compiling demand is met
-#else
-   //Serial.println("pitchRead");                    // Status update to figure out which function is running
-    mpu_accel->getEvent(&accel);                    // Makes a new reading from the accelerometer
-    mpu_gyro->getEvent(&gyro);                      // Makes a new reading from the gyro
-    gyroReadX = gyro.gyro.x;                        // Updates current gyro reading on x-axis
-    gyroReadY = gyro.gyro.y;                        // Updates current gyro reading on y-axis
-    gyroReadZ = gyro.gyro.z;                        // Updates current gyro reading on z-axis
-    accelReadX = accel.acceleration.x;              // Updates current accelerometer reading on x-axis
-    accelReadY = accel.acceleration.y;              // Updates current accelerometer reading on y-axis
-    accelReadZ = accel.acceleration.z;              // Updates current accelerometer reading on z-axis
-    writeToAddress(FPGAAddress, 0x22, gyroReadX);   // Updates the desired memory module address with current gyro reading on x-axis
-    writeToAddress(FPGAAddress, 0x24, gyroReadY);   // Updates the desired memory module address with current gyro reading on y-axis
-    writeToAddress(FPGAAddress, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
-    writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
-    writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
-    writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
-#endif
+  #if READ_SENSOR_I2C_WORKS == 1
+      gyroReadX = readFloatFromAddress(FPGAAddress, 0x22);   // Updates the desired memory module address with current gyro reading on x-axis if conditional compiling demand is met
+      gyroReadY = readFloatFromAddress(FPGAAddress, 0x24);   // Updates the desired memory module address with current gyro reading on y-axis if conditional compiling demand is met
+      gyroReadZ = readFloatFromAddress(FPGAAddress, 0x26);   // Updates the desired memory module address with current gyro reading on z-axis if conditional compiling demand is met
+      accelReadX = readFloatFromAddress(FPGAAddress, 0x28);  // Updates the desired memory module address with current accelerometer reading on x-axis if conditional compiling demand is met
+      accelReadY = readFloatFromAddress(FPGAAddress, 0x2B);  // Updates the desired memory module address with current accelerometer reading on y-axis if conditional compiling demand is met
+      accelReadZ = readFloatFromAddress(FPGAAddress, 0x2D);  // Updates the desired memory module address with current accelerometer reading on z-axis if conditional compiling demand is met
+  #else
+    //Serial.println("pitchRead");                    // Status update to figure out which function is running
+      mpu_accel->getEvent(&accel);                    // Makes a new reading from the accelerometer
+      mpu_gyro->getEvent(&gyro);                      // Makes a new reading from the gyro
+      gyroReadX = gyro.gyro.x;                        // Updates current gyro reading on x-axis
+      gyroReadY = gyro.gyro.y;                        // Updates current gyro reading on y-axis
+      gyroReadZ = gyro.gyro.z;                        // Updates current gyro reading on z-axis
+      accelReadX = accel.acceleration.x;              // Updates current accelerometer reading on x-axis
+      accelReadY = accel.acceleration.y;              // Updates current accelerometer reading on y-axis
+      accelReadZ = accel.acceleration.z;              // Updates current accelerometer reading on z-axis
+      writeToAddress(FPGAAddress, 0x22, gyroReadX);   // Updates the desired memory module address with current gyro reading on x-axis
+      writeToAddress(FPGAAddress, 0x24, gyroReadY);   // Updates the desired memory module address with current gyro reading on y-axis
+      writeToAddress(FPGAAddress, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
+      writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
+      writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
+      writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
+  #endif
     vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
@@ -475,7 +485,8 @@ static void pitchDesired(void *pvParameters) {
   while (1) {
     joystickInputX = analogRead(joystickInputXPin);                // Reading from the joystick saved as input value
     if (joystickInputX >= 3500) {                                  // If the joystick is completely at the top, the drone should go forward fast
-      desiredPitch = 3;                                            // Set the desiredPitch value to +3 (forward)
+      desiredPitch = 3;
+      // desiredPitch = 1.0;                                            // Set the desiredPitch value to +3 (forward)
     } else if (joystickInputX >= 3000 && joystickInputX < 3500) {  // If the joystick is somewhat at the top, the drone should go forward
       desiredPitch = 1.5;                                          // Set the desiredPitch value to +1.5 (forward)
     } else if (joystickInputX > 2500 && joystickInputX < 3000) {   // If the joystick is a little at the top, the drone should go forward slowly
@@ -485,7 +496,8 @@ static void pitchDesired(void *pvParameters) {
     } else if (joystickInputX <= 1000 && joystickInputX > 500) {   // If the joystick is somewhat at the bottom, the drone should go backwards
       desiredPitch = -1.5;                                         // Set the desiredPitch value to -1.5 (backwards)
     } else if (joystickInputX <= 500) {                            // If the joystick is completely at the bottom, the drone should go backwards fast
-      desiredPitch = -3;                                           // Set the desiredPitch value to -3 (backwards)
+      desiredPitch = -3;
+      // desiredPitch = -1.0;                                           // Set the desiredPitch value to -3 (backwards)
     } else {                                                       // If there is no joystick input, the drone should hover
       desiredPitch = 0;                                            // Resets the desiredRoll to 0, to ensure that the drone hovers flat again
     }
@@ -498,30 +510,30 @@ static void pitchDesired(void *pvParameters) {
 
 static void rollRead(void *pvParameters) {
   while (1) {
-#if READ_SENSOR_I2C_WORKS == 1
-    gyroReadX = readFloatFromAddress(FPGAAddress, 0x22);   // Updates the desired memory module address with current gyro reading on x-axis if conditional compiling demand is met
-    gyroReadY = readFloatFromAddress(FPGAAddress, 0x24);   // Updates the desired memory module address with current gyro reading on y-axis if conditional compiling demand is met
-    gyroReadZ = readFloatFromAddress(FPGAAddress, 0x26);   // Updates the desired memory module address with current gyro reading on z-axis if conditional compiling demand is met
-    accelReadX = readFloatFromAddress(FPGAAddress, 0x28);  // Updates the desired memory module address with current accelerometer reading on x-axis if conditional compiling demand is met
-    accelReadY = readFloatFromAddress(FPGAAddress, 0x2B);  // Updates the desired memory module address with current accelerometer reading on y-axis if conditional compiling demand is met
-    accelReadZ = readFloatFromAddress(FPGAAddress, 0x2D);  // Updates the desired memory module address with current accelerometer reading on z-axis if conditional compiling demand is met
-#else
-   //Serial.println("rollRead");                     // Status update to figure out which function is running
-    mpu_accel->getEvent(&accel);                    // Makes a new reading from the accelerometer
-    mpu_gyro->getEvent(&gyro);                      // Makes a new reading from the gyro
-    gyroReadX = gyro.gyro.x;                        // Updates current gyro reading on x-axis
-    gyroReadY = gyro.gyro.y;                        // Updates current gyro reading on y-axis
-    gyroReadZ = gyro.gyro.z;                        // Updates current gyro reading on z-axis
-    accelReadX = accel.acceleration.x;              // Updates current accelerometer reading on x-axis
-    accelReadY = accel.acceleration.y;              // Updates current accelerometer reading on y-axis
-    accelReadZ = accel.acceleration.z;              // Updates current accelerometer reading on z-axis
-    writeToAddress(FPGAAddress, 0x22, gyroReadX);   // Updates the desired memory module address with current gyro reading on x-axis
-    writeToAddress(FPGAAddress, 0x24, gyroReadY);   // Updates the desired memory module address with current gyro reading on y-axis
-    writeToAddress(FPGAAddress, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
-    writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
-    writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
-    writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
-#endif
+  #if READ_SENSOR_I2C_WORKS == 1
+      gyroReadX = readFloatFromAddress(FPGAAddress, 0x22);   // Updates the desired memory module address with current gyro reading on x-axis if conditional compiling demand is met
+      gyroReadY = readFloatFromAddress(FPGAAddress, 0x24);   // Updates the desired memory module address with current gyro reading on y-axis if conditional compiling demand is met
+      gyroReadZ = readFloatFromAddress(FPGAAddress, 0x26);   // Updates the desired memory module address with current gyro reading on z-axis if conditional compiling demand is met
+      accelReadX = readFloatFromAddress(FPGAAddress, 0x28);  // Updates the desired memory module address with current accelerometer reading on x-axis if conditional compiling demand is met
+      accelReadY = readFloatFromAddress(FPGAAddress, 0x2B);  // Updates the desired memory module address with current accelerometer reading on y-axis if conditional compiling demand is met
+      accelReadZ = readFloatFromAddress(FPGAAddress, 0x2D);  // Updates the desired memory module address with current accelerometer reading on z-axis if conditional compiling demand is met
+  #else
+    //Serial.println("rollRead");                     // Status update to figure out which function is running
+      mpu_accel->getEvent(&accel);                    // Makes a new reading from the accelerometer
+      mpu_gyro->getEvent(&gyro);                      // Makes a new reading from the gyro
+      gyroReadX = gyro.gyro.x;                        // Updates current gyro reading on x-axis
+      gyroReadY = gyro.gyro.y;                        // Updates current gyro reading on y-axis
+      gyroReadZ = gyro.gyro.z;                        // Updates current gyro reading on z-axis
+      accelReadX = accel.acceleration.x;              // Updates current accelerometer reading on x-axis
+      accelReadY = accel.acceleration.y;              // Updates current accelerometer reading on y-axis
+      accelReadZ = accel.acceleration.z;              // Updates current accelerometer reading on z-axis
+      writeToAddress(FPGAAddress, 0x22, gyroReadX);   // Updates the desired memory module address with current gyro reading on x-axis
+      writeToAddress(FPGAAddress, 0x24, gyroReadY);   // Updates the desired memory module address with current gyro reading on y-axis
+      writeToAddress(FPGAAddress, 0x26, gyroReadZ);   // Updates the desired memory module address with current gyro reading on z-axis
+      writeToAddress(FPGAAddress, 0x28, accelReadX);  // Updates the desired memory module address with current accelerometer reading on x-axis
+      writeToAddress(FPGAAddress, 0x2B, accelReadY);  // Updates the desired memory module address with current accelerometer reading on y-axis
+      writeToAddress(FPGAAddress, 0x2D, accelReadZ);  // Updates the desired memory module address with current accelerometer reading on z-axis
+  #endif
     vTaskDelay(50 / portTICK_PERIOD_MS);  // Delay for 10 milliseconds
   }
 }
@@ -530,7 +542,8 @@ static void rollDesired(void *pvParameters) {
   while (1) {
     joystickInputY = analogRead(joystickInputYPin);                // Reading from the joystick saved as input value
     if (joystickInputY >= 3500) {                                  // If the joystick is completely at the right, the drone should move right quickly
-      desiredRoll = 3;                                             // Set the desiredRoll value to +3 (right)
+      desiredRoll = 3;
+      // desiredRoll = 1.0;                                             // Set the desiredRoll value to +3 (right)
     } else if (joystickInputY >= 3000 && joystickInputY < 3500) {  // If the joystick is somewhat at the right, the drone should move right
       desiredRoll = 1.5;                                           // Set the desiredRoll value to +1.5 (right)
     } else if (joystickInputY > 2500 && joystickInputY < 3000) {   // If the joystick is a little at the right, the drone should move right slowly
@@ -540,7 +553,8 @@ static void rollDesired(void *pvParameters) {
     } else if (joystickInputY <= 1000 && joystickInputY > 500) {   // If the joystick is somewhat at the left, the drone should move left
       desiredRoll = -1.5;                                          // Set the desiredRoll value to -1.5 (left)
     } else if (joystickInputY <= 500) {                            // If the joystick is completely at the left, the drone should move left quickly
-      desiredRoll = -3;                                            // Set the desiredRoll value to -3 (left)
+      desiredRoll = -3;
+      // desiredRoll = -1.0;                                            // Set the desiredRoll value to -3 (left)
     } else {                                                       // If there is no joystick input, the drone should hover
       desiredRoll = 0;                                             // Resets the desiredRoll to 0, to ensure that the drone hovers flat again
     }
@@ -553,7 +567,7 @@ static void rollDesired(void *pvParameters) {
 
 void stop() {                             // Emergency stop function
                                           //Serial.println("Stop for satan!");      // Status update to figure out which function is running
-  digitalWrite(emergencyLightPin, LOW);  // Lights up the emergency lights
+  digitalWrite(emergencyLightPin, HIGH);  // Lights up the emergency lights
   vTaskSuspend(hdlHeightRead);            // Suspends heightRead function
   vTaskSuspend(hdlHeightDesired);         // Suspends heightDesired function
   vTaskSuspend(hdlYawRead);               // Suspends yawRead function

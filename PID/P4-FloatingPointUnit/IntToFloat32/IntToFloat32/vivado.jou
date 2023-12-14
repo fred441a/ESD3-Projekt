@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Wed May 10 08:56:22 2023
+# Process ID: 26672
+# Current directory: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/IntToFloat32/IntToFloat32
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26420 C:\Users\gusta\Documents\Universitetet\P4\Projekt\Floating Point Unit\IntToFloat32\IntToFloat32\IntToFloat32.xpr
+# Log file: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/IntToFloat32/IntToFloat32/vivado.log
+# Journal file: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/IntToFloat32/IntToFloat32\vivado.jou
+# Running On: LAPTOP-U9E9QN8R, OS: Windows, CPU Frequency: 3294 MHz, CPU Physical cores: 16, Host memory: 16542 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/IntToFloat32/IntToFloat32/IntToFloat32.xpr}
+update_compile_order -fileset sources_1

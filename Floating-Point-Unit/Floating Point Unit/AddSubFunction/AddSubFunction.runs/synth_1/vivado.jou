@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon May  8 17:51:37 2023
+# Process ID: 29096
+# Current directory: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/AddSubFunction/AddSubFunction.runs/synth_1
+# Command line: vivado.exe -log AddSubFunction.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AddSubFunction.tcl
+# Log file: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/AddSubFunction/AddSubFunction.runs/synth_1/AddSubFunction.vds
+# Journal file: C:/Users/gusta/Documents/Universitetet/P4/Projekt/Floating Point Unit/AddSubFunction/AddSubFunction.runs/synth_1\vivado.jou
+# Running On: LAPTOP-U9E9QN8R, OS: Windows, CPU Frequency: 3294 MHz, CPU Physical cores: 16, Host memory: 16542 MB
+#-----------------------------------------------------------
+source AddSubFunction.tcl -notrace

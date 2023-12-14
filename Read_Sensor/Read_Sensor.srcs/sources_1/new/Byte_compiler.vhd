@@ -78,21 +78,21 @@ begin
 
 Read_Byte : entity work.Read_Byte
         port map (
-                    scl => scl,
-                    sda => sda,
-                    clk => clk,
+            scl => scl,
+            sda => sda,
+            clk => clk,
 
-                    enable => begin_transaction,
-                    BusyOut => RBBusy,
-                    I2C_ADDR => I2CADDR,
-                    I2C_REG => I2C_REG,
-                    DATA => DATA
-                 );
+            enable => begin_transaction,
+            BusyOut => RBBusy,
+            I2C_ADDR => I2CADDR,
+            I2C_REG => I2C_REG,
+            DATA => DATA
+         );
 
     PROCESS (clk)
     BEGIN
         if(rising_edge(clk)) THEN
-            CASE  STATE IS
+            CASE STATE IS
                 WHEN Ready =>
                     MemWrite <= '0';
                     WriteMemBus <= (31 downto 0 => '0');
@@ -106,20 +106,20 @@ Read_Byte : entity work.Read_Byte
                         I2C_REG <= ADDR1;
                         CASE Pulse IS
                             WHEN Pulsing =>
-                        begin_transaction <= '1';
-                        Pulse <= DonePulsing;
+                                begin_transaction <= '1';
+                                Pulse <= DonePulsing;
                             WHEN DonePulsing =>
-                        if(RBBusy = '1') THEN
-                            begin_transaction <= '0';
-                        END IF;
-                        if(RBBusy = '0' and begin_transaction = '0') THEN
-                            WriteMemBus(31 downto 24) <= DATA;
-                            Pulse <= Pulsing;
-                            STATE <= Read2Byte;
-                        END IF;
+                            if(RBBusy = '1') THEN
+                                begin_transaction <= '0';
+                            END IF;
+                            if(RBBusy = '0' and begin_transaction = '0') THEN
+                                WriteMemBus(7 downto 0) <= DATA;
+                                Pulse <= Pulsing;
+                                STATE <= Read2Byte;
+                            END IF;
                         END CASE;
                     ELSE
-                       STATE <=WriteToMem; 
+                       STATE <= WriteToMem; 
                     END IF;
                 WHEN Read2Byte =>
                     BusyOut <= '1';
@@ -127,22 +127,21 @@ Read_Byte : entity work.Read_Byte
                         I2C_REG <= ADDR2;
                         CASE Pulse IS
                             WHEN Pulsing =>
-                        begin_transaction <= '1';
-                        Pulse <= DonePulsing;
-                    WHEN DonePulsing =>
-
-                        if(RBBusy = '1') THEN
-                            begin_transaction <= '0';
-                        END IF;
-                        if(RBBusy = '0' and begin_transaction = '0') THEN
-                            WriteMemBus(23 downto 16) <= DATA;
-                            STATE <= Read3Byte;
-                            Pulse <= Pulsing;
-                        END IF;
-                    WHEN OTHERS => Pulse<=DonePulsing;
-                END CASE;
-                     ELSE
-                       STATE <=WriteToMem; 
+                                begin_transaction <= '1';
+                                Pulse <= DonePulsing;
+                            WHEN DonePulsing =>        
+                                if(RBBusy = '1') THEN
+                                    begin_transaction <= '0';
+                                END IF;
+                                if(RBBusy = '0' and begin_transaction = '0') THEN
+                                    WriteMemBus(15 downto 8) <= DATA;
+                                    STATE <= Read3Byte;
+                                    Pulse <= Pulsing;
+                                END IF;
+                            WHEN OTHERS => Pulse<=DonePulsing;
+                        END CASE;
+                    ELSE
+                       STATE <= WriteToMem; 
                     END IF;
                 WHEN Read3Byte =>
                     BusyOut <= '1';
@@ -150,20 +149,19 @@ Read_Byte : entity work.Read_Byte
                         I2C_REG <= ADDR3;
                         CASE Pulse IS
                             WHEN Pulsing =>
-                        begin_transaction <= '1';
-                        Pulse <= DonePulsing;
-                    WHEN DonePulsing =>
-
-                        if(RBBusy = '1') THEN
-                            begin_transaction <= '0';
-                        END IF;
-                        if(RBBusy = '0' and begin_transaction = '0') THEN
-                            WriteMemBus(15 downto 8) <= DATA;
-                            STATE <= Read4Byte;
-                            Pulse <= Pulsing;
-                        END IF;
-                    WHEN OTHERS => Pulse<=DonePulsing;
-                END CASE;
+                                begin_transaction <= '1';
+                                Pulse <= DonePulsing;
+                            WHEN DonePulsing =>
+                                if (RBBusy = '1') THEN
+                                    begin_transaction <= '0';
+                                END IF;
+                                if(RBBusy = '0' and begin_transaction = '0') THEN
+                                    WriteMemBus(23 downto 16) <= DATA;
+                                    STATE <= Read4Byte;
+                                    Pulse <= Pulsing;
+                                END IF;
+                            WHEN OTHERS => Pulse<=DonePulsing;
+                        END CASE;
                      ELSE
                        STATE <=WriteToMem; 
                     END IF;
@@ -173,20 +171,19 @@ Read_Byte : entity work.Read_Byte
                         I2C_REG <= ADDR4;
                         CASE Pulse IS
                             WHEN Pulsing =>
-                        begin_transaction <= '1';
-                        Pulse <= DonePulsing;
-                    WHEN DonePulsing =>
-
-                        if(RBBusy = '1') THEN
-                            begin_transaction <= '0';
-                        END IF;
-                        if(RBBusy = '0' and begin_transaction = '0') THEN
-                            WriteMemBus(7 downto 0) <= DATA;
-                            STATE <= WriteToMem;
-                            Pulse <= Pulsing;
-                        END IF;
-                    WHEN OTHERS => Pulse<=DonePulsing;
-                END CASE;
+                                begin_transaction <= '1';
+                                Pulse <= DonePulsing;
+                            WHEN DonePulsing =>        
+                                if (RBBusy = '1') THEN
+                                    begin_transaction <= '0';
+                                END IF;
+                                if (RBBusy = '0' and begin_transaction = '0') THEN
+                                    WriteMemBus(31 downto 24) <= DATA;
+                                    STATE <= WriteToMem;
+                                    Pulse <= Pulsing;
+                                END IF;
+                            WHEN OTHERS => Pulse<=DonePulsing;
+                        END CASE;
                      ELSE
                        STATE <=WriteToMem; 
                     END IF;
@@ -195,33 +192,19 @@ Read_Byte : entity work.Read_Byte
                     if(ENABLE = ('0','0','0','1')) THEN
                         WriteMemBus(31) <= WriteMemBus(7);
                         WriteMemBus(7) <= '0';
-                    END IF;
-
-                    if(ENABLE = ('0','0','1','1')) THEN
+                    elsif(ENABLE = ('0','0','1','1')) THEN
                         WriteMemBus(31) <= WriteMemBus(15);
-                        WriteMemBus(15) <= '0';
- 
-                    END IF;
-
-                    if(ENABLE = ('0','1','1','1')) THEN
+                        WriteMemBus(15) <= '0'; 
+                    elsif(ENABLE = ('0','1','1','1')) THEN
                         WriteMemBus(31) <= WriteMemBus(23);
-                        WriteMemBus(23) <= '0';
- 
+                        WriteMemBus(23) <= '0'; 
                     END IF;
-
-
---                    CASE ENABLE
---                        WHEN ('0','0','0','1') =>
-
---                        WHEN OTHERS => NULL;
---                    END CASE;
-
                 WHEN Integrate => 
                     IF(DoIntegrate = '1') THEN
-                        Sum <= SIGNED(ReadMem(TO_INTEGER(UNSIGNED(ADDRMemBus))))+SIGNED(WriteMemBus);
-                        WriteMemBus <= std_logic_vector(Sum);
+                        WriteMemBus <= std_logic_vector(SIGNED(ReadMem(TO_INTEGER(UNSIGNED(ADDRMemBus))))+SIGNED(WriteMemBus));
                     END IF;
                     State <= WriteToMem;
+                    Pulse <= Pulsing;
                 WHEN WriteToMem =>
                     CASE Pulse IS
                         WHEN Pulsing =>
