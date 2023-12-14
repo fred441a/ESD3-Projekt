@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date         : Wed Dec 13 14:55:29 2023
-| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Thu Dec 14 15:10:58 2023
+| Host         : JohanTheil running 64-bit major release  (build 9200)
 | Command      : report_utilization -file flightController_utilization_synth.rpt -pb flightController_utilization_synth.pb
 | Design       : flightController
 | Device       : xc7a35tcpg236-1
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+-------+-------+------------+-----------+-------+
 |        Site Type        |  Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+-------+-------+------------+-----------+-------+
-| Slice LUTs*             | 14798 |     0 |          0 |     20800 | 71.14 |
-|   LUT as Logic          | 14798 |     0 |          0 |     20800 | 71.14 |
+| Slice LUTs*             | 14796 |     0 |          0 |     20800 | 71.13 |
+|   LUT as Logic          | 14796 |     0 |          0 |     20800 | 71.13 |
 |   LUT as Memory         |     0 |     0 |          0 |      9600 |  0.00 |
 | Slice Registers         |  3684 |     0 |          0 |     41600 |  8.86 |
 |   Register as Flip Flop |  3684 |     0 |          0 |     41600 |  8.86 |
@@ -152,12 +152,12 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     | 7040 |                 LUT |
-| LUT5     | 3768 |                 LUT |
+| LUT6     | 7041 |                 LUT |
+| LUT5     | 3766 |                 LUT |
 | FDRE     | 3627 |        Flop & Latch |
 | LUT4     | 3555 |                 LUT |
-| LUT3     | 2134 |                 LUT |
-| LUT2     | 1924 |                 LUT |
+| LUT3     | 2135 |                 LUT |
+| LUT2     | 1922 |                 LUT |
 | CARRY4   | 1455 |          CarryLogic |
 | LUT1     |  744 |                 LUT |
 | MUXF7    |  430 |               MuxFx |

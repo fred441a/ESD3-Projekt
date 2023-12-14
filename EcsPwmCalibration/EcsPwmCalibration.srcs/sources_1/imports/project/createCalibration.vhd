@@ -45,7 +45,7 @@ end createCalibration;
 architecture Behavioral of createCalibration is
 signal count:       unsigned(6 downto 0) := (others => '0'); -- To descale clock
 signal clkDivider:   unsigned(11 downto 0)  := (others => '0'); -- skal være 12 bit for at nå 2048
-signal rise:        unsigned(7 downto 0) := "00000001"; -- To make it go up and then down
+signal rise:        unsigned(7 downto 0) := "00101111"; -- To make it go up and then down
 signal hold:        unsigned(7 downto 0) := (others => '0');
 signal go:          std_logic := '0'; -- Internal flag so the code can start
 signal state:       std_logic_vector (1 downto 0) := "00"; -- Has the purpos of inc and dec, calibration
@@ -108,7 +108,7 @@ if(CLK'event and CLK = '1') then
 -- Falling ends
 
 --Finished begins        
-        if(rise = 1 AND state = "10") then -- It has finished calibration now
+        if(rise = 69 AND state = "10") then -- It has finished calibration now
             finish <= '1'; -- external flag, to say it is finished calibrating
             halt <= '1'; --Makes sure the procces ends.  
         end if;
