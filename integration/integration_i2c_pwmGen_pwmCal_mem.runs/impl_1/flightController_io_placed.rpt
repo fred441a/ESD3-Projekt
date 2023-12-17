@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date                      : Wed Dec 13 14:56:26 2023
+| Date                      : Fri Dec 15 00:41:53 2023
 | Host                      : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command                   : report_io -file flightController_io_placed.rpt
 | Design                    : flightController

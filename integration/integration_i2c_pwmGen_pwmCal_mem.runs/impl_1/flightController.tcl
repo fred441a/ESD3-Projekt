@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1/flightController.tcl"
+  variable script "/home/mikkel/repoes/ESD3/ESD3-Projekt2/integration/integration_i2c_pwmGen_pwmCal_mem.runs/impl_1/flightController.tcl"
   variable category "vivado_impl"
 }
 
@@ -122,6 +122,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param xicom.use_bs_reader 1
   set_param chipscope.maxJobs 1
   set_param runs.launchOptions { -jobs 4  }
 OPTRACE "create in-memory project" START { }
@@ -130,15 +131,15 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.cache/wt [current_project]
-  set_property parent.project_path /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.xpr [current_project]
-  set_property ip_output_repo /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.cache/ip [current_project]
+  set_property webtalk.parent_dir /home/mikkel/repoes/ESD3/ESD3-Projekt2/integration/integration_i2c_pwmGen_pwmCal_mem.cache/wt [current_project]
+  set_property parent.project_path /home/mikkel/repoes/ESD3/ESD3-Projekt2/integration/integration_i2c_pwmGen_pwmCal_mem.xpr [current_project]
+  set_property ip_output_repo /home/mikkel/repoes/ESD3/ESD3-Projekt2/integration/integration_i2c_pwmGen_pwmCal_mem.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.dcp
+  add_files -quiet /home/mikkel/repoes/ESD3/ESD3-Projekt2/integration/integration_i2c_pwmGen_pwmCal_mem.runs/synth_1/flightController.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc /home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc
+  read_xdc /home/mikkel/repoes/ESD3/ESD3-Projekt2/integration/integration_i2c_pwmGen_pwmCal_mem.srcs/constrs_1/new/constraints.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="63" Path="/home/mikkel/repoes/ESD3/ESD3-Projekt/integration/integration_i2c_pwmGen_pwmCal_mem.xpr">
+<Project Product="Vivado" Version="7" Minor="63" Path="/home/mikkel/repoes/ESD3/ESD3-Projekt2/integration/integration_i2c_pwmGen_pwmCal_mem.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="7131f99a6d07400cb6d6bed15a967861"/>

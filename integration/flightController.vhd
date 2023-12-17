@@ -149,7 +149,8 @@ begin
 INTERNAL_READY_FLAG <= memory(setupReg)(1);
 -- emergency_stop shall be pulled up, when connected to GND the emergency stop is activated.
 PWM <= (others => '0') when not emergency_stop = '1' else PWM_internal; 
-    
+--PWM <= PWM_internal;
+   
     MEMORY_WRITE: process (CLK) begin
         if (falling_edge(CLK)) then 
             -- write to memory on falling-edge as values are set to write on rising-edge  
@@ -174,7 +175,7 @@ PWM <= (others => '0') when not emergency_stop = '1' else PWM_internal;
                 memory(to_integer(unsigned(EXTERNAL_WRITE_ADDRESS))) <= EXTERNAL_WRITE_DATA;
             end if;
 
-            if (SENSOR_WRITE_REQ = '1') then -- write recieved data from mcu
+            if (SENSOR_WRITE_REQ = '1') then --write sensors data 
                 memory(to_integer(unsigned(SENSOR_WRITE_ADDRESS))) <= SENSOR_WRITE_DATA;
             end if;
         end if;

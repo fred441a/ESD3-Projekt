@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
-| Date             : Wed Dec 13 14:57:12 2023
+| Date             : Fri Dec 15 00:42:36 2023
 | Host             : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command          : report_power -file flightController_power_routed.rpt -pb flightController_power_summary_routed.pb -rpx flightController_power_routed.rpx
 | Design           : flightController
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+-----------------------------------+
-| Total On-Chip Power (W)  | 384.690 (Junction temp exceeded!) |
+| Total On-Chip Power (W)  | 273.833 (Junction temp exceeded!) |
 | Design Power Budget (W)  | Unspecified*                      |
 | Power Budget Margin (W)  | NA                                |
-| Dynamic (W)              | 384.204                           |
+| Dynamic (W)              | 273.347                           |
 | Device Static (W)        | 0.486                             |
 | Effective TJA (C/W)      | 5.0                               |
 | Max Ambient (C)          | 0.0                               |
@@ -52,18 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |   226.064 |    24338 |       --- |             --- |
-|   LUT as Logic |   221.676 |    14415 |     20800 |           69.30 |
-|   CARRY4       |     3.941 |     1455 |      8150 |           17.85 |
-|   Register     |     0.283 |     3684 |     41600 |            8.86 |
-|   F7/F8 Muxes  |     0.159 |      433 |     32600 |            1.33 |
-|   BUFG         |     0.006 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       34 |       --- |             --- |
-| Signals        |   152.579 |    15845 |       --- |             --- |
-| DSPs           |     5.330 |       12 |        90 |           13.33 |
-| I/O            |     0.232 |        8 |       106 |            7.55 |
+| Slice Logic    |   162.801 |    24554 |       --- |             --- |
+|   LUT as Logic |   159.187 |    14580 |     20800 |           70.10 |
+|   CARRY4       |     3.252 |     1467 |      8150 |           18.00 |
+|   Register     |     0.194 |     3681 |     41600 |            8.85 |
+|   F7/F8 Muxes  |     0.162 |      442 |     32600 |            1.36 |
+|   BUFG         |     0.006 |        2 |        32 |            6.25 |
+|   Others       |     0.000 |       36 |       --- |             --- |
+| Signals        |   106.235 |    16065 |       --- |             --- |
+| DSPs           |     3.870 |       12 |        90 |           13.33 |
+| I/O            |     0.441 |        7 |       106 |            6.60 |
 | Static Power   |     0.486 |          |           |                 |
-| Total          |   384.690 |          |           |                 |
+| Total          |   273.833 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |   384.325 |     383.985 |      0.341 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.061 |       0.008 |      0.053 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.063 |       0.062 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |   273.255 |     272.914 |      0.341 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.069 |       0.016 |      0.053 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.124 |       0.123 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -140,21 +140,21 @@ Table of Contents
 +-----------------------+-----------+
 | Name                  | Power (W) |
 +-----------------------+-----------+
-| flightController      |   384.204 |
-|   DIST_MATRIX         |   228.483 |
-|     matrixReloaded    |   135.472 |
-|       fpuCalculations |   132.151 |
-|     pwmMapSlave       |    93.011 |
-|   i2cExternal         |     3.027 |
-|     I_I2CITF          |     0.504 |
-|   pidBlock            |   151.655 |
-|     PID_ALTITUDE      |     1.962 |
-|     PID_PITCH         |     1.357 |
-|     PID_ROLL          |     1.080 |
-|     PID_YAW           |     1.027 |
-|     SHARED_FPU        |   142.580 |
-|   pwmCal              |     0.092 |
-|   pwmGen              |     0.392 |
+| flightController      |   273.347 |
+|   DIST_MATRIX         |   201.524 |
+|     matrixReloaded    |   130.716 |
+|       fpuCalculations |   127.823 |
+|     pwmMapSlave       |    70.808 |
+|   i2cExternal         |     2.904 |
+|     I_I2CITF          |     0.414 |
+|   pidBlock            |    67.773 |
+|     PID_ALTITUDE      |     2.502 |
+|     PID_PITCH         |     1.101 |
+|     PID_ROLL          |     1.275 |
+|     PID_YAW           |     1.229 |
+|     SHARED_FPU        |    61.653 |
+|   pwmCal              |     0.077 |
+|   pwmGen              |     0.338 |
 +-----------------------+-----------+
 
 

@@ -134,7 +134,7 @@ begin
                     -- overwrite "internal ready" flag with current value
                     BUFFER_32(1) <= MEMORY_READ(setupReg)(1); 
                     state <= WRITE;
-                  WHEN x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
+                  WHEN x"00" => -- x"15" | x"18" | x"1B" | x"1D" | x"1F" | x"22" | x"24" | x"26" | x"29" | x"2B" | x"2D" => 
                     -- on external write access to readonly registers - reset
                     state <= RESET;
                   WHEN OTHERS =>
