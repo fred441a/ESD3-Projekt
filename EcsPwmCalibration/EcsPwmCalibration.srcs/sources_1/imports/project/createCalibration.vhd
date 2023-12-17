@@ -44,7 +44,7 @@ end createCalibration;
 
 architecture Behavioral of createCalibration is
 signal count:       unsigned(6 downto 0) := (others => '0'); -- To descale clock
-signal clkDivider:   unsigned(11 downto 0)  := (others => '0'); -- skal være 12 bit for at nå 2048
+signal clkDivider:   unsigned(11 downto 0)  := (others => '0'); -- skal vï¿½re 12 bit for at nï¿½ 2048
 signal rise:        unsigned(7 downto 0) := "00101111"; -- To make it go up and then down
 signal hold:        unsigned(7 downto 0) := (others => '0');
 signal go:          std_logic := '0'; -- Internal flag so the code can start

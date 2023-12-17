@@ -1,0 +1,1411 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date         : Fri Dec 15 00:42:37 2023
+| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
+| Command      : report_timing_summary -max_paths 10 -report_unconstrained -file flightController_timing_summary_routed.rpt -pb flightController_timing_summary_routed.pb -rpx flightController_timing_summary_routed.rpx -warn_on_violation
+| Design       : flightController
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity          Description                     Violations  
+---------  ----------------  ------------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell     1000        
+TIMING-20  Warning           Non-clocked latch               66          
+LATCH-1    Advisory          Existing latches in the design  1           
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (3879)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (7351)
+5. checking no_input_delay (2)
+6. checking no_output_delay (5)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (3879)
+---------------------------
+ There are 3615 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
+
+ There are 66 register/latch pins with no clock driven by root clock pin: pidBlock/altitudeEn_reg/Q (HIGH)
+
+ There are 66 register/latch pins with no clock driven by root clock pin: pidBlock/pitchEn_reg/Q (HIGH)
+
+ There are 66 register/latch pins with no clock driven by root clock pin: pidBlock/rollEn_reg/Q (HIGH)
+
+ There are 66 register/latch pins with no clock driven by root clock pin: pidBlock/yawEn_reg/Q (HIGH)
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (7351)
+---------------------------------------------------
+ There are 7351 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (2)
+------------------------------
+ There are 2 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (5)
+-------------------------------
+ There are 5 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                 7356          inf        0.000                      0                 7356           NA           NA                      NA                    NA  
+
+
+There are no user specified timing constraints.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)                                    
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  
+
+Max Delay          7356 Endpoints
+Min Delay          7356 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-16]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.640ns  (logic 12.117ns (23.465%)  route 39.523ns (76.535%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          1.417    50.190    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X51Y56         LUT6 (Prop_lut6_I2_O)        0.124    50.314 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-16]_i_2__0/O
+                         net (fo=1, routed)           1.202    51.516    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-16]_i_2__0_n_0
+    SLICE_X50Y68         LUT5 (Prop_lut5_I0_O)        0.124    51.640 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-16]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.640    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-16]_i_1__0_n_0
+    SLICE_X50Y68         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-16]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-13]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.596ns  (logic 12.117ns (23.484%)  route 39.479ns (76.516%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          1.198    49.971    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X52Y57         LUT6 (Prop_lut6_I2_O)        0.124    50.095 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-13]_i_2__0/O
+                         net (fo=1, routed)           1.377    51.472    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-13]_i_2__0_n_0
+    SLICE_X50Y68         LUT5 (Prop_lut5_I0_O)        0.124    51.596 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-13]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.596    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-13]_i_1__0_n_0
+    SLICE_X50Y68         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-13]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-19]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.325ns  (logic 12.117ns (23.609%)  route 39.208ns (76.391%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          1.386    50.159    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X51Y56         LUT6 (Prop_lut6_I2_O)        0.124    50.283 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-19]_i_2__0/O
+                         net (fo=1, routed)           0.918    51.201    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-19]_i_2__0_n_0
+    SLICE_X47Y67         LUT5 (Prop_lut5_I0_O)        0.124    51.325 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-19]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.325    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-19]_i_1__0_n_0
+    SLICE_X47Y67         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-19]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-21]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.196ns  (logic 12.117ns (23.668%)  route 39.079ns (76.332%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          0.984    49.757    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X49Y56         LUT6 (Prop_lut6_I2_O)        0.124    49.881 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-21]_i_2__0/O
+                         net (fo=1, routed)           1.191    51.072    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-21]_i_2__0_n_0
+    SLICE_X48Y67         LUT5 (Prop_lut5_I0_O)        0.124    51.196 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-21]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.196    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-21]_i_1__0_n_0
+    SLICE_X48Y67         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-21]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-9]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.184ns  (logic 12.117ns (23.673%)  route 39.067ns (76.327%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          1.024    49.797    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X52Y58         LUT6 (Prop_lut6_I2_O)        0.124    49.921 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-9]_i_2__0/O
+                         net (fo=1, routed)           1.139    51.060    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-9]_i_2__0_n_0
+    SLICE_X50Y69         LUT5 (Prop_lut5_I0_O)        0.124    51.184 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-9]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.184    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-9]_i_1__0_n_0
+    SLICE_X50Y69         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-9]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[0]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.156ns  (logic 12.117ns (23.686%)  route 39.039ns (76.314%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          1.054    49.827    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X44Y59         LUT5 (Prop_lut5_I1_O)        0.124    49.951 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[0]_i_2__0/O
+                         net (fo=1, routed)           1.082    51.032    DIST_MATRIX/matrixReloaded/fpuCalculations/output[0]_i_2__0_n_0
+    SLICE_X44Y64         LUT6 (Prop_lut6_I0_O)        0.124    51.156 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[0]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.156    DIST_MATRIX/matrixReloaded/fpuCalculations/output[0]_i_1__0_n_0
+    SLICE_X44Y64         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[0]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-22]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.119ns  (logic 12.117ns (23.704%)  route 39.002ns (76.296%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          1.189    49.961    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X49Y56         LUT6 (Prop_lut6_I2_O)        0.124    50.085 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-22]_i_2__0/O
+                         net (fo=1, routed)           0.909    50.995    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-22]_i_2__0_n_0
+    SLICE_X46Y67         LUT5 (Prop_lut5_I0_O)        0.124    51.119 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-22]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.119    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-22]_i_1__0_n_0
+    SLICE_X46Y67         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-22]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-12]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.016ns  (logic 12.117ns (23.751%)  route 38.899ns (76.249%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          0.669    49.442    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X52Y58         LUT6 (Prop_lut6_I2_O)        0.124    49.566 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-12]_i_2__0/O
+                         net (fo=1, routed)           1.327    50.892    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-12]_i_2__0_n_0
+    SLICE_X49Y69         LUT5 (Prop_lut5_I0_O)        0.124    51.016 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-12]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.016    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-12]_i_1__0_n_0
+    SLICE_X49Y69         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-12]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-7]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        51.012ns  (logic 12.117ns (23.753%)  route 38.895ns (76.247%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          0.865    49.638    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X49Y59         LUT6 (Prop_lut6_I2_O)        0.124    49.762 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-7]_i_2__0/O
+                         net (fo=1, routed)           1.126    50.888    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-7]_i_2__0_n_0
+    SLICE_X48Y69         LUT5 (Prop_lut5_I0_O)        0.124    51.012 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-7]_i_1__0/O
+                         net (fo=1, routed)           0.000    51.012    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-7]_i_1__0_n_0
+    SLICE_X48Y69         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-14]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        50.974ns  (logic 12.117ns (23.771%)  route 38.857ns (76.229%))
+  Logic Levels:           39  (CARRY4=5 DSP48E1=2 FDRE=1 LUT2=3 LUT3=2 LUT4=6 LUT5=5 LUT6=15)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X35Y83         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/C
+    SLICE_X35Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  DIST_MATRIX/matrixReloaded/data1_reg[-16]/Q
+                         net (fo=34, routed)          4.164     4.620    DIST_MATRIX/matrixReloaded/fpuCalculations/Q[7]
+    SLICE_X34Y51         LUT4 (Prop_lut4_I3_O)        0.124     4.744 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0/O
+                         net (fo=2, routed)           0.506     5.250    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_124__0_n_0
+    SLICE_X34Y51         LUT6 (Prop_lut6_I0_O)        0.124     5.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0/O
+                         net (fo=1, routed)           0.313     5.686    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_6__0_n_0
+    SLICE_X36Y51         LUT6 (Prop_lut6_I5_O)        0.124     5.810 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0/O
+                         net (fo=14, routed)          1.506     7.316    DIST_MATRIX/matrixReloaded/fpuCalculations/i___219_i_2__0_n_0
+    SLICE_X42Y60         LUT2 (Prop_lut2_I0_O)        0.124     7.440 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0/O
+                         net (fo=2, routed)           0.804     8.244    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-23]_i_15__0_n_0
+    SLICE_X41Y60         LUT2 (Prop_lut2_I1_O)        0.124     8.368 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0/O
+                         net (fo=2, routed)           1.176     9.544    DIST_MATRIX/matrixReloaded/fpuCalculations/i___106_i_5__0_n_0
+    SLICE_X36Y52         LUT6 (Prop_lut6_I0_O)        0.124     9.668 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0/O
+                         net (fo=33, routed)          1.513    11.182    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_87__0_n_0
+    SLICE_X37Y50         LUT6 (Prop_lut6_I4_O)        0.124    11.306 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0/O
+                         net (fo=3, routed)           0.822    12.128    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_74__0_n_0
+    SLICE_X37Y48         LUT6 (Prop_lut6_I5_O)        0.124    12.252 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0/O
+                         net (fo=2, routed)           0.652    12.904    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_76__0_n_0
+    SLICE_X36Y48         LUT3 (Prop_lut3_I0_O)        0.124    13.028 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_i_29__0/O
+                         net (fo=1, routed)           1.033    14.061    DIST_MATRIX/matrixReloaded/fpuCalculations/fractr[12]
+    DSP48_X1Y18          DSP48E1 (Prop_dsp48e1_A[12]_PCOUT[47])
+                                                      4.036    18.097 r  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0/PCOUT[47]
+                         net (fo=1, routed)           0.002    18.099    DIST_MATRIX/matrixReloaded/fpuCalculations/fract0_n_106
+    DSP48_X1Y19          DSP48E1 (Prop_dsp48e1_PCIN[47]_P[10])
+                                                      1.518    19.617 f  DIST_MATRIX/matrixReloaded/fpuCalculations/fract0__0/P[10]
+                         net (fo=15, routed)          2.610    22.227    DIST_MATRIX/matrixReloaded/fpuCalculations/l64_in
+    SLICE_X46Y52         LUT4 (Prop_lut4_I1_O)        0.150    22.377 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0/O
+                         net (fo=1, routed)           0.662    23.039    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_9__0_n_0
+    SLICE_X46Y51         LUT6 (Prop_lut6_I4_O)        0.348    23.387 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0/O
+                         net (fo=1, routed)           0.810    24.197    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_3__0_n_0
+    SLICE_X46Y52         LUT6 (Prop_lut6_I4_O)        0.124    24.321 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0/O
+                         net (fo=11, routed)          0.485    24.806    DIST_MATRIX/matrixReloaded/fpuCalculations/i___66_i_1__0_n_0
+    SLICE_X46Y54         LUT6 (Prop_lut6_I1_O)        0.124    24.930 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0/O
+                         net (fo=3, routed)           1.325    26.255    DIST_MATRIX/matrixReloaded/fpuCalculations/i___65_i_2__0_n_0
+    SLICE_X47Y58         LUT3 (Prop_lut3_I0_O)        0.152    26.407 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0/O
+                         net (fo=2, routed)           1.010    27.417    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_11__0_n_0
+    SLICE_X47Y57         LUT5 (Prop_lut5_I3_O)        0.326    27.743 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0/O
+                         net (fo=2, routed)           0.664    28.406    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_7__0_n_0
+    SLICE_X46Y57         LUT6 (Prop_lut6_I0_O)        0.124    28.530 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9/O
+                         net (fo=1, routed)           0.000    28.530    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_9_n_0
+    SLICE_X46Y57         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    29.063 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2/CO[3]
+                         net (fo=1, routed)           0.000    29.063    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_2_n_0
+    SLICE_X46Y58         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219    29.282 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1/O[0]
+                         net (fo=4, routed)           0.969    30.252    DIST_MATRIX/matrixReloaded/fpuCalculations/i___136_i_1_n_7
+    SLICE_X45Y57         LUT2 (Prop_lut2_I1_O)        0.323    30.575 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0/O
+                         net (fo=1, routed)           0.433    31.008    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_7__0_n_0
+    SLICE_X45Y57         LUT6 (Prop_lut6_I5_O)        0.326    31.334 f  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0/O
+                         net (fo=1, routed)           0.807    32.141    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_3__0_n_0
+    SLICE_X45Y55         LUT5 (Prop_lut5_I3_O)        0.124    32.265 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0/O
+                         net (fo=55, routed)          1.668    33.933    DIST_MATRIX/matrixReloaded/fpuCalculations/i___67_i_1__0_n_0
+    SLICE_X50Y53         LUT4 (Prop_lut4_I2_O)        0.124    34.057 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i___53_i_2__0/O
+                         net (fo=93, routed)          5.193    39.250    DIST_MATRIX/matrixReloaded/fpuCalculations/i___62_i_5__0_n_0
+    SLICE_X54Y47         LUT4 (Prop_lut4_I3_O)        0.124    39.374 r  DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0/O
+                         net (fo=110, routed)         1.775    41.148    DIST_MATRIX/matrixReloaded/fpuCalculations/i__rep__8_i_3__0_n_0
+    SLICE_X61Y47         LUT6 (Prop_lut6_I2_O)        0.124    41.272 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0/O
+                         net (fo=1, routed)           0.471    41.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_1783__0_n_0
+    SLICE_X60Y48         CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.396    42.139 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390/CO[3]
+                         net (fo=1, routed)           0.000    42.139    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_1390_n_0
+    SLICE_X60Y49         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.256 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913/CO[3]
+                         net (fo=1, routed)           0.001    42.257    DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_913_n_0
+    SLICE_X60Y50         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    42.374 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[7]_i_488/CO[3]
+                         net (fo=1, routed)           1.348    43.722    DIST_MATRIX/matrixReloaded/fpuCalculations/orx11_in
+    SLICE_X55Y50         LUT4 (Prop_lut4_I0_O)        0.124    43.846 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0/O
+                         net (fo=1, routed)           0.433    44.279    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_222__0_n_0
+    SLICE_X55Y50         LUT5 (Prop_lut5_I4_O)        0.124    44.403 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0/O
+                         net (fo=1, routed)           0.406    44.809    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_131__0_n_0
+    SLICE_X55Y51         LUT6 (Prop_lut6_I5_O)        0.124    44.933 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0/O
+                         net (fo=1, routed)           1.184    46.118    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_82__0_n_0
+    SLICE_X49Y48         LUT4 (Prop_lut4_I2_O)        0.124    46.242 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0/O
+                         net (fo=1, routed)           0.502    46.743    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_54__0_n_0
+    SLICE_X48Y48         LUT5 (Prop_lut5_I1_O)        0.124    46.867 f  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0/O
+                         net (fo=1, routed)           0.500    47.367    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_21__0_n_0
+    SLICE_X51Y54         LUT6 (Prop_lut6_I3_O)        0.124    47.491 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0/O
+                         net (fo=29, routed)          1.158    48.649    DIST_MATRIX/matrixReloaded/fpuCalculations/output[7]_i_6__0_n_0
+    SLICE_X51Y59         LUT6 (Prop_lut6_I1_O)        0.124    48.773 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0/O
+                         net (fo=25, routed)          1.199    49.971    DIST_MATRIX/matrixReloaded/fpuCalculations/output[2]_i_9__0_n_0
+    SLICE_X49Y57         LUT6 (Prop_lut6_I2_O)        0.124    50.095 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-14]_i_2__0/O
+                         net (fo=1, routed)           0.755    50.850    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-14]_i_2__0_n_0
+    SLICE_X48Y67         LUT5 (Prop_lut5_I0_O)        0.124    50.974 r  DIST_MATRIX/matrixReloaded/fpuCalculations/output[-14]_i_1__0/O
+                         net (fo=1, routed)           0.000    50.974    DIST_MATRIX/matrixReloaded/fpuCalculations/output[-14]_i_1__0_n_0
+    SLICE_X48Y67         FDRE                                         r  DIST_MATRIX/matrixReloaded/fpuCalculations/output_reg[-14]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 i2cExternal/I_I2CITF/WR_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRq_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.210ns  (logic 0.141ns (67.198%)  route 0.069ns (32.802%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y123         FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/WR_reg/C
+    SLICE_X0Y123         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/I_I2CITF/WR_reg/Q
+                         net (fo=2, routed)           0.069     0.210    i2cExternal/WR
+    SLICE_X0Y123         FDRE                                         r  i2cExternal/WRq_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/I_I2CITF/ADDRESS_READY_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/ADDq_reg/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.217ns  (logic 0.141ns (64.847%)  route 0.076ns (35.153%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y123         FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/ADDRESS_READY_reg/C
+    SLICE_X0Y123         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/I_I2CITF/ADDRESS_READY_reg/Q
+                         net (fo=2, routed)           0.076     0.217    i2cExternal/ADDRESS_READY
+    SLICE_X0Y123         FDRE                                         r  i2cExternal/ADDq_reg/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/I_I2CITF/shiftreg_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/I_I2CITF/DATA_OUT_reg[3]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.228ns  (logic 0.164ns (71.855%)  route 0.064ns (28.145%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y116         FDRE                         0.000     0.000 r  i2cExternal/I_I2CITF/shiftreg_reg[3]/C
+    SLICE_X2Y116         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  i2cExternal/I_I2CITF/shiftreg_reg[3]/Q
+                         net (fo=4, routed)           0.064     0.228    i2cExternal/I_I2CITF/data2[4]
+    SLICE_X3Y116         FDRE                                         r  i2cExternal/I_I2CITF/DATA_OUT_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[26]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[26]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.240ns  (logic 0.141ns (58.691%)  route 0.099ns (41.309%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y116        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[26]/C
+    SLICE_X17Y116        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[26]/Q
+                         net (fo=1, routed)           0.099     0.240    i2cExternal/BUFFER_32_reg_n_0_[26]
+    SLICE_X19Y115        FDRE                                         r  i2cExternal/WRITE_DATA_reg[26]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[27]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[27]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.240ns  (logic 0.141ns (58.691%)  route 0.099ns (41.309%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X17Y116        FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[27]/C
+    SLICE_X17Y116        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[27]/Q
+                         net (fo=1, routed)           0.099     0.240    i2cExternal/BUFFER_32_reg_n_0_[27]
+    SLICE_X19Y115        FDRE                                         r  i2cExternal/WRITE_DATA_reg[27]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 i2cExternal/BUFFER_32_reg[11]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            i2cExternal/WRITE_DATA_reg[11]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.248ns  (logic 0.141ns (56.778%)  route 0.107ns (43.222%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y113         FDRE                         0.000     0.000 r  i2cExternal/BUFFER_32_reg[11]/C
+    SLICE_X4Y113         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  i2cExternal/BUFFER_32_reg[11]/Q
+                         net (fo=2, routed)           0.107     0.248    i2cExternal/BUFFER_32_reg_n_0_[11]
+    SLICE_X7Y114         FDRE                                         r  i2cExternal/WRITE_DATA_reg[11]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pidBlock/PID_YAW/error_reg[-14]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            pidBlock/PID_YAW/prevError_reg[-14]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.249ns  (logic 0.141ns (56.522%)  route 0.108ns (43.478%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X25Y106        FDRE                         0.000     0.000 r  pidBlock/PID_YAW/error_reg[-14]/C
+    SLICE_X25Y106        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  pidBlock/PID_YAW/error_reg[-14]/Q
+                         net (fo=3, routed)           0.108     0.249    pidBlock/PID_YAW/error[-14]
+    SLICE_X27Y105        FDRE                                         r  pidBlock/PID_YAW/prevError_reg[-14]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pidBlock/PID_ALTITUDE/error_reg[8]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            pidBlock/PID_ALTITUDE/prevError_reg[8]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.252ns  (logic 0.128ns (50.839%)  route 0.124ns (49.161%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y124         FDRE                         0.000     0.000 r  pidBlock/PID_ALTITUDE/error_reg[8]/C
+    SLICE_X4Y124         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  pidBlock/PID_ALTITUDE/error_reg[8]/Q
+                         net (fo=3, routed)           0.124     0.252    pidBlock/PID_ALTITUDE/error[8]
+    SLICE_X7Y124         FDRE                                         r  pidBlock/PID_ALTITUDE/prevError_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 DIST_MATRIX/matrixReloaded/c3_reg[8]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            DIST_MATRIX/matrixReloaded/data0_reg[8]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.252ns  (logic 0.186ns (73.783%)  route 0.066ns (26.217%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X40Y82         FDRE                         0.000     0.000 r  DIST_MATRIX/matrixReloaded/c3_reg[8]/C
+    SLICE_X40Y82         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  DIST_MATRIX/matrixReloaded/c3_reg[8]/Q
+                         net (fo=3, routed)           0.066     0.207    DIST_MATRIX/matrixReloaded/c3_reg_n_0_[8]
+    SLICE_X41Y82         LUT6 (Prop_lut6_I0_O)        0.045     0.252 r  DIST_MATRIX/matrixReloaded/data0[8]_i_2/O
+                         net (fo=1, routed)           0.000     0.252    DIST_MATRIX/matrixReloaded/data0[8]_i_2_n_0
+    SLICE_X41Y82         FDRE                                         r  DIST_MATRIX/matrixReloaded/data0_reg[8]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pidBlock/PID_YAW/error_reg[-13]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            pidBlock/PID_YAW/prevError_reg[-13]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.252ns  (logic 0.141ns (55.869%)  route 0.111ns (44.131%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X25Y106        FDRE                         0.000     0.000 r  pidBlock/PID_YAW/error_reg[-13]/C
+    SLICE_X25Y106        FDRE (Prop_fdre_C_Q)         0.141     0.141 r  pidBlock/PID_YAW/error_reg[-13]/Q
+                         net (fo=3, routed)           0.111     0.252    pidBlock/PID_YAW/error[-13]
+    SLICE_X27Y105        FDRE                                         r  pidBlock/PID_YAW/prevError_reg[-13]/D
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+

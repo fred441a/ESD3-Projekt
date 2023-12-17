@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Thu Dec 14 15:11:32 2023
-| Host         : JohanTheil running 64-bit major release  (build 9200)
+| Tool Version : Vivado v.2023.1.1 (lin64) Build 3900603 Fri Jun 16 19:30:25 MDT 2023
+| Date         : Fri Dec 15 00:41:37 2023
+| Host         : Mikkel-laptop running 64-bit Debian GNU/Linux 12 (bookworm)
 | Command      : report_drc -file flightController_drc_opted.rpt -pb flightController_drc_opted.pb -rpx flightController_drc_opted.rpx
 | Design       : flightController
 | Device       : xc7a35tcpg236-1

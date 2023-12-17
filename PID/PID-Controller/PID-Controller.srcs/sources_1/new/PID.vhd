@@ -176,11 +176,28 @@ begin
         fpuResult => result
     );
         
+    input0 <= altInput0 when altitudeEn = '1'
+              else pitchInput0 when pitchEn = '1'
+              else rollInput0 when rollEn = '1'
+              else yawInput0 when yawEn = '1';
+    
+    input1 <= altInput1 when altitudeEn = '1'
+          else pitchInput1 when pitchEn = '1'
+          else rollInput1 when rollEn = '1'
+          else yawInput1 when yawEn = '1';
+          
+     fpuOpVal <= altFpuOpVal when altitudeEn = '1'
+          else pitchFpuOpVal when pitchEn = '1'
+          else rollFpuOpVal when rollEn = '1'
+          else yawFpuOpVal when yawEn = '1';
+
+        
+        
     -- changing between PID controllers, 
     -- ensuring only one is running at a giventime as all use a shared fpu.
     -- all PID controllers will be updated at 166Khz with a MCLK@12Mhz
     process (MCLK) begin    
-        if (rising_edge(MCLK)) then 
+        if (rising_edge(MCLK) and MEMORY(setupReg)(1) = '1') then 
            aRqq <= aRq;
            aRq <= altitudeReady;           
            pRqq <= pRq;
@@ -193,36 +210,36 @@ begin
             case state is
                 when ALTITUDE =>
                     altitudeEn <= '1';             
-                    input0 <= altInput0;
-                    input1 <= altInput1;
-                    fpuOpVal <= altFpuOpVal;                    
+--                    input0 <= altInput0;
+--                    input1 <= altInput1;
+--                    fpuOpVal <= altFpuOpVal;                    
                     if (aRqq = '0' and aRq = '1') then --rising_edge(altitudeReady)
                         altitudeEn <= '0';
                         state <= PITCH;                        
                     end if;                    
                 when PITCH =>
                     pitchEn <= '1';             
-                    input0 <= pitchInput0;
-                    input1 <= pitchInput1;
-                    fpuOpVal <= pitchFpuOpVal;
+--                    input0 <= pitchInput0;
+--                    input1 <= pitchInput1;
+--                    fpuOpVal <= pitchFpuOpVal;
                     if (pRqq = '0' and pRq = '1') then --rising_edge(pitchReady)
                         pitchEn <= '0';
                         state <= ROLL;
                     end if;
                 when ROLL =>
                     rollEn <= '1';             
-                    input0 <= rollInput0;
-                    input1 <= rollInput1;
-                    fpuOpVal <= rollFpuOpVal;
+--                    input0 <= rollInput0;
+--                    input1 <= rollInput1;
+--                    fpuOpVal <= rollFpuOpVal;
                     if (rRqq = '0' and rRq = '1') then --rising_edge(rollReady)
                         rollEn <= '0';
                         state <= YAW;
                     end if;
                 when YAW =>
                     yawEn <= '1';                                 
-                    input0 <= yawInput0;
-                    input1 <= yawInput1;
-                    fpuOpVal <= yawFpuOpVal;
+--                    input0 <= yawInput0;
+--                    input1 <= yawInput1;
+--                    fpuOpVal <= yawFpuOpVal;
                     if (yRqq = '0' and yRq = '1') then --rising_edge(yawReady)
                         yawEn <= '0';
                         state <= ALTITUDE;

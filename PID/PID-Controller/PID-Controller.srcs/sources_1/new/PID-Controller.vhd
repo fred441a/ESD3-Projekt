@@ -62,7 +62,7 @@ architecture Behavioral of PID_Controller is
                     RESET);
     signal state : tstate := CALC_ERROR;
     signal error, errorAccum, prevError : float32 := to_float(0);
-    --signal prevMeasured : float32 := to_float(0);
+    -- signal prevMeasured : float32 := to_float(0);
     signal ri, rp, rd, temp : float32;
 
 begin
@@ -83,7 +83,11 @@ begin
                     state <= RES_ERROR;
                 when RES_ERROR =>
                     error <= fpuResult;
-                    state <= ACCUM_ERROR;
+                    if (fpuResult /= prevError) then
+                        state <= ACCUM_ERROR;
+                    else 
+                        state <= RESET;
+                    end if;
                 when ACCUM_ERROR =>
                     --errorAccum <= errorAccum + error;
                     fpuVal0 <= errorAccum;
